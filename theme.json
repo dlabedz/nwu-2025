@@ -11,7 +11,7 @@
 			"palette": [
 				{
 					"slug": "foreground",
-					"color": "#000000",
+					"color": "#0A0A0A",
 					"name": "Foreground"
 				},
 				{
@@ -20,54 +20,64 @@
 					"name": "Background"
 				},
 				{
-					"slug": "primary",
-					"color": "#0000EE",
-					"name": "Primary"
+					"slug": "white",
+					"color": "#ffffff",
+					"name": "White"
 				},
 				{
-					"slug": "secondary",
-					"color": "#00FFFF",
-					"name": "Secondary"
+					"slug": "black",
+					"color": "#0A0A0A",
+					"name": "Black"
 				},
 				{
-					"slug": "tertiary",
-					"color": "#00FFFF",
-					"name": "Tertiary"
+					"slug": "cyan",
+					"color": "#3DC5E0",
+					"name": "Cyan"
 				},
 				{
-					"slug": "quaternary",
-					"color": "#00FFFF",
-					"name": "Quaternary"
+					"slug": "red",
+					"color": "#D3012A",
+					"name": "Red"
 				},
 				{
-					"slug": "quinary",
-					"color": "#00FFFF",
-					"name": "Quinary"
+					"slug": "yellow",
+					"color": "#F4B438",
+					"name": "Yellow"
 				},
 				{
-					"slug": "senary",
-					"color": "#00FFFF",
-					"name": "Senary"
+					"slug": "lavender",
+					"color": "#C0A9FF",
+					"name": "Lavender"
 				},
 				{
-					"slug": "septenary",
-					"color": "#00FFFF",
-					"name": "Septenary"
+					"slug": "navy",
+					"color": "#022645",
+					"name": "Navy"
 				},
 				{
-					"slug": "octonary",
-					"color": "#00FFFF",
-					"name": "Octonary"
+					"slug": "blue",
+					"color": "#054296",
+					"name": "Blue"
 				},
 				{
-					"slug": "nonary",
-					"color": "#00FFFF",
-					"name": "Nonary"
+					"slug": "jade",
+					"color": "#0B616D",
+					"name": "Jade"
 				},
 				{
-					"slug": "denary",
-					"color": "#00FFFF",
-					"name": "Denary"
+					"slug": "violet",
+					"color": "#5F3DC4",
+					"name": "Violet"
+				},
+				{
+					"slug": "newsprint",
+					"color": "#DBD6D2",
+					"name": "Newsprint"
+				},
+				{
+					"slug": "cerulean",
+					"color": "#3A7BE4",
+					"name": "Cerulean"
 				}
 			],
 			"gradients": [],
@@ -156,36 +166,6 @@
 				}
 			],
 			"fontSizes": [
-				{
-					"name": "Gargantuan",
-					"size": "clamp(2.75rem, 5.2vw, 3.25rem)",
-					"slug": "gargantuan"
-				},
-				{
-					"name": "Colossal",
-					"size": "clamp(2.5rem, 4.8vw, 3rem)",
-					"slug": "colossal"
-				},
-				{
-					"name": "Gigantic",
-					"size": "clamp(2.125rem, 4.4vw, 2.75rem)",
-					"slug": "gigantic"
-				},
-				{
-					"name": "Jumbo",
-					"size": "clamp(2rem, 4vw, 2.5rem)",
-					"slug": "jumbo"
-				},
-				{
-					"name": "Huge",
-					"size": "clamp(1.875rem, 3.6vw, 2.25rem)",
-					"slug": "huge"
-				},
-				{
-					"name": "Big",
-					"size": "clamp(1.75rem, 3.2vw, 2rem)",
-					"slug": "big"
-				},
 				{
 					"name": "Extra Large",
 					"size": "clamp(1.5rem, 2.8vw, 1.75rem)",

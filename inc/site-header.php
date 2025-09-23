@@ -16,6 +16,7 @@ function be_register_menus() {
 	register_nav_menus(
 		[
 			'primary' => esc_html__( 'Primary Navigation Menu', 'bestarter_textdomain' ),
+			'utility' => esc_html__( 'Utility Menu', 'bestarter_textdomain' ),
 		]
 	);
 
@@ -31,6 +32,12 @@ function be_site_header() {
 	echo '<div class="site-header__toggles">';
 	echo be_mobile_menu_toggle();
 	echo '</div>';
+
+	echo '<nav class="nav-menu" role="navigation">';
+	if ( has_nav_menu( 'utility' ) ) {
+		wp_nav_menu( array( 'theme_location' => 'utility', 'menu_id' => 'utility-menu', 'container_class' => 'nav-utility' ) );
+	}
+	echo '</nav>';
 
 	echo '<nav class="nav-menu" role="navigation">';
 	if ( has_nav_menu( 'primary' ) ) {

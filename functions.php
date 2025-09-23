@@ -47,6 +47,23 @@ function be_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'be_scripts' );
 
+
+/**
+ * Enqueue Google Fonts
+ */
+function nwu_2025_google_fonts() {
+    // Combine multiple fonts in one URL for better performance
+    $google_fonts_url = 'https://fonts.googleapis.com/css2?' .
+        'family=Oswald:wght@200..700&' .
+        'family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&' .
+        'family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&' .
+        'display=swap';
+
+    wp_enqueue_style( 'nwu-2025-google-fonts', $google_fonts_url, array(), null );
+}
+add_action( 'wp_enqueue_scripts', 'nwu_2025_google_fonts' );
+
+
 /**
  * Gutenberg scripts and styles
  */
