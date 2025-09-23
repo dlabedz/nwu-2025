@@ -163,6 +163,21 @@
 					"fontFamily": "-apple-system-ui-serif, ui-serif, Noto Serif, Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
 					"name": "System Serif",
 					"slug": "system-serif"
+				},
+				{
+					"fontFamily": "\"Oswald\", sans-serif",
+					"name": "Oswald",
+					"slug": "oswald"
+				},
+				{
+					"fontFamily": "\"DM Sans\", sans-serif",
+					"name": "DM Sans",
+					"slug": "dm-sans"
+				},
+				{
+					"fontFamily": "\"DM Mono\", monospace",
+					"name": "DM Mono",
+					"slug": "dm-mono"
 				}
 			],
 			"fontSizes": [
@@ -252,35 +267,45 @@
 			},
 			"heading": {
 				"typography": {
-					"fontFamily": "var(--wp--preset--font-family--system-serif)",
-					"fontWeight": "900",
+					"fontFamily": "var(--wp--preset--font-family--oswald)",
+					"fontWeight": "400",
 					"lineHeight": "var(--wp--custom--line-height--small)"
 				}
 			},
 			"h1": {
 				"typography": {
-					"fontSize": "var(--wp--preset--font-size--colossal)",
+					"fontFamily": "var(--wp--preset--font-family--oswald)",
+					"fontSize": "var(--wp--preset--font-size--x-large)",
+					"fontWeight": "600",
 					"lineHeight": "var(--wp--custom--line-height--tiny)"
 				}
 			},
 			"h2": {
 				"typography": {
-					"fontSize": "var(--wp--preset--font-size--huge)"
+					"fontFamily": "var(--wp--preset--font-family--oswald)",
+					"fontSize": "var(--wp--preset--font-size--huge)",
+					"fontWeight": "500"
 				}
 			},
 			"h3": {
 				"typography": {
-					"fontSize": "var(--wp--preset--font-size--big)"
+					"fontFamily": "var(--wp--preset--font-family--oswald)",
+					"fontSize": "var(--wp--preset--font-size--big)",
+					"fontWeight": "400"
 				}
 			},
 			"h4": {
 				"typography": {
-					"fontSize": "var(--wp--preset--font-size--x-large)"
+					"fontFamily": "var(--wp--preset--font-family--dm-sans)",
+					"fontSize": "var(--wp--preset--font-size--x-large)",
+					"fontWeight": "900"
 				}
 			},
 			"h5": {
 				"typography": {
-					"fontSize": "var(--wp--preset--font-size--x-large)"
+					"fontFamily": "var(--wp--preset--font-family--dm-mono)",
+					"fontSize": "var(--wp--preset--font-size--x-large)",
+					"fontWeight": "400"
 				}
 			},
 			"h6": {
