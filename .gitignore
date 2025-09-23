@@ -1,0 +1,120 @@
+# ===========================================
+# NWU 2025 WordPress Theme .gitignore
+# ===========================================
+
+# ===== COMPILED ASSETS =====
+# Generated CSS from SCSS
+assets/css/
+dist/
+build/
+
+# Source maps
+*.css.map
+*.js.map
+
+# Compressed/minified files
+*.min.css
+*.min.js
+
+# ===== DEVELOPMENT TOOLS =====
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Sass cache
+.sass-cache/
+.scss-cache/
+
+# Build tools cache
+.cache/
+.parcel-cache/
+
+# ===== OPERATING SYSTEM =====
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+
+# Linux
+*~
+.directory
+
+# ===== CODE EDITORS =====
+# VS Code
+.vscode/
+*.code-workspace
+
+# ===== LOGS & DEBUGGING =====
+# General logs
+*.log
+logs/
+debug.log
+error.log
+
+# PHP error logs
+php_errors.log
+
+# ===== WORDPRESS SPECIFIC =====
+# ACF Pro license key (if storing in theme)
+acf-pro.zip
+
+# WordPress debug files
+debug.log
+wp-errors.log
+
+# ===== TEMPORARY FILES =====
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.tmp
+
+# Archive files (unless intentional)
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# ===== ENVIRONMENT & CONFIG =====
+# Environment variables
+.env
+.env.local
+.env.production
+
+# ===== TESTING =====
+# PHP testing
+vendor/
+composer.lock
+phpunit.xml
+.phpunit.result.cache
+
+# Coverage reports
+coverage/
+*.coverage
+
+# ===== CUSTOM EXCLUDES =====
+# Add any project-specific files here
+# screenshots/drafts/
+# client-assets/raw/
+
+# ===== INCLUDE EXCEPTIONS =====
+# Force include certain files that might be ignored by patterns above
+!assets/images/
+!assets/fonts/
+!screenshot.png
+!README.md
