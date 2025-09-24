@@ -14,7 +14,16 @@ use NWU2025\Blocks\Social_Links;
 /**
  * Site Footer
  */
-function be_site_footer() {
-	echo '<p>&copy;' . date( 'Y' ) . ' ' . get_bloginfo( 'name' ) . '. All rights reserved.</p>';
+function be_site_footer_top() {
+	echo '<p>This is where the footer menus will go</p>';
 }
-add_action( 'tha_footer_top', 'be_site_footer' );
+add_action( 'tha_footer_top', 'be_site_footer_top' );
+
+
+/**
+ * Copyright
+ */
+function be_site_footer_bottom() {
+	echo '<p>&copy;' . date( 'Y' ) . ' ' . 'National Writers Union' . '. All rights reserved. <a href="">Log Out</a>.</p>';
+}
+add_action( 'tha_footer_bottom', 'be_site_footer_bottom' );

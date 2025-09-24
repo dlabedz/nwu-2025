@@ -2,12 +2,20 @@
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-	background: var(--wp--preset--color--background);
+	background: var(--wp--preset--color--navy);
 	position: relative;
 
 	.wrap {
 		display: grid;
-		//grid-template-columns: 200px 1fr;
+		grid-template-columns: 338px 1fr;
+		width: 100%;
+		max-width: 100%;
+		padding: 0;
+	}
+
+	.nav-container{
+		display: flex;
+		flex-wrap: wrap;
 	}
 
 
@@ -26,6 +34,7 @@
 		overflow-y: auto;
 		overscroll-behavior-y: contain;
 	}
+
 }
 
 .search-toggle,
@@ -62,6 +71,7 @@
 			display: none;
 		}
 	}
+
 }
 
 /* Admin Bar
@@ -102,23 +112,31 @@
 
 		a {
 			border: none;
-			color: var(--wp--preset--color--foreground);
+			color: var(--wp--preset--color--white);
 			display: block;
-			font-size: var(--wp--preset--font-size--small);
 			position: relative;
 			padding: var(--wp--custom--layout--padding);
 			text-decoration: none;
+			font-family: Oswald;
+			font-size: 19px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+			text-transform: uppercase;
+
 		}
 
 		&.menu-item-has-children > a {
-			padding-right: calc( var(--wp--custom--layout--padding) + 6px );
+			//padding-right: calc( var(--wp--custom--layout--padding) + 6px );
 		}
 
 		&:hover > a {
+
 		}
 
 		&.current-menu-item > a,
 		&.current-menu-ancestor > a {
+			border-top: 2px solid white;
 		}
 	}
 
@@ -156,11 +174,11 @@
 		}
 
 		.menu > .menu-item-has-children:hover > a {
-			color: var(--wp--preset--color--foreground);
+			color: var(--wp--preset--color--white);
 		}
 
 		.sub-menu {
-			background: var(--wp--preset--color--background);
+			background: var(--wp--preset--color--cerulean);
 			left: -9999px;
 			opacity: 0;
 			position: absolute;
@@ -216,3 +234,49 @@
 		}
 	}
 }
+
+.nav-menu-top{
+	width: 100%;
+
+}
+
+.nav-menu{
+	align-self: flex-end;
+}
+
+#utility-menu{
+	list-style-type: none;
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 0;
+
+    li {
+        &:nth-child(1) a {
+            background: var(--wp--preset--color--lavender);
+        }
+
+        &:nth-child(2) a {
+            background: var(--wp--preset--color--cyan);
+        }
+
+        &:nth-child(3) a {
+            background: var(--wp--preset--color--yellow);
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--wp--preset--color--foreground);
+        padding: .5em;
+        font-family: Oswald;
+        font-size: 19px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+		display: block;
+    }
+}
+
+
+

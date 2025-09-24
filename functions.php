@@ -162,3 +162,14 @@ function be_template_hierarchy( $template ) {
 	return $template;
 }
 add_filter( 'template_include', 'be_template_hierarchy' );
+
+
+/**
+ * Hide admin bar on frontend
+ */
+add_action('after_setup_theme', 'remove_admin_bar');
+function remove_admin_bar() {
+    if (!is_admin()) {
+        show_admin_bar(false);
+    }
+}

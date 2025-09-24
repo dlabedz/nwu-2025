@@ -27,23 +27,27 @@ add_action( 'after_setup_theme', 'be_register_menus' );
  * Site Header
  */
 function be_site_header() {
-	echo '<a href="' . esc_url( home_url() ) . '" rel="home" class="site-header__logo" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . ' Home">' . get_bloginfo( 'name' ) . '</a>';
+	echo '<a href="' . esc_url( home_url() ) . '" rel="home" class="site-header__logo header-logo" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . ' Home">';
+    	echo '<img src="' . esc_url( get_template_directory_uri() . '/assets/images/NWU_logo.svg' ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '">';
+	echo '</a>';
 
 	echo '<div class="site-header__toggles">';
 	echo be_mobile_menu_toggle();
 	echo '</div>';
 
-	echo '<nav class="nav-menu" role="navigation">';
-	if ( has_nav_menu( 'utility' ) ) {
-		wp_nav_menu( array( 'theme_location' => 'utility', 'menu_id' => 'utility-menu', 'container_class' => 'nav-utility' ) );
-	}
-	echo '</nav>';
+	echo '<div class="nav-container">';
+		echo '<nav class="nav-menu-top" role="navigation">';
+		if ( has_nav_menu( 'utility' ) ) {
+			wp_nav_menu( array( 'theme_location' => 'utility', 'menu_id' => 'utility-menu', 'container_class' => 'nav-utility' ) );
+		}
+		echo '</nav>';
 
-	echo '<nav class="nav-menu" role="navigation">';
-	if ( has_nav_menu( 'primary' ) ) {
-		wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'container_class' => 'nav-primary' ) );
-	}
-	echo '</nav>';
+		echo '<nav class="nav-menu" role="navigation">';
+		if ( has_nav_menu( 'primary' ) ) {
+			wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'container_class' => 'nav-primary' ) );
+		}
+		echo '</nav>';
+	echo '</div>';
 
 }
 add_action( 'tha_header_bottom', 'be_site_header', 11 );
