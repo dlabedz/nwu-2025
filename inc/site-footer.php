@@ -18,23 +18,34 @@ function be_site_footer_top() {
 	echo '<div class="footer-main-container">';
 		echo '<div class="footer-column-1">';
 
-			echo '<a href="' . esc_url( home_url() ) . '" rel="home" class="site-header__logo header-logo" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . ' Home">';
-    			echo '<img src="' . esc_url( get_template_directory_uri() . '/assets/images/footer-logo.svg' ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '">';
-			echo '</a>';
+			echo '<div class="footer-badge">';
+				echo '<a href="' . esc_url( home_url() ) . '" rel="home" class="site-footer__logo footer-logo" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . ' Home">';
+					echo '<img src="' . esc_url( get_template_directory_uri() . '/assets/images/footer-logo.svg' ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '">';
+				echo '</a>';
 
-			echo '<nav class="nav-menu-top" role="navigation">';
-				if ( has_nav_menu( 'utility' ) ) {
-					wp_nav_menu( array( 'theme_location' => 'utility', 'menu_id' => 'utility-menu', 'container_class' => 'nav-utility' ) );
+				echo '<nav class="" role="navigation">';
+					if ( has_nav_menu( 'utility' ) ) {
+						wp_nav_menu( array( 'theme_location' => 'utility', 'menu_id' => 'footer-utility-menu', 'container_class' => 'nav-utility' ) );
+					}
+				echo '</nav>';
+			echo '</div>';
+
+			echo '<div class="footer-address">';
+
+				// Address
+				$address_title = get_field('address_title', 'option');
+				if ($address_title) {
+					echo '<h4 class="address-title">';
+						echo esc_html($address_title);
+					echo '</h4>';
 				}
-			echo '</nav>';
-
-			// Address
-            $address = get_field('address', 'option');
-            if ($address) {
-                echo '<div class="footer-address">';
-                	echo wp_kses_post($address); // Allows safe HTML tags
-                echo '</div>';
-            }
+				$address = get_field('address', 'option');
+				if ($address) {
+					echo '<div class="address">';
+						echo wp_kses_post($address); // Allows safe HTML tags
+					echo '</div>';
+				}
+			echo '</div>';
 
 		echo '</div>';
 
@@ -87,6 +98,6 @@ add_action( 'tha_footer_top', 'be_site_footer_top' );
  * Copyright
  */
 function be_site_footer_bottom() {
-	echo '<p>&copy;' . date( 'Y' ) . ' ' . 'National Writers Union' . '. All rights reserved. <a href="">Log Out</a>.</p>';
+	echo '<p class="copyright">&copy;' . date( 'Y' ) . ' ' . 'National Writers Union' . '. All rights reserved. <a href="">Log Out</a>.</p>';
 }
 add_action( 'tha_footer_bottom', 'be_site_footer_bottom' );

@@ -14,5 +14,147 @@
 	font-size: var(--wp--preset--font-size--small);
 	padding: 40px 0;
 	position: relative;
+
+	.wrap{
+		padding: 0;
+		max-width: 100%;
+	}
+}
+
+.footer-main-container{
+	background-color: var(--wp--preset--color--navy);
+	color: var(--wp--preset--color--white);
+	display: grid;
+    grid-template-columns: 1fr 1.75fr 1fr;
+}
+
+
+.footer-secondary, .footer-primary{
+	ul{
+		list-style-type: none;
+		padding: 0;
+		columns: 2; // Create 2 columns
+        column-gap: 2rem;
+        column-fill: balance; // Distribute items evenly
+		padding: 2em 0;
+
+		li{
+			a{
+				color: var(--wp--preset--color--white);
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+.footer-primary{
+	border-bottom: 1px solid white;
+
+	li{
+		a{
+			font-family: Oswald;
+			font-size: 19px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+			text-transform: uppercase;
+
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+.footer-badge {
+    display: flex;
+    align-items: stretch; // This makes both items fill the same height
+    gap: 0; // Remove any gap between logo and menu
+}
+
+.footer-logo {
+    width: 155px;
+    height: 155px;
+    flex-shrink: 0; // Prevent logo from shrinking
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; // Maintain logo proportions
+    }
+}
+
+// Style the navigation container to fill the height
+.nav-utility {
+    display: flex;
+    flex-direction: column;
+    flex: 1; // Take up remaining space
+}
+
+#footer-utility-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 155px; // Match the logo height
+
+    li {
+        flex: 1; // Each menu item takes equal height
+        display: flex; // Make li a flex container for the anchor
+
+        &:nth-child(1) a {
+            background: var(--wp--preset--color--lavender);
+        }
+
+        &:nth-child(2) a {
+            background: var(--wp--preset--color--cyan);
+        }
+
+        &:nth-child(3) a {
+            background: var(--wp--preset--color--yellow);
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--wp--preset--color--foreground);
+        padding: 0.5em;
+        font-family: Oswald;
+        font-size: 19px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center; // Vertically center text
+        justify-content: center; // Horizontally center text
+        flex: 1; // Fill the li height
+        text-align: center;
+
+        // Optional: Add some spacing between buttons
+        &:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    }
+}
+
+.footer-address {
+    padding: 2em 3em;
+}
+
+.copyright{
 	text-align: center;
 }
+
+.footer-column-3{
+	padding: 2em;
+	background: var(--wp--preset--color--blue);
+}
+
+.footer-column-2{
+	padding: 0 2em;
+}
+
+
+
