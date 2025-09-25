@@ -173,3 +173,28 @@ function remove_admin_bar() {
         show_admin_bar(false);
     }
 }
+
+/**
+ * Register all navigation menus for NWU 2025 theme
+ */
+function nwu_2025_register_all_menus() {
+    register_nav_menus(array(
+        // Header menus
+        'primary'           => __('Primary Navigation', 'nwu-2025'),
+        'utility'           => __('Utility Menu (Top Bar)', 'nwu-2025'),
+
+        // Footer menus
+        'footer-primary'       => __('Footer Primary Links', 'nwu-2025'),
+        'footer-secondary'  => __('Footer Secondary Links', 'nwu-2025'),
+
+        // Social menus
+        'social-footer'     => __('Social Links (Footer)', 'nwu-2025'),
+
+        // Specialized menus
+        'sidebar'           => __('Sidebar Navigation', 'nwu-2025'),
+        'mobile'            => __('Mobile Menu', 'nwu-2025'),
+        'member-dashboard'  => __('Member Dashboard Menu', 'nwu-2025'),
+
+    ));
+}
+add_action('after_setup_theme', 'nwu_2025_register_all_menus');
