@@ -109,13 +109,14 @@
 	.menu-item {
 		list-style: none;
 		position: relative;
+		padding: 1em 1em 1em 0em;
 
 		a {
 			border: none;
 			color: var(--wp--preset--color--white);
 			display: block;
 			position: relative;
-			padding: var(--wp--custom--layout--padding);
+			padding-left: 1em;
 			text-decoration: none;
 			font-family: Oswald;
 			font-size: 19px;
@@ -276,6 +277,12 @@
         text-transform: uppercase;
 		display: block;
     }
+}
+
+.translation-link.menu-item{
+	a{
+		border-left: 1px solid white;
+	}
 }
 
 
