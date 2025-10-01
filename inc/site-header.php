@@ -15,8 +15,8 @@
 function be_register_menus() {
 	register_nav_menus(
 		[
-			'primary' => esc_html__( 'Primary Navigation Menu', 'bestarter_textdomain' ),
-			'utility' => esc_html__( 'Utility Menu', 'bestarter_textdomain' ),
+			'primary' => esc_html__( 'Primary Navigation Menu', 'nwu-2025' ),
+			'utility' => esc_html__( 'Utility Menu', 'nwu-2025' ),
 		]
 	);
 
@@ -55,10 +55,13 @@ add_action( 'tha_header_bottom', 'be_site_header', 11 );
 /**
  * Mobile menu toggle
  */
+/**
+ * Mobile menu toggle
+ */
 function be_mobile_menu_toggle() {
 	$output  = '<button aria-label="Menu" class="menu-toggle">';
-	$output .= be_icon( array( 'icon' => 'menu', 'class' => 'open' ) );
-	$output .= be_icon( array( 'icon' => 'close', 'class' => 'close' ) );
+	$output .= be_icon( array( 'icon' => 'menu', 'class' => 'open', 'force' => true ) );
+	$output .= be_icon( array( 'icon' => 'close', 'class' => 'close', 'force' => true ) );
 	$output .= '</button>';
 	return $output;
 }
@@ -85,11 +88,8 @@ function be_nav_add_dropdown_icons( $output, $item, $depth, $args ) {
 
 	if ( in_array( 'menu-item-has-children', $item->classes, true ) ) {
 
-		// Add SVG icon to parent items.
+		// Add SVG icon to parent items
 		$icon = be_icon( array( 'icon' => 'carat-down-large', 'size' => 12 ) );
-
-		// Optional - two icons based on open/close state
-		//$icon = be_icon( [ 'icon' => 'plus', 'class' => 'open' ] ) . be_icon( [ 'icon' => 'minus', 'class' => 'close' ] );
 
 		$output .= sprintf(
 			'<button aria-label="Submenu Dropdown" class="submenu-expand" tabindex="-1">%s</button>',
