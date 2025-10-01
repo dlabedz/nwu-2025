@@ -297,8 +297,11 @@
 			"h4": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--dm-sans)",
-					"fontSize": "var(--wp--preset--font-size--x-large)",
-					"fontWeight": "900"
+					"fontSize": "1.03125rem",
+					"fontWeight": "900",
+					"lineHeight": "1.212",
+					"letterSpacing": "0.15em",
+					"textTransform": "uppercase"
 				}
 			},
 			"h5": {
