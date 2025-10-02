@@ -1,8 +1,64 @@
-/* WordPress SEO
+
+
+/* All in One SEO - Breadcrumbs
 --------------------------------------------- */
 
+// All in One SEO breadcrumb styles
+.aioseo-breadcrumbs {
+	margin: 0 auto var(--wp--custom--layout--block-gap);
+	line-height: var(--wp--custom--line-height--small);
+	font-size: var(--wp--preset--font-size--tiny);
+	max-width: var(--wp--custom--layout--page);
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 4px;
+
+	a {
+		color: var(--wp--preset--color--foreground);
+		text-decoration: none;
+
+		&:hover {
+			color: var(--wp--preset--color--blue);
+			text-decoration: underline;
+		}
+	}
+
+	// Chevron separator icon
+	.breadcrumb-separator,
+	.aioseo-breadcrumb-separator {
+		display: inline-flex;
+		align-items: center;
+		margin: 0 4px;
+		line-height: 0;
+
+		svg {
+			fill: var(--wp--preset--color--foreground);
+			width: 14px;
+			height: 14px;
+			display: block;
+		}
+	}
+
+	// Current page (last item)
+	.aioseo-breadcrumb-current,
+	span:last-child {
+		color: var(--wp--preset--color--foreground);
+		font-weight: 600;
+	}
+
+	// Archive header placement
+	.archive-header & {
+		max-width: 100%;
+		grid-column: 1 / -1;
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+// Legacy breadcrumb class support (if needed)
 .breadcrumb {
-	margin: 0 auto 16px;
+	margin: 0 auto var(--wp--custom--layout--block-gap);
 	line-height: var(--wp--custom--line-height--small);
 	font-size: var(--wp--preset--font-size--tiny);
 	max-width: var(--wp--custom--layout--page);
@@ -11,7 +67,8 @@
 	text-overflow: ellipsis;
 
 	.sep {
-		margin: 0 4px;
+		margin: 0 8px;
+		color: var(--wp--preset--color--foreground);
 	}
 
 	.archive-header &,
