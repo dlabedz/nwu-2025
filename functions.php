@@ -19,6 +19,7 @@ include_once get_template_directory() . '/inc/site-footer.php';
 include_once get_template_directory() . '/inc/archive-header.php';
 include_once get_template_directory() . '/inc/archive-navigation.php';
 include_once get_template_directory() . '/inc/template-tags.php';
+require_once get_template_directory() . '/inc/post-types.php';
 
 // Functionality.
 require_once get_template_directory() . '/inc/blocks.php';
@@ -198,3 +199,8 @@ function nwu_2025_register_all_menus() {
     ));
 }
 add_action('after_setup_theme', 'nwu_2025_register_all_menus');
+
+/**
+ * Remove default archive header
+ */
+remove_action( 'tha_header_after', 'be_archive_header', 16 );

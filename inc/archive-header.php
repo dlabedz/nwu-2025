@@ -47,9 +47,6 @@ function be_archive_header() {
 		if ( empty( $title ) ) {
 			$title = get_the_archive_title();
 		}
-		if ( ! get_query_var( 'paged' ) ) {
-			$description = get_the_archive_description();
-		}
 	}
 
 	if ( empty( $title ) && empty( $description ) ) {
