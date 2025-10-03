@@ -1,0 +1,27 @@
+{
+    "name": "cwp/accordion",
+    "title": "Accordion",
+    "description": "Expandable accordion with questions and answers",
+    "style": "block-accordion",
+    "category": "theme",
+    "icon": "list-view",
+    "apiVersion": 2,
+    "keywords": ["accordion", "faq", "toggle", "expand"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "alignContent": false,
+        "color": {
+            "text": false,
+            "background": false,
+            "link": false
+        },
+        "alignText": false,
+        "fullHeight": false,
+        "mode": false
+    }
+}

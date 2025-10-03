@@ -1,0 +1,112 @@
+{
+    "key": "group_accordion",
+    "title": "Accordion Block",
+    "fields": [
+        {
+            "key": "field_accordion_items",
+            "label": "Accordion Items",
+            "name": "accordion_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add questions and answers for the accordion.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 1,
+            "max": 0,
+            "collapsed": "field_accordion_question",
+            "button_label": "Add Item",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_accordion_question",
+                    "label": "Question",
+                    "name": "question",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "Enter question",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_accordion_items"
+                },
+                {
+                    "key": "field_accordion_answer",
+                    "label": "Answer",
+                    "name": "answer",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_accordion_items"
+                },
+                {
+                    "key": "field_accordion_open_default",
+                    "label": "Open by Default",
+                    "name": "open_default",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Check to have this item expanded by default",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "Yes",
+                    "ui_off_text": "No",
+                    "parent_repeater": "field_accordion_items"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "cwp\/accordion"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 1,
+    "modified": 1735872000
+}

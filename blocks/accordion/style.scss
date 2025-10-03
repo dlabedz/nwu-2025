@@ -1,0 +1,154 @@
+/* Accordion Block
+--------------------------------------------- */
+
+.block-accordion {
+	max-width: var(--wp--custom--layout--content);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.accordion-item {
+	border-bottom: 1px solid var(--wp--preset--color--foreground);
+}
+
+.accordion-question {
+	@include button-reset;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 20px 0;
+	text-align: left;
+	cursor: pointer;
+	transition: color 0.2s ease;
+
+	&:hover,
+	&:focus {
+		color: var(--wp--preset--color--blue);
+	}
+
+	&__text {
+		font-family: var(--wp--preset--font-family--oswald);
+		font-size: var(--wp--preset--font-size--large);
+		font-weight: 500;
+		line-height: var(--wp--custom--line-height--small);
+		color: inherit;
+	}
+}
+
+.accordion-icon {
+	flex-shrink: 0;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.2s ease;
+	//transform: rotate(180deg);
+
+	svg {
+		fill: var(--wp--preset--color--foreground);
+		width: 24px;
+		height: 24px;
+	}
+
+	.accordion-item.active & {
+		transform: rotate(180deg);
+	}
+}
+
+.accordion-answer {
+	overflow: hidden;
+	transition: max-height 0.3s ease;
+
+	&__content {
+		padding: 0 0 24px 0;
+		color: var(--wp--preset--color--foreground);
+		font-size: var(--wp--preset--font-size--medium);
+		line-height: var(--wp--custom--line-height--normal);
+
+		> *:first-child {
+			margin-top: 0;
+		}
+
+		> *:last-child {
+			margin-bottom: 0;
+		}
+
+		p {
+			margin: 0 0 16px;
+		}
+
+		ul, ol {
+			margin: 0 0 16px 24px;
+		}
+
+		a {
+			color: var(--wp--preset--color--blue);
+			text-decoration: underline;
+
+			&:hover {
+				color: var(--wp--preset--color--cyan);
+			}
+		}
+	}
+}
+
+// Editor placeholder
+.acf-block-placeholder {
+	padding: 20px;
+	background: #f0f0f0;
+	border: 2px dashed #ccc;
+	text-align: center;
+	color: #666;
+
+	p {
+		margin: 5px 0;
+	}
+
+	strong {
+		font-size: 16px;
+		color: #333;
+	}
+}
+
+// Editor styles
+.editor-styles-wrapper {
+	.accordion-question {
+		pointer-events: none;
+	}
+
+	.accordion-answer {
+		display: block !important;
+	}
+}
+
+// Mobile responsive
+@media (max-width: 768px) {
+	.accordion-question {
+		padding: 16px 0;
+
+		&__text {
+			font-size: var(--wp--preset--font-size--medium);
+		}
+	}
+
+	.accordion-icon {
+		width: 20px;
+		height: 20px;
+
+		svg {
+			width: 20px;
+			height: 20px;
+		}
+	}
+
+	.accordion-answer__content {
+		padding: 0 0 20px 0;
+		font-size: var(--wp--preset--font-size--small);
+	}
+}
+
+
+
