@@ -232,3 +232,30 @@ h1.front {
 	display: flex;
 	justify-content: space-between;
 }
+
+/* Page Title Header
+--------------------------------------------- */
+
+.site-main {
+	max-width: var(--wp--custom--layout--content);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.page-title {
+	margin-top: var(--wp--custom--layout--block-gap-large);
+	margin-bottom: var(--wp--custom--layout--block-gap);
+	max-width: var(--wp--custom--layout--content);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Remove from singular entry header since we have it above
+.singular .entry-title {
+	display: none;
+}
+
+// Adjust breadcrumb spacing
+.singular .breadcrumb {
+	margin-bottom: 0; // Remove bottom margin since title provides spacing
+}
