@@ -37,10 +37,10 @@ function load_acf_field_group( $paths ) {
 	foreach( $blocks as $block ) {
 		$paths[] = get_template_directory() . '/blocks/' . $block;
 	}
-	error_log( 'ACF JSON Paths: ' . print_r( $paths, true ) ); // Add this line
 	return $paths;
 }
 add_filter( 'acf/settings/load_json', __NAMESPACE__ . '\\load_acf_field_group' );
+
 /**
  * Get Blocks
  */

@@ -1,0 +1,26 @@
+{
+    "name": "cwp/card-slider",
+    "title": "Card Slider",
+    "description": "A responsive card slider with bleed and background options",
+    "style": "block-card-slider",
+    "category": "theme",
+    "icon": "slides",
+    "apiVersion": 2,
+    "keywords": ["slider", "cards", "carousel"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": ["wide", "full"],
+        "anchor": true,
+        "alignContent": false,
+        "color": {
+            "text": false,
+            "background": true,
+            "link": false
+        },
+        "alignText": false,
+        "fullHeight": false
+    }
+}

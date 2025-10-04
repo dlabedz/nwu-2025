@@ -1,0 +1,183 @@
+/* Card Slider Block
+--------------------------------------------- */
+
+.block-card-slider {
+    position: relative;
+    margin: var(--wp--custom--layout--block-gap-large) 0;
+	margin-top: 0;
+	margin-bottom: 0;
+
+    // Background styles - full browser width
+    &.bg-half,
+    &.bg-full {
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            background-color: var(--wp--preset--color--newsprint);
+            z-index: -1;
+        }
+    }
+
+    // Half background on bottom 50%
+    &.bg-half::before {
+        top: 50%;
+        height: 50%;
+    }
+
+    // Full background
+    &.bg-full::before {
+        top: 0;
+        height: 100%;
+    }
+
+    // Padding for bg styles
+    &.bg-half,
+    &.bg-full {
+        padding: var(--wp--custom--layout--block-gap-large) 0;
+    }
+}
+
+.card-slider__container {
+    max-width: var(--wp--custom--layout--wide);
+    margin: 0 auto;
+    padding: 0 var(--wp--custom--layout--padding);
+    position: relative;
+    z-index: 1;
+
+    // Bleed Left: Remove left padding, extend to left edge
+    .bleed-left & {
+        padding-left: 0;
+        margin-left: 0;
+        max-width: calc(var(--wp--custom--layout--wide) + var(--wp--custom--layout--padding));
+
+        @media (min-width: 1200px) {
+            margin-left: calc((100vw - var(--wp--custom--layout--wide)) / 2);
+        }
+    }
+
+    // Bleed Right: Remove right padding, extend to right edge
+    .bleed-right & {
+        padding-right: 0;
+        margin-right: 0;
+        max-width: calc(var(--wp--custom--layout--wide) + var(--wp--custom--layout--padding));
+
+        @media (min-width: 1200px) {
+            margin-right: calc((100vw - var(--wp--custom--layout--wide)) / 2);
+        }
+    }
+}
+
+.card-slider__main-title {
+    margin: 0 0 var(--wp--custom--layout--block-gap-large) 0;
+    font-size: var(--wp--preset--font-size--huge);
+    font-family: var(--wp--preset--font-family--oswald);
+    font-weight: 500;
+    line-height: var(--wp--custom--line-height--small);
+    color: var(--wp--preset--color--foreground);
+
+    // Adjust padding for bleed layouts
+    .bleed-left & {
+        padding-left: var(--wp--custom--layout--padding);
+    }
+
+    .bleed-right & {
+        padding-right: var(--wp--custom--layout--padding);
+    }
+}
+
+.card-slider__card {
+    overflow: hidden;
+    box-shadow: var(--wp--custom--box-shadow--1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        box-shadow: var(--wp--custom--box-shadow--2);
+        transform: translateY(-4px);
+    }
+}
+
+.card-slider__content {
+    padding: 32px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.card-slider__title {
+    margin: 0;
+    font-size: var(--wp--preset--font-size--large);
+    line-height: var(--wp--custom--line-height--small);
+    font-family: var(--wp--preset--font-family--oswald);
+    font-weight: 500;
+    width: 100%;
+	text-align: center;
+}
+
+.card-slider__image {
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.card-slider__description {
+    margin: 0;
+    font-size: var(--wp--preset--font-size--small);
+    line-height: var(--wp--custom--line-height--normal);
+    flex: 1;
+}
+
+.card-slider__link {
+    margin-top: auto;
+    border: 2px solid currentColor;
+
+    &:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+}
+
+// Swiper overrides
+.swiper {
+    padding-bottom: 24px;
+
+    .bleed-left &,
+    .bleed-right & {
+        overflow: visible;
+    }
+}
+
+// Remove navigation and pagination
+.swiper-button-next,
+.swiper-button-prev,
+.swiper-pagination {
+    display: none !important;
+}
+
+// Editor preview styles
+.editor-styles-wrapper {
+    .block-card-slider {
+        &.bg-half::before,
+        &.bg-full::before {
+            // Make background visible in editor
+            left: 0;
+            transform: none;
+            width: 100%;
+        }
+    }
+}
