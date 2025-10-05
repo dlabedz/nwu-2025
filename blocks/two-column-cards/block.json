@@ -1,0 +1,26 @@
+{
+	"name": "cwp/two-column-cards",
+	"title": "Two Column Cards",
+	"description": "Display two cards side by side with customizable colors and content",
+	"style": "block-two-column-cards",
+	"category": "theme",
+	"icon": "grid-view",
+	"apiVersion": 2,
+	"keywords": ["cards", "columns", "two", "cta"],
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": ["wide", "full"],
+		"anchor": true,
+		"alignContent": false,
+		"color": {
+			"text": false,
+			"background": false,
+			"link": false
+		},
+		"alignText": false,
+		"fullHeight": false
+	}
+}

@@ -1,0 +1,105 @@
+@import "../../assets/scss/partials/base";
+
+/* Two Column Cards Block
+--------------------------------------------- */
+
+.block-two-column-cards {
+	padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
+}
+
+.two-column-cards {
+
+	&__grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--wp--custom--layout--block-gap);
+		max-width: var(--wp--custom--layout--wide);
+		margin: 0 auto;
+
+		@include media(">=tablet") {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	&__card {
+		padding: 40px;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		border-radius: 0;
+	}
+
+	&__title {
+		font-family: var(--wp--preset--font-family--oswald);
+		font-size: var(--wp--preset--font-size--x-large);
+		font-weight: 600;
+		line-height: var(--wp--custom--line-height--small);
+		margin: 0;
+		text-align: left;
+	}
+
+	&__text {
+		font-size: var(--wp--preset--font-size--medium);
+		line-height: var(--wp--custom--line-height--normal);
+		margin: 0;
+		text-align: left;
+	}
+
+	&__button-wrapper {
+		margin-top: auto;
+		text-align: center;
+	}
+
+	&__button {
+		display: inline-block;
+		padding: 11px 24px;
+		font-family: var(--wp--preset--font-family--oswald);
+		font-size: var(--wp--preset--font-size--medium);
+		font-weight: 600;
+		text-transform: uppercase;
+		text-decoration: none;
+		border-radius: 0;
+		border: 2px solid currentColor;
+		transition: opacity 0.2s ease;
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		// Button color variants
+		&.button-light {
+			background-color: transparent;
+			color: #FEFEFE;
+			border-color: #FEFEFE;
+		}
+
+		&.button-dark {
+			background-color: transparent;
+			color: #0A0A0A;
+			border-color: #0A0A0A;
+		}
+	}
+}
+
+/* Editor styles */
+.editor-styles-wrapper .two-column-cards__button {
+	pointer-events: none;
+}
+
+/* Alignment support */
+.block-two-column-cards {
+
+	&.alignwide .two-column-cards__grid {
+		max-width: var(--wp--custom--layout--wide);
+	}
+
+	&.alignfull {
+		padding-left: 0;
+		padding-right: 0;
+
+		.two-column-cards__grid {
+			max-width: 100%;
+			padding: 0 var(--wp--custom--layout--padding);
+		}
+	}
+}
