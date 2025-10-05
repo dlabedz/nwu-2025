@@ -1,0 +1,26 @@
+{
+    "name": "cwp/homepage-banner",
+    "title": "Homepage Banner",
+    "description": "Full-width banner with heading, subheading, button, and optional graphics",
+    "style": "block-homepage-banner",
+    "category": "theme",
+    "icon": "cover-image",
+    "apiVersion": 2,
+    "keywords": ["banner", "hero", "homepage"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": ["full"],
+        "anchor": true,
+        "alignContent": false,
+        "color": {
+            "text": false,
+            "background": false,
+            "link": false
+        },
+        "alignText": false,
+        "fullHeight": false
+    }
+}
