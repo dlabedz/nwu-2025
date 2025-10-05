@@ -26,6 +26,7 @@ require_once get_template_directory() . '/inc/blocks.php';
 require_once get_template_directory() . '/inc/block-areas.php';
 require_once get_template_directory() . '/inc/loop.php';
 include_once get_template_directory() . '/inc/login-logo.php';
+require_once get_template_directory() . '/inc/back-to-top.php';
 
 // Plugin Support.
 require_once get_template_directory() . '/inc/acf.php';
