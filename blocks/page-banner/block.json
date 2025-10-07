@@ -1,0 +1,26 @@
+{
+	"name": "cwp/page-banner",
+	"title": "Page Banner",
+	"description": "Hero banner with title, text, button and optional badge",
+	"style": "block-page-banner",
+	"category": "theme",
+	"icon": "megaphone",
+	"apiVersion": 2,
+	"keywords": ["banner", "hero", "header"],
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": ["wide", "full"],
+		"anchor": true,
+		"alignContent": false,
+		"color": {
+			"text": false,
+			"background": false,
+			"link": false
+		},
+		"alignText": false,
+		"fullHeight": false
+	}
+}

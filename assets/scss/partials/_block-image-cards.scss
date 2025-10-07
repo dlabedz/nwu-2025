@@ -1,0 +1,144 @@
+// Import base styles for breakpoints
+@import "base";
+
+/* Image Cards Block
+--------------------------------------------- */
+
+.block-image-cards {
+	margin: var(--wp--custom--layout--block-gap-large) 0;
+}
+
+.image-cards__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	//gap: var(--wp--custom--layout--block-gap);
+
+	@include media(">=tablet") {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+.image-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	text-decoration: none;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+	// Default colors (these will be overridden by inline classes)
+	background-color: var(--wp--preset--color--cyan);
+	color: var(--wp--preset--color--foreground);
+
+	// Hover effect for linked cards
+	&:hover,
+	&:focus {
+		transform: translateY(-4px);
+		box-shadow: var(--wp--custom--box-shadow--2);
+	}
+
+	// Non-linked cards shouldn't have hover effect
+	&:not(a) {
+		&:hover,
+		&:focus {
+			transform: none;
+			box-shadow: none;
+		}
+	}
+}
+
+.image-card__image {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		display: block;
+	}
+}
+
+.image-card__content {
+	padding: var(--wp--custom--layout--block-gap);
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.image-card__title {
+	margin: 0;
+	font-family: var(--wp--preset--font-family--oswald);
+	font-size: var(--wp--preset--font-size--x-large);
+	font-weight: 600;
+	line-height: var(--wp--custom--line-height--small);
+	color: inherit;
+}
+
+// Background color classes - using hex values from theme.json
+.image-card.has-cyan-background-color {
+	background-color: #3DC5E0;
+}
+
+.image-card.has-red-background-color {
+	background-color: #D3012A;
+}
+
+.image-card.has-yellow-background-color {
+	background-color: #F4B438;
+}
+
+.image-card.has-lavender-background-color {
+	background-color: #C0A9FF;
+}
+
+.image-card.has-navy-background-color {
+	background-color: #022645;
+}
+
+.image-card.has-blue-background-color {
+	background-color: #054296;
+}
+
+.image-card.has-jade-background-color {
+	background-color: #0B616D;
+}
+
+.image-card.has-violet-background-color {
+	background-color: #5F3DC4;
+}
+
+.image-card.has-newsprint-background-color {
+	background-color: #DBD6D2;
+}
+
+.image-card.has-cerulean-background-color {
+	background-color: #3A7BE4;
+}
+
+// Text color classes
+.image-card.has-light-text-color {
+	color: #FEFEFE;
+
+	.image-card__title {
+		color: #FEFEFE;
+	}
+}
+
+.image-card.has-dark-text-color {
+	color: #0A0A0A;
+
+	.image-card__title {
+		color: #0A0A0A;
+	}
+}
+
+// Editor styles
+.editor-styles-wrapper {
+	.image-card {
+		// Prevent clicking in editor
+		pointer-events: none;
+	}
+}

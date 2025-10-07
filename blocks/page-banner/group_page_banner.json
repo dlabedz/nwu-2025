@@ -1,0 +1,100 @@
+{
+    "key": "group_page_banner",
+    "title": "Page Banner",
+    "fields": [
+        {
+            "key": "field_page_banner_title",
+            "label": "Title",
+            "name": "title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main heading for the banner",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Why Join?",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_page_banner_text",
+            "label": "Text",
+            "name": "text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Body text for the banner",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_page_banner_button",
+            "label": "Button",
+            "name": "button",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Optional call-to-action button",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_page_banner_show_badge",
+            "label": "Show Badge",
+            "name": "show_badge",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Display the circular badge on the right side",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Show",
+            "ui_off_text": "Hide"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "cwp\/page-banner"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+}

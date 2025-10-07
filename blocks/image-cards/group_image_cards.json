@@ -1,0 +1,174 @@
+{
+    "key": "group_image_cards_block",
+    "title": "Image Cards Block",
+    "fields": [
+        {
+            "key": "field_image_cards_repeater",
+            "label": "Cards",
+            "name": "cards",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add image cards. Each card can have a title, image, background color, and optional link.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_card_title",
+            "button_label": "Add Card",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_card_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_image_cards_repeater"
+                },
+                {
+                    "key": "field_card_image",
+                    "label": "Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_image_cards_repeater"
+                },
+                {
+                    "key": "field_card_bg_color",
+                    "label": "Background Color",
+                    "name": "bg_color",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "cyan": "Cyan",
+                        "red": "Red",
+                        "yellow": "Yellow",
+                        "lavender": "Lavender",
+                        "navy": "Navy",
+                        "blue": "Blue",
+                        "jade": "Jade",
+                        "violet": "Violet",
+                        "newsprint": "Newsprint",
+                        "cerulean": "Cerulean"
+                    },
+                    "default_value": "cyan",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 1,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": "",
+                    "parent_repeater": "field_image_cards_repeater"
+                },
+                {
+                    "key": "field_card_text_color",
+                    "label": "Text Color",
+                    "name": "text_color",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "light": "Light (#FEFEFE)",
+                        "dark": "Dark (#0A0A0A)"
+                    },
+                    "default_value": "dark",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 1,
+                    "ajax": 0,
+                    "return_format": "value",
+                    "placeholder": "",
+                    "parent_repeater": "field_image_cards_repeater"
+                },
+                {
+                    "key": "field_card_link",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Optional: Make the entire card clickable by adding a link.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_image_cards_repeater"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "cwp\/image-cards"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+}

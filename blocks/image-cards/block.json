@@ -1,0 +1,26 @@
+{
+	"name": "cwp/image-cards",
+	"title": "Image Cards",
+	"description": "Display cards with images, titles, and optional links",
+	"style": "block-image-cards",
+	"category": "theme",
+	"icon": "grid-view",
+	"apiVersion": 2,
+	"keywords": ["cards", "image", "grid"],
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": false,
+		"anchor": true,
+		"alignContent": false,
+		"color": {
+			"text": false,
+			"background": false,
+			"link": false
+		},
+		"alignText": false,
+		"fullHeight": false
+	}
+}
