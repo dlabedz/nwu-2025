@@ -1,0 +1,73 @@
+/* Jump Links Block
+---------------------------------------------------------------------------------------------------- */
+
+.block-jump-links {
+	background-color: var(--wp--preset--color--newsprint);
+	color: #0A0A0A;
+	padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
+	border-radius: 0;
+
+	&__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 12px;
+
+		@include media("<=medium") {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include media("<=tablet") {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	&__item {
+		margin: 0;
+	}
+
+	&__link {
+		display: block;
+		padding: 8px 12px;
+		text-decoration: none;
+		color: #0A0A0A;
+		border-left: 3px solid transparent;
+		transition: border-color 0.2s ease, background-color 0.2s ease;
+
+		&:hover,
+		&:focus {
+			border-left-color: var(--wp--preset--color--red);
+			background-color: rgba(0, 0, 0, 0.05);
+		}
+	}
+
+	// Preview state in editor
+	&--preview {
+		padding: var(--wp--custom--layout--block-gap);
+		border: 2px dashed var(--wp--preset--color--newsprint);
+		border-radius: var(--wp--custom--border-radius--small);
+		text-align: center;
+		color: var(--wp--custom--color--neutral-600);
+
+		p {
+			margin: 0.5em 0;
+		}
+	}
+}
+
+/* Smooth scroll behavior for jump links */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Add padding above headings so they don't get hidden behind fixed headers */
+h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
+	scroll-margin-top: 100px;
+}
+
+/* Editor specific styles */
+.editor-styles-wrapper .block-jump-links__link {
+	pointer-events: none;
+}
