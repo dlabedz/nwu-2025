@@ -43,9 +43,23 @@ if ( ! empty( $block['anchor'] ) ) {
 				</div>
 			<?php endif; ?>
 
-			<?php if ( ! empty( $button ) && ! empty( $button['url'] ) ) : ?>
+			<?php if ( ! empty( $button ) ) : ?>
 				<div class="page-banner__button">
-					<?php echo be_button( $button ); ?>
+					<?php
+					// Debug output
+					if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+						error_log( 'Button data: ' . print_r( $button, true ) );
+					}
+
+					// Check if button has URL
+					if ( is_array( $button ) && ! empty( $button['url'] ) ) {
+						$target = ! empty( $button['target'] ) ? ' target="' . esc_attr( $button['target'] ) . '"' : '';
+						if ( false !== strpos( $target, '_blank' ) ) {
+							$target .= ' rel="noopener noreferrer"';
+						}
+						echo '<a class="wp-element-button" href="' . esc_url( $button['url'] ) . '"' . $target . '>' . esc_html( $button['title'] ) . '</a>';
+					}
+					?>
 				</div>
 			<?php endif; ?>
 		</div>
