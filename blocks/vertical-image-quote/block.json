@@ -1,0 +1,27 @@
+{
+	"name": "cwp/vertical-image-quote",
+	"title": "Vertical Image Quote",
+	"description": "Display a quote with vertical image, attribution, and optional rotating badge",
+	"style": "block-vertical-image-quote",
+	"category": "theme",
+	"icon": "format-quote",
+	"apiVersion": 2,
+	"keywords": ["quote", "image", "testimonial", "badge"],
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "render.php"
+	},
+	"styles": [],
+	"supports": {
+		"align": ["wide", "full"],
+		"anchor": true,
+		"alignContent": false,
+		"color": {
+			"text": true,
+			"background": true,
+			"link": false
+		},
+		"alignText": false,
+		"fullHeight": false
+	}
+}

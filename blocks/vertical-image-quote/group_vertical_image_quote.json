@@ -1,0 +1,129 @@
+{
+    "key": "group_vertical_image_quote",
+    "title": "Vertical Image Quote Block",
+    "fields": [
+        {
+            "key": "field_viq_quote",
+            "label": "Quote",
+            "name": "quote",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Enter the quote text",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "Enter quote text here...",
+            "new_lines": ""
+        },
+        {
+            "key": "field_viq_attribution",
+            "label": "Attribution",
+            "name": "attribution",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter the name or source of the quote",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "e.g., John Doe, Author",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_viq_image",
+            "label": "Image",
+            "name": "image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Upload or select an image for the quote",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_viq_image_caption",
+            "label": "Image Caption",
+            "name": "image_caption",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional caption for the image",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_viq_show_badge",
+            "label": "Show Circle Badge",
+            "name": "show_badge",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Toggle to show or hide the rotating circle badge",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Show",
+            "ui_off_text": "Hide"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "cwp\/vertical-image-quote"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+}
