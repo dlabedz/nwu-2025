@@ -1,0 +1,140 @@
+/* Image Quote Block
+--------------------------------------------- */
+
+.block-image-quote {
+	margin: var(--wp--custom--layout--block-gap-large) 0;
+
+	&__inner {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--wp--custom--layout--block-gap);
+		align-items: center;
+		background: #DAEAFF;
+
+		@include media(">=tablet") {
+			grid-template-columns: 1fr 1fr;
+			gap: 40px;
+		}
+
+		@include media("<=tablet") {
+			grid-template-areas:
+				"content"
+				"figure";
+		}
+	}
+
+	/* Content Area (Quote + Attribution) */
+	&__content {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+
+		@include media("<=tablet") {
+			grid-area: content;
+		}
+	}
+
+	/* Quote Icon */
+	&__icon {
+		width: 60px;
+		height: 60px;
+		flex-shrink: 0;
+
+		@include media("<=tablet") {
+			width: 48px;
+			height: 48px;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+			object-fit: contain;
+		}
+	}
+
+	/* Quote Text */
+	&__quote {
+		font-size: var(--wp--preset--font-size--large);
+		line-height: var(--wp--custom--line-height--normal);
+		margin: 0;
+		font-style: normal;
+
+		@include media("<=tablet") {
+			font-size: var(--wp--preset--font-size--medium);
+		}
+
+		p {
+			margin: 0;
+
+			& + p {
+				margin-top: 1em;
+			}
+		}
+	}
+
+	/* Attribution */
+	&__attribution {
+		display: block;
+		font-size: var(--wp--preset--font-size--medium);
+		font-style: normal;
+		font-weight: 600;
+		color: inherit;
+	}
+
+	/* Image Area */
+	&__figure {
+		margin: 0;
+		width: 100%;
+
+		@include media("<=tablet") {
+			grid-area: figure;
+		}
+	}
+
+	&__image {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	&__caption {
+		margin-top: 12px;
+		font-size: var(--wp--preset--font-size--small);
+		color: var(--wp--preset--color--foreground);
+		text-align: left;
+		font-style: italic;
+	}
+
+	/* Background Color Support */
+	&.has-background {
+		padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
+
+		@include media("<=tablet") {
+			padding: var(--wp--custom--layout--block-gap) var(--wp--custom--layout--padding);
+		}
+	}
+
+	/* Alignment Support */
+	&.alignwide,
+	&.alignfull {
+		width: 100%;
+	}
+
+	&.alignfull.has-background {
+		padding-left: var(--wp--custom--layout--padding);
+		padding-right: var(--wp--custom--layout--padding);
+	}
+
+	/* Text Color Options */
+	&.has-text-color {
+		.block-image-quote__quote,
+		.block-image-quote__attribution {
+			color: inherit;
+		}
+	}
+}
+
+/* Editor Styles */
+.editor-styles-wrapper .block-image-quote {
+	max-width: 100%;
+}

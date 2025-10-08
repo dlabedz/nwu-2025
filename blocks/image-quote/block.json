@@ -1,0 +1,27 @@
+{
+    "name": "cwp/image-quote",
+    "title": "Image Quote",
+    "description": "A quote block with an accompanying image",
+    "style": "block-image-quote",
+    "category": "theme",
+    "icon": "format-quote",
+    "apiVersion": 2,
+    "keywords": ["quote", "testimonial", "image"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "styles": [],
+    "supports": {
+        "align": ["wide", "full"],
+        "anchor": true,
+        "alignContent": false,
+        "color": {
+            "text": true,
+            "background": true,
+            "link": false
+        },
+        "alignText": false,
+        "fullHeight": false
+    }
+}
