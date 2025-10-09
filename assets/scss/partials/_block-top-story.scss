@@ -1,0 +1,119 @@
+/* Top Story Block
+--------------------------------------------- */
+
+.block-top-story {
+	background: var(--wp--preset--color--foreground);
+	color: var(--wp--preset--color--background);
+	padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
+
+	// Placeholder state in editor
+	&--placeholder {
+		background: var(--wp--custom--color--neutral-100);
+		color: var(--wp--preset--color--foreground);
+		padding: 32px;
+		text-align: center;
+		border: 2px dashed var(--wp--custom--color--neutral-400);
+
+		p {
+			margin: 0;
+			font-style: italic;
+		}
+	}
+
+	&__inner {
+		max-width: var(--wp--custom--layout--wide);
+		margin: 0 auto;
+	}
+
+	&__header {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		margin-bottom: 24px;
+	}
+
+	&__icon {
+		width: 48px;
+		height: 48px;
+		flex-shrink: 0;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+
+	&__label {
+		font-family: var(--wp--preset--font-family--oswald);
+		font-size: var(--wp--preset--font-size--large);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	&__title {
+		margin: 0 0 24px;
+		font-family: var(--wp--preset--font-family--oswald);
+		font-size: clamp(1.75rem, 4vw, 2.5rem);
+		font-weight: 600;
+		line-height: var(--wp--custom--line-height--small);
+
+		a {
+			color: var(--wp--preset--color--background);
+			text-decoration: none;
+			display: inline-flex;
+			align-items: center;
+			gap: 12px;
+			transition: opacity 0.2s ease;
+
+			&:hover {
+				opacity: 0.8;
+			}
+
+			svg {
+				fill: var(--wp--preset--color--background);
+				flex-shrink: 0;
+				transition: transform 0.2s ease;
+			}
+
+			&:hover svg {
+				transform: translateX(4px);
+			}
+		}
+	}
+
+	&__excerpt {
+		margin: 0 0 24px;
+		font-size: var(--wp--preset--font-size--large);
+		line-height: var(--wp--custom--line-height--medium);
+
+		p {
+			margin: 0 0 16px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	&__attribution {
+		font-size: var(--wp--preset--font-size--small);
+		font-style: italic;
+		opacity: 0.9;
+		margin: 0;
+
+		&:before {
+			content: '— ';
+		}
+	}
+}
+
+// Editor-specific styles
+.editor-styles-wrapper {
+	.block-top-story {
+		&__title a {
+			pointer-events: none; // Prevent clicking links in editor
+		}
+	}
+}

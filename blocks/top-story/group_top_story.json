@@ -1,0 +1,92 @@
+{
+    "key": "group_top_story_block",
+    "title": "Top Story Block",
+    "fields": [
+        {
+            "key": "field_top_story_post",
+            "label": "Featured Post",
+            "name": "featured_post",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Select a News post to feature",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": [],
+            "return_format": "object",
+            "multiple": 0,
+            "allow_null": 0,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_top_story_excerpt",
+            "label": "Custom Excerpt",
+            "name": "custom_excerpt",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Enter a custom excerpt. If left blank, the post excerpt will be used.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_top_story_attribution",
+            "label": "Attribution",
+            "name": "attribution",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Add attribution text (e.g., author name, source)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "cwp\/top-story"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+}

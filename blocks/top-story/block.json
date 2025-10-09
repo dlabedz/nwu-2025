@@ -1,0 +1,27 @@
+{
+	"name": "cwp/top-story",
+	"title": "Top Story",
+	"description": "Highlight a featured news post with custom excerpt and attribution",
+	"style": "block-top-story",
+	"category": "theme",
+	"icon": "star-filled",
+	"apiVersion": 2,
+	"keywords": ["news", "featured", "story", "highlight"],
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "render.php"
+	},
+	"styles": [],
+	"supports": {
+		"align": false,
+		"anchor": false,
+		"alignContent": false,
+		"color": {
+			"text": false,
+			"background": false,
+			"link": false
+		},
+		"alignText": false,
+		"fullHeight": false
+	}
+}
