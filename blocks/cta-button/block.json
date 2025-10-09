@@ -1,0 +1,27 @@
+{
+    "name": "cwp/cta-button",
+    "title": "CTA Button",
+    "description": "Call-to-action button with decorative side images",
+    "style": "block-cta-button",
+    "category": "theme",
+    "icon": "button",
+    "apiVersion": 2,
+    "keywords": ["button", "cta", "call to action"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "styles": [],
+    "supports": {
+        "align": false,
+        "anchor": false,
+        "alignContent": false,
+        "color": {
+            "text": false,
+            "background": false,
+            "link": false
+        },
+        "alignText": false,
+        "fullHeight": false
+    }
+}

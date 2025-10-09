@@ -1,0 +1,100 @@
+{
+    "key": "group_cta_button_block",
+    "title": "CTA Button Block",
+    "fields": [
+        {
+            "key": "field_cta_button_link",
+            "label": "Button",
+            "name": "button",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Add button text and URL",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_cta_button_text_color",
+            "label": "Text Color",
+            "name": "text_color",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Choose button text color",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "light": "Light (#FEFEFE)",
+                "dark": "Dark (#0A0A0A)"
+            },
+            "default_value": "light",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_cta_button_bg_color",
+            "label": "Background Color",
+            "name": "background_color",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Choose button background color",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "cyan": "Cyan (#3DC5E0)",
+                "red": "Red (#D3012A)",
+                "yellow": "Yellow (#F4B438)",
+                "lavender": "Lavender (#C0A9FF)",
+                "navy": "Navy (#022645)",
+                "blue": "Blue (#054296)",
+                "jade": "Jade (#0B616D)",
+                "violet": "Violet (#5F3DC4)",
+                "newsprint": "Newsprint (#DBD6D2)",
+                "cerulean": "Cerulean (#3A7BE4)"
+            },
+            "default_value": "navy",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "cwp\/cta-button"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+}

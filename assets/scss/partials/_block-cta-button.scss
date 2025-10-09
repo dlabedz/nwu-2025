@@ -1,0 +1,101 @@
+/* CTA Button Block
+--------------------------------------------- */
+
+.block-cta-button {
+    padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
+
+    // Apply background color from theme.json to the block
+    &.has-background {
+        // Background colors already applied via WordPress classes
+    }
+}
+
+.cta-button__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 100%;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    font-family: var(--wp--preset--font-family--oswald);
+    font-size: var(--wp--preset--font-size--large);
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: var(--wp--custom--border-radius--tiny);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    min-width: 200px;
+    text-align: center;
+    background: transparent;
+    border: 3px solid currentColor; // Border matches text color
+
+    &:hover,
+    &:focus {
+        transform: translateY(-2px);
+        filter: brightness(95%);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+.cta-button__decoration {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    max-width: 200px;
+
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    &--left {
+        justify-content: flex-end;
+    }
+
+    &--right {
+        justify-content: flex-start;
+    }
+
+    // Hide decorative images on mobile
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+
+// Color combinations for better contrast
+.cta-button {
+    &.has-white-color {
+        color: #FEFEFE;
+
+        &:hover,
+        &:focus {
+            color: #FEFEFE;
+        }
+    }
+
+    &.has-black-color {
+        color: #0A0A0A;
+
+        &:hover,
+        &:focus {
+            color: #0A0A0A;
+        }
+    }
+}
+
+// Editor styles
+.editor-styles-wrapper .block-cta-button {
+    .cta-button {
+        pointer-events: none;
+    }
+}
