@@ -1,0 +1,36 @@
+{
+    "key": "group_featured_news_grid",
+    "title": "Featured News Grid",
+    "fields": [
+        {
+            "key": "field_featured_posts",
+            "label": "Featured Posts",
+            "name": "featured_posts",
+            "type": "post_object",
+            "instructions": "Select up to 4 posts to feature",
+            "post_type": ["post"],
+            "return_format": "object",
+            "multiple": 1,
+            "min": 1,
+            "max": 4,
+            "required": 1,
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "nwu-2025/featured-news-grid"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1234567890
+}

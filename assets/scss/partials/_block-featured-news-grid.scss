@@ -1,0 +1,169 @@
+// Import base styles for breakpoints
+@import "base";
+
+.block-featured-news-grid {
+    padding: var(--wp--custom--layout--block-gap-large) 0;
+
+    &__inner {
+        max-width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: var(--wp--custom--layout--block-gap-large);
+    }
+
+    &--empty {
+        padding: 60px 20px;
+        text-align: center;
+        background: var(--wp--preset--color--newsprint);
+        border: 2px dashed var(--wp--preset--color--foreground);
+        margin: 0 var(--wp--custom--layout--padding);
+    }
+}
+
+.featured-news-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--wp--custom--layout--block-gap);
+    padding: 0 var(--wp--custom--layout--padding) var(--wp--custom--layout--block-gap-large);
+    border-bottom: 1px solid var(--wp--preset--color--newsprint);
+
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    @include media(">=tablet") {
+        display: grid;
+        grid-template-columns: 25% 75%;
+        gap: calc(var(--wp--custom--layout--block-gap) * 2);
+    }
+
+    &__left-column {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    &__date {
+        font-size: var(--wp--preset--font-size--small);
+        color: var(--wp--custom--color--neutral-600);
+        font-weight: 600;
+    }
+
+    &__author {
+        font-size: var(--wp--preset--font-size--small);
+        color: var(--wp--preset--color--foreground);
+
+        &:before {
+            content: "By ";
+        }
+    }
+
+    &__image {
+        margin-top: 8px;
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            display: block;
+            transition: opacity 0.2s;
+
+            &:hover {
+                opacity: 0.85;
+            }
+        }
+    }
+
+    &__right-column {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__title {
+        margin: 0;
+        font-size: var(--wp--preset--font-size--large);
+        line-height: var(--wp--custom--line-height--small);
+
+        a {
+            color: var(--wp--preset--color--foreground);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            // Arrow icon
+            &:after {
+                content: "→";
+                font-size: 1.2em;
+                transition: transform 0.2s;
+            }
+
+            &:hover:after {
+                transform: translateX(4px);
+            }
+        }
+    }
+
+    &__excerpt {
+        line-height: var(--wp--custom--line-height--normal);
+        color: var(--wp--preset--color--foreground);
+    }
+
+    &__taxonomy {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__categories,
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .taxonomy-term {
+        padding: 6px 12px;
+        font-size: var(--wp--preset--font-size--tiny);
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: var(--wp--custom--border-radius--tiny);
+        transition: all 0.2s;
+
+        &.category-term {
+            background: var(--wp--preset--color--newsprint);
+            color: var(--wp--preset--color--foreground);
+
+            &:hover {
+                background: var(--wp--preset--color--foreground);
+                color: var(--wp--preset--color--white);
+            }
+        }
+
+        &.tag-term {
+            background: transparent;
+            border: 1px solid var(--wp--preset--color--foreground);
+            color: var(--wp--preset--color--foreground);
+
+            &:hover {
+                background: var(--wp--preset--color--foreground);
+                color: var(--wp--preset--color--white);
+            }
+        }
+    }
+
+    // Mobile layout adjustments
+    @include media("<tablet") {
+        flex-direction: column;
+    }
+}

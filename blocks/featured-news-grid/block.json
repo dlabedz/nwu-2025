@@ -1,0 +1,16 @@
+{
+    "name": "nwu-2025/featured-news-grid",
+    "title": "Featured News Grid",
+    "description": "Manually select up to 4 news posts to feature",
+    "category": "nwu-templates",
+    "icon": "grid-view",
+    "keywords": ["featured", "news", "grid"],
+    "supports": {
+        "align": ["wide", "full"]
+    },
+    "style": "block-featured-news-grid",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    }
+}
