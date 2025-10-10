@@ -1,0 +1,26 @@
+{
+    "name": "cwp/news-events-feed",
+    "title": "News & Events Feed",
+    "description": "Displays the latest 3 news and events posts",
+    "style": "block-news-events-feed",
+    "category": "theme",
+    "icon": "admin-post",
+    "apiVersion": 2,
+    "keywords": ["news", "events", "posts", "feed"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true,
+        "alignContent": false,
+        "color": {
+            "text": false,
+            "background": false,
+            "link": false
+        },
+        "alignText": false,
+        "fullHeight": false
+    }
+}
