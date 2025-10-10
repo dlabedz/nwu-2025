@@ -1,0 +1,16 @@
+{
+    "name": "nwu-2025/news-grid",
+    "title": "News Grid",
+    "description": "Display news posts in a grid layout",
+    "category": "nwu-templates",
+    "icon": "grid-view",
+    "keywords": ["news", "posts", "grid"],
+    "supports": {
+        "align": ["wide", "full"]
+    },
+    "style": "block-news-grid",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    }
+}
