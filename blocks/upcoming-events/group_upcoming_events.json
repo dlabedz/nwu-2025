@@ -1,0 +1,47 @@
+{
+    "key": "group_upcoming_events",
+    "title": "Upcoming Events",
+    "fields": [
+        {
+            "key": "field_events_title",
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "default_value": "Upcoming Events"
+        },
+        {
+            "key": "field_events_number",
+            "label": "Number of Events",
+            "name": "number_of_events",
+            "type": "number",
+            "default_value": 5,
+            "min": 1,
+            "max": 20
+        },
+        {
+            "key": "field_events_show_past",
+            "label": "Show Past Events",
+            "name": "show_past_events",
+            "type": "true_false",
+            "default_value": 0,
+            "ui": 1,
+            "message": "Include events that have already passed"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "nwu-2025/upcoming-events"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1234567890
+}

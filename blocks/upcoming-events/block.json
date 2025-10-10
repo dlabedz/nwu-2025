@@ -1,0 +1,16 @@
+{
+    "name": "nwu-2025/upcoming-events",
+    "title": "Upcoming Events",
+    "description": "Display a list of upcoming events",
+    "category": "nwu-templates",
+    "icon": "calendar-alt",
+    "keywords": ["events", "calendar", "upcoming"],
+    "supports": {
+        "align": false
+    },
+    "style": "block-upcoming-events",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    }
+}

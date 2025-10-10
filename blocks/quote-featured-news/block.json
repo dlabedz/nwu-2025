@@ -1,0 +1,16 @@
+{
+    "name": "nwu-2025/quote-featured-news",
+    "title": "Quote & Featured News",
+    "description": "Display a pull quote alongside a featured news post",
+    "category": "nwu-templates",
+    "icon": "format-quote",
+    "keywords": ["quote", "featured", "news"],
+    "supports": {
+        "align": ["wide", "full"]
+    },
+    "style": "block-quote-featured-news",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    }
+}
