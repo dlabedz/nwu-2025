@@ -1,0 +1,17 @@
+{
+    "name": "nwu-2025/news-events-hero",
+    "title": "News and Events Hero",
+    "description": "Feature a news post and optionally an event",
+    "category": "nwu-templates",
+    "icon": "cover-image",
+    "keywords": ["hero", "featured", "banner", "news", "events"],
+    "supports": {
+        "align": ["full"],
+        "multiple": false
+    },
+    "style": "block-news-events-hero",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    }
+}

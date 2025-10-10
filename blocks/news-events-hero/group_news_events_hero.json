@@ -1,0 +1,92 @@
+{
+    "key": "group_news_events_hero",
+    "title": "News and Events Hero",
+    "fields": [
+        {
+            "key": "field_hero_featured_post",
+            "label": "Featured Post",
+            "name": "featured_post",
+            "type": "post_object",
+            "instructions": "Select the news post to feature",
+            "post_type": ["post"],
+            "return_format": "object",
+            "required": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_hero_custom_image",
+            "label": "Custom Image",
+            "name": "custom_image",
+            "type": "image",
+            "instructions": "Optional: Upload a custom image. If left blank, the post's featured image will be used.",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_hero_image_caption",
+            "label": "Image Caption",
+            "name": "image_caption",
+            "type": "text",
+            "instructions": "Optional caption to display below the image"
+        },
+        {
+            "key": "field_hero_featured_event",
+            "label": "Featured Event",
+            "name": "featured_event",
+            "type": "post_object",
+            "instructions": "Optional: Select an event to highlight alongside the featured post",
+            "post_type": ["event"],
+            "return_format": "object",
+            "allow_null": 1,
+            "ui": 1
+        },
+        {
+            "key": "field_hero_bg_color",
+            "label": "Background Color",
+            "name": "background_color",
+            "type": "select",
+            "choices": {
+                "cyan": "Cyan",
+                "red": "Red",
+                "yellow": "Yellow",
+                "lavender": "Lavender",
+                "navy": "Navy",
+                "blue": "Blue",
+                "jade": "Jade",
+                "violet": "Violet",
+                "newsprint": "Newsprint",
+                "cerulean": "Cerulean"
+            },
+            "default_value": "navy"
+        },
+        {
+            "key": "field_hero_text_color",
+            "label": "Text Color",
+            "name": "text_color",
+            "type": "radio",
+            "choices": {
+                "light": "Light (#FEFEFE)",
+                "dark": "Dark (#0A0A0A)"
+            },
+            "default_value": "light",
+            "layout": "horizontal"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "nwu-2025/news-events-hero"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1234567890
+}
