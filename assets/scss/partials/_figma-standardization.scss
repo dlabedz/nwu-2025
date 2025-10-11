@@ -1,0 +1,532 @@
+
+/* Typography Standardization
+   Overrides any custom typography in blocks to match Figma
+--------------------------------------------- */
+
+/* Target ALL h1-h6 across all blocks */
+h1, .h1,
+.wp-block h1,
+[class*="block-"] h1,
+[data-type*="cwp/"] h1 {
+	font-family: var(--wp--preset--font-family--oswald) !important;
+	font-size: 56px !important;
+	font-weight: 400 !important;
+	line-height: 60px !important;
+	letter-spacing: -0.56px !important;
+}
+
+h2, .h2,
+.wp-block h2,
+[class*="block-"] h2,
+[data-type*="cwp/"] h2 {
+	font-family: var(--wp--preset--font-family--oswald) !important;
+	font-size: 48px !important;
+	font-weight: 400 !important;
+	line-height: 41px !important;
+	letter-spacing: -0.48px !important;
+}
+
+h3, .h3,
+.wp-block h3,
+[class*="block-"] h3,
+[data-type*="cwp/"] h3 {
+	font-family: var(--wp--preset--font-family--oswald) !important;
+	font-size: 36px !important;
+	font-weight: 400 !important;
+	line-height: 41px !important;
+	letter-spacing: -0.36px !important;
+}
+
+h4, .h4,
+.wp-block h4,
+[class*="block-"] h4,
+[data-type*="cwp/"] h4 {
+	font-family: var(--wp--preset--font-family--dm-sans) !important;
+	font-size: 16.5px !important;
+	font-weight: 900 !important;
+	line-height: 22.5px !important;
+	letter-spacing: 2.475px !important;
+	text-transform: uppercase !important;
+}
+
+h5, .h5,
+.wp-block h5,
+[class*="block-"] h5,
+[data-type*="cwp/"] h5 {
+	font-family: var(--wp--preset--font-family--dm-mono) !important;
+	font-size: 38px !important;
+	font-weight: 400 !important;
+	line-height: 45px !important;
+}
+
+h6, .h6,
+.wp-block h6,
+[class*="block-"] h6,
+[data-type*="cwp/"] h6 {
+	font-family: var(--wp--preset--font-family--dm-sans) !important;
+	font-size: 30px !important;
+	font-weight: 400 !important;
+	line-height: 38px !important;
+}
+
+/* Paragraphs */
+p, .paragraph,
+.wp-block p,
+[class*="block-"] p {
+	font-family: var(--wp--preset--font-family--dm-sans) !important;
+	font-size: 18px !important;
+	font-weight: 400 !important;
+	line-height: 25px !important;
+}
+
+/* Responsive Typography Override
+--------------------------------------------- */
+@media (max-width: 768px) {
+	h1, .h1,
+	[class*="block-"] h1 {
+		font-size: 42px !important;
+		line-height: 46px !important;
+	}
+
+	h2, .h2,
+	[class*="block-"] h2 {
+		font-size: 36px !important;
+		line-height: 38px !important;
+	}
+
+	h3, .h3,
+	[class*="block-"] h3 {
+		font-size: 28px !important;
+		line-height: 32px !important;
+	}
+}
+
+@media (max-width: 600px) {
+	h1, .h1,
+	[class*="block-"] h1 {
+		font-size: 32px !important;
+		line-height: 36px !important;
+	}
+
+	h2, .h2,
+	[class*="block-"] h2 {
+		font-size: 28px !important;
+		line-height: 32px !important;
+	}
+
+	h3, .h3,
+	[class*="block-"] h3 {
+		font-size: 24px !important;
+		line-height: 28px !important;
+	}
+}
+
+/* Color Standardization
+   Map old color values to theme colors
+--------------------------------------------- */
+
+/* Replace hardcoded blue with theme blue */
+[class*="block-"] {
+	/* Background colors */
+	&[style*="background:#054296"],
+	&[style*="background-color:#054296"],
+	&[style*="background: #054296"],
+	&[style*="background-color: #054296"] {
+		background-color: var(--wp--preset--color--blue) !important;
+	}
+
+	/* Navy */
+	&[style*="background:#022645"],
+	&[style*="background-color:#022645"] {
+		background-color: var(--wp--preset--color--navy) !important;
+	}
+
+	/* Red */
+	&[style*="background:#D3012A"],
+	&[style*="background-color:#D3012A"] {
+		background-color: var(--wp--preset--color--red) !important;
+	}
+
+	/* Cyan */
+	&[style*="background:#3DC5E0"],
+	&[style*="background-color:#3DC5E0"] {
+		background-color: var(--wp--preset--color--cyan) !important;
+	}
+}
+
+/* Text Contrast Override - ENHANCED VERSION
+   Ensure proper contrast on colored backgrounds
+   Multiple selector variations to catch all cases
+--------------------------------------------- */
+
+/* Light backgrounds (need dark text) */
+.has-cyan-background-color,
+.has-cyan-background-color *,
+.has-yellow-background-color,
+.has-yellow-background-color *,
+.has-lavender-background-color,
+.has-lavender-background-color *,
+.has-newsprint-background-color,
+.has-newsprint-background-color *,
+[style*="background:#3DC5E0"],
+[style*="background:#3DC5E0"] *,
+[style*="background:#F4B438"],
+[style*="background:#F4B438"] *,
+[style*="background:#C0A9FF"],
+[style*="background:#C0A9FF"] *,
+[style*="background:#DBD6D2"],
+[style*="background:#DBD6D2"] * {
+	color: var(--wp--preset--color--dark-text) !important;
+}
+
+/* Dark backgrounds (need light text) - ENHANCED */
+.has-navy-background-color,
+.has-navy-background-color *,
+.has-blue-background-color,
+.has-blue-background-color *,
+.has-red-background-color,
+.has-red-background-color *,
+.has-jade-background-color,
+.has-jade-background-color *,
+.has-violet-background-color,
+.has-violet-background-color *,
+.has-cerulean-background-color,
+.has-cerulean-background-color *,
+[style*="background:#022645"],
+[style*="background:#022645"] *,
+[style*="background:#054296"],
+[style*="background:#054296"] *,
+[style*="background:#D3012A"],
+[style*="background:#D3012A"] *,
+[style*="background:#0B616D"],
+[style*="background:#0B616D"] *,
+[style*="background:#5F3DC4"],
+[style*="background:#5F3DC4"] *,
+[style*="background:#3A7BE4"],
+[style*="background:#3A7BE4"] * {
+	color: var(--wp--preset--color--light-text) !important;
+}
+
+/* More specific overrides for common block structures */
+[class*="block-"].has-navy-background-color,
+[class*="block-"].has-blue-background-color,
+[class*="block-"].has-red-background-color,
+[class*="block-"].has-jade-background-color,
+[class*="block-"].has-violet-background-color,
+[class*="block-"].has-cerulean-background-color {
+	h1, h2, h3, h4, h5, h6, p, a, li, span, div, section, article {
+		color: var(--wp--preset--color--light-text) !important;
+	}
+
+	/* Nested elements */
+	* {
+		color: var(--wp--preset--color--light-text) !important;
+	}
+}
+
+[class*="block-"].has-cyan-background-color,
+[class*="block-"].has-yellow-background-color,
+[class*="block-"].has-lavender-background-color,
+[class*="block-"].has-newsprint-background-color {
+	h1, h2, h3, h4, h5, h6, p, a, li, span, div, section, article {
+		color: var(--wp--preset--color--dark-text) !important;
+	}
+
+	/* Nested elements */
+	* {
+		color: var(--wp--preset--color--dark-text) !important;
+	}
+}
+
+/* Catch blocks with background classes on inner elements */
+.has-background {
+	&.has-navy-background-color,
+	&.has-blue-background-color,
+	&.has-red-background-color,
+	&.has-jade-background-color,
+	&.has-violet-background-color,
+	&.has-cerulean-background-color {
+		color: var(--wp--preset--color--light-text) !important;
+
+		* {
+			color: var(--wp--preset--color--light-text) !important;
+		}
+	}
+
+	&.has-cyan-background-color,
+	&.has-yellow-background-color,
+	&.has-lavender-background-color,
+	&.has-newsprint-background-color {
+		color: var(--wp--preset--color--dark-text) !important;
+
+		* {
+			color: var(--wp--preset--color--dark-text) !important;
+		}
+	}
+}
+
+/* Alignfull/alignwide blocks with backgrounds */
+.alignfull,
+.alignwide {
+	&.has-navy-background-color,
+	&.has-blue-background-color,
+	&.has-red-background-color,
+	&.has-jade-background-color,
+	&.has-violet-background-color,
+	&.has-cerulean-background-color {
+		* {
+			color: var(--wp--preset--color--light-text) !important;
+		}
+	}
+
+	&.has-cyan-background-color,
+	&.has-yellow-background-color,
+	&.has-lavender-background-color,
+	&.has-newsprint-background-color {
+		* {
+			color: var(--wp--preset--color--dark-text) !important;
+		}
+	}
+}
+
+/* Pill Button Standardization - Taxonomy Terms
+   Apply pill button style to category/tag links
+--------------------------------------------- */
+.entry-category a,
+.post-summary .entry-category a,
+.taxonomy-term,
+.tag-link,
+.category-link,
+.cat-links a,
+.tags-links a,
+a[rel="category tag"],
+a[rel="tag"] {
+	border: 2px solid var(--wp--preset--color--black) !important;
+	border-radius: 999px !important;
+	background: transparent !important;
+	color: var(--wp--preset--color--black) !important;
+	font-family: var(--wp--preset--font-family--dm-mono) !important;
+	font-size: 16px !important;
+	font-weight: 400 !important;
+	line-height: 20px !important;
+	letter-spacing: 0.32px !important;
+	text-transform: capitalize !important;
+	padding: 8px 16px !important;
+	text-decoration: none !important;
+	display: inline-block !important;
+	transition: all 0.3s ease !important;
+
+	&:hover,
+	&:focus {
+		background: var(--wp--preset--color--black) !important;
+		color: var(--wp--preset--color--light-text) !important;
+		border-color: var(--wp--preset--color--black) !important;
+	}
+}
+
+/* Button Standardization Override
+   Force all buttons to use Figma default style
+--------------------------------------------- */
+
+/* Target any button-like element in blocks */
+[class*="block-"] {
+	.button,
+	.btn,
+	button:not(.submenu-expand):not(.menu-toggle),
+	a.button,
+	.wp-block-button__link,
+	[class*="button"]:not([class*="category"]):not([class*="tag"]) {
+		background: transparent !important;
+		border: 4px solid var(--wp--preset--color--black) !important;
+		border-radius: 0 !important;
+		color: var(--wp--preset--color--black) !important;
+		font-family: var(--wp--preset--font-family--dm-sans) !important;
+		font-size: 16.5px !important;
+		font-weight: 900 !important;
+		line-height: 22.5px !important;
+		letter-spacing: 2.475px !important;
+		text-transform: uppercase !important;
+		padding: 12px 24px !important;
+		text-decoration: none !important;
+		display: inline-block !important;
+		transition: all 0.3s ease !important;
+
+		&:hover,
+		&:focus {
+			background: var(--wp--preset--color--black) !important;
+			color: var(--wp--preset--color--light-text) !important;
+			border-color: var(--wp--preset--color--black) !important;
+		}
+	}
+}
+
+/* Buttons on dark backgrounds should be white */
+.has-navy-background-color,
+.has-blue-background-color,
+.has-red-background-color,
+.has-jade-background-color,
+.has-violet-background-color,
+.has-cerulean-background-color {
+	.button,
+	.btn,
+	button:not(.submenu-expand):not(.menu-toggle),
+	a.button,
+	.wp-block-button__link,
+	[class*="button"] {
+		border-color: var(--wp--preset--color--white) !important;
+		color: var(--wp--preset--color--white) !important;
+
+		&:hover,
+		&:focus {
+			background: var(--wp--preset--color--white) !important;
+			color: var(--wp--preset--color--black) !important;
+			border-color: var(--wp--preset--color--white) !important;
+		}
+	}
+
+	/* Pill buttons on dark backgrounds */
+	.entry-category a,
+	.taxonomy-term,
+	.tag-link,
+	.category-link {
+		border-color: var(--wp--preset--color--white) !important;
+		color: var(--wp--preset--color--white) !important;
+
+		&:hover,
+		&:focus {
+			background: var(--wp--preset--color--white) !important;
+			color: var(--wp--preset--color--black) !important;
+		}
+	}
+}
+
+/* Link Standardization
+--------------------------------------------- */
+[class*="block-"] a:not(.button):not(.wp-block-button__link):not(.entry-category a):not(.taxonomy-term):not(.tag-link):not(.category-link) {
+	color: inherit;
+	text-decoration: underline;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+/* Links on dark backgrounds */
+.has-navy-background-color,
+.has-blue-background-color,
+.has-red-background-color,
+.has-jade-background-color,
+.has-violet-background-color,
+.has-cerulean-background-color {
+	a:not(.button):not(.wp-block-button__link):not(.entry-category a):not(.taxonomy-term):not(.tag-link):not(.category-link) {
+		color: var(--wp--preset--color--light-text) !important;
+	}
+}
+
+/* Opt-out Mechanism
+   Add this class to any block that shouldn't be standardized
+--------------------------------------------- */
+.no-standardization {
+	/* This block keeps its original styles */
+	h1, h2, h3, h4, h5, h6, p {
+		font-family: inherit !important;
+		font-size: inherit !important;
+		font-weight: inherit !important;
+		line-height: inherit !important;
+		letter-spacing: inherit !important;
+	}
+
+	.button, button, .wp-block-button__link {
+		all: revert !important;
+	}
+
+	* {
+		color: inherit !important;
+	}
+}
+
+/* Editor Standardization
+   Apply same overrides in editor
+--------------------------------------------- */
+.editor-styles-wrapper {
+	/* All the same typography overrides */
+	h1, .h1,
+	[class*="block-"] h1 {
+		font-family: var(--wp--preset--font-family--oswald) !important;
+		font-size: 56px !important;
+		font-weight: 400 !important;
+		line-height: 60px !important;
+		letter-spacing: -0.56px !important;
+	}
+
+	h2, .h2,
+	[class*="block-"] h2 {
+		font-family: var(--wp--preset--font-family--oswald) !important;
+		font-size: 48px !important;
+		font-weight: 400 !important;
+		line-height: 41px !important;
+		letter-spacing: -0.48px !important;
+	}
+
+	h3, .h3,
+	[class*="block-"] h3 {
+		font-family: var(--wp--preset--font-family--oswald) !important;
+		font-size: 36px !important;
+		font-weight: 400 !important;
+		line-height: 41px !important;
+		letter-spacing: -0.36px !important;
+	}
+
+	h4, .h4,
+	[class*="block-"] h4 {
+		font-family: var(--wp--preset--font-family--dm-sans) !important;
+		font-size: 16.5px !important;
+		font-weight: 900 !important;
+		line-height: 22.5px !important;
+		letter-spacing: 2.475px !important;
+		text-transform: uppercase !important;
+	}
+
+	h5, .h5,
+	[class*="block-"] h5 {
+		font-family: var(--wp--preset--font-family--dm-mono) !important;
+		font-size: 38px !important;
+		font-weight: 400 !important;
+		line-height: 45px !important;
+	}
+
+	h6, .h6,
+	[class*="block-"] h6 {
+		font-family: var(--wp--preset--font-family--dm-sans) !important;
+		font-size: 30px !important;
+		font-weight: 400 !important;
+		line-height: 38px !important;
+	}
+
+	p {
+		font-family: var(--wp--preset--font-family--dm-sans) !important;
+		font-size: 18px !important;
+		line-height: 25px !important;
+	}
+
+	/* Editor color contrast */
+	.has-navy-background-color,
+	.has-blue-background-color,
+	.has-red-background-color,
+	.has-jade-background-color,
+	.has-violet-background-color,
+	.has-cerulean-background-color {
+		* {
+			color: var(--wp--preset--color--light-text) !important;
+		}
+	}
+
+	.has-cyan-background-color,
+	.has-yellow-background-color,
+	.has-lavender-background-color,
+	.has-newsprint-background-color {
+		* {
+			color: var(--wp--preset--color--dark-text) !important;
+		}
+	}
+}

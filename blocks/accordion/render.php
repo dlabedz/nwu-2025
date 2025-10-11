@@ -40,7 +40,7 @@ foreach ( $accordion_items as $index => $item ) {
 
 	// Question (button)
 	echo '<button class="accordion-question" aria-expanded="' . ( $is_open ? 'true' : 'false' ) . '" aria-controls="' . esc_attr( $item_id ) . '">';
-	echo '<span class="accordion-question__text">' . esc_html( $item['question'] ) . '</span>';
+	echo '<h3 class="accordion-question__text">' . esc_html( $item['question'] ) . '</h3>';
 	echo '<span class="accordion-icon" aria-hidden="true">';
 	echo be_icon( [ 'icon' => 'carat-down-large', 'size' => 24 ] );
 	echo '</span>';

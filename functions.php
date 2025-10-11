@@ -20,6 +20,8 @@ include_once get_template_directory() . '/inc/archive-header.php';
 include_once get_template_directory() . '/inc/archive-navigation.php';
 include_once get_template_directory() . '/inc/template-tags.php';
 require_once get_template_directory() . '/inc/post-types.php';
+require_once get_template_directory() . '/inc/button-styles.php';
+require_once get_template_directory() . '/inc/block-config.php';
 
 // Functionality.
 require_once get_template_directory() . '/inc/blocks.php';

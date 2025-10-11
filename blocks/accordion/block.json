@@ -12,16 +12,20 @@
         "renderTemplate": "render.php"
     },
     "supports": {
-        "align": false,
+        "align": ["wide", "full"],
         "anchor": true,
-        "alignContent": false,
         "color": {
-            "text": false,
-            "background": false,
+            "text": true,
+            "background": true,
             "link": false
         },
-        "alignText": false,
-        "fullHeight": false,
-        "mode": false
+        "spacing": {
+            "margin": true,
+            "padding": true
+        },
+        "typography": {
+            "fontSize": true,
+            "lineHeight": true
+        }
     }
 }
