@@ -115,4 +115,25 @@
 		toggle.setAttribute('aria-label', 'Toggle submenu');
 	});
 
+	// Archive Filters Auto-Submit
+	const archiveFilters = document.getElementById('archive-filters');
+	if (archiveFilters) {
+		const filterSelects = archiveFilters.querySelectorAll('.auto-submit-filter');
+
+		// Auto-submit when dropdown changes, but remove empty values first
+		filterSelects.forEach(select => {
+			select.addEventListener('change', function() {
+				// Remove empty select values before submitting
+				const allSelects = archiveFilters.querySelectorAll('select');
+				allSelects.forEach(sel => {
+					if (sel.value === '') {
+						sel.removeAttribute('name');
+					}
+				});
+
+				archiveFilters.submit();
+			});
+		});
+	}
+
 })();

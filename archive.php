@@ -23,7 +23,7 @@ $year = isset( $_GET['year'] ) ? intval( $_GET['year'] ) : '';
 $post_types = [ 'post', 'event' ];
 
 // If on specific archive, limit to that type
-if ( is_post_type_archive( 'event' ) && ! isset( $_GET['category'] ) && ! isset( $_GET['tag'] ) ) {
+if ( is_post_type_archive( 'event' ) && ! isset( $_GET['type'] ) ) {
 	$post_types = [ 'event' ];
 } elseif ( is_home() && ! isset( $_GET['type'] ) ) {
 	$post_types = [ 'post' ]; // Default "News" archive shows only posts
@@ -41,7 +41,7 @@ if ( isset( $_GET['type'] ) ) {
 			$post_types = [ 'event' ];
 			break;
 		case 'all':
-			$post_types = [ 'post', 'event' ];
+			$post_types = [ 'post', 'event' ]; // Explicitly show both
 			break;
 	}
 }
@@ -119,20 +119,31 @@ if ( is_category() ) {
 ?>
 
 <div class="archive-news-events">
-	<div class="wrap">
+	<div class="">
 
 		<header class="archive-header">
 			<h1 class="archive-title"><?php echo esc_html( $page_title ); ?></h1>
 
 			<!-- Filter Bar -->
-			<form class="archive-filters-form" method="get" action="">
+			<?php
+			// Get the proper form action URL
+			if ( is_post_type_archive( 'event' ) ) {
+				$form_action = get_post_type_archive_link( 'event' );
+			} elseif ( is_home() ) {
+				$page_for_posts = get_option( 'page_for_posts' );
+				$form_action = $page_for_posts ? get_permalink( $page_for_posts ) : home_url( '/' );
+			} else {
+				$form_action = home_url( '/events/' );
+			}
+			?>
+			<form class="archive-filters-form" method="get" action="<?php echo esc_url( home_url( '/news-events-archive/' ) ); ?>" id="archive-filters">
 
 				<div class="filter-row">
 
 					<!-- Category Filter -->
 					<div class="filter-group">
 						<label for="category"><?php esc_html_e( 'Category', 'nwu-2025' ); ?></label>
-						<select name="category" id="category">
+						<select name="category" id="category" class="auto-submit-filter">
 							<option value=""><?php esc_html_e( 'Select', 'nwu-2025' ); ?></option>
 							<?php
 							$categories = get_categories( [ 'hide_empty' => true ] );
@@ -148,7 +159,7 @@ if ( is_category() ) {
 					<!-- Tag Filter -->
 					<div class="filter-group">
 						<label for="tag"><?php esc_html_e( 'Tag', 'nwu-2025' ); ?></label>
-						<select name="tag" id="tag">
+						<select name="tag" id="tag" class="auto-submit-filter">
 							<option value=""><?php esc_html_e( 'Select', 'nwu-2025' ); ?></option>
 							<?php
 							$tags = get_tags( [ 'hide_empty' => true ] );
@@ -164,7 +175,7 @@ if ( is_category() ) {
 					<!-- Author Filter -->
 					<div class="filter-group">
 						<label for="author_name"><?php esc_html_e( 'Author Name', 'nwu-2025' ); ?></label>
-						<select name="author_name" id="author_name">
+						<select name="author_name" id="author_name" class="auto-submit-filter">
 							<option value=""><?php esc_html_e( 'Select', 'nwu-2025' ); ?></option>
 							<?php
 							$authors = get_users( [ 'who' => 'authors', 'orderby' => 'display_name' ] );
@@ -180,7 +191,7 @@ if ( is_category() ) {
 					<!-- Year Filter -->
 					<div class="filter-group">
 						<label for="year"><?php esc_html_e( 'Year', 'nwu-2025' ); ?></label>
-						<select name="year" id="year">
+						<select name="year" id="year" class="auto-submit-filter">
 							<option value=""><?php esc_html_e( 'Select', 'nwu-2025' ); ?></option>
 							<?php
 							global $wpdb;
@@ -196,32 +207,67 @@ if ( is_category() ) {
 
 				</div>
 
-				<!-- Content Type Toggle -->
-				<div class="filter-types">
-					<a href="<?php echo esc_url( add_query_arg( 'type', 'all' ) ); ?>"
-					   class="filter-type <?php echo in_array( 'post', $post_types ) && in_array( 'event', $post_types ) ? 'active' : ''; ?>">
-						<?php esc_html_e( 'All', 'nwu-2025' ); ?>
-					</a>
-					<a href="<?php echo esc_url( add_query_arg( 'type', 'news' ) ); ?>"
-					   class="filter-type <?php echo $post_types === [ 'post' ] ? 'active' : ''; ?>">
-						<?php esc_html_e( 'News', 'nwu-2025' ); ?>
-					</a>
-					<a href="<?php echo esc_url( add_query_arg( 'type', 'events' ) ); ?>"
-					   class="filter-type <?php echo $post_types === [ 'event' ] ? 'active' : ''; ?>">
-						<?php esc_html_e( 'Events', 'nwu-2025' ); ?>
-					</a>
-				</div>
+				<!-- Content Type Toggle & Clear Filters -->
+				<div class="filter-actions">
+					<div class="filter-types">
+						<?php
+						$current_type = isset( $_GET['type'] ) ? $_GET['type'] : '';
 
-				<!-- Search Bar -->
-				<div class="filter-search">
-					<input type="search"
-					       name="s"
-					       placeholder="<?php esc_attr_e( 'Search Archives', 'nwu-2025' ); ?>"
-					       value="<?php echo get_search_query(); ?>">
-					<button type="submit" class="wp-element-button">
-						<?php echo be_icon( [ 'icon' => 'search', 'size' => 20 ] ); ?>
-						<span class="screen-reader-text"><?php esc_html_e( 'Search', 'nwu-2025' ); ?></span>
-					</button>
+						// Base URL - the archive URL
+						$base_url = home_url( '/news-events-archive/' );
+
+						// Build query params for filters (only include non-empty filters)
+						$filter_params = [];
+						if ( ! empty( $category ) ) {
+							$filter_params['category'] = $category;
+						}
+						if ( ! empty( $tag ) ) {
+							$filter_params['tag'] = $tag;
+						}
+						if ( ! empty( $author ) ) {
+							$filter_params['author_name'] = $author;
+						}
+						if ( ! empty( $year ) ) {
+							$filter_params['year'] = $year;
+						}
+
+						// All URL - news-events-archive (no type param = shows both)
+						$all_url = empty( $filter_params ) ? $base_url : add_query_arg( $filter_params, $base_url );
+
+						// News URL - with type=news
+						$news_params = $filter_params;
+						$news_params['type'] = 'news';
+						$news_url = add_query_arg( $news_params, $base_url );
+
+						// Events URL - with type=events
+						$events_params = $filter_params;
+						$events_params['type'] = 'events';
+						$events_url = add_query_arg( $events_params, $base_url );
+						?>
+
+						<a href="<?php echo esc_url( $all_url ); ?>"
+						class="filter-type <?php echo empty( $current_type ) ? 'active' : ''; ?>">
+							<?php esc_html_e( 'All', 'nwu-2025' ); ?>
+						</a>
+						<a href="<?php echo esc_url( $news_url ); ?>"
+						class="filter-type <?php echo 'news' === $current_type ? 'active' : ''; ?>">
+							<?php esc_html_e( 'News', 'nwu-2025' ); ?>
+						</a>
+						<a href="<?php echo esc_url( $events_url ); ?>"
+						class="filter-type <?php echo 'events' === $current_type ? 'active' : ''; ?>">
+							<?php esc_html_e( 'Events', 'nwu-2025' ); ?>
+						</a>
+					</div>
+
+					<?php
+					// Show clear button if any filters are active
+					$has_filters = ! empty( $category ) || ! empty( $tag ) || ! empty( $author ) || ! empty( $year ) || ! empty( $current_type );
+					if ( $has_filters ) :
+						?>
+						<a href="<?php echo esc_url( $base_url ); ?>" class="clear-filters wp-element-button">
+							<?php esc_html_e( 'Clear All Filters', 'nwu-2025' ); ?>
+						</a>
+					<?php endif; ?>
 				</div>
 
 			</form>
@@ -253,23 +299,40 @@ if ( is_category() ) {
 						<article class="archive-item archive-item--<?php echo esc_attr( $post_type ); ?>">
 
 							<div class="archive-item__meta">
-								<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
-									<?php echo esc_html( $post_date ); ?>
-								</time>
-								<span class="archive-item__type"><?php echo esc_html( $post_type_label ); ?></span>
+								<div class="archive-item__meta-text">
+									<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
+										<?php echo esc_html( $post_date ); ?>
+									</time>
+									<span class="archive-item__author">
+										<?php echo esc_html( get_the_author() ); ?>
+									</span>
+								</div>
+
+								<?php if ( has_post_thumbnail() ) : ?>
+									<a href="<?php the_permalink(); ?>" class="archive-item__thumbnail">
+										<?php the_post_thumbnail( 'medium' ); ?>
+									</a>
+								<?php endif; ?>
 							</div>
 
-							<h2 class="archive-item__title">
-								<a href="<?php the_permalink(); ?>">
-									<?php the_title(); ?>
-								</a>
-							</h2>
+							<div class="archive-item__content">
+								<h2 class="archive-item__title">
+									<a href="<?php the_permalink(); ?>">
+										<?php the_title(); ?>
+									</a>
+								</h2>
 
-							<?php if ( has_excerpt() ) : ?>
 								<div class="archive-item__excerpt">
-									<?php the_excerpt(); ?>
+									<?php
+									if ( has_excerpt() ) {
+										the_excerpt();
+									} else {
+										// Generate excerpt from content if none exists
+										echo wp_trim_words( get_the_content(), 30, '...' );
+									}
+									?>
 								</div>
-							<?php endif; ?>
+							</div>
 
 							<a href="<?php the_permalink(); ?>" class="archive-item__arrow" aria-label="<?php esc_attr_e( 'Read more', 'nwu-2025' ); ?>">
 								→
@@ -311,13 +374,13 @@ if ( is_category() ) {
 
 		<!-- Explore Topics (Tag Cloud) -->
 		<aside class="archive-topics">
-			<h2><?php esc_html_e( 'Explore Topics', 'nwu-2025' ); ?></h2>
+			<h4><?php esc_html_e( 'Explore Topics', 'nwu-2025' ); ?></h4>
 			<?php
 			$topic_tags = get_tags( [ 'number' => 20, 'orderby' => 'count', 'order' => 'DESC' ] );
 			if ( $topic_tags ) :
 				echo '<div class="topic-tags">';
 				foreach ( $topic_tags as $topic_tag ) :
-					echo '<a href="' . esc_url( get_tag_link( $topic_tag ) ) . '" class="topic-tag">' . esc_html( $topic_tag->name ) . '</a>';
+					echo '<a href="' . esc_url( get_tag_link( $topic_tag ) ) . '" class="topic-tag wp-block-button is-style-pill">' . esc_html( $topic_tag->name ) . '</a>';
 				endforeach;
 				echo '</div>';
 			endif;
