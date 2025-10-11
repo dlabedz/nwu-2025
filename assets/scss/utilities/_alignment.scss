@@ -1,0 +1,33 @@
+/* Alignment Utilities
+--------------------------------------------- */
+
+// Center alignment
+.u-align-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Left alignment
+.u-align-left {
+	margin-left: 0;
+	margin-right: auto;
+}
+
+// Right alignment
+.u-align-right {
+	margin-left: auto;
+	margin-right: 0;
+}
+
+// Text alignment (bonus utilities)
+.u-text-left {
+	text-align: left;
+}
+
+.u-text-center {
+	text-align: center;
+}
+
+.u-text-right {
+	text-align: right;
+}

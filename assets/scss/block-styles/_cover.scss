@@ -1,0 +1,44 @@
+/* Cover Block Styles
+--------------------------------------------- */
+
+// Contained Content (centered)
+.wp-block-cover.is-style-contained-content {
+	.wp-block-cover__inner-container {
+		width: calc(100% - 32px);
+		max-width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+
+		@include media(">=tablet") {
+			width: clamp(700px, 85vw, 1132px);
+		}
+	}
+}
+
+// Split Left (content on left half)
+.wp-block-cover.is-style-split-left {
+	.wp-block-cover__inner-container {
+		width: calc(100% - 32px);
+		max-width: 100%;
+		margin-left: 0;
+		margin-right: auto;
+
+		@include media(">=tablet") {
+			width: clamp(350px, 42.5vw, 566px);
+		}
+	}
+}
+
+// Split Right (content on right half)
+.wp-block-cover.is-style-split-right {
+	.wp-block-cover__inner-container {
+		width: calc(100% - 32px);
+		max-width: 100%;
+		margin-left: auto;
+		margin-right: 0;
+
+		@include media(">=tablet") {
+			width: clamp(350px, 42.5vw, 566px);
+		}
+	}
+}

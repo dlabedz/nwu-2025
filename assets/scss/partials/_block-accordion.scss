@@ -17,7 +17,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: var(--wp--custom--layout--block-gap);
+	gap: 16px;
 	padding: 20px 0;
 	text-align: left;
 	cursor: pointer;
@@ -29,8 +29,11 @@
 	}
 
 	&__text {
-		/* Typography removed - now inherits from theme.json h3 or h4 depending on usage */
-		/* Keep only color inheritance */
+		font-family: var(--wp--preset--font-family--oswald);
+		font-size: var(--wp--preset--font-size--h3); // Changed from --large
+		font-weight: 400; // Changed from 500
+		line-height: var(--wp--custom--line-height--h3); // Changed
+		letter-spacing: var(--wp--custom--letter-spacing--h3); // Added
 		color: inherit;
 	}
 }
@@ -53,6 +56,11 @@
 	.accordion-item.active & {
 		transform: rotate(180deg);
 	}
+
+	.accordion-question:hover &,
+	.accordion-question:focus & {
+		opacity: 0.7;
+	}
 }
 
 .accordion-answer {
@@ -62,7 +70,8 @@
 	&__content {
 		padding: 0 0 24px 0;
 		color: var(--wp--preset--color--foreground);
-		/* Font size and line-height removed - paragraphs inherit from theme.json */
+		font-size: var(--wp--preset--font-size--medium); // Now 18px (Regular Paragraph)
+		line-height: 25px; // Matches your body copy
 
 		> *:first-child {
 			margin-top: 0;
@@ -72,13 +81,12 @@
 			margin-bottom: 0;
 		}
 
-		/* Paragraph styles removed - inherit from theme.json (18px DM Sans, 25px line-height) */
 		p {
-			margin: 0 0 var(--wp--custom--layout--block-gap);
+			margin: 0 0 16px;
 		}
 
 		ul, ol {
-			margin: 0 0 var(--wp--custom--layout--block-gap) 24px;
+			margin: 0 0 16px 24px;
 		}
 
 		a {
@@ -92,7 +100,7 @@
 	}
 }
 
-/* Editor placeholder */
+// Editor placeholder
 .acf-block-placeholder {
 	padding: 20px;
 	background: #f0f0f0;
@@ -110,7 +118,7 @@
 	}
 }
 
-/* Editor styles */
+// Editor styles
 .editor-styles-wrapper {
 	.accordion-question {
 		pointer-events: none;
@@ -121,12 +129,14 @@
 	}
 }
 
-/* Mobile responsive */
+// Mobile responsive
 @media (max-width: 768px) {
 	.accordion-question {
 		padding: 16px 0;
 
-		/* Font size removed - responsive typography handled by theme.json */
+		&__text {
+			font-size: var(--wp--preset--font-size--large); // 24px on mobile
+		}
 	}
 
 	.accordion-icon {
@@ -141,6 +151,7 @@
 
 	.accordion-answer__content {
 		padding: 0 0 20px 0;
-		/* Font size removed - responsive typography handled by theme.json */
+		font-size: var(--wp--preset--font-size--small); // 16.5px (Small Paragraph)
+		line-height: 24px; // From your theme.json
 	}
 }

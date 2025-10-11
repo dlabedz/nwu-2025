@@ -1,52 +1,46 @@
 /* Singular
 ---------------------------------------------------------------------------------------------------- */
 
-/* Entry Content
+/* Full Width Content System
 --------------------------------------------- */
 
-h1.front {
-	display: none;
+.site-inner {
+	padding-left: 0;
+	padding-right: 0;
 }
-
-// .site-inner {
-// 	padding-left: var(--wp--custom--layout--padding);
-// 	padding-right: var(--wp--custom--layout--padding);
-// }
 
 .entry-content,
 .block-area {
-
 	& > * {
-		margin: 0 auto;
-		max-width: var(--wp--custom--layout--page);
+		margin-left: 0;
+		margin-right: 0;
+		max-width: 100%;
+		width: 100%;
 
-		&.alignwide {
-			max-width: var(--wp--custom--layout--wide);
-		}
-
+		// Exception for blocks that set their own alignment
+		&.alignwide,
 		&.alignfull {
-			margin-left: calc( -1 * var(--wp--custom--layout--padding) );
-			margin-right: calc( -1 * var(--wp--custom--layout--padding) );
-			max-width: 100vw;
+			max-width: 100%;
 		}
 
-		@include media("<tablet") {
-			&.alignwide {
-				margin-left: calc( -1 * var(--wp--custom--layout--padding) );
-				margin-right: calc( -1 * var(--wp--custom--layout--padding) );
-				max-width: 100vw;
-			}
+		// Utility classes override default full-width
+		&.u-width-constrained,
+		&.u-width-half,
+		&.u-width-wide,
+		&.u-width-narrow,
+		&.u-content-width,
+		&.u-content-narrow,
+		&.u-content-wide {
+			width: auto; // Let utility handle width
 		}
-
 	}
 
-	& > * + * {
-		margin-top: var( --wp--style--block-gap );
-	}
+	// & > * + * {
+	// 	margin-top: var( --wp--style--block-gap );
+	// }
 
 	& > .alignfull,
 	& > .wp-block-separator {
-
 		&:not(:first-child) {
 			margin-top: var(--wp--custom--layout--block-gap-large);
 		}
@@ -56,34 +50,47 @@ h1.front {
 		}
 	}
 
-
 	& > .alignfull.has-background + .alignfull.has-background {
 		margin-top: calc( -1 * var(--wp--custom--layout--block-gap-large) );
 	}
-
 }
 
 .full-width-content .entry-content {
-
 	&:first-child > .alignfull.has-background:first-child {
-		margin-top: calc( -1 * var(--wp--custom--layout--block-gap-large) );
+		margin-top: 0;
 	}
 
 	&:last-child > .alignfull.has-background:last-child {
-		margin-bottom: calc( -1 * var(--wp--custom--layout--block-gap-large) );
+		margin-bottom: 0;
 	}
 }
 
-/* Single Post
+/* Entry Content
+--------------------------------------------- */
+
+h1.front {
+	display: none;
+}
+
+/* Entry Header/Footer
 --------------------------------------------- */
 
 .entry-header,
 .entry-footer,
 .after-entry,
 .entry-comments {
-	max-width: var(--wp--custom--layout--page);
+	max-width: 1132px; // Use fixed width instead of variable
 	margin-left: auto;
 	margin-right: auto;
+	padding-left: clamp(16px, 5vw, 153px); // Use clamp for responsive padding
+	padding-right: clamp(16px, 5vw, 153px);
+
+	// Allow utility classes to override
+	&.u-width-full {
+		max-width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 
 .entry-footer {
@@ -94,11 +101,13 @@ h1.front {
 	margin: 32px 0;
 }
 
+/* Single Post
+--------------------------------------------- */
+
 /* Comments
 --------------------------------------------- */
 
 .entry-comments {
-
 	h2, h3 {
 		display: flex;
 		justify-content: space-between;
@@ -183,7 +192,6 @@ h1.front {
 		}
 
 		.comment-content {
-
 			p:last-child {
 				margin: 0;
 			}
@@ -203,7 +211,6 @@ h1.front {
 			margin: 0;
 			padding: 0;
 		}
-
 	}
 }
 
@@ -225,37 +232,9 @@ h1.front {
 	label {
 		display: block;
 	}
-
 }
 
 .nav-links {
 	display: flex;
 	justify-content: space-between;
-}
-
-/* Page Title Header
---------------------------------------------- */
-
-.site-main {
-	max-width: var(--wp--custom--layout--content);
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.page-title {
-	margin-top: var(--wp--custom--layout--block-gap-large);
-	margin-bottom: var(--wp--custom--layout--block-gap);
-	max-width: var(--wp--custom--layout--content);
-	margin-left: auto;
-	margin-right: auto;
-}
-
-// Remove from singular entry header since we have it above
-.singular .entry-title {
-	display: none;
-}
-
-// Adjust breadcrumb spacing
-.singular .breadcrumb {
-	margin-bottom: 0; // Remove bottom margin since title provides spacing
 }

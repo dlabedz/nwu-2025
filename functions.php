@@ -207,3 +207,63 @@ add_action('after_setup_theme', 'nwu_2025_register_all_menus');
  * Remove default archive header
  */
 remove_action( 'tha_header_after', 'be_archive_header', 16 );
+
+/**
+ * Register custom block styles
+ */
+function nwu_2025_register_block_styles() {
+
+	// Group Block Styles
+	register_block_style('core/group', [
+		'name'  => 'contained',
+		'label' => __('Contained', 'nwu-2025'),
+	]);
+
+	register_block_style('core/group', [
+		'name'  => 'contained-left',
+		'label' => __('Contained Left', 'nwu-2025'),
+	]);
+
+	register_block_style('core/group', [
+		'name'  => 'contained-right',
+		'label' => __('Contained Right', 'nwu-2025'),
+	]);
+
+	register_block_style('core/group', [
+		'name'  => 'half-left',
+		'label' => __('Half Width Left', 'nwu-2025'),
+	]);
+
+	register_block_style('core/group', [
+		'name'  => 'half-right',
+		'label' => __('Half Width Right', 'nwu-2025'),
+	]);
+
+	// Column Block Styles
+	register_block_style('core/columns', [
+		'name'  => 'constrained-content',
+		'label' => __('Constrained Content', 'nwu-2025'),
+	]);
+
+	register_block_style('core/columns', [
+		'name'  => 'no-padding',
+		'label' => __('No Padding', 'nwu-2025'),
+	]);
+
+	// Cover Block Styles
+	register_block_style('core/cover', [
+		'name'  => 'contained-content',
+		'label' => __('Contained Content', 'nwu-2025'),
+	]);
+
+	register_block_style('core/cover', [
+		'name'  => 'split-left',
+		'label' => __('Split Left', 'nwu-2025'),
+	]);
+
+	register_block_style('core/cover', [
+		'name'  => 'split-right',
+		'label' => __('Split Right', 'nwu-2025'),
+	]);
+}
+add_action('init', 'nwu_2025_register_block_styles');

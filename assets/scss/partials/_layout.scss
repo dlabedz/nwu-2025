@@ -24,17 +24,17 @@ body {
 	margin: 0 auto;
 	padding-left: var(--wp--custom--layout--padding);
 	padding-right: var(--wp--custom--layout--padding);
-
 }
 
+// Site inner - now without padding since content is full-width
 .site-inner {
-	padding: var(--wp--custom--layout--block-gap-large) 0;
+	padding-top: var(--wp--custom--layout--block-gap-large);
+	padding-bottom: var(--wp--custom--layout--block-gap-large);
 }
 
 body.full-width-content {
 	--wp--custom--layout--page: var(--wp--custom--layout--wide);
 }
-
 
 /* Screen Reader Text
 --------------------------------------------- */
@@ -69,18 +69,14 @@ body.full-width-content {
 /* Sidebar Layouts
 --------------------------------------------- */
 
-
 @include media("<medium") {
-
 	.sidebar-primary {
 		display: none;
 	}
 }
 
 @include media(">=medium") {
-
 	.content-sidebar {
-
 		.content-area {
 			display: grid;
 			grid-template-columns: minmax(0, 1fr) var(--wp--custom--layout--sidebar);
@@ -88,17 +84,34 @@ body.full-width-content {
 			max-width: var(--wp--custom--layout--wide);
 			margin-left: auto;
 			margin-right: auto;
+			padding-left: var(--wp--custom--layout--padding);
+			padding-right: var(--wp--custom--layout--padding);
 		}
 
 		.site-main {
 			float: none;
 			width: 100%;
-			max-width: var(--wp--custom--layout--content);
+			max-width: 100%; // Remove constraint since content handles its own width now
 		}
 
 		.sidebar-primary {
 			float: none;
 			width: 100%;
 		}
+	}
 }
+
+/* Content Area Utilities Support
+--------------------------------------------- */
+
+// Ensure utility classes work within content areas
+.content-area,
+.site-main {
+	// Allow utility classes to override default widths
+	.u-width-constrained,
+	.u-width-half,
+	.u-width-wide,
+	.u-width-narrow {
+		// Utility classes handle their own width
+	}
 }

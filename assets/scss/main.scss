@@ -9,6 +9,14 @@
 @import "partials/archive";
 @import "partials/singular";
 @import "partials/site-footer";
-//@import "partials/figma-utilities";
-//@import "partials/figma-standardization";
+
+// Utilities
+@import "utilities/width";
+@import "utilities/alignment";
+@import "utilities/spacing";
+
+// Block Styles
+@import "block-styles/group";
+@import "block-styles/columns";
+@import "block-styles/cover";
 

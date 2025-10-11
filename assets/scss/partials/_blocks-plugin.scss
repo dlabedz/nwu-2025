@@ -1,22 +1,30 @@
-
-
-/* All in One SEO - Breadcrumbs
+/* WordPress SEO / All in One SEO - Breadcrumbs
 --------------------------------------------- */
 
-// All in One SEO breadcrumb styles
+// Breadcrumb wrapper - works with utility classes
+.breadcrumb,
 .aioseo-breadcrumbs {
+	// Default: constrained width, centered
+	width: calc(100% - 32px);
+	max-width: 100%;
 	margin: 0 auto var(--wp--custom--layout--block-gap);
 	line-height: var(--wp--custom--line-height--small);
 	font-size: var(--wp--preset--font-size--tiny);
-	max-width: var(--wp--custom--layout--page);
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 4px;
+	padding-left: clamp(16px, 5vw, 153px);
+	padding-right: clamp(16px, 5vw, 153px);
+
+	@include media(">=tablet") {
+		width: clamp(700px, 85vw, 1132px);
+	}
 
 	a {
 		color: var(--wp--preset--color--foreground);
 		text-decoration: none;
+		transition: color 0.2s ease;
 
 		&:hover {
 			color: var(--wp--preset--color--blue);
@@ -24,13 +32,14 @@
 		}
 	}
 
-	// Chevron separator icon
+	// Chevron separator icon (AIOSEO)
 	.breadcrumb-separator,
 	.aioseo-breadcrumb-separator {
 		display: inline-flex;
 		align-items: center;
 		margin: 0 4px;
 		line-height: 0;
+		opacity: 0.6;
 
 		svg {
 			fill: var(--wp--preset--color--foreground);
@@ -40,43 +49,79 @@
 		}
 	}
 
+	// Text separator (Yoast style)
+	.sep {
+		margin: 0 8px;
+		color: var(--wp--preset--color--foreground);
+		opacity: 0.6;
+	}
+
 	// Current page (last item)
 	.aioseo-breadcrumb-current,
-	span:last-child {
+	span:last-child:not(.sep):not(.breadcrumb-separator) {
 		color: var(--wp--preset--color--foreground);
 		font-weight: 600;
 	}
 
-	// Archive header placement
+	// Archive header placement (full width, no padding)
 	.archive-header & {
+		width: 100%;
 		max-width: 100%;
-		grid-column: 1 / -1;
+		padding-left: var(--wp--custom--layout--padding);
+		padding-right: var(--wp--custom--layout--padding);
 		margin-left: 0;
+		margin-right: 0;
+		grid-column: 1 / -1;
+	}
+
+	// Post header placement
+	.post-header & {
+		width: 100%;
+		max-width: 100%;
+		padding-left: var(--wp--custom--layout--padding);
+		padding-right: var(--wp--custom--layout--padding);
+		margin-left: 0;
+		margin-right: 0;
+		grid-column: 1 / -1;
+	}
+
+	// Entry content placement (default constrained)
+	.entry-content & {
+		// Uses default styles above
+	}
+
+	// Full width variant (if utility class applied)
+	&.u-width-full {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	// Left aligned variant
+	&.u-align-left {
+		margin-left: 0;
+		margin-right: auto;
+	}
+
+	// Right aligned variant
+	&.u-align-right {
+		margin-left: auto;
 		margin-right: 0;
 	}
 }
 
-// Legacy breadcrumb class support (if needed)
+// Yoast SEO specific (legacy support)
 .breadcrumb {
-	margin: 0 auto var(--wp--custom--layout--block-gap);
-	line-height: var(--wp--custom--line-height--small);
-	font-size: var(--wp--preset--font-size--tiny);
-	max-width: var(--wp--custom--layout--page);
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	// Override flex for simple inline display if needed
+	&:not(.aioseo-breadcrumbs) {
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 
-	.sep {
-		margin: 0 8px;
-		color: var(--wp--preset--color--foreground);
-	}
-
-	.archive-header &,
-	.post-header & {
-		max-width: 100%;
-		grid-column: 1 / -1;
-		margin-left: 0;
-		margin-right: 0;
+		@include media(">=tablet") {
+			white-space: normal;
+			overflow: visible;
+		}
 	}
 }
 
@@ -84,6 +129,15 @@
 --------------------------------------------- */
 
 div.wpforms-container {
+	// Default: constrained width
+	width: calc(100% - 32px);
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+
+	@include media(">=tablet") {
+		width: clamp(700px, 85vw, 1132px);
+	}
 
 	.wpforms-title {
 		font-size: var(--wp--preset--font-size--x-large);
@@ -117,5 +171,9 @@ div.wpforms-container {
 		text-align: left;
 	}
 
+	// Full width variant
+	&.u-width-full {
+		width: 100%;
+		max-width: 100%;
+	}
 }
-

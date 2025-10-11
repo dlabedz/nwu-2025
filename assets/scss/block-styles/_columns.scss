@@ -1,0 +1,26 @@
+/* Column Block Styles
+--------------------------------------------- */
+
+// Constrained Content (within columns)
+.wp-block-columns.is-style-constrained-content {
+	.wp-block-column {
+		& > * {
+			width: calc(100% - 32px);
+			max-width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+
+			@include media(">=tablet") {
+				width: clamp(350px, 85%, 566px);
+			}
+		}
+	}
+}
+
+// No Padding
+.wp-block-columns.is-style-no-padding {
+	.wp-block-column {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
