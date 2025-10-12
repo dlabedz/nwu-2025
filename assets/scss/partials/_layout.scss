@@ -1,6 +1,10 @@
 /* Box Sizing
 --------------------------------------------- */
 
+html{
+	overflow-x: hidden;
+}
+
 html,
 input[type="search"] {
 	box-sizing: border-box;
