@@ -228,3 +228,54 @@ h1.front {
 	display: flex;
 	justify-content: space-between;
 }
+
+/* Event Meta
+--------------------------------------------- */
+
+.event-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+	padding: 24px 0;
+	margin-bottom: 24px;
+	border-bottom: 1px solid var(--wp--custom--color--neutral-300);
+
+	@include media("<tablet") {
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: var(--wp--preset--font-size--medium);
+
+		svg {
+			fill: var(--wp--preset--color--red);
+			flex-shrink: 0;
+		}
+
+		span {
+			font-weight: 500;
+		}
+	}
+
+	&__date {
+		svg {
+			fill: var(--wp--preset--color--blue);
+		}
+	}
+
+	&__time {
+		svg {
+			fill: var(--wp--preset--color--cyan);
+		}
+	}
+
+	&__location {
+		svg {
+			fill: var(--wp--preset--color--red);
+		}
+	}
+}

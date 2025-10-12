@@ -17,7 +17,7 @@ if (!$featured_posts || empty($featured_posts)) {
 }
 ?>
 
-<div class="block-featured-news-grid">
+<div class="block-featured-news-grid u-width-constrained">
     <div class="block-featured-news-grid__inner">
         <?php foreach ($featured_posts as $post):
             setup_postdata($post);

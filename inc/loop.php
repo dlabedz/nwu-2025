@@ -114,3 +114,47 @@ function be_has_h1_block( $blocks = array() ) {
 
 	return false;
 }
+
+/**
+ * Display Event Meta
+ */
+function be_display_event_meta() {
+	if ( 'event' !== get_post_type() ) {
+		return;
+	}
+
+	$event_date = get_field( 'event_date' );
+	$event_time = get_field( 'event_time' );
+	$event_location = get_field( 'event_location' );
+
+	if ( ! $event_date && ! $event_time && ! $event_location ) {
+		return;
+	}
+
+	echo '<div class="event-meta">';
+
+	if ( $event_date ) {
+		$formatted_date = date_i18n( 'F j, Y', strtotime( $event_date ) );
+		echo '<div class="event-meta__item event-meta__date">';
+		echo be_icon( [ 'icon' => 'calendar', 'size' => 20 ] );
+		echo '<span>' . esc_html( $formatted_date ) . '</span>';
+		echo '</div>';
+	}
+
+	if ( $event_time ) {
+		echo '<div class="event-meta__item event-meta__time">';
+		echo be_icon( [ 'icon' => 'clock', 'size' => 20 ] );
+		echo '<span>' . esc_html( $event_time ) . '</span>';
+		echo '</div>';
+	}
+
+	if ( $event_location ) {
+		echo '<div class="event-meta__item event-meta__location">';
+		echo be_icon( [ 'icon' => 'location', 'size' => 20 ] );
+		echo '<span>' . esc_html( $event_location ) . '</span>';
+		echo '</div>';
+	}
+
+	echo '</div>';
+}
+add_action( 'be_entry_title_after', 'be_display_event_meta' );
