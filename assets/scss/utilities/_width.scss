@@ -9,8 +9,10 @@
 
 // Constrained width (standard content)
 .u-width-constrained {
-	width: calc(100% - 32px); // Mobile fallback
+	width: calc(100% - 32px);
 	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 
 	@include media(">=tablet") {
 		width: clamp(700px, 85vw, 1132px);
@@ -19,28 +21,34 @@
 
 // Half width
 .u-width-half {
-	width: calc(100% - 32px); // Mobile fallback
+	width: calc(100% - 32px);
 	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 
 	@include media(">=tablet") {
 		width: clamp(350px, 42.5vw, 566px);
 	}
 }
 
-// Wide width (between constrained and full)
+// Wide width
 .u-width-wide {
-	width: calc(100% - 32px); // Mobile fallback
+	width: calc(100% - 32px);
 	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 
 	@include media(">=tablet") {
 		width: clamp(900px, 90vw, 1400px);
 	}
 }
 
-// Narrow width (for text-heavy content)
+// Narrow width
 .u-width-narrow {
-	width: calc(100% - 32px); // Mobile fallback
+	width: calc(100% - 32px);
 	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 
 	@include media(">=tablet") {
 		width: clamp(600px, 70vw, 800px);

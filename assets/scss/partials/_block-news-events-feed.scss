@@ -7,6 +7,7 @@
 	background: var(--wp--preset--color--background);
 	color: var(--wp--preset--color--foreground);
 	padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
+	position: relative;
 
 	@include media(">=desktop") {
 		padding: var(--wp--custom--layout--block-gap-large) 0;
@@ -21,7 +22,6 @@
 	align-items: center;
 	gap: 24px;
 	margin-bottom: 40px;
-	position: relative;
 
 	@include media(">=tablet") {
 		gap: 32px;
@@ -32,6 +32,9 @@
 	flex-shrink: 0;
 	margin-left: calc(-1 * var(--wp--custom--layout--padding));
 	overflow: hidden;
+	position: absolute;
+	background: green;
+	left: 0;
 
 	svg {
 		display: block;
@@ -120,17 +123,20 @@
 }
 
 .news-events-feed__date {
-	font-size: var(--wp--preset--font-size--small);
-	font-weight: 600;
-	color: var(--wp--preset--color--foreground);
+	font-family: "DM Mono";
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 25px; /* 125% */
 	display: block;
 }
 
 .news-events-feed__author {
-	font-size: var(--wp--preset--font-size--small);
-	color: var(--wp--preset--color--foreground);
-	margin: 0;
-	opacity: 0.7;
+	font-family: "DM Sans";
+	font-size: 16.5px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
 }
 
 /* Content Column
@@ -198,30 +204,23 @@
 
 .news-events-feed__term {
 	display: inline-block;
-	padding: 4px 12px;
-	border-radius: var(--wp--custom--border-radius--tiny);
-	font-size: var(--wp--preset--font-size--tiny);
-	font-weight: 600;
-	text-decoration: none;
+	font-family: "DM Mono";
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 20px; /* 125% */
+	letter-spacing: 0.32px;
+	text-transform: capitalize;
 	transition: all 0.2s ease;
+	border-radius: 59px;
+	border: 2px solid var(--wp--preset--color--foreground);
+	color: var(--wp--preset--color--foreground);
+	padding: .2em .75em;
+	text-decoration: none;
 
-	&--category {
-		background: var(--wp--preset--color--navy);
-		color: var(--wp--preset--color--white);
-
-		&:hover {
-			background: var(--wp--preset--color--blue);
-		}
-	}
-
-	&--tag {
-		background: var(--wp--preset--color--newsprint);
-		color: var(--wp--preset--color--foreground);
-
-		&:hover {
-			background: var(--wp--preset--color--cyan);
-			color: var(--wp--preset--color--white);
-		}
+	&:hover{
+		color: var(--wp--preset--color--background);
+		background: var(--wp--preset--color--foreground);
 	}
 }
 

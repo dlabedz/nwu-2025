@@ -23,16 +23,6 @@
 			max-width: 100%;
 		}
 
-		// Utility classes override default full-width
-		&.u-width-constrained,
-		&.u-width-half,
-		&.u-width-wide,
-		&.u-width-narrow,
-		&.u-content-width,
-		&.u-content-narrow,
-		&.u-content-wide {
-			width: auto; // Let utility handle width
-		}
 	}
 
 	// & > * + * {

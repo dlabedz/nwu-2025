@@ -44,6 +44,7 @@ if ( ! $query->have_posts() ) {
 ?>
 
 <div class="block-news-events-feed">
+	<div class="u-width-constrained">
 	<div class="news-events-feed__header">
 		<div class="news-events-feed__icon">
 			<?php echo be_icon( array( 'icon' => 'menu', 'group' => 'utility', 'size' => 40 ) ); ?>
@@ -121,5 +122,6 @@ if ( ! $query->have_posts() ) {
 
 		<?php endwhile; ?>
 		<?php wp_reset_postdata(); ?>
+	</div>
 	</div>
 </div>
