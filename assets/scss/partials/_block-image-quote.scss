@@ -2,18 +2,20 @@
 --------------------------------------------- */
 
 .block-image-quote {
-	margin: var(--wp--custom--layout--block-gap-large) 0;
+	//margin: var(--wp--custom--layout--block-gap-large) 0;
 
 	&__inner {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--wp--custom--layout--block-gap);
+		//grid-template-columns: 1fr;
+		//gap: var(--wp--custom--layout--block-gap);
 		align-items: center;
 		background: #DAEAFF;
+		position: relative;
 
 		@include media(">=tablet") {
-			grid-template-columns: 1fr 1fr;
-			gap: 40px;
+			// grid-template-columns: 1fr 1fr;
+			// gap: 40px;
+			height: 484px;
 		}
 
 		@include media("<=tablet") {
@@ -39,6 +41,7 @@
 		width: 60px;
 		height: 60px;
 		flex-shrink: 0;
+		align-self: center;
 
 		@include media("<=tablet") {
 			width: 48px;
@@ -54,10 +57,12 @@
 
 	/* Quote Text */
 	&__quote {
-		font-size: var(--wp--preset--font-size--large);
-		line-height: var(--wp--custom--line-height--normal);
-		margin: 0;
+		font-family: "DM Mono";
+		font-size: 38px;
 		font-style: normal;
+		font-weight: 400;
+		line-height: 45px; /* 118.421% */
+		margin: 0;
 
 		@include media("<=tablet") {
 			font-size: var(--wp--preset--font-size--medium);
@@ -75,26 +80,42 @@
 	/* Attribution */
 	&__attribution {
 		display: block;
-		font-size: var(--wp--preset--font-size--medium);
+		font-family: "DM Sans";
+		font-size: 16.5px;
 		font-style: normal;
-		font-weight: 600;
-		color: inherit;
+		font-weight: 900;
+		line-height: 22.5px; /* 136.364% */
+		letter-spacing: 2.475px;
+		text-transform: uppercase;
 	}
 
 	/* Image Area */
 	&__figure {
 		margin: 0;
 		width: 100%;
+		position: absolute;
+		right: 0;
 
 		@include media("<=tablet") {
 			grid-area: figure;
+			position: static;
+		}
+
+		@include media(">=tablet") {
+			width: 484px;
 		}
 	}
 
 	&__image {
-		width: 100%;
-		height: auto;
+		max-width: 100%;
+		height: 484px;
 		display: block;
+
+		@include media(">=tablet") {
+			width: 484px;
+			height: 484px;
+			object-fit: cover;
+		}
 	}
 
 	&__caption {

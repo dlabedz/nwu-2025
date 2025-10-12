@@ -25,6 +25,10 @@
 	overflow: hidden;
 	text-decoration: none;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	max-width: 100%;
+	width: auto;
+	height: 360px;
+	justify-content: center;
 
 	// Default colors (these will be overridden by inline classes)
 	background-color: var(--wp--preset--color--cyan);
@@ -48,31 +52,24 @@
 }
 
 .image-card__image {
-	width: 100%;
-	aspect-ratio: 16 / 9;
-	overflow: hidden;
+	text-align: center;
 
 	img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-		display: block;
+		display: inline-block;
+		max-width: 200px;
+		height: auto;
 	}
 }
 
 .image-card__content {
 	padding: var(--wp--custom--layout--block-gap);
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	text-align: center;
 }
 
 .image-card__title {
 	margin: 0;
 	font-family: var(--wp--preset--font-family--oswald);
-	font-size: var(--wp--preset--font-size--x-large);
-	font-weight: 600;
+	font-size: 36px;
 	line-height: var(--wp--custom--line-height--small);
 	color: inherit;
 }

@@ -21,7 +21,7 @@ if ( empty( $quote ) || empty( $image_id ) ) {
 }
 
 // Build block classes
-$classes = ['block-image-quote'];
+$classes = ['block-image-quote u-width-constrained'];
 
 // Add alignment class
 if ( ! empty( $block['align'] ) ) {

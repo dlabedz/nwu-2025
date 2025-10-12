@@ -413,3 +413,12 @@ label,
 		border-color: var(--wp--preset--color--black);
 	}
 }
+
+.wp-block-columns.no-gap {
+    gap: 0 !important;
+
+    // Also remove gap on mobile if needed
+    @include media("<tablet") {
+        gap: 0 !important;
+    }
+}

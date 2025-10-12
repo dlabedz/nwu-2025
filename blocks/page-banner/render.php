@@ -31,7 +31,7 @@ if ( ! empty( $block['anchor'] ) ) {
 ?>
 
 <div class="<?php echo esc_attr( join( ' ', $classes ) ); ?>"<?php echo $anchor; ?>>
-	<div class="page-banner__inner">
+	<div class="page-banner__inner u-width-constrained">
 		<div class="page-banner__content">
 			<?php if ( ! empty( $title ) ) : ?>
 				<h1 class="page-banner__title"><?php echo esc_html( $title ); ?></h1>
