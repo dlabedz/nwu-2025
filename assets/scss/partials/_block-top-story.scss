@@ -2,27 +2,118 @@
 --------------------------------------------- */
 
 .block-top-story {
-	background: var(--wp--preset--color--foreground);
-	color: var(--wp--preset--color--background);
-	padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
+	display: flex;
+	justify-content: center;
+	width: 100%;
 
-	// Placeholder state in editor
 	&--placeholder {
 		background: var(--wp--custom--color--neutral-100);
 		color: var(--wp--preset--color--foreground);
 		padding: 32px;
 		text-align: center;
 		border: 2px dashed var(--wp--custom--color--neutral-400);
+		margin: 0 auto;
+		width: calc(100% - 2rem);
+		width: 89.57vw;
+		max-width: 78.375rem;
 
 		p {
 			margin: 0;
 			font-style: italic;
 		}
 	}
+}
 
-	&__inner {
-		max-width: var(--wp--custom--layout--wide);
-		margin: 0 auto;
+.block-top-story__container {
+	background: var(--wp--preset--color--foreground);
+	color: var(--wp--preset--color--background);
+	padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
+	width: calc(100% - 2rem);
+	max-width: 100%;
+
+	@include media(">=tablet") {
+		width: 89.57vw;
+		max-width: 78.375rem; /* 1254px = 78.375rem */
+	}
+}
+
+.block-top-story__header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.block-top-story__icon {
+	width: 48px;
+	height: 48px;
+	flex-shrink: 0;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+}
+
+.block-top-story__label {
+	display: inline-block;
+	border-top: 4px solid var(--wp--preset--color--background);
+	padding-top: 5px;
+}
+
+.block-top-story__title {
+	margin: 0 0 24px;
+
+	a {
+		color: var(--wp--preset--color--background);
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: 12px;
+		transition: opacity 0.2s ease;
+
+		&:hover {
+			opacity: 0.8;
+
+			img {
+				transform: translateX(4px);
+			}
+		}
+
+		img {
+			flex-shrink: 0;
+			transition: transform 0.2s ease;
+		}
+	}
+}
+
+.block-top-story__excerpt {
+	margin: 0 0 24px;
+
+	p {
+		margin: 0 0 16px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.block-top-story__attribution {
+	font-size: var(--wp--preset--font-size--small);
+	font-style: italic;
+	opacity: 0.9;
+	margin: 0;
+
+	&:before {
+		content: '— ';
+	}
+}
+
+.editor-styles-wrapper {
+	.block-top-story__title a {
+		pointer-events: none;
 	}
 
 	&__header {

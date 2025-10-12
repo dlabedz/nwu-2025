@@ -1,0 +1,350 @@
+/* Figma Design System Utilities
+--------------------------------------------- */
+
+// Text Color Classes
+.has-light-text-color {
+	color: var(--wp--preset--color--light-text) !important;
+}
+
+.has-dark-text-color {
+	color: var(--wp--preset--color--dark-text) !important;
+}
+
+// Background Color Classes with Proper Text Contrast
+.has-cyan-background-color {
+	background-color: var(--wp--preset--color--cyan) !important;
+	color: var(--wp--preset--color--dark-text);
+}
+
+.has-red-background-color {
+	background-color: var(--wp--preset--color--red) !important;
+	color: var(--wp--preset--color--light-text);
+}
+
+.has-yellow-background-color {
+	background-color: var(--wp--preset--color--yellow) !important;
+	color: var(--wp--preset--color--dark-text);
+}
+
+.has-lavender-background-color {
+	background-color: var(--wp--preset--color--lavender) !important;
+	color: var(--wp--preset--color--dark-text);
+}
+
+.has-navy-background-color {
+	background-color: var(--wp--preset--color--navy) !important;
+	color: var(--wp--preset--color--light-text);
+}
+
+.has-blue-background-color {
+	background-color: var(--wp--preset--color--blue) !important;
+	color: var(--wp--preset--color--light-text);
+}
+
+.has-jade-background-color {
+	background-color: var(--wp--preset--color--jade) !important;
+	color: var(--wp--preset--color--light-text);
+}
+
+.has-violet-background-color {
+	background-color: var(--wp--preset--color--violet) !important;
+	color: var(--wp--preset--color--light-text);
+}
+
+.has-newsprint-background-color {
+	background-color: var(--wp--preset--color--newsprint) !important;
+	color: var(--wp--preset--color--dark-text);
+}
+
+.has-cerulean-background-color {
+	background-color: var(--wp--preset--color--cerulean) !important;
+	color: var(--wp--preset--color--light-text);
+}
+
+// Ensure proper text contrast on colored backgrounds
+.has-cyan-background-color,
+.has-yellow-background-color,
+.has-lavender-background-color,
+.has-newsprint-background-color {
+	h1, h2, h3, h4, h5, h6, p, a, li {
+		color: var(--wp--preset--color--dark-text);
+	}
+}
+
+.has-red-background-color,
+.has-navy-background-color,
+.has-blue-background-color,
+.has-jade-background-color,
+.has-violet-background-color,
+.has-cerulean-background-color {
+	h1, h2, h3, h4, h5, h6, p, a, li {
+		color: var(--wp--preset--color--light-text);
+	}
+}
+
+/* Typography Utilities
+--------------------------------------------- */
+
+// Paragraph Sizes
+.paragraph-lg {
+	font-family: var(--wp--preset--font-family--dm-sans);
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 29px;
+}
+
+.paragraph-regular {
+	font-family: var(--wp--preset--font-family--dm-sans);
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 25px;
+}
+
+.paragraph-sm {
+	font-family: var(--wp--preset--font-family--dm-sans);
+	font-size: 16.5px;
+	font-weight: 400;
+	line-height: 24px;
+}
+
+/* Button Styles - Figma Design System
+--------------------------------------------- */
+
+// Default Button (from Figma)
+.wp-element-button,
+.wp-block-button__link {
+	background: transparent;
+	border: 4px solid var(--wp--preset--color--black);
+	border-radius: 0;
+	color: var(--wp--preset--color--black);
+	font-family: var(--wp--preset--font-family--dm-sans);
+	font-size: 16.5px;
+	font-weight: 900;
+	line-height: 22.5px;
+	letter-spacing: 2.475px;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 12px 24px;
+	transition: all 0.3s ease;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+
+	&:hover,
+	&:focus {
+		background: var(--wp--preset--color--black);
+		color: var(--wp--preset--color--light-text);
+		border-color: var(--wp--preset--color--black);
+	}
+}
+
+// Pill Button Style
+.wp-element-button.is-style-pill,
+.wp-block-button.is-style-pill .wp-block-button__link {
+	border: 2px solid var(--wp--preset--color--black);
+	border-radius: 999px;
+	background: transparent;
+	color: var(--wp--preset--color--black);
+	font-family: var(--wp--preset--font-family--dm-mono);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 20px;
+	letter-spacing: 0.32px;
+	text-transform: capitalize;
+	padding: 10px 20px;
+
+	&:hover,
+	&:focus {
+		background: var(--wp--preset--color--black);
+		color: var(--wp--preset--color--light-text);
+		border-color: var(--wp--preset--color--black);
+	}
+}
+
+// Pull Button Style (filled background)
+.wp-element-button.is-style-pull,
+.wp-block-button.is-style-pull .wp-block-button__link {
+	border: 2px solid var(--wp--preset--color--black);
+	border-radius: 999px;
+	background: var(--wp--preset--color--black);
+	color: var(--wp--preset--color--light-text);
+	font-family: var(--wp--preset--font-family--dm-mono);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 20px;
+	letter-spacing: 0.32px;
+	text-transform: capitalize;
+	padding: 10px 20px;
+
+	&:hover,
+	&:focus {
+		background: var(--wp--preset--color--navy);
+		border-color: var(--wp--preset--color--navy);
+		color: var(--wp--preset--color--light-text);
+	}
+}
+
+// Secondary Button (outline with colored border)
+.wp-element-button.is-style-secondary,
+.wp-block-button.is-style-secondary .wp-block-button__link {
+	background: transparent;
+	border: 4px solid var(--wp--preset--color--blue);
+	color: var(--wp--preset--color--blue);
+
+	&:hover,
+	&:focus {
+		background: var(--wp--preset--color--blue);
+		color: var(--wp--preset--color--light-text);
+		border-color: var(--wp--preset--color--blue);
+	}
+}
+
+// Tertiary Button (subtle style)
+.wp-element-button.is-style-tertiary,
+.wp-block-button.is-style-tertiary .wp-block-button__link {
+	background: transparent;
+	border: 2px solid var(--wp--preset--color--newsprint);
+	color: var(--wp--preset--color--black);
+
+	&:hover,
+	&:focus {
+		background: var(--wp--preset--color--newsprint);
+		border-color: var(--wp--preset--color--newsprint);
+		color: var(--wp--preset--color--black);
+	}
+}
+
+/* Button Color Variants
+--------------------------------------------- */
+
+// When button has background color classes applied
+.wp-block-button {
+	// Cyan button
+	&.has-cyan-background-color .wp-block-button__link {
+		background: var(--wp--preset--color--cyan);
+		border-color: var(--wp--preset--color--cyan);
+		color: var(--wp--preset--color--dark-text);
+
+		&:hover {
+			background: var(--wp--preset--color--jade);
+			border-color: var(--wp--preset--color--jade);
+			color: var(--wp--preset--color--light-text);
+		}
+	}
+
+	// Red button
+	&.has-red-background-color .wp-block-button__link {
+		background: var(--wp--preset--color--red);
+		border-color: var(--wp--preset--color--red);
+		color: var(--wp--preset--color--light-text);
+
+		&:hover {
+			background: var(--wp--preset--color--navy);
+			border-color: var(--wp--preset--color--navy);
+		}
+	}
+
+	// Yellow button
+	&.has-yellow-background-color .wp-block-button__link {
+		background: var(--wp--preset--color--yellow);
+		border-color: var(--wp--preset--color--yellow);
+		color: var(--wp--preset--color--dark-text);
+
+		&:hover {
+			background: var(--wp--preset--color--lavender);
+			border-color: var(--wp--preset--color--lavender);
+		}
+	}
+
+	// Blue button
+	&.has-blue-background-color .wp-block-button__link {
+		background: var(--wp--preset--color--blue);
+		border-color: var(--wp--preset--color--blue);
+		color: var(--wp--preset--color--light-text);
+
+		&:hover {
+			background: var(--wp--preset--color--navy);
+			border-color: var(--wp--preset--color--navy);
+		}
+	}
+
+	// Navy button
+	&.has-navy-background-color .wp-block-button__link {
+		background: var(--wp--preset--color--navy);
+		border-color: var(--wp--preset--color--navy);
+		color: var(--wp--preset--color--light-text);
+
+		&:hover {
+			background: var(--wp--preset--color--blue);
+			border-color: var(--wp--preset--color--blue);
+		}
+	}
+}
+
+/* Responsive Typography
+--------------------------------------------- */
+
+@include media("<=tablet") {
+	h1, .h1 {
+		font-size: 42px;
+		line-height: 46px;
+		letter-spacing: -0.42px;
+	}
+
+	h2, .h2 {
+		font-size: 36px;
+		line-height: 38px;
+		letter-spacing: -0.36px;
+	}
+
+	h3, .h3 {
+		font-size: 28px;
+		line-height: 32px;
+		letter-spacing: -0.28px;
+	}
+
+	h5, .h5 {
+		font-size: 30px;
+		line-height: 36px;
+	}
+
+	h6, .h6 {
+		font-size: 24px;
+		line-height: 30px;
+	}
+
+	.paragraph-lg {
+		font-size: 20px;
+		line-height: 26px;
+	}
+}
+
+@include media("<=mobile_menu") {
+	h1, .h1 {
+		font-size: 32px;
+		line-height: 36px;
+		letter-spacing: -0.32px;
+	}
+
+	h2, .h2 {
+		font-size: 28px;
+		line-height: 32px;
+		letter-spacing: -0.28px;
+	}
+
+	h3, .h3 {
+		font-size: 24px;
+		line-height: 28px;
+		letter-spacing: -0.24px;
+	}
+
+	h5, .h5 {
+		font-size: 24px;
+		line-height: 30px;
+	}
+
+	h6, .h6 {
+		font-size: 20px;
+		line-height: 26px;
+	}
+}
