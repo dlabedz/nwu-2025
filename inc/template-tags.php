@@ -85,7 +85,7 @@ function be_page_title_header() {
 
 	// Output title if we have one
 	if ( ! empty( $title ) ) {
-		echo '<h1 class="page-title">' . wp_kses_post( $title ) . '</h1>';
+		echo '<h1 class="page-title u-width-constrained">' . wp_kses_post( $title ) . '</h1>';
 	}
 }
 add_action( 'tha_content_top', 'be_page_title_header', 15 );

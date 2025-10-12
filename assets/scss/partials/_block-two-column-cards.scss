@@ -31,16 +31,17 @@
 
 	&__title {
 		font-family: var(--wp--preset--font-family--oswald);
-		font-size: var(--wp--preset--font-size--x-large);
-		font-weight: 600;
+		font-size: 36px;
+		font-style: normal;
+		font-weight: 400;
 		line-height: var(--wp--custom--line-height--small);
 		margin: 0;
 		text-align: left;
 	}
 
 	&__text {
-		font-size: var(--wp--preset--font-size--medium);
-		line-height: var(--wp--custom--line-height--normal);
+		font-size: 24px;
+		line-height: 29px;
 		margin: 0;
 		text-align: left;
 	}
@@ -51,32 +52,36 @@
 	}
 
 	&__button {
-		display: inline-block;
-		padding: 11px 24px;
-		font-family: var(--wp--preset--font-family--oswald);
-		font-size: var(--wp--preset--font-size--medium);
+		display: block;
 		font-weight: 600;
 		text-transform: uppercase;
 		text-decoration: none;
 		border-radius: 0;
 		border: 2px solid currentColor;
-		transition: opacity 0.2s ease;
-
-		&:hover {
-			opacity: 0.8;
-		}
+		transition: background-color 0.2s ease, color 0.2s ease;
+		padding: .5em;
 
 		// Button color variants
 		&.button-light {
 			background-color: transparent;
 			color: #FEFEFE;
 			border-color: #FEFEFE;
+
+			&:hover {
+				background-color: #FEFEFE;
+				color: #0A0A0A;
+			}
 		}
 
 		&.button-dark {
 			background-color: transparent;
 			color: #0A0A0A;
 			border-color: #0A0A0A;
+
+			&:hover {
+				background-color: #0A0A0A;
+				color: #FEFEFE;
+			}
 		}
 	}
 }

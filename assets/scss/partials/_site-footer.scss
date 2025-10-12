@@ -222,10 +222,10 @@
 	position: fixed;
 	bottom: 32px;
 	right: 32px;
-	width: 56px;
-	height: 56px;
-	background: var(--wp--preset--color--navy);
-	border: 2px solid var(--wp--preset--color--white);
+	width: 63px;
+	height: 63px;
+	background: var(--wp--preset--color--yellow); // #F4B438
+	border: none;
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
@@ -233,9 +233,10 @@
 	cursor: pointer;
 	opacity: 0;
 	visibility: hidden;
-	transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+	transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 	z-index: 999;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+	padding: 0;
 
 	&.visible {
 		opacity: 1;
@@ -244,8 +245,7 @@
 
 	&:hover {
 		transform: translateY(-4px);
-		background: var(--wp--preset--color--blue);
-		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 	}
 
 	&:active {
@@ -253,30 +253,34 @@
 	}
 
 	svg {
-		@include size(24px);
-		fill: var(--wp--preset--color--white);
+		width: 33px;
+		height: 22px;
+		fill: var(--wp--preset--color--foreground); // #0A0A0A
+		color: var(--wp--preset--color--foreground);
 	}
 
 	// Responsive adjustments
 	@include media("<=tablet") {
 		bottom: 24px;
 		right: 24px;
-		width: 48px;
-		height: 48px;
+		width: 56px;
+		height: 56px;
 
 		svg {
-			@include size(20px);
+			width: 29px;
+			height: 19px;
 		}
 	}
 
 	@include media("<=mobile_menu") {
 		bottom: 16px;
 		right: 16px;
-		width: 44px;
-		height: 44px;
+		width: 50px;
+		height: 50px;
 
 		svg {
-			@include size(18px);
+			width: 26px;
+			height: 17px;
 		}
 	}
 }

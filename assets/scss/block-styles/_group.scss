@@ -3,6 +3,21 @@
 
 // Contained (centered, constrained)
 .wp-block-group.is-style-contained {
+	// For WordPress 6.0+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	& > * {
+		width: calc(100% - 32px);
+		max-width: 100%;
+
+		@include media(">=tablet") {
+			width: clamp(700px, 85vw, 1132px);
+		}
+	}
+
+	// Legacy support for older WP versions
 	& > .wp-block-group__inner-container {
 		width: calc(100% - 32px);
 		max-width: 100%;
@@ -17,6 +32,20 @@
 
 // Contained Left (constrained, left-aligned)
 .wp-block-group.is-style-contained-left {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	& > * {
+		width: calc(100% - 32px);
+		max-width: 100%;
+
+		@include media(">=tablet") {
+			width: clamp(700px, 85vw, 1132px);
+		}
+	}
+
+	// Legacy support
 	& > .wp-block-group__inner-container {
 		width: calc(100% - 32px);
 		max-width: 100%;
@@ -31,6 +60,20 @@
 
 // Contained Right (constrained, right-aligned)
 .wp-block-group.is-style-contained-right {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+
+	& > * {
+		width: calc(100% - 32px);
+		max-width: 100%;
+
+		@include media(">=tablet") {
+			width: clamp(700px, 85vw, 1132px);
+		}
+	}
+
+	// Legacy support
 	& > .wp-block-group__inner-container {
 		width: calc(100% - 32px);
 		max-width: 100%;
@@ -45,6 +88,20 @@
 
 // Half Width Left
 .wp-block-group.is-style-half-left {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	& > * {
+		width: calc(100% - 32px);
+		max-width: 100%;
+
+		@include media(">=tablet") {
+			width: clamp(350px, 42.5vw, 566px);
+		}
+	}
+
+	// Legacy support
 	& > .wp-block-group__inner-container {
 		width: calc(100% - 32px);
 		max-width: 100%;
@@ -59,6 +116,20 @@
 
 // Half Width Right
 .wp-block-group.is-style-half-right {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+
+	& > * {
+		width: calc(100% - 32px);
+		max-width: 100%;
+
+		@include media(">=tablet") {
+			width: clamp(350px, 42.5vw, 566px);
+		}
+	}
+
+	// Legacy support
 	& > .wp-block-group__inner-container {
 		width: calc(100% - 32px);
 		max-width: 100%;

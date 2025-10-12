@@ -27,7 +27,7 @@ add_action( 'wp_enqueue_scripts', 'nwu_2025_back_to_top_scripts' );
  */
 function nwu_2025_back_to_top_button() {
 	$icon = be_icon( [
-		'icon' => 'chevron-up',
+		'icon' => 'chevron-up-2',
 		'group' => 'utility',
 		'size' => 24
 	] );
