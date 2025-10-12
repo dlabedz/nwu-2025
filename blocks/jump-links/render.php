@@ -90,7 +90,7 @@ try {
 
 	?>
 	<nav class="block-jump-links" aria-label="Page sections">
-		<ul class="block-jump-links__list">
+		<ul class="block-jump-links__list u-width-constrained">
 			<?php foreach ($headings as $heading) : ?>
 				<li class="block-jump-links__item">
 					<a href="#<?php echo esc_attr($heading['anchor']); ?>" class="block-jump-links__link">

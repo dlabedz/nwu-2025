@@ -6,40 +6,44 @@
 	color: #0A0A0A;
 	padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
 	border-radius: 0;
+	border-left: 25px solid var(--wp--preset--color--foreground);
 
 	&__list {
 		list-style: none;
 		padding: 0;
 		margin: 0;
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 12px;
+		columns: 3;
+		column-gap: 24px;
+		column-rule: 1px solid var(--wp--preset--color--foreground);
+		column-rule-width: 1px;
 
 		@include media("<=medium") {
-			grid-template-columns: repeat(2, 1fr);
+			columns: 2;
 		}
 
 		@include media("<=tablet") {
-			grid-template-columns: 1fr;
+			columns: 1;
+			column-rule: none;
 		}
 	}
 
 	&__item {
 		margin: 0;
+		padding: 0;
+		break-inside: avoid; // Prevent items from breaking across columns
+		page-break-inside: avoid; // For older browsers
 	}
 
 	&__link {
 		display: block;
-		padding: 8px 12px;
-		text-decoration: none;
+		padding: 8px 0;
+		text-decoration: underline;
 		color: #0A0A0A;
-		border-left: 3px solid transparent;
-		transition: border-color 0.2s ease, background-color 0.2s ease;
+		transition: color 0.2s ease;
 
 		&:hover,
 		&:focus {
-			border-left-color: var(--wp--preset--color--red);
-			background-color: rgba(0, 0, 0, 0.05);
+			color: var(--wp--preset--color--red);
 		}
 	}
 
