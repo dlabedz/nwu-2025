@@ -121,7 +121,7 @@ if ( is_category() ) {
 <div class="archive-news-events">
 	<div class="">
 
-		<header class="archive-header">
+		<header class="archive-header u-width-constrained">
 			<h1 class="archive-title"><?php echo esc_html( $page_title ); ?></h1>
 
 			<!-- Filter Bar -->
@@ -274,7 +274,7 @@ if ( is_category() ) {
 		</header>
 
 		<!-- Archive Listing -->
-		<main class="site-main archive-listing" role="main">
+		<main class="site-main archive-listing u-width-constrained" role="main">
 			<?php if ( $query->have_posts() ) : ?>
 
 				<div class="archive-results">
@@ -374,17 +374,19 @@ if ( is_category() ) {
 
 		<!-- Explore Topics (Tag Cloud) -->
 		<aside class="archive-topics">
-			<h4><?php esc_html_e( 'Explore Topics', 'nwu-2025' ); ?></h4>
-			<?php
-			$topic_tags = get_tags( [ 'number' => 20, 'orderby' => 'count', 'order' => 'DESC' ] );
-			if ( $topic_tags ) :
-				echo '<div class="topic-tags">';
-				foreach ( $topic_tags as $topic_tag ) :
-					echo '<a href="' . esc_url( get_tag_link( $topic_tag ) ) . '" class="topic-tag wp-block-button is-style-pill">' . esc_html( $topic_tag->name ) . '</a>';
-				endforeach;
-				echo '</div>';
-			endif;
-			?>
+			<div class="u-width-constrained">
+				<h4><?php esc_html_e( 'Explore Topics', 'nwu-2025' ); ?></h4>
+				<?php
+				$topic_tags = get_tags( [ 'number' => 20, 'orderby' => 'count', 'order' => 'DESC' ] );
+				if ( $topic_tags ) :
+					echo '<div class="topic-tags">';
+					foreach ( $topic_tags as $topic_tag ) :
+						echo '<a href="' . esc_url( get_tag_link( $topic_tag ) ) . '" class="topic-tag wp-block-button is-style-pill">' . esc_html( $topic_tag->name ) . '</a>';
+					endforeach;
+					echo '</div>';
+				endif;
+				?>
+			</div>
 		</aside>
 
 	</div>

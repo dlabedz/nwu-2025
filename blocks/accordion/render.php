@@ -29,7 +29,7 @@ if ( ! empty( $block['anchor'] ) ) {
 	$anchor = ' id="' . esc_attr( $block['anchor'] ) . '"';
 }
 
-echo '<div class="block-accordion"' . $anchor . '>';
+echo '<div class="block-accordion u-width-constrained"' . $anchor . '>';
 
 foreach ( $accordion_items as $index => $item ) {
 	$item_id = $block_id . '-item-' . $index;

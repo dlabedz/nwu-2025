@@ -271,11 +271,18 @@
 			font-size: var(--wp--preset--font-size--small);
 
 			time {
-				font-weight: 600;
+				font-family: "DM Mono";
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 25px; /* 156.25% */
 			}
 
-			.archive-item__type {
-				color: var(--wp--custom--color--neutral-600);
+			.archive-item__author{
+				font-size: 16.5px;
+				font-style: normal;
+				font-weight: 700;
+				line-height: normal;
 			}
 		}
 

@@ -29,11 +29,6 @@
 	}
 
 	&__text {
-		font-family: var(--wp--preset--font-family--oswald);
-		font-size: var(--wp--preset--font-size--h3); // Changed from --large
-		font-weight: 400; // Changed from 500
-		line-height: var(--wp--custom--line-height--h3); // Changed
-		letter-spacing: var(--wp--custom--letter-spacing--h3); // Added
 		color: inherit;
 	}
 }
@@ -70,8 +65,10 @@
 	&__content {
 		padding: 0 0 24px 0;
 		color: var(--wp--preset--color--foreground);
-		font-size: var(--wp--preset--font-size--medium); // Now 18px (Regular Paragraph)
-		line-height: 25px; // Matches your body copy
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 29px; /* 120.833% */
 
 		> *:first-child {
 			margin-top: 0;
