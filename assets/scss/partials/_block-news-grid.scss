@@ -17,34 +17,27 @@
     }
 
     &__title {
-        margin: 0;
-        font-size: var(--wp--preset--font-size--large);
-        font-family: var(--wp--preset--font-family--oswald);
-        color: var(--wp--preset--color--foreground);
+		padding-top: 5px;
+		border-top: 3px solid var(--wp--preset--color--foreground);
     }
 
+	&__view-all-container{
+		display: flex;
+    	gap: 15px;
+	}
+
     &__view-all {
-        font-size: var(--wp--preset--font-size--small);
-        font-weight: 600;
-        color: var(--wp--preset--color--foreground);
+       font-size: 16.5px;
+		font-style: normal;
+		font-weight: 900;
+		line-height: 22.5px; /* 136.364% */
+		letter-spacing: 2.475px;
+		text-transform: uppercase;
+		color: var(--wp--preset--color--foreground);
         text-decoration: none;
         display: inline-flex;
         align-items: center;
         gap: 8px;
-
-        &:after {
-            content: "→";
-            font-size: 1.2em;
-            transition: transform 0.2s;
-        }
-
-        &:hover {
-            text-decoration: underline;
-
-            &:after {
-                transform: translateX(4px);
-            }
-        }
     }
 
     &__posts {
@@ -80,24 +73,42 @@
         }
     }
 
+	.news-grid-tags-title{
+		text-align:center;
+
+		h4{
+			padding-top: 5px;
+			border-top: 3px solid var(--wp--preset--color--foreground);
+			text-align: center;
+			display: inline-block;
+			margin: 0 auto;
+		}
+	}
+
+
+
     // Tags section at bottom
     &__tags {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
+		justify-content: center;
         padding-top: var(--wp--custom--layout--block-gap);
-        border-top: 2px solid var(--wp--preset--color--foreground);
 
         .tag-button {
-            padding: 8px 16px;
-            background: transparent;
-            border: 2px solid var(--wp--preset--color--foreground);
-            color: var(--wp--preset--color--foreground);
-            text-decoration: none;
-            font-size: var(--wp--preset--font-size--small);
-            font-weight: 600;
-            border-radius: var(--wp--custom--border-radius--tiny);
+            border: 2px solid var(--wp--preset--color--black);
+			border-radius: 999px;
+			background: transparent;
+			color: var(--wp--preset--color--black);
+			font-family: var(--wp--preset--font-family--dm-mono);
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 20px;
+			letter-spacing: 0.32px;
+			text-transform: capitalize;
+			padding: 10px 20px;
             transition: all 0.2s;
+			text-decoration: none;
 
             &:hover {
                 background: var(--wp--preset--color--foreground);
@@ -137,9 +148,11 @@
     }
 
     &__title {
-        margin: 0;
-        font-size: var(--wp--preset--font-size--medium);
-        line-height: var(--wp--custom--line-height--small);
+		margin: 0;
+        font-size: 24px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 29px; /* 120.833% */
 
         a {
             color: var(--wp--preset--color--foreground);

@@ -34,10 +34,13 @@ $classes = [
 	<div class="u-width-constrained">
 
 		<div class="block-news-grid__header">
-			<h2 class="block-news-grid__title">Featured News</h2>
-			<a href="<?php echo esc_url(get_post_type_archive_link('post')); ?>" class="block-news-grid__view-all">
-				View All Posts
-			</a>
+			<h4 class="block-news-grid__title">Featured News</h4>
+			<div class="block-news-grid__view-all-container">
+				<a href="<?php echo esc_url(get_post_type_archive_link('post')); ?>" class="block-news-grid__view-all">
+					View All Posts
+				</a>
+				<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/black-arrow.svg'); ?>" alt="" aria-hidden="true">
+			</div>
 		</div>
 
 		<?php if ($news_query->have_posts()): ?>
@@ -65,11 +68,9 @@ $classes = [
 								</a>
 							</h3>
 
-							<div class="news-grid-item__meta">
-								<time datetime="<?php echo esc_attr(get_the_date('c')); ?>">
-									<?php echo esc_html(get_the_date('F j, Y')); ?>
-								</time>
-							</div>
+							<div class="news-grid-item__excerpt">
+                            	<?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?>
+                        	</div>
 						</div>
 					</article>
 				<?php endwhile; wp_reset_postdata(); ?>
@@ -82,6 +83,10 @@ $classes = [
 			$tags = get_tags(['hide_empty' => true, 'number' => 10]);
 			if ($tags):
 		?>
+
+			<div class="news-grid-tags-title">
+				<h4><?php esc_html_e( 'Explore Topics', 'nwu-2025' ); ?></h4>
+			</div>
 			<div class="block-news-grid__tags">
 				<?php foreach ($tags as $tag): ?>
 					<a href="<?php echo esc_url(get_term_link($tag)); ?>" class="tag-button">

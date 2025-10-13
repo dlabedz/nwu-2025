@@ -70,4 +70,29 @@ wp.domReady( () => {
 		[ 'default', 'large', 'plain' ]
 	);
 
+	// Register 25/75 column variations
+	wp.blocks.registerBlockVariation( 'core/columns', {
+		name: '25-75',
+		title: '25 / 75',
+		description: '25% and 75% column split',
+		isDefault: false,
+		innerBlocks: [
+			[ 'core/column', { width: '25%' } ],
+			[ 'core/column', { width: '75%' } ]
+		],
+		scope: [ 'block' ]
+	} );
+
+	wp.blocks.registerBlockVariation( 'core/columns', {
+		name: '75-25',
+		title: '75 / 25',
+		description: '75% and 25% column split',
+		isDefault: false,
+		innerBlocks: [
+			[ 'core/column', { width: '75%' } ],
+			[ 'core/column', { width: '25%' } ]
+		],
+		scope: [ 'block' ]
+	} );
+
 } );

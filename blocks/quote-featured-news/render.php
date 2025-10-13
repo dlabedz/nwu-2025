@@ -26,9 +26,7 @@ if (!$quote_text && !$featured_post) {
         <div class="quote-column">
             <?php if ($quote_text): ?>
                 <div class="quote-column__icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
-                        <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
-                    </svg>
+                    <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/NWU-Quote-white.png'); ?>" alt="" aria-hidden="true">
                 </div>
 
                 <blockquote class="quote-column__text">
@@ -70,6 +68,7 @@ if (!$quote_text && !$featured_post) {
                     <a href="<?php echo esc_url($post_permalink); ?>">
                         <?php echo esc_html($post_title); ?>
                     </a>
+					<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/white-arrow.svg'); ?>" alt="" aria-hidden="true">
                 </h3>
 
                 <?php if ($post_excerpt): ?>
@@ -97,7 +96,7 @@ if (!$quote_text && !$featured_post) {
                                 <?php foreach ($tags as $tag):
                                     $tag_link = get_term_link($tag);
                                 ?>
-                                    <a href="<?php echo esc_url($tag_link); ?>" class="taxonomy-term">
+                                    <a href="<?php echo esc_url($tag_link); ?>" class="taxonomy-term is-style-pill">
                                         <?php echo esc_html($tag->name); ?>
                                     </a>
                                 <?php endforeach; ?>

@@ -56,6 +56,7 @@ if (!$featured_posts || empty($featured_posts)) {
                         <a href="<?php echo esc_url(get_permalink($post_id)); ?>">
                             <?php echo esc_html(get_the_title($post_id)); ?>
                         </a>
+						<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/black-arrow.svg'); ?>" alt="" aria-hidden="true">
                     </h3>
 
                     <?php if ($excerpt): ?>
