@@ -2,7 +2,6 @@
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-	background: var(--wp--preset--color--navy);
 	position: relative;
 
 	.wrap {
@@ -13,13 +12,38 @@
 		padding: 0;
 
 		@include media("<=mobile_menu") {
-			grid-template-columns: 1fr auto;
+			grid-template-columns: auto 1fr;
+			padding: 0;
+			gap: 0;
+			background: var(--wp--preset--color--navy);
 		}
 	}
 
-	.nav-container{
+	&__logo {
+		display: block;
+		line-height: 0;
+		background: var(--wp--preset--color--red);
+		padding: 1rem;
+
+		@include media(">mobile_menu") {
+			padding: 1.5rem;
+		}
+
+		img {
+			height: auto;
+			width: 100%;
+			max-width: 338px;
+
+			@include media("<=mobile_menu") {
+				max-width: 140px;
+			}
+		}
+	}
+
+	.nav-container {
 		display: flex;
 		flex-wrap: wrap;
+		background: var(--wp--preset--color--navy);
 
 		@include media("<=mobile_menu") {
 			grid-column: 1 / -1;
@@ -30,8 +54,10 @@
 	&__toggles {
 		display: none;
 		flex-wrap: nowrap;
-		justify-self: flex-end;
 		align-items: center;
+		gap: 0.5rem;
+		background: var(--wp--preset--color--navy);
+		padding: 1rem;
 
 		@include media("<=mobile_menu") {
 			display: flex;
@@ -40,7 +66,7 @@
 
 	@include media("<=mobile_menu") {
 		.wrap {
-			align-items: center;
+			align-items: stretch;
 		}
 	}
 }
@@ -57,14 +83,16 @@
 	text-align: center;
 	color: var(--wp--preset--color--white);
 
-	@include size( 44px );
+	@include size(44px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
 	svg {
-		@include size( 24px );
+		@include size(28px);
 		fill: var(--wp--preset--color--white);
+		stroke: var(--wp--preset--color--white);
+		stroke-width: 2px;
 	}
 
 	.close {
@@ -85,7 +113,7 @@
 /* Admin Bar
 --------------------------------------------- */
 
-@include media(">782px" ) {
+@include media(">782px") {
 	.admin-bar .site-container {
 		padding-top: 32px;
 	}
@@ -152,14 +180,23 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		cursor: pointer;
 
 		svg {
-			fill: var(--wp--preset--color--white);
+			fill: none;
+			stroke: currentColor;
 			transition: transform 0.3s ease;
+			width: 24px;
+			height: 15px;
+			transform: rotate(180deg); // Point down by default (since icon is chevron-up)
 		}
 
 		&.expanded svg {
-			transform: rotate(180deg);
+			transform: rotate(0deg); // Point up when expanded
+		}
+
+		&:hover svg {
+			opacity: 0.8;
 		}
 	}
 
@@ -217,7 +254,6 @@
 				&:hover > a {
 					color: var(--wp--preset--color--white);
 				}
-
 			}
 
 			// Nested submenus stay vertical on desktop
@@ -252,17 +288,22 @@
 		.menu {
 			display: block;
 			background: var(--wp--preset--color--navy);
+			padding: 0;
 		}
 
 		.menu-item {
 			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
 			a {
-				padding: 1em 3em 1em 1em;
+				padding: 1.25rem 3.5rem 1.25rem 1.5rem;
 				display: block;
+				font-size: 20px;
+				font-weight: 400;
+				letter-spacing: 0.02em;
 			}
 
-			&:hover > a {
+			&:hover > a,
+			&:focus-within > a {
 				background: rgba(255, 255, 255, 0.05);
 			}
 		}
@@ -273,38 +314,42 @@
 
 		.submenu-expand {
 			top: 0;
-			right: 0;
-			@include size( 48px );
+			right: 0.5rem;
+			@include size(52px);
 
 			svg {
-				@include size( 18px );
+				@include size(20px);
 			}
 		}
 
 		// Mobile stacked submenus
 		.sub-menu {
 			display: none;
-			background: rgba(0, 0, 0, 0.2);
+			background: rgba(0, 0, 0, 0.15);
 
 			.menu-item {
+				border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
 				a {
-					padding-left: 2em;
-					font-size: 17px;
+					padding-left: 3rem;
+					font-size: 18px;
 				}
 			}
 
 			// Nested submenus get more indent
 			.sub-menu {
 				.menu-item a {
-					padding-left: 3em;
-					font-size: 16px;
+					padding-left: 4.5rem;
+					font-size: 17px;
 				}
 			}
 		}
 
-		// Show submenu when expanded
-		.submenu-expand.expanded + .sub-menu {
-			display: block;
+		// Show submenu when parent button is expanded
+		.menu-item-has-children {
+			.submenu-expand.expanded ~ .sub-menu {
+				display: block !important;
+			}
 		}
 	}
 }
@@ -314,8 +359,8 @@
 	width: 100%;
 
 	@include media("<=mobile_menu") {
-		order: 2;
-		display: none;
+		order: 3; // Move to bottom on mobile
+		display: block;
 	}
 }
 
@@ -323,7 +368,7 @@
 	align-self: flex-end;
 
 	@include media("<=mobile_menu") {
-		order: 3;
+		order: 2; // Show before utility menu on mobile
 	}
 }
 
@@ -331,36 +376,62 @@
 	list-style-type: none;
 	display: flex;
 	justify-content: flex-end;
-	margin-top: 0;
+	margin: 0;
+	padding: 0;
 
 	@include media("<=mobile_menu") {
-		flex-direction: column;
-
-		li {
-			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-		}
+		flex-direction: row;
+		flex-wrap: wrap;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
 	}
 
 	li {
-		&:nth-child(1) a {
-			background: var(--wp--preset--color--lavender);
+		@include media(">mobile_menu") {
+			&:nth-child(1) a {
+				background: var(--wp--preset--color--lavender);
+			}
+
+			&:nth-child(2) a {
+				background: var(--wp--preset--color--cyan);
+			}
+
+			&:nth-child(3) a {
+				background: var(--wp--preset--color--yellow);
+			}
 		}
 
-		&:nth-child(2) a {
-			background: var(--wp--preset--color--cyan);
-		}
+		@include media("<=mobile_menu") {
+			flex: 1 1 auto;
+			min-width: 50%;
 
-		&:nth-child(3) a {
-			background: var(--wp--preset--color--yellow);
+			&:nth-child(1) a {
+				background: var(--wp--preset--color--lavender);
+			}
+
+			&:nth-child(2) a {
+				background: var(--wp--preset--color--cyan);
+			}
+
+			&:nth-child(3) a {
+				background: var(--wp--preset--color--yellow);
+			}
+
+			&:nth-child(4) {
+				flex: 1 1 100%;
+
+				a {
+					background: var(--wp--preset--color--cerulean);
+				}
+			}
 		}
 	}
 
 	a {
 		text-decoration: none;
 		color: var(--wp--preset--color--foreground);
-		padding: .5em;
+		padding: .75em 1em;
 		font-family: Oswald;
-		font-size: 19px;
+		font-size: 18px;
 		font-style: normal;
 		font-weight: 400;
 		line-height: normal;
@@ -369,10 +440,48 @@
 
 		@include media(">mobile_menu") {
 			text-align: center;
+			color: var(--wp--preset--color--foreground);
+		}
+
+		@include media("<=mobile_menu") {
+			color: var(--wp--preset--color--foreground);
+			text-align: center;
+			padding: 1rem;
+			font-size: 16px;
 		}
 
 		&:hover {
-			opacity: 0.9;
+			opacity: 0.85;
+		}
+	}
+}
+
+// Member Pages button styling
+#utility-menu li.member-pages-link a,
+#utility-menu li:has(a[href*="member"]) a {
+	@include media("<=mobile_menu") {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+
+		&::after {
+			content: "→";
+			font-size: 24px;
+			line-height: 1;
+		}
+	}
+}
+
+// Adjust grid when Member Pages is not present
+#utility-menu:not(:has(li.member-pages-link)) {
+	@include media("<=mobile_menu") {
+		li {
+			min-width: 33.333%; // 3 columns instead of 2
+
+			&:nth-child(3) {
+				flex: 1 1 33.333%;
+			}
 		}
 	}
 }
@@ -390,5 +499,26 @@
 body.menu-open {
 	@include media("<=mobile_menu") {
 		overflow: hidden;
+
+		.site-header {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 1000;
+
+			.wrap {
+				min-height: 100vh;
+				grid-template-rows: auto 1fr;
+			}
+		}
+
+		.nav-container {
+			display: flex;
+			flex-direction: column;
+			overflow-y: auto;
+			-webkit-overflow-scrolling: touch;
+			max-height: calc(100vh - 80px);
+		}
 	}
 }

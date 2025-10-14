@@ -44,6 +44,7 @@
 		if ( !event.target.closest('.submenu-expand') ) return;
 
 		event.preventDefault();
+		event.stopPropagation();
 
 		const button = event.target.closest('.submenu-expand');
 		const submenu = button.nextElementSibling;
@@ -53,6 +54,15 @@
 		// Set aria-expanded for accessibility
 		const isExpanded = button.classList.contains('expanded');
 		button.setAttribute('aria-expanded', isExpanded);
+
+		// Actually toggle the submenu display
+		if (submenu && submenu.classList.contains('sub-menu')) {
+			if (isExpanded) {
+				submenu.style.display = 'block';
+			} else {
+				submenu.style.display = 'none';
+			}
+		}
 	}
 
 	// Close menu when clicking outside (mobile only)
@@ -70,6 +80,9 @@
 			menuToggle.classList.remove('active');
 			body.classList.remove('menu-open');
 			menuToggle.setAttribute('aria-expanded', 'false');
+
+			// Close all submenus when closing main menu
+			closeAllSubmenus();
 		}
 	}
 
@@ -88,8 +101,25 @@
 				}
 
 				body.classList.remove('menu-open');
+
+				// Close all submenus when closing main menu
+				closeAllSubmenus();
 			}
 		}
+	}
+
+	// Close all open submenus
+	const closeAllSubmenus = function() {
+		const expandedButtons = document.querySelectorAll('.submenu-expand.expanded');
+		expandedButtons.forEach(function(button) {
+			button.classList.remove('expanded');
+			button.setAttribute('aria-expanded', 'false');
+
+			const submenu = button.nextElementSibling;
+			if (submenu && submenu.classList.contains('sub-menu')) {
+				submenu.style.display = 'none';
+			}
+		});
 	}
 
 	// Add functions to click event listener
