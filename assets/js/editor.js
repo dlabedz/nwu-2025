@@ -95,4 +95,11 @@ wp.domReady( () => {
 		scope: [ 'block' ]
 	} );
 
+	// Register zero gap style for columns
+	wp.blocks.registerBlockStyle('core/columns', {
+		name: 'no-gap',
+		label: 'No Gap'
+	});
+
+
 } );

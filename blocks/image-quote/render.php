@@ -21,7 +21,7 @@ if ( empty( $quote ) || empty( $image_id ) ) {
 }
 
 // Build block classes
-$classes = ['block-image-quote u-width-constrained'];
+$classes = ['block-image-quote'];
 
 // Add alignment class
 if ( ! empty( $block['align'] ) ) {
@@ -50,7 +50,10 @@ $anchor = ! empty( $block['anchor'] ) ? 'id="' . esc_attr( $block['anchor'] ) . 
 
 		<div class="block-image-quote__content">
 			<div class="block-image-quote__icon">
-				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/NWU-Quote 1.png' ); ?>" alt="Quote icon" />
+				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/NWU-Quote-1.png' ); ?>"
+					alt=""
+					width="60"
+					height="60" />
 			</div>
 
 			<blockquote class="block-image-quote__quote">

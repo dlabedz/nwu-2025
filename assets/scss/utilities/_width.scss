@@ -67,3 +67,27 @@
 .u-content-wide {
 	@extend .u-width-wide;
 }
+
+
+/* Padding Utilities
+--------------------------------------------- */
+
+// Left padding that matches constrained content whitespace
+.u-padding-left-constrained {
+	padding-left: 16px; // Half of 32px for mobile
+
+	@include media(">=tablet") {
+		// Calculate the left whitespace of centered constrained content
+		// Formula: (100vw - content-width) / 2
+		padding-left: max(16px, calc((100vw - clamp(700px, 85vw, 1152px)) / 2));
+	}
+}
+
+// Specific override for column blocks if needed
+.wp-block-column.u-padding-left-constrained {
+	padding-left: 16px;
+
+	@include media(">=tablet") {
+		padding-left: max(16px, calc((100vw - clamp(700px, 85vw, 1152px)) / 2));
+	}
+}

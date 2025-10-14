@@ -323,3 +323,15 @@ label,
 .has-cerulean-background-color {
 	color: var(--wp--preset--color--foreground);
 }
+
+/* Columns - Zero Gap
+--------------------------------------------- */
+
+.wp-block-columns.is-style-no-gap {
+	gap: 0 !important;
+}
+
+// If you want to make it the default for ALL columns blocks:
+// .wp-block-columns {
+// 	gap: 0 !important;
+// }

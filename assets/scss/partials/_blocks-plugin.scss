@@ -9,13 +9,14 @@
 	max-width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	margin: 0 auto var(--wp--custom--layout--block-gap);
+	margin-top: var(--wp--custom--layout--block-gap-large);
+	margin-bottom: var(--wp--custom--layout--block-gap-large);
 	line-height: var(--wp--custom--line-height--small);
 	font-size: var(--wp--preset--font-size--tiny);
-	// display: flex;
-	// align-items: center;
-	// flex-wrap: wrap;
-	// gap: 4px;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 4px;
 	//padding-left: clamp(16px, 5vw, 153px);
 	//padding-right: clamp(16px, 5vw, 153px);
 
