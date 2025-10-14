@@ -9,8 +9,6 @@
  * @license      GPL-2.0+
  **/
 
-use NWU2025\Blocks\Social_Links;
-
 /**
  * Site Footer
  */
@@ -42,7 +40,7 @@ function be_site_footer_top() {
 				$address = get_field('address', 'option');
 				if ($address) {
 					echo '<div class="address">';
-						echo wp_kses_post($address); // Allows safe HTML tags
+						echo wp_kses_post($address);
 					echo '</div>';
 				}
 			echo '</div>';
@@ -73,17 +71,49 @@ function be_site_footer_top() {
 
 		echo '<div class="footer-column-3">';
 
-		 // Newsletter Signup
+			// Newsletter Signup Header with Social Links
 			$title = get_field('newsletter_form_title', 'option');
-			if ($address) {
-				echo '<p class="">';
-					echo esc_html($title);
-				echo '</p>';
-			}
+
+			echo '<div class="newsletter-header">';
+				if ($title) {
+					echo '<div class="newsletter-title">';
+						echo esc_html($title);
+					echo '</div>';
+				}
+
+				// Social Media Links
+				$facebook_url = get_field('facebook_url', 'option');
+				$twitter_url = get_field('twitter_url', 'option');
+				$linkedin_url = get_field('linkedin_url', 'option');
+
+				if ($facebook_url || $twitter_url || $linkedin_url) {
+					echo '<div class="footer-social-links" aria-label="Social Media Links">';
+
+						if ($facebook_url) {
+							echo '<a href="' . esc_url($facebook_url) . '" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" class="social-link social-link--facebook">';
+								echo '<img src="' . esc_url(get_template_directory_uri() . '/assets/icons/utility/facebook.svg') . '" alt="Facebook" width="24" height="24">';
+							echo '</a>';
+						}
+
+						if ($twitter_url) {
+							echo '<a href="' . esc_url($twitter_url) . '" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (formerly Twitter)" class="social-link social-link--twitter">';
+								echo '<img src="' . esc_url(get_template_directory_uri() . '/assets/icons/utility/x.svg') . '" alt="X" width="24" height="24">';
+							echo '</a>';
+						}
+
+						if ($linkedin_url) {
+							echo '<a href="' . esc_url($linkedin_url) . '" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" class="social-link social-link--linkedin">';
+								echo '<img src="' . esc_url(get_template_directory_uri() . '/assets/icons/utility/linkedin.svg') . '" alt="LinkedIn" width="24" height="24">';
+							echo '</a>';
+						}
+
+					echo '</div>';
+				}
+			echo '</div>';
 
 			$subtitle = get_field('newsletter_form_subtitle', 'option');
-			if ($address) {
-				echo '<p class="">';
+			if ($subtitle) {
+				echo '<p class="newsletter-subtitle">';
 					echo esc_html($subtitle);
 				echo '</p>';
 			}
@@ -98,6 +128,6 @@ add_action( 'tha_footer_top', 'be_site_footer_top' );
  * Copyright
  */
 function be_site_footer_bottom() {
-	echo '<p class="copyright">&copy;' . date( 'Y' ) . ' ' . 'National Writers Union' . '. All rights reserved. <a href="">Log Out</a>.</p>';
+	echo '<p class="copyright">&copy; ' . date( 'Y' ) . ' National Writers Union. All rights reserved. <a href="' . esc_url(wp_logout_url(home_url())) . '">Log Out</a>.</p>';
 }
 add_action( 'tha_footer_bottom', 'be_site_footer_bottom' );

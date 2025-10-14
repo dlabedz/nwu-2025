@@ -25,9 +25,8 @@
 	background-color: var(--wp--preset--color--navy);
 	color: var(--wp--preset--color--white);
 	display: grid;
-	grid-template-columns: 1fr; // Mobile: single column
+	grid-template-columns: 1fr;
 
-	// Tablet and up: 3-column layout
 	@include media(">=tablet") {
 		grid-template-columns: 338px 1fr 1fr;
 	}
@@ -39,7 +38,7 @@
 	padding: 2em;
 
 	@include media(">=tablet") {
-		padding: 2em; // Adjust tablet/desktop padding as needed
+		padding: 2em;
 	}
 }
 
@@ -61,12 +60,11 @@
 	ul{
 		list-style-type: none;
 		padding: 0;
-		columns: 1; // Mobile: single column
+		columns: 1;
 		column-gap: 2rem;
 		column-fill: balance;
 		padding: 2em 0;
 
-		// Tablet and up: 2 columns
 		@include media(">=tablet") {
 			columns: 2;
 		}
@@ -101,11 +99,10 @@
 
 .footer-badge {
 	display: flex;
-	flex-direction: column; // Mobile: stack vertically
+	flex-direction: column;
 	align-items: center;
 	gap: 1rem;
 
-	// Tablet and up: side-by-side
 	@include media(">=tablet") {
 		flex-direction: row;
 		align-items: stretch;
@@ -125,12 +122,11 @@
 	}
 }
 
-// Style the navigation container to fill the height
 .nav-utility {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-	width: 100%; // Full width on mobile
+	width: 100%;
 
 	@include media(">=tablet") {
 		width: auto;
@@ -143,10 +139,10 @@
 	padding: 0;
 	display: flex;
 	flex-direction: column;
-	height: auto; // Auto height on mobile
+	height: auto;
 
 	@include media(">=tablet") {
-		height: 155px; // Match logo height on tablet+
+		height: 155px;
 	}
 
 	li {
@@ -169,7 +165,7 @@
 	a {
 		text-decoration: none;
 		color: var(--wp--preset--color--foreground);
-		padding: 0.75em 1em; // More padding on mobile
+		padding: 0.75em 1em;
 		font-family: Oswald;
 		font-size: 19px;
 		font-style: normal;
@@ -186,7 +182,6 @@
 			padding: 0.5em;
 		}
 
-		// Border between buttons
 		&:not(:last-child) {
 			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -205,12 +200,96 @@
 	}
 }
 
+/* Newsletter Section with Social Links
+--------------------------------------------- */
+
+.newsletter-header {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	margin-bottom: 1.5rem;
+
+	@include media(">=tablet") {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2rem;
+	}
+}
+
+.newsletter-title {
+	color: var(--wp--preset--color--white);
+	font-family: Oswald;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	text-transform: capitalize;
+	margin: 0;
+}
+
+.newsletter-subtitle {
+	color: var(--wp--preset--color--white);
+	margin-top: 0;
+}
+
+.footer-social-links {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+
+	@include media("<tablet") {
+		justify-content: flex-start;
+	}
+}
+
+.social-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	transition: transform 0.2s ease;
+
+	img {
+		width: 100%;
+		height: 100%;
+		display: block;
+		filter: brightness(0) invert(1); // Makes the icon white
+		transition: filter 0.2s ease;
+	}
+
+	&:hover {
+		transform: translateY(-2px);
+
+		img {
+			filter: brightness(0); // Makes the icon black
+		}
+	}
+
+	&:active {
+		transform: translateY(0);
+	}
+}
+
+/* Copyright
+--------------------------------------------- */
+
 .copyright{
 	text-align: center;
 	padding: 1em;
 
 	@include media("<tablet") {
 		font-size: var(--wp--preset--font-size--tiny);
+	}
+
+	a {
+		color: inherit;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
 	}
 }
 
@@ -224,7 +303,7 @@
 	right: 32px;
 	width: 63px;
 	height: 63px;
-	background: var(--wp--preset--color--yellow); // #F4B438
+	background: var(--wp--preset--color--yellow);
 	border: none;
 	border-radius: 50%;
 	display: flex;
@@ -255,11 +334,10 @@
 	svg {
 		width: 33px;
 		height: 22px;
-		fill: var(--wp--preset--color--foreground); // #0A0A0A
+		fill: var(--wp--preset--color--foreground);
 		color: var(--wp--preset--color--foreground);
 	}
 
-	// Responsive adjustments
 	@include media("<=tablet") {
 		bottom: 24px;
 		right: 24px;
@@ -285,7 +363,6 @@
 	}
 }
 
-// Screen reader text for accessibility
 .back-to-top .screen-reader-text {
 	position: absolute !important;
 	clip: rect(0, 0, 0, 0);

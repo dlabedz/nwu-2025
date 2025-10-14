@@ -1,0 +1,75 @@
+{
+    "key": "group_footer_social_links",
+    "title": "Footer Social Links",
+    "fields": [
+        {
+            "key": "field_facebook_url",
+            "label": "Facebook URL",
+            "name": "facebook_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Enter your Facebook page URL (e.g., https:\/\/facebook.com\/yourpage)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/facebook.com\/"
+        },
+        {
+            "key": "field_twitter_url",
+            "label": "X (Twitter) URL",
+            "name": "twitter_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Enter your X\/Twitter profile URL (e.g., https:\/\/x.com\/yourhandle or https:\/\/twitter.com\/yourhandle)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/x.com\/"
+        },
+        {
+            "key": "field_linkedin_url",
+            "label": "LinkedIn URL",
+            "name": "linkedin_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Enter your LinkedIn company or profile URL (e.g., https:\/\/linkedin.com\/company\/yourcompany)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/linkedin.com\/"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "footer-settings"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Social media links that appear in the footer newsletter section",
+    "show_in_rest": 0
+}
