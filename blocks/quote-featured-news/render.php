@@ -19,7 +19,7 @@ if (!$quote_text && !$featured_post) {
 }
 ?>
 
-<div class="block-quote-featured-news">
+<div class="block-quote-featured-news u-bleed-right">
     <div class="block-quote-featured-news__inner">
 
         <!-- Quote Column (60%) -->

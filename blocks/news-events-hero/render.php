@@ -32,7 +32,7 @@ $image_caption = get_field('image_caption');
 
 $classes = [
     'block-news-events-hero',
-	'',
+	'u-bleed-left',
     'has-' . $bg_color . '-background-color',
     'has-' . $text_color . '-text'
 ];

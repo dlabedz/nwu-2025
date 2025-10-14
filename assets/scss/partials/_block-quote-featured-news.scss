@@ -77,6 +77,10 @@
     flex-direction: column;
     gap: 12px;
 
+	@include media(">=tablet") {
+		padding-right: 3em;
+    }
+
     &__date {
         font-family: "DM Mono";
 		font-size: 20px;

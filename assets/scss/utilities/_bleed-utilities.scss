@@ -1,0 +1,123 @@
+/* Bleed Utilities
+--------------------------------------------- */
+
+// Base bleed container - NO bleed on mobile/tablet
+.u-bleed-left,
+.u-bleed-right {
+	position: relative;
+	width: 100%;
+
+	// On mobile/tablet: normal padding
+	padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
+}
+
+// Bleed LEFT - background extends to left edge, right margin matches constrained width
+.u-bleed-left {
+	@include media(">=desktop") {
+		// Extend background to left viewport edge
+		margin-left: calc(-50vw + 50%);
+		padding-left: calc(50vw - 50%);
+
+		// Right margin matches u-width-constrained side margin (7.5vw = half of 15vw total margin)
+		// This creates visual alignment with constrained content blocks
+		margin-right: 7.5vw;
+		padding-right: var(--wp--custom--layout--padding);
+
+		// Content width adjusts to fill available space
+		max-width: calc(100vw - 7.5vw);
+	}
+}
+
+// Bleed RIGHT - background extends to right edge, left margin matches constrained width
+.u-bleed-right {
+	@include media(">=desktop") {
+		// Extend background to right viewport edge
+		margin-right: calc(-50vw + 50%);
+		padding-right: calc(50vw - 50%);
+
+		// Left margin matches u-width-constrained side margin (7.5vw)
+		margin-left: 7.5vw;
+		padding-left: var(--wp--custom--layout--padding);
+
+		// Content width adjusts to fill available space
+		max-width: calc(100vw - 7.5vw);
+	}
+}
+
+// Match wide width margins (5vw per side, from 90vw total)
+.u-bleed--match-wide {
+	@include media(">=desktop") {
+		&.u-bleed-left {
+			margin-right: 5vw;
+			max-width: calc(100vw - 5vw);
+		}
+		&.u-bleed-right {
+			margin-left: 5vw;
+			max-width: calc(100vw - 5vw);
+		}
+	}
+}
+
+// Match narrow width margins (15vw per side, from 70vw total)
+.u-bleed--match-narrow {
+	@include media(">=desktop") {
+		&.u-bleed-left {
+			margin-right: 15vw;
+			max-width: calc(100vw - 15vw);
+		}
+		&.u-bleed-right {
+			margin-left: 15vw;
+			max-width: calc(100vw - 15vw);
+		}
+	}
+}
+
+// Padding options for bleed containers
+.u-bleed--padding-sm {
+	padding-top: var(--wp--custom--layout--block-gap);
+	padding-bottom: var(--wp--custom--layout--block-gap);
+}
+
+.u-bleed--padding-md {
+	padding-top: var(--wp--custom--layout--block-gap-large);
+	padding-bottom: var(--wp--custom--layout--block-gap-large);
+}
+
+.u-bleed--padding-lg {
+	padding-top: calc(var(--wp--custom--layout--block-gap-large) * 1.5);
+	padding-bottom: calc(var(--wp--custom--layout--block-gap-large) * 1.5);
+}
+
+// Remove top/bottom padding when needed
+.u-bleed--no-padding-top {
+	padding-top: 0 !important;
+}
+
+.u-bleed--no-padding-bottom {
+	padding-bottom: 0 !important;
+}
+
+// Padding options for bleed containers
+.u-bleed--padding-sm {
+	padding-top: var(--wp--custom--layout--block-gap);
+	padding-bottom: var(--wp--custom--layout--block-gap);
+}
+
+.u-bleed--padding-md {
+	padding-top: var(--wp--custom--layout--block-gap-large);
+	padding-bottom: var(--wp--custom--layout--block-gap-large);
+}
+
+.u-bleed--padding-lg {
+	padding-top: calc(var(--wp--custom--layout--block-gap-large) * 1.5);
+	padding-bottom: calc(var(--wp--custom--layout--block-gap-large) * 1.5);
+}
+
+// Remove top/bottom padding when needed
+.u-bleed--no-padding-top {
+	padding-top: 0 !important;
+}
+
+.u-bleed--no-padding-bottom {
+	padding-bottom: 0 !important;
+}
