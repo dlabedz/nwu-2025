@@ -14,6 +14,8 @@
  */
 function be_site_footer_top() {
 	echo '<div class="footer-main-container">';
+
+		// Column 1: Logo, Utility Menu, Address
 		echo '<div class="footer-column-1">';
 
 			echo '<div class="footer-badge">';
@@ -21,22 +23,27 @@ function be_site_footer_top() {
 					echo '<img src="' . esc_url( get_template_directory_uri() . '/assets/images/footer-logo.svg' ) . '" alt="' . esc_attr( get_bloginfo( 'name' ) ) . '">';
 				echo '</a>';
 
-				echo '<nav class="" role="navigation">';
+				echo '<nav class="footer-utility-nav" role="navigation" aria-label="Utility Menu">';
 					if ( has_nav_menu( 'utility' ) ) {
-						wp_nav_menu( array( 'theme_location' => 'utility', 'menu_id' => 'footer-utility-menu', 'container_class' => 'nav-utility' ) );
+						wp_nav_menu( array(
+							'theme_location' => 'utility',
+							'menu_id' => 'footer-utility-menu',
+							'container_class' => 'nav-utility'
+						) );
 					}
 				echo '</nav>';
 			echo '</div>';
 
 			echo '<div class="footer-address">';
-
-				// Address
+				// Address Title
 				$address_title = get_field('address_title', 'option');
 				if ($address_title) {
 					echo '<h4 class="address-title">';
 						echo esc_html($address_title);
 					echo '</h4>';
 				}
+
+				// Address Content
 				$address = get_field('address', 'option');
 				if ($address) {
 					echo '<div class="address">';
@@ -47,8 +54,9 @@ function be_site_footer_top() {
 
 		echo '</div>';
 
+		// Column 2: Navigation Menus
 		echo '<div class="footer-column-2">';
-			echo '<nav class="footer-primary-container" role="navigation">';
+			echo '<nav class="footer-primary-container" role="navigation" aria-label="Primary Footer Navigation">';
 				if ( has_nav_menu( 'footer-primary' ) ) {
 					wp_nav_menu( array(
 						'theme_location' => 'footer-primary',
@@ -58,7 +66,7 @@ function be_site_footer_top() {
 				}
 			echo '</nav>';
 
-			echo '<nav class="footer-secondary-container" role="navigation">';
+			echo '<nav class="footer-secondary-container" role="navigation" aria-label="Secondary Footer Navigation">';
 				if ( has_nav_menu( 'footer-secondary' ) ) {
 					wp_nav_menu( array(
 						'theme_location' => 'footer-secondary',
@@ -69,15 +77,16 @@ function be_site_footer_top() {
 			echo '</nav>';
 		echo '</div>';
 
+		// Column 3: Newsletter & Social
 		echo '<div class="footer-column-3">';
 
-			// Newsletter Signup Header with Social Links
-			$title = get_field('newsletter_form_title', 'option');
+			// Newsletter Title & Social Links Header
+			$newsletter_title = get_field('newsletter_form_title', 'option');
 
 			echo '<div class="newsletter-header">';
-				if ($title) {
+				if ($newsletter_title) {
 					echo '<div class="newsletter-title">';
-						echo esc_html($title);
+						echo esc_html($newsletter_title);
 					echo '</div>';
 				}
 
@@ -111,14 +120,21 @@ function be_site_footer_top() {
 				}
 			echo '</div>';
 
-			$subtitle = get_field('newsletter_form_subtitle', 'option');
-			if ($subtitle) {
+			// Newsletter Subtitle
+			$newsletter_subtitle = get_field('newsletter_form_subtitle', 'option');
+			if ($newsletter_subtitle) {
 				echo '<p class="newsletter-subtitle">';
-					echo esc_html($subtitle);
+					echo esc_html($newsletter_subtitle);
 				echo '</p>';
 			}
 
+			// Newsletter Form (CiviCRM embed area)
+			echo '<div class="newsletter-form">';
+				// Add CiviCRM newsletter form embed here
+			echo '</div>';
+
 		echo '</div>';
+
 	echo '</div>';
 }
 add_action( 'tha_footer_top', 'be_site_footer_top' );
@@ -128,6 +144,8 @@ add_action( 'tha_footer_top', 'be_site_footer_top' );
  * Copyright
  */
 function be_site_footer_bottom() {
-	echo '<p class="copyright">&copy; ' . date( 'Y' ) . ' National Writers Union. All rights reserved. <a href="' . esc_url(wp_logout_url(home_url())) . '">Log Out</a>.</p>';
+	echo '<div class="footer-copyright-bar">';
+		echo '<p class="copyright">&copy; ' . date( 'Y' ) . ' National Writers Union. All rights reserved. <a href="' . esc_url(wp_logout_url(home_url())) . '">Log Out</a>.</p>';
+	echo '</div>';
 }
 add_action( 'tha_footer_bottom', 'be_site_footer_bottom' );

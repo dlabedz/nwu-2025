@@ -15,105 +15,98 @@
 	padding: 0;
 	position: relative;
 
-	.wrap{
+	.wrap {
 		padding: 0;
 		max-width: 100%;
 	}
 }
 
-.footer-main-container{
+/* Footer Main Container - Responsive Grid
+--------------------------------------------- */
+
+.footer-main-container {
 	background-color: var(--wp--preset--color--navy);
 	color: var(--wp--preset--color--white);
 	display: grid;
 	grid-template-columns: 1fr;
 
+	// Tablet (768px+): Stack vertically but adjust padding
 	@include media(">=tablet") {
+		grid-template-columns: 1fr;
+	}
+
+	// Desktop (1024px+): Three column layout
+	@include media(">=1024px") {
 		grid-template-columns: 338px 1fr 1fr;
 	}
-}
 
-
-.footer-column-2,
-.footer-column-3 {
-	padding: 2em;
-
-	@include media(">=tablet") {
-		padding: 2em;
+	// Wide Desktop (1200px+): Adjust proportions
+	@include media(">=desktop") {
+		grid-template-columns: 400px 1.5fr 1fr;
 	}
 }
 
-.footer-column-2 {
+/* Footer Column 1: Logo, Utility, Address
+--------------------------------------------- */
+
+.footer-column-1 {
+	// Mobile: Full width, stacked
 	@include media("<tablet") {
-		padding: 2em;
+		padding: 0;
 	}
 
 	@include media(">=tablet") {
-		padding: 0 2em;
-	}
-}
-
-.footer-column-3 {
-	background: var(--wp--preset--color--blue);
-}
-
-.footer-secondary, .footer-primary{
-	ul{
-		list-style-type: none;
 		padding: 0;
-		columns: 1;
-		column-gap: 2rem;
-		column-fill: balance;
-		padding: 2em 0;
+	}
 
-		@include media(">=tablet") {
-			columns: 2;
-		}
-
-		li{
-			a{
-				color: var(--wp--preset--color--white);
-				text-decoration: none;
-			}
-		}
+	@include media(">=1024px") {
+		padding: 0;
 	}
 }
 
-.footer-primary{
-	border-bottom: 1px solid white;
-
-	li{
-		a{
-			font-family: Oswald;
-			font-size: 19px;
-			font-style: normal;
-			font-weight: 400;
-			line-height: normal;
-			text-transform: uppercase;
-
-			&:hover{
-				text-decoration: underline;
-			}
-		}
-	}
-}
+/* Footer Badge - Logo + Utility Menu
+--------------------------------------------- */
 
 .footer-badge {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 1rem;
+	align-items: stretch; // Force children to match height
+	gap: 0;
+	flex-direction: row; // Keep them side-by-side at all sizes
+
+	// Ensure container height matches content
+	@include media("<tablet") {
+		height: 100px;
+	}
 
 	@include media(">=tablet") {
-		flex-direction: row;
-		align-items: stretch;
-		gap: 0;
+		height: 140px;
+	}
+
+	@include media(">=1024px") {
+		height: 155px;
 	}
 }
 
 .footer-logo {
-	width: 155px;
-	height: 155px;
 	flex-shrink: 0;
+
+	// Mobile: Smaller logo
+	@include media("<tablet") {
+		width: 100px;
+		height: 100px;
+	}
+
+	// Tablet: Medium size
+	@include media(">=tablet") {
+		width: 140px;
+		height: 140px;
+	}
+
+	// Desktop: Full size
+	@include media(">=1024px") {
+		width: 155px;
+		height: 155px;
+	}
 
 	img {
 		width: 100%;
@@ -122,11 +115,29 @@
 	}
 }
 
+/* Utility Navigation
+--------------------------------------------- */
+
 .nav-utility {
 	display: flex;
 	flex-direction: column;
 	flex: 1;
 	width: 100%;
+
+	@include media("<tablet") {
+		height: 100px;
+		max-height: 100px;
+	}
+
+	@include media(">=tablet") {
+		height: 140px;
+		max-height: 140px;
+	}
+
+	@include media(">=1024px") {
+		height: 155px;
+		max-height: 155px;
+	}
 
 	@include media(">=tablet") {
 		width: auto;
@@ -139,15 +150,27 @@
 	padding: 0;
 	display: flex;
 	flex-direction: column;
-	height: auto;
+	height: 100%;
+	max-height: 100%;
 
+	// Mobile: Match smaller logo height
+	@include media("<tablet") {
+		height: 100px;
+	}
+
+	// Tablet+: Match logo height
 	@include media(">=tablet") {
+		height: 140px;
+	}
+
+	@include media(">=1024px") {
 		height: 155px;
 	}
 
 	li {
 		flex: 1;
 		display: flex;
+		min-height: 0;
 
 		&:nth-child(1) a {
 			background: var(--wp--preset--color--lavender);
@@ -165,50 +188,221 @@
 	a {
 		text-decoration: none;
 		color: var(--wp--preset--color--foreground);
-		padding: 0.75em 1em;
 		font-family: Oswald;
-		font-size: 19px;
 		font-style: normal;
 		font-weight: 400;
-		line-height: normal;
+		line-height: 1;
+		min-height: 0;
 		text-transform: uppercase;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex: 1;
 		text-align: center;
+		transition: opacity 0.2s ease;
+
+		// Mobile: Smaller text, tight padding
+		@include media("<tablet") {
+			padding: 0.25rem 0.5rem;
+			font-size: 13px;
+		}
 
 		@include media(">=tablet") {
-			padding: 0.5em;
+			padding: 0.5rem 0.75rem;
+			font-size: 16px;
+		}
+
+		// Desktop: Original size
+		@include media(">=1024px") {
+			padding: 0.5rem;
+			font-size: 19px;
+		}
+
+		&:hover {
+			opacity: 0.9;
 		}
 
 		&:not(:last-child) {
 			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
 			@include media("<tablet") {
-				border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 			}
 		}
 	}
 }
 
-.footer-address {
-	padding: 2em;
+/* Footer Address
+--------------------------------------------- */
 
+.footer-address {
+	// Mobile: Comfortable padding
+	@include media("<tablet") {
+		padding: 2rem 1.5rem;
+	}
+
+	// Tablet: More padding
 	@include media(">=tablet") {
-		padding: 2em 3em;
+		padding: 2rem 2rem;
+	}
+
+	// Desktop: Original padding
+	@include media(">=1024px") {
+		padding: 2rem 3rem;
+	}
+
+	.address-title {
+		margin-bottom: 0.75rem;
+		font-size: 16.5px;
+	}
+
+	.address {
+		font-size: 16px;
+		line-height: 1.6;
+
+		@include media("<tablet") {
+			font-size: 15px;
+		}
 	}
 }
 
-/* Newsletter Section with Social Links
+/* Footer Column 2: Navigation Menus
+--------------------------------------------- */
+
+.footer-column-2 {
+	// Mobile: Full width with padding
+	@include media("<tablet") {
+		padding: 2rem 1.5rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.2);
+	}
+
+	// Tablet: Maintain padding
+	@include media(">=tablet") {
+		padding: 2rem 2rem;
+	}
+
+	// Desktop: Side padding only
+	@include media(">=1024px") {
+		padding: 0 2rem;
+	}
+}
+
+.footer-secondary,
+.footer-primary {
+	ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		column-gap: 2rem;
+		column-fill: balance;
+
+		// Mobile: Single column
+		@include media("<tablet") {
+			columns: 1;
+			padding: 1rem 0;
+		}
+
+		// Tablet+: Two columns
+		@include media(">=tablet") {
+			columns: 2;
+			padding: 2rem 0;
+		}
+
+		li {
+			break-inside: avoid;
+			margin-bottom: 0.75rem;
+
+			a {
+				color: var(--wp--preset--color--white);
+				text-decoration: none;
+				display: inline-block;
+				transition: opacity 0.2s ease;
+
+				&:hover {
+					opacity: 0.8;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+.footer-primary {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+	@include media("<tablet") {
+		border-bottom-width: 1px;
+	}
+
+	li a {
+		font-family: Oswald;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+		text-transform: uppercase;
+
+		// Mobile: Slightly smaller
+		@include media("<tablet") {
+			font-size: 17px;
+		}
+
+		// Desktop: Original size
+		@include media(">=tablet") {
+			font-size: 19px;
+		}
+	}
+}
+
+.footer-secondary {
+	li a {
+		font-family: "DM Sans", sans-serif;
+		font-size: 16px;
+		line-height: 1.5;
+
+		@include media("<tablet") {
+			font-size: 15px;
+		}
+	}
+}
+
+/* Footer Column 3: Newsletter & Social
+--------------------------------------------- */
+
+.footer-column-3 {
+	background: var(--wp--preset--color--blue);
+
+	// Mobile: Full width
+	@include media("<tablet") {
+		padding: 2rem 1.5rem;
+	}
+
+	// Tablet+: Maintain padding
+	@include media(">=tablet") {
+		padding: 2rem 2rem;
+	}
+
+	// Desktop: Original padding
+	@include media(">=1024px") {
+		padding: 2rem;
+	}
+}
+
+/* Newsletter Header with Social Links
 --------------------------------------------- */
 
 .newsletter-header {
 	display: flex;
-	flex-direction: column;
 	gap: 1.5rem;
 	margin-bottom: 1.5rem;
 
+	// Mobile: Stack vertically
+	@include media("<tablet") {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+
+	// Tablet+: Row with space between
 	@include media(">=tablet") {
 		flex-direction: row;
 		align-items: center;
@@ -220,18 +414,32 @@
 .newsletter-title {
 	color: var(--wp--preset--color--white);
 	font-family: Oswald;
-	font-size: 24px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: normal;
-	text-transform: capitalize;
+	font-size: 24px;
+	text-transform: uppercase;
+	letter-spacing: 0;
 	margin: 0;
 }
 
 .newsletter-subtitle {
 	color: var(--wp--preset--color--white);
 	margin-top: 0;
+	margin-bottom: 1.5rem;
+	line-height: 1.6;
+
+	@include media("<tablet") {
+		font-size: 15px;
+	}
+
+	@include media(">=tablet") {
+		font-size: 16px;
+	}
 }
+
+/* Social Media Links
+--------------------------------------------- */
 
 .footer-social-links {
 	display: flex;
@@ -240,6 +448,7 @@
 
 	@include media("<tablet") {
 		justify-content: flex-start;
+		gap: 1.25rem;
 	}
 }
 
@@ -251,11 +460,16 @@
 	height: 32px;
 	transition: transform 0.2s ease;
 
+	@include media("<tablet") {
+		width: 36px;
+		height: 36px;
+	}
+
 	img {
 		width: 100%;
 		height: 100%;
 		display: block;
-		filter: brightness(0) invert(1); // Makes the icon white
+		filter: brightness(0) invert(1);
 		transition: filter 0.2s ease;
 	}
 
@@ -263,7 +477,7 @@
 		transform: translateY(-2px);
 
 		img {
-			filter: brightness(0); // Makes the icon black
+			filter: brightness(0.8) invert(1);
 		}
 	}
 
@@ -272,15 +486,34 @@
 	}
 }
 
-/* Copyright
+/* Newsletter Form Area
 --------------------------------------------- */
 
-.copyright{
+.newsletter-form {
+	// Space for CiviCRM form embed
+	margin-top: 1.5rem;
+}
+
+/* Copyright Bar
+--------------------------------------------- */
+
+.footer-copyright-bar {
+	background: var(--wp--preset--color--background);
+	padding: 1rem 0;
+
+	@include media("<tablet") {
+		padding: 1.5rem var(--wp--custom--layout--padding);
+	}
+}
+
+.copyright {
 	text-align: center;
-	padding: 1em;
+	margin: 0;
+	font-size: var(--wp--preset--font-size--small);
 
 	@include media("<tablet") {
 		font-size: var(--wp--preset--font-size--tiny);
+		line-height: 1.6;
 	}
 
 	a {
@@ -292,7 +525,6 @@
 		}
 	}
 }
-
 
 /* Back to Top Button
 --------------------------------------------- */
