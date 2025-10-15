@@ -33,14 +33,14 @@
 	margin-left: calc(-1 * var(--wp--custom--layout--padding));
 	overflow: hidden;
 	position: absolute;
-	background: green;
-	left: 0;
+	width: 150px;
+	left: -75px;
 
-	svg {
-		display: block;
-		fill: var(--wp--preset--color--foreground);
-		transform: translateX(-10px);
+	img{
+		width: 100%;
+		height: auto;
 	}
+
 }
 
 .news-events-feed__heading {

@@ -47,7 +47,7 @@ if ( ! $query->have_posts() ) {
 	<div class="u-width-constrained">
 	<div class="news-events-feed__header">
 		<div class="news-events-feed__icon">
-			<?php echo be_icon( array( 'icon' => 'menu', 'group' => 'utility', 'size' => 40 ) ); ?>
+			<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/NWU-Lines.png'); ?>" alt="">
 		</div>
 		<h2 class="news-events-feed__heading"><?php echo esc_html( $heading ); ?></h2>
 		<a href="<?php echo esc_url( $view_all_link['url'] ); ?>" class="news-events-feed__view-all"<?php echo ! empty( $view_all_link['target'] ) ? ' target="' . esc_attr( $view_all_link['target'] ) . '"' : ''; ?>>
