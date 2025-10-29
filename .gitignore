@@ -4,7 +4,7 @@
 
 # ===== COMPILED ASSETS =====
 # Generated CSS from SCSS
-assets/css/
+#assets/css/
 dist/
 build/
 
