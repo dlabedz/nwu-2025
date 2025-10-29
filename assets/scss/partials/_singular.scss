@@ -55,6 +55,70 @@
 	}
 }
 
+/* Single Post Content Constraint
+--------------------------------------------- */
+
+.single-post {
+	.entry-content {
+		// Override the full-width default for single posts
+		> * {
+			width: calc(100% - 32px);
+			max-width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+
+			@include media(">=tablet") {
+				width: clamp(700px, 85vw, 1132px);
+			}
+		}
+
+		// Allow blocks to explicitly break out to full width
+		> .alignfull,
+		> .u-width-full,
+		> [class*="is-style-full"] {
+			width: 100%;
+			max-width: 100%;
+		}
+
+		// Allow wide blocks
+		> .alignwide,
+		> .u-width-wide {
+			width: calc(100% - 32px);
+			max-width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+
+			@include media(">=tablet") {
+				width: clamp(900px, 90vw, 1400px);
+			}
+		}
+
+		// Maintain full width for groups/covers that have explicit width classes
+		> .wp-block-group.u-width-full,
+		> .wp-block-cover.u-width-full {
+			width: 100%;
+
+			> * {
+				width: 100%;
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+
+		// Nested content within constrained blocks should be full width of parent
+		> .wp-block-group:not(.u-width-full),
+		> .wp-block-cover:not(.u-width-full),
+		> .wp-block-columns {
+			> * {
+				width: 100%;
+				max-width: 100%;
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+	}
+}
+
 /* Entry Content
 --------------------------------------------- */
 

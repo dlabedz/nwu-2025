@@ -43,6 +43,7 @@ if ( ! $query->have_posts() ) {
 
 ?>
 
+
 <div class="block-news-events-feed">
 	<div class="u-width-constrained">
 	<div class="news-events-feed__header">
@@ -52,7 +53,7 @@ if ( ! $query->have_posts() ) {
 		<h2 class="news-events-feed__heading"><?php echo esc_html( $heading ); ?></h2>
 		<a href="<?php echo esc_url( $view_all_link['url'] ); ?>" class="news-events-feed__view-all"<?php echo ! empty( $view_all_link['target'] ) ? ' target="' . esc_attr( $view_all_link['target'] ) . '"' : ''; ?>>
 			<?php echo esc_html( $view_all_link['title'] ); ?>
-			<?php echo be_icon( array( 'icon' => 'chevron-large-right', 'group' => 'utility', 'size' => 20 ) ); ?>
+			<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/black-arrow.svg'); ?>" alt="" aria-hidden="true">
 		</a>
 	</div>
 

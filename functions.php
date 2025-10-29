@@ -204,6 +204,26 @@ function nwu_2025_register_all_menus() {
 add_action('after_setup_theme', 'nwu_2025_register_all_menus');
 
 /**
+ * Add dynamic login/logout link to utility menu
+ */
+add_filter('wp_nav_menu_items', 'nwu2025_add_login_logout_link', 10, 2);
+function nwu2025_add_login_logout_link($items, $args) {
+    // Only add to utility menu
+    if ($args->theme_location === 'utility') {
+        if (is_user_logged_in()) {
+            $items .= '<li class="menu-item menu-item-logout">';
+            $items .= '<a href="' . esc_url(wp_logout_url(home_url())) . '">' . esc_html__('Logout', 'nwu-2025') . '</a>';
+            $items .= '</li>';
+        } else {
+            $items .= '<li class="menu-item menu-item-login">';
+            $items .= '<a href="' . esc_url(wp_login_url(get_permalink())) . '">' . esc_html__('Login', 'nwu-2025') . '</a>';
+            $items .= '</li>';
+        }
+    }
+    return $items;
+}
+
+/**
  * Remove default archive header
  */
 remove_action( 'tha_header_after', 'be_archive_header', 16 );
