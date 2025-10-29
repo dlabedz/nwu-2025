@@ -287,3 +287,16 @@ function nwu_2025_register_block_styles() {
 	]);
 }
 add_action('init', 'nwu_2025_register_block_styles');
+
+/**
+ * Remove default block appender
+ * Prevents automatic paragraph block insertion
+ */
+add_filter( 'block_editor_settings_all', function( $settings ) {
+    // Disable the default block (paragraph) from auto-inserting
+    $settings['__experimentalPreferredStyleVariations'] = array(
+        'core/paragraph' => array()
+    );
+
+    return $settings;
+}, 10, 1 );

@@ -105,7 +105,7 @@
 
 	@include media(">=tablet") {
 		grid-template-columns: 25% 75%;
-		gap: 32px;
+		gap: 0px;
 	}
 
 	@include media(">=desktop") {
@@ -158,29 +158,19 @@
 	a {
 		color: var(--wp--preset--color--foreground);
 		text-decoration: none;
+		justify-content: space-between;
 		display: flex;
-		align-items: center;
 		gap: 8px;
 		transition: color 0.2s ease;
+		align-items: flex-start;
 
 		&:hover {
 			color: var(--wp--preset--color--red);
-
-			.news-events-feed__title-icon {
-				opacity: 1;
-				transform: translateX(0);
-			}
 		}
 	}
 }
 
-.news-events-feed__title-icon {
-	flex-shrink: 0;
-	fill: currentColor;
-	opacity: 0;
-	transform: translateX(-4px);
-	transition: opacity 0.2s ease, transform 0.2s ease;
-}
+
 
 .news-events-feed__excerpt {
 	font-size: var(--wp--preset--font-size--small);

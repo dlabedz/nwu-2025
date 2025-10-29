@@ -343,3 +343,63 @@ h1.front {
 		}
 	}
 }
+
+/* Auto-constrain content blocks
+--------------------------------------------- */
+
+.entry-content,
+.block-area {
+
+	// Text/reading blocks - constrained for readability
+	& > .wp-block-paragraph,
+	& > .wp-block-heading,
+	& > .wp-block-list,
+	& > .wp-block-quote,
+	& > .wp-block-pullquote,
+	& > .wp-block-verse {
+		width: calc(100% - 32px);
+		max-width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: clamp(16px, 5vw, 153px);
+		padding-right: clamp(16px, 5vw, 153px);
+
+		@include media(">=tablet") {
+			width: clamp(700px, 85vw, 1132px);
+		}
+	}
+
+	// Layout blocks - stay full-width (users can add styles if needed)
+	& > .wp-block-group,
+	& > .wp-block-cover,
+	& > .wp-block-columns {
+		// Keep full-width by default
+		// Users can add .u-width-constrained or block styles
+	}
+
+	// Media blocks - stay full-width (users can add alignwide/alignfull)
+	& > .wp-block-image,
+	& > .wp-block-gallery,
+	& > .wp-block-video {
+		// Keep full-width by default
+	}
+
+	// Utility class overrides
+	& > .u-width-full {
+		width: 100% !important;
+		max-width: 100% !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+
+	// Nested blocks inside groups/columns keep their full width
+	.wp-block-group > *,
+	.wp-block-column > * {
+		width: 100%;
+		max-width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

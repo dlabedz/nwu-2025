@@ -335,7 +335,7 @@ if ( is_category() ) {
 							</div>
 
 							<a href="<?php the_permalink(); ?>" class="archive-item__arrow" aria-label="<?php esc_attr_e( 'Read more', 'nwu-2025' ); ?>">
-								→
+								<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/black-arrow.svg'); ?>" alt="" aria-hidden="true">
 							</a>
 
 						</article>

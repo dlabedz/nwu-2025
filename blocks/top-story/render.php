@@ -34,6 +34,7 @@ $excerpt = !empty($custom_excerpt) ? $custom_excerpt : get_the_excerpt($featured
 // Build the block output
 ?>
 <div class="block-top-story">
+	<div class="block-top-story__background"></div>
 	<div class="block-top-story__container">
 		<div class="block-top-story__header">
 			<div class="block-top-story__icon">

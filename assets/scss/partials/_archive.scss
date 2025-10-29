@@ -315,14 +315,7 @@
 	}
 
 		&__arrow {
-			font-size: 32px;
-			text-decoration: none;
-			color: var(--wp--preset--color--foreground);
-			line-height: 1;
-
-			&:hover {
-				color: var(--wp--preset--color--red);
-			}
+			margin-top: 5px;
 
 			@include media("<tablet") {
 				display: none;
