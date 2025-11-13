@@ -2,6 +2,7 @@
 
 .block-upcoming-events {
 	border: 4px solid var(--wp--preset--color--foreground);
+	margin-top: var(--wp--custom--layout--block-gap-large) !important;
 
 	 &__title-container{
 		text-align:center;

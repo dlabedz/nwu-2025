@@ -43,7 +43,7 @@
 .block-top-story__container {
 	background: var(--wp--preset--color--foreground);
 	color: var(--wp--preset--color--background);
-	padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
+	padding: var(--wp--custom--layout--block-gap-large) 3em;
 	width: calc(100% - 2rem);
 	max-width: 100%;
 	position: relative;

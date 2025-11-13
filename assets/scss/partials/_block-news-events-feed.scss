@@ -124,7 +124,7 @@
 
 .news-events-feed__date {
 	font-family: "DM Mono";
-	font-size: 20px;
+	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
 	line-height: 25px; /* 125% */
@@ -137,6 +137,7 @@
 	font-style: normal;
 	font-weight: 700;
 	line-height: normal;
+	margin-top: 0;
 }
 
 /* Content Column
@@ -163,6 +164,7 @@
 		gap: 8px;
 		transition: color 0.2s ease;
 		align-items: flex-start;
+		hanging-punctuation: first;
 
 		&:hover {
 			color: var(--wp--preset--color--red);
