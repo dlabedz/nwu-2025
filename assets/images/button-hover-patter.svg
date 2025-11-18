@@ -1,0 +1,8 @@
+<svg width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <pattern id="diagonalTicks" patternUnits="userSpaceOnUse" width="20" height="8">
+    <rect width="20" height="8" fill="transparent"/>
+    <line x1="0" y1="8" x2="8" y2="0" stroke="#FEFEFE" stroke-width="2"/>
+    <line x1="10" y1="8" x2="18" y2="0" stroke="#FEFEFE" stroke-width="2"/>
+  </pattern>
+  <rect width="20" height="8" fill="url(#diagonalTicks)"/>
+</svg>

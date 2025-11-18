@@ -36,8 +36,10 @@
     &:focus {
         background-color: #0A0A0A;
         color: #FEFEFE !important;
-        border-color: #0A0A0A;
+        border-color: transparent;
     }
+
+	@include button-hover-pattern;
 }
 
 .cta-button__decoration {

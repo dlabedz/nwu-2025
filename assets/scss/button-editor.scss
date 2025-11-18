@@ -1,10 +1,12 @@
+@import "partials/mixins";
+
 /* Button Editor Styles
 --------------------------------------------- */
 
 /* Ensure buttons display correctly in editor */
 .editor-styles-wrapper {
 
-	// Default Button Style
+	// Default Button Style - WITH HOVER PATTERN
 	.wp-block-button__link {
 		background: transparent;
 		border: 4px solid var(--wp--preset--color--black);
@@ -21,13 +23,16 @@
 		cursor: default;
 		transition: transform 0.2s ease, border-color 0.2s ease;
 
-		&:hover{
+		// Apply hover pattern
+		@include button-hover-pattern;
+
+		&:hover {
 			background: var(--wp--preset--color--foreground);
 			color: var(--wp--preset--color--background);
 		}
 	}
 
-	// Pill Button Style
+	// Pill Button Style - NO HOVER PATTERN
 	.wp-block-button.is-style-pill .wp-block-button__link {
 		border: 2px solid var(--wp--preset--color--black);
 		border-radius: 999px;
@@ -40,83 +45,113 @@
 		letter-spacing: 0.32px;
 		text-transform: capitalize;
 		padding: 10px 20px;
+
+		// Remove inherited hover pattern
+		&::before {
+			display: none;
+		}
 	}
 
-
-	// Secondary Button Style
+	// Secondary Button Style - WITH HOVER PATTERN
 	.wp-block-button.is-style-secondary .wp-block-button__link {
 		background: transparent;
 		border: 4px solid var(--wp--preset--color--blue);
 		color: var(--wp--preset--color--blue);
+
+		// Add hover pattern explicitly
+		@include button-hover-pattern;
 	}
 
-	// Tertiary Button Style
+	// Tertiary Button Style - WITH HOVER PATTERN
 	.wp-block-button.is-style-tertiary .wp-block-button__link {
 		background: transparent;
 		border: 2px solid var(--wp--preset--color--newsprint);
 		color: var(--wp--preset--color--black);
+
+		// Add hover pattern explicitly
+		@include button-hover-pattern;
 	}
 
-	// Color Variants in Editor
+	// Color Variants in Editor - WITH HOVER PATTERN
 	.wp-block-button {
 		&.has-cyan-background-color .wp-block-button__link {
 			background: var(--wp--preset--color--cyan);
 			border-color: var(--wp--preset--color--cyan);
 			color: var(--wp--preset--color--dark-text);
+
+			@include button-hover-pattern;
 		}
 
 		&.has-red-background-color .wp-block-button__link {
 			background: var(--wp--preset--color--red);
 			border-color: var(--wp--preset--color--red);
 			color: var(--wp--preset--color--light-text);
+
+			@include button-hover-pattern;
 		}
 
 		&.has-yellow-background-color .wp-block-button__link {
 			background: var(--wp--preset--color--yellow);
 			border-color: var(--wp--preset--color--yellow);
 			color: var(--wp--preset--color--dark-text);
+
+			@include button-hover-pattern;
 		}
 
 		&.has-blue-background-color .wp-block-button__link {
 			background: var(--wp--preset--color--blue);
 			border-color: var(--wp--preset--color--blue);
 			color: var(--wp--preset--color--light-text);
+
+			@include button-hover-pattern;
 		}
 
 		&.has-navy-background-color .wp-block-button__link {
 			background: var(--wp--preset--color--navy);
 			border-color: var(--wp--preset--color--navy);
 			color: var(--wp--preset--color--light-text);
+
+			@include button-hover-pattern;
 		}
 
 		&.has-lavender-background-color .wp-block-button__link {
 			background: var(--wp--preset--color--lavender);
 			border-color: var(--wp--preset--color--lavender);
 			color: var(--wp--preset--color--dark-text);
+
+			@include button-hover-pattern;
 		}
 
 		&.has-jade-background-color .wp-block-button__link {
 			background: var(--wp--preset--color--jade);
 			border-color: var(--wp--preset--color--jade);
 			color: var(--wp--preset--color--light-text);
+
+			@include button-hover-pattern;
 		}
 
 		&.has-violet-background-color .wp-block-button__link {
 			background: var(--wp--preset--color--violet);
 			border-color: var(--wp--preset--color--violet);
 			color: var(--wp--preset--color--light-text);
+
+			@include button-hover-pattern;
 		}
 
 		&.has-newsprint-background-color .wp-block-button__link {
 			background: var(--wp--preset--color--newsprint);
 			border-color: var(--wp--preset--color--newsprint);
 			color: var(--wp--preset--color--dark-text);
+
+			@include button-hover-pattern;
 		}
 
 		&.has-cerulean-background-color .wp-block-button__link {
 			background: var(--wp--preset--color--cerulean);
 			border-color: var(--wp--preset--color--cerulean);
 			color: var(--wp--preset--color--light-text);
+
+			@include button-hover-pattern;
 		}
 	}
 
