@@ -300,3 +300,4 @@ add_filter( 'block_editor_settings_all', function( $settings ) {
 
     return $settings;
 }, 10, 1 );
+
