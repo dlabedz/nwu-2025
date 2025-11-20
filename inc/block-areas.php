@@ -14,7 +14,7 @@ namespace NWU2025\Block_Areas;
  * Block Areas
  */
 function block_areas() {
-	$block_areas = [ 'sidebar', 'after-post', 'before-footer', '404' ];
+	$block_areas = [ 'sidebar', 'after-post', 'before-footer', '404', 'chapters-map' ];
 	return apply_filters( 'be_block_areas', $block_areas );
 }
 

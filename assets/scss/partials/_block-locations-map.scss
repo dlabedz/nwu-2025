@@ -1,0 +1,128 @@
+/* Locations Map Block
+--------------------------------------------- */
+
+.block-locations-map {
+	padding: var(--wp--custom--layout--block-gap-large) 0;
+
+	/* Background Colors */
+	&.bg-white {
+		background-color: var(--wp--preset--color--white);
+	}
+
+	&.bg-light-blue {
+		background-color: #DAEAFF;
+	}
+
+	/* Container Widths */
+	.content-container {
+		width: calc(100% - 32px);
+		max-width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+
+
+		@include media(">=tablet") {
+			width: clamp(700px, 85vw, 1152px);
+		}
+	}
+
+	.full-width-container {
+		max-width: 100%;
+	}
+
+	&.bg-light-blue .full-width-container > * {
+		width: calc(100% - 32px);
+		max-width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: var(--wp--custom--layout--padding);
+		padding-right: var(--wp--custom--layout--padding);
+
+		@include media(">=tablet") {
+			width: clamp(700px, 85vw, 1152px);
+		}
+	}
+}
+
+/* Columns */
+.locations-map__columns {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--wp--custom--layout--block-gap-large);
+	margin-bottom: var(--wp--custom--layout--block-gap-large);
+
+	/* Two columns - only split on tablet+ */
+	&.locations-map__columns--two {
+		@include media(">=tablet") {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	/* Single column - always full width */
+	&.locations-map__columns--single {
+		grid-template-columns: 1fr;
+	}
+}
+
+.locations-map__column {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--custom--layout--block-gap);
+}
+
+.locations-map__title {
+	color: var(--wp--preset--color--foreground);
+	margin: 0;
+}
+
+.locations-map__content {
+	color: var(--wp--preset--color--foreground);
+
+	p {
+		margin-top: 0;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	a {
+		color: var(--wp--custom--color--link);
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+/* Map Embed */
+.locations-map__embed {
+	width: 100%;
+	min-height: 400px;
+
+	/* Flourish embed responsiveness */
+	.flourish-embed {
+		width: 100%;
+		height: auto;
+	}
+
+	iframe {
+		width: 100%;
+		min-height: 500px;
+	}
+}
+
+/* Full width map for light blue background */
+.block-locations-map.bg-light-blue .locations-map__embed {
+	margin-left: calc(-1 * var(--wp--custom--layout--padding));
+	margin-right: calc(-1 * var(--wp--custom--layout--padding));
+	width: calc(100% + (2 * var(--wp--custom--layout--padding)));
+	max-width: 100vw;
+}
+
+/* Editor styles */
+.editor-styles-wrapper .block-locations-map {
+	margin-top: var(--wp--custom--layout--block-gap);
+	margin-bottom: var(--wp--custom--layout--block-gap);
+}

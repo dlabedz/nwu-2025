@@ -1,0 +1,27 @@
+{
+    "name": "cwp/locations-map",
+    "title": "Locations Map",
+    "description": "Two column content with embedded Flourish map",
+    "style": "block-locations-map",
+    "category": "theme",
+    "icon": "location-alt",
+    "apiVersion": 2,
+    "keywords": ["map", "locations", "flourish"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "styles": [],
+    "supports": {
+        "align": ["wide", "full"],
+        "anchor": true,
+        "alignContent": false,
+        "color": {
+            "text": false,
+            "background": false,
+            "link": false
+        },
+        "alignText": false,
+        "fullHeight": false
+    }
+}

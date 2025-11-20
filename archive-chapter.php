@@ -81,55 +81,14 @@ $chapters = new WP_Query( $args );
 			<?php wp_reset_postdata(); ?>
 		</main>
 
-		<!-- Optional: Who We Are / Divisions Section -->
-		<section class="chapters-info">
-			<div class="chapters-info__grid">
+	</div><!-- .wrap -->
+</div><!-- .archive-chapters -->
 
-				<div class="chapters-info__section">
-					<h2><?php esc_html_e( 'Who We Are', 'nwu-2025' ); ?></h2>
-					<?php
-					// This could come from an ACF Options field
-					$who_we_are = get_field( 'chapters_who_we_are', 'option' );
-					if ( $who_we_are ) :
-						echo wp_kses_post( $who_we_are );
-					else :
-						?>
-						<p>
-							<?php esc_html_e( 'NWU members are located across the United States. Members are organized into Chapter structures to advocate for members, build power, and connect with other Chapters. Click on a location to learn more about a Chapter.', 'nwu-2025' ); ?>
-						</p>
-					<?php endif; ?>
-				</div>
-
-				<div class="chapters-info__section">
-					<h2><?php esc_html_e( 'Divisions', 'nwu-2025' ); ?></h2>
-					<?php
-					// This could be a custom block or ACF field
-					$divisions = get_field( 'chapters_divisions', 'option' );
-					if ( $divisions ) :
-						echo wp_kses_post( $divisions );
-					else :
-						?>
-						<ul>
-							<li><?php esc_html_e( 'Digital Media / Freelance Solidarity Project', 'nwu-2025' ); ?></li>
-							<li><?php esc_html_e( 'Escritores en Español', 'nwu-2025' ); ?></li>
-							<li><?php esc_html_e( 'Book Division', 'nwu-2025' ); ?></li>
-							<li><?php esc_html_e( 'Literary Translators Organizing Committee', 'nwu-2025' ); ?></li>
-						</ul>
-					<?php endif; ?>
-				</div>
-
-			</div>
-		</section>
-
-		<!-- Custom Map Block Area -->
-		<?php
-		// Check if there's a custom block area for the chapters map
-		if ( function_exists( 'NWU2025\Block_Areas\show' ) ) {
-			NWU2025\Block_Areas\show( 'chapters-map' );
-		}
-		?>
-
-	</div>
-</div>
+<!-- Custom Map Block Area (outside wrap for full-width capability) -->
+<?php
+if ( function_exists( 'NWU2025\Block_Areas\show' ) ) {
+	NWU2025\Block_Areas\show( 'chapters-map' );
+}
+?>
 
 <?php get_footer(); ?>
