@@ -301,6 +301,21 @@ add_filter( 'block_editor_settings_all', function( $settings ) {
     return $settings;
 }, 10, 1 );
 
+/**
+ * =============================================
+ * TEMPORARY AUDIT TOOLS - REMOVE FOR PRODUCTION
+ * =============================================
+ *
+ * Added: December 2024
+ * Purpose: Content audit export tools
+ * Remove before: Production launch
+ *
+ * Tools included:
+ * - Export Pages CSV (Tools → Export Pages CSV)
+ * - Export Page Content (Tools → Export Page Content)
+ * - Export Plugins CSV (Tools → Export Plugins CSV)
+ */
+
 
 /**
  * Export Plugins to CSV
@@ -578,3 +593,581 @@ add_action('admin_init', function() {
     exit;
 });
 
+
+/**
+ * ============================================
+ * TEMPORARY - REMOVE BEFORE PRODUCTION DEPLOY
+ * ============================================
+ *
+ * Export Page Content to HTML Archive
+ * Added for content audit - December 2024
+ *
+ * Access via: Tools → Export Page Content
+ *
+ * @package NWU2025
+ */
+
+add_action('admin_menu', function() {
+    add_management_page(
+        'Export Page Content',
+        'Export Page Content',
+        'manage_options',
+        'export-page-content',
+        'nwu_export_page_content_page'
+    );
+});
+
+function nwu_export_page_content_page() {
+    // Get all pages for the selection list
+    $pages = get_posts([
+        'post_type' => 'page',
+        'posts_per_page' => -1,
+        'orderby' => 'title',
+        'order' => 'ASC',
+        'post_status' => ['publish', 'draft', 'private'],
+    ]);
+
+    // Get unique parent pages for filter
+    $parents = [];
+    foreach ($pages as $page) {
+        if ($page->post_parent && !isset($parents[$page->post_parent])) {
+            $parent = get_post($page->post_parent);
+            if ($parent) {
+                $parents[$page->post_parent] = $parent->post_title;
+            }
+        }
+    }
+    asort($parents);
+
+    ?>
+    <div class="wrap">
+        <h1>Export Page Content for Archive</h1>
+        <p>Select the pages you want to export. Each page will be saved as an HTML file that can be opened in Word or Google Docs.</p>
+
+        <form method="post">
+            <?php wp_nonce_field('export_page_content', 'export_content_nonce'); ?>
+
+            <!-- Tab Navigation -->
+            <h2 class="nav-tab-wrapper">
+                <a href="#tab-browse" class="nav-tab nav-tab-active" onclick="switchTab(event, 'tab-browse')">Browse & Select</a>
+                <a href="#tab-ids" class="nav-tab" onclick="switchTab(event, 'tab-ids')">Paste Page IDs</a>
+            </h2>
+
+            <!-- Tab 1: Browse & Select -->
+            <div id="tab-browse" class="tab-content" style="margin-top: 20px;">
+                <h2>Search & Filter</h2>
+
+                <!-- Row 1: Search, Status, Parent -->
+                <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap;">
+                    <div>
+                        <label for="page-search"><strong>Search:</strong></label><br>
+                        <input type="text" id="page-search" placeholder="Type to search..." style="width: 250px; padding: 5px;">
+                    </div>
+
+                    <div>
+                        <label for="status-filter"><strong>Status:</strong></label><br>
+                        <select id="status-filter" style="padding: 5px;">
+                            <option value="">All Statuses</option>
+                            <option value="publish">Published</option>
+                            <option value="draft">Draft</option>
+                            <option value="private">Private</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="parent-filter"><strong>Parent Page:</strong></label><br>
+                        <select id="parent-filter" style="padding: 5px;">
+                            <option value="">All Pages</option>
+                            <option value="top-level">Top Level Only</option>
+                            <option value="children">Child Pages Only</option>
+                            <?php foreach ($parents as $parent_id => $parent_title) : ?>
+                                <option value="<?php echo $parent_id; ?>">Children of: <?php echo esc_html($parent_title); ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Row 2: Date Filters -->
+                <div style="display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; align-items: flex-end;">
+                    <div>
+                        <label for="date-type"><strong>Date Type:</strong></label><br>
+                        <select id="date-type" style="padding: 5px;">
+                            <option value="modified">Last Modified</option>
+                            <option value="created">Created</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="date-from"><strong>From:</strong></label><br>
+                        <input type="date" id="date-from" style="padding: 4px;">
+                    </div>
+
+                    <div>
+                        <label for="date-to"><strong>To:</strong></label><br>
+                        <input type="date" id="date-to" style="padding: 4px;">
+                    </div>
+
+                    <div>
+                        <button type="button" class="button" onclick="clearDateFilters()">Clear Dates</button>
+                    </div>
+
+                    <div style="border-left: 1px solid #ccc; padding-left: 15px;">
+                        <label><strong>Quick:</strong></label><br>
+                        <select id="date-quick" style="padding: 5px;" onchange="applyQuickDate()">
+                            <option value="">Choose...</option>
+                            <option value="30">Last 30 days</option>
+                            <option value="90">Last 90 days</option>
+                            <option value="180">Last 6 months</option>
+                            <option value="365">Last year</option>
+                            <option value="older-1">Older than 1 year</option>
+                            <option value="older-2">Older than 2 years</option>
+                            <option value="older-3">Older than 3 years</option>
+                        </select>
+                    </div>
+                </div>
+
+                <p>
+                    <button type="button" class="button" onclick="selectVisible()">Select All Visible</button>
+                    <button type="button" class="button" onclick="deselectAll()">Deselect All</button>
+                    <span id="selection-count" style="margin-left: 15px; color: #666;">0 pages selected</span>
+                    <span id="visible-count" style="margin-left: 15px; color: #666;">(<?php echo count($pages); ?> showing)</span>
+                </p>
+
+                <div id="pages-list" style="max-height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 15px; background: #fff;">
+                    <?php foreach ($pages as $page) :
+                        $parent_title = $page->post_parent ? get_the_title($page->post_parent) : '';
+                        $parent_display = $parent_title ? ' (Parent: ' . $parent_title . ')' : '';
+                        $status_label = $page->post_status !== 'publish' ? ' [' . ucfirst($page->post_status) . ']' : '';
+
+                        // Format dates for data attributes (YYYY-MM-DD)
+                        $created_date = date('Y-m-d', strtotime($page->post_date));
+                        $modified_date = date('Y-m-d', strtotime($page->post_modified));
+
+                        // Format dates for display
+                        $modified_display = date('M j, Y', strtotime($page->post_modified));
+                    ?>
+                        <label class="page-item"
+                               data-title="<?php echo esc_attr(strtolower($page->post_title)); ?>"
+                               data-status="<?php echo esc_attr($page->post_status); ?>"
+                               data-parent="<?php echo esc_attr($page->post_parent); ?>"
+                               data-id="<?php echo $page->ID; ?>"
+                               data-created="<?php echo esc_attr($created_date); ?>"
+                               data-modified="<?php echo esc_attr($modified_date); ?>"
+                               style="display: block; padding: 8px 5px; border-bottom: 1px solid #eee;">
+                            <input type="checkbox" name="page_ids[]" value="<?php echo $page->ID; ?>" onchange="updateCount()">
+                            <strong><?php echo esc_html($page->post_title); ?></strong>
+                            <span style="color: #666;"><?php echo esc_html($parent_display . $status_label); ?></span>
+                            <span style="color: #999; font-size: 12px;"> — ID: <?php echo $page->ID; ?> — Modified: <?php echo $modified_display; ?></span>
+                        </label>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <!-- Tab 2: Paste IDs -->
+            <div id="tab-ids" class="tab-content" style="margin-top: 20px; display: none;">
+                <h2>Paste Page IDs</h2>
+                <p>Paste page IDs from your audit spreadsheet. One ID per line, or comma-separated.</p>
+
+                <textarea id="page-ids-text" name="page_ids_text" rows="10" style="width: 100%; max-width: 400px; font-family: monospace;" placeholder="123
+456
+789
+
+or
+
+123, 456, 789"></textarea>
+
+                <p style="color: #666; font-size: 13px;">
+                    <strong>Tip:</strong> Copy the ID column from your spreadsheet and paste it here.
+                </p>
+            </div>
+
+            <h2 style="margin-top: 20px;">Export Options</h2>
+
+            <p>
+                <label>
+                    <input type="checkbox" name="include_meta" value="1" checked>
+                    Include metadata (URL, date, author, etc.)
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="checkbox" name="include_featured" value="1" checked>
+                    Include featured image
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="checkbox" name="include_acf" value="1">
+                    Include ACF custom fields (if any)
+                </label>
+            </p>
+
+            <p style="margin-top: 20px;">
+                <input type="submit" name="export_content" class="button button-primary button-hero" value="Download Archive (ZIP)">
+            </p>
+        </form>
+    </div>
+
+    <script>
+    function switchTab(event, tabId) {
+        event.preventDefault();
+
+        // Hide all tabs
+        document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
+        document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('nav-tab-active'));
+
+        // Show selected tab
+        document.getElementById(tabId).style.display = 'block';
+        event.target.classList.add('nav-tab-active');
+    }
+
+    function filterPages() {
+        const search = document.getElementById('page-search').value.toLowerCase();
+        const status = document.getElementById('status-filter').value;
+        const parent = document.getElementById('parent-filter').value;
+        const dateType = document.getElementById('date-type').value;
+        const dateFrom = document.getElementById('date-from').value;
+        const dateTo = document.getElementById('date-to').value;
+
+        let visibleCount = 0;
+
+        document.querySelectorAll('.page-item').forEach(item => {
+            const title = item.dataset.title;
+            const itemStatus = item.dataset.status;
+            const itemParent = item.dataset.parent;
+            const itemCreated = item.dataset.created;
+            const itemModified = item.dataset.modified;
+
+            // Choose which date to filter by
+            const itemDate = dateType === 'created' ? itemCreated : itemModified;
+
+            let show = true;
+
+            // Search filter
+            if (search && !title.includes(search)) {
+                show = false;
+            }
+
+            // Status filter
+            if (status && itemStatus !== status) {
+                show = false;
+            }
+
+            // Parent filter
+            if (parent === 'top-level' && itemParent !== '0') {
+                show = false;
+            } else if (parent === 'children' && itemParent === '0') {
+                show = false;
+            } else if (parent && parent !== 'top-level' && parent !== 'children' && itemParent !== parent) {
+                show = false;
+            }
+
+            // Date from filter
+            if (dateFrom && itemDate < dateFrom) {
+                show = false;
+            }
+
+            // Date to filter
+            if (dateTo && itemDate > dateTo) {
+                show = false;
+            }
+
+            item.style.display = show ? 'block' : 'none';
+            if (show) visibleCount++;
+        });
+
+        document.getElementById('visible-count').textContent = '(' + visibleCount + ' showing)';
+    }
+
+    function clearDateFilters() {
+        document.getElementById('date-from').value = '';
+        document.getElementById('date-to').value = '';
+        document.getElementById('date-quick').value = '';
+        filterPages();
+    }
+
+    function applyQuickDate() {
+        const quick = document.getElementById('date-quick').value;
+        const today = new Date();
+
+        let fromDate = '';
+        let toDate = '';
+
+        if (quick === '30' || quick === '90' || quick === '180' || quick === '365') {
+            // Last X days
+            const daysAgo = new Date(today);
+            daysAgo.setDate(daysAgo.getDate() - parseInt(quick));
+            fromDate = daysAgo.toISOString().split('T')[0];
+            toDate = today.toISOString().split('T')[0];
+        } else if (quick === 'older-1') {
+            // Older than 1 year
+            const oneYearAgo = new Date(today);
+            oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+            toDate = oneYearAgo.toISOString().split('T')[0];
+        } else if (quick === 'older-2') {
+            // Older than 2 years
+            const twoYearsAgo = new Date(today);
+            twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
+            toDate = twoYearsAgo.toISOString().split('T')[0];
+        } else if (quick === 'older-3') {
+            // Older than 3 years
+            const threeYearsAgo = new Date(today);
+            threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
+            toDate = threeYearsAgo.toISOString().split('T')[0];
+        }
+
+        document.getElementById('date-from').value = fromDate;
+        document.getElementById('date-to').value = toDate;
+        filterPages();
+    }
+
+    function selectVisible() {
+        document.querySelectorAll('.page-item').forEach(item => {
+            if (item.style.display !== 'none') {
+                item.querySelector('input[type="checkbox"]').checked = true;
+            }
+        });
+        updateCount();
+    }
+
+    function deselectAll() {
+        document.querySelectorAll('.page-item input[type="checkbox"]').forEach(cb => {
+            cb.checked = false;
+        });
+        updateCount();
+    }
+
+    function updateCount() {
+        const count = document.querySelectorAll('.page-item input[type="checkbox"]:checked').length;
+        document.getElementById('selection-count').textContent = count + ' page' + (count !== 1 ? 's' : '') + ' selected';
+    }
+
+    // Attach filter events
+    document.getElementById('page-search').addEventListener('input', filterPages);
+    document.getElementById('status-filter').addEventListener('change', filterPages);
+    document.getElementById('parent-filter').addEventListener('change', filterPages);
+    document.getElementById('date-type').addEventListener('change', filterPages);
+    document.getElementById('date-from').addEventListener('change', filterPages);
+    document.getElementById('date-to').addEventListener('change', filterPages);
+
+    // Initial count
+    updateCount();
+    </script>
+    <?php
+}
+
+// Handle the export
+add_action('admin_init', function() {
+    if (!isset($_POST['export_content']) || !current_user_can('manage_options')) {
+        return;
+    }
+
+    if (!wp_verify_nonce($_POST['export_content_nonce'], 'export_page_content')) {
+        wp_die('Security check failed');
+    }
+
+    $page_ids = [];
+
+    // Get IDs from checkboxes
+    if (!empty($_POST['page_ids'])) {
+        $page_ids = array_map('intval', $_POST['page_ids']);
+    }
+
+    // Get IDs from textarea (supports comma-separated or newline-separated)
+    if (!empty($_POST['page_ids_text'])) {
+        $text = sanitize_textarea_field($_POST['page_ids_text']);
+        // Split by commas, newlines, or spaces
+        $text_ids = preg_split('/[\s,]+/', $text, -1, PREG_SPLIT_NO_EMPTY);
+        $text_ids = array_map('intval', $text_ids);
+        $text_ids = array_filter($text_ids); // Remove zeros
+        $page_ids = array_merge($page_ids, $text_ids);
+    }
+
+    // Remove duplicates
+    $page_ids = array_unique($page_ids);
+
+    if (empty($page_ids)) {
+        wp_die('No pages selected. <a href="javascript:history.back()">Go back</a>');
+    }
+
+    $include_meta = isset($_POST['include_meta']);
+    $include_featured = isset($_POST['include_featured']);
+    $include_acf = isset($_POST['include_acf']);
+
+    // Create temporary directory
+    $upload_dir = wp_upload_dir();
+    $temp_dir = $upload_dir['basedir'] . '/page-exports-' . time();
+    wp_mkdir_p($temp_dir);
+
+    // Track exported and not found
+    $exported = 0;
+    $not_found = [];
+
+    // Generate HTML for each page
+    foreach ($page_ids as $page_id) {
+        $page = get_post($page_id);
+        if (!$page || $page->post_type !== 'page') {
+            $not_found[] = $page_id;
+            continue;
+        }
+
+        $html = nwu_generate_page_html($page, $include_meta, $include_featured, $include_acf);
+
+        // Create safe filename
+        $filename = sanitize_file_name($page->post_name ?: 'page-' . $page_id) . '.html';
+        file_put_contents($temp_dir . '/' . $filename, $html);
+        $exported++;
+    }
+
+    if ($exported === 0) {
+        wp_die('No valid pages found to export. IDs not found: ' . implode(', ', $not_found) . '<br><a href="javascript:history.back()">Go back</a>');
+    }
+
+    // Create ZIP file
+    $zip_path = $upload_dir['basedir'] . '/nwu-page-archive-' . date('Y-m-d') . '.zip';
+    $zip = new ZipArchive();
+
+    if ($zip->open($zip_path, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
+        $files = glob($temp_dir . '/*.html');
+        foreach ($files as $file) {
+            $zip->addFile($file, basename($file));
+        }
+        $zip->close();
+    }
+
+    // Clean up temp files
+    array_map('unlink', glob($temp_dir . '/*'));
+    rmdir($temp_dir);
+
+    // Download ZIP
+    header('Content-Type: application/zip');
+    header('Content-Disposition: attachment; filename="nwu-page-archive-' . date('Y-m-d') . '.zip"');
+    header('Content-Length: ' . filesize($zip_path));
+    readfile($zip_path);
+
+    // Clean up ZIP
+    unlink($zip_path);
+    exit;
+});
+
+function nwu_generate_page_html($page, $include_meta = true, $include_featured = true, $include_acf = true) {
+    $author = get_userdata($page->post_author);
+    $content = apply_filters('the_content', $page->post_content);
+
+    $html = '<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>' . esc_html($page->post_title) . '</title>
+    <style>
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            font-size: 28px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        .meta-box {
+            background: #f5f5f5;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-left: 4px solid #0073aa;
+            font-size: 14px;
+        }
+        .meta-box p { margin: 5px 0; }
+        .meta-label { font-weight: bold; }
+        .featured-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .acf-fields {
+            background: #fff8e5;
+            padding: 15px;
+            margin-top: 30px;
+            border-left: 4px solid #f0ad4e;
+        }
+        .acf-fields h3 { margin-top: 0; }
+        img { max-width: 100%; height: auto; }
+        .archive-notice {
+            background: #d4edda;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+            font-size: 12px;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+    <div class="archive-notice">
+        <strong>Archived Page</strong> — Exported from NWU website on ' . date('F j, Y') . '
+    </div>
+
+    <h1>' . esc_html($page->post_title) . '</h1>';
+
+    if ($include_meta) {
+        $html .= '
+    <div class="meta-box">
+        <p><span class="meta-label">Original URL:</span> ' . esc_url(get_permalink($page->ID)) . '</p>
+        <p><span class="meta-label">Page ID:</span> ' . $page->ID . '</p>
+        <p><span class="meta-label">Status:</span> ' . ucfirst($page->post_status) . '</p>
+        <p><span class="meta-label">Author:</span> ' . ($author ? esc_html($author->display_name) : 'Unknown') . '</p>
+        <p><span class="meta-label">Created:</span> ' . date('F j, Y', strtotime($page->post_date)) . '</p>
+        <p><span class="meta-label">Last Modified:</span> ' . date('F j, Y', strtotime($page->post_modified)) . '</p>
+        <p><span class="meta-label">Slug:</span> ' . esc_html($page->post_name) . '</p>';
+
+        if ($page->post_parent) {
+            $parent = get_post($page->post_parent);
+            $html .= '
+        <p><span class="meta-label">Parent Page:</span> ' . esc_html($parent->post_title) . '</p>';
+        }
+
+        $html .= '
+    </div>';
+    }
+
+    if ($include_featured && has_post_thumbnail($page->ID)) {
+        $featured_url = get_the_post_thumbnail_url($page->ID, 'large');
+        $html .= '
+    <img src="' . esc_url($featured_url) . '" alt="Featured Image" class="featured-image">';
+    }
+
+    $html .= '
+    <div class="content">
+        ' . $content . '
+    </div>';
+
+    // Include ACF fields if requested
+    if ($include_acf && function_exists('get_fields')) {
+        $fields = get_fields($page->ID);
+        if (!empty($fields)) {
+            $html .= '
+    <div class="acf-fields">
+        <h3>Custom Fields</h3>';
+            foreach ($fields as $key => $value) {
+                if (!empty($value) && !is_array($value)) {
+                    $html .= '
+        <p><span class="meta-label">' . esc_html($key) . ':</span> ' . esc_html($value) . '</p>';
+                } elseif (is_array($value)) {
+                    $html .= '
+        <p><span class="meta-label">' . esc_html($key) . ':</span> [Complex data]</p>';
+                }
+            }
+            $html .= '
+    </div>';
+        }
+    }
+
+    $html .= '
+</body>
+</html>';
+
+    return $html;
+}
