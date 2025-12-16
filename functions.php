@@ -403,3 +403,178 @@ add_action('admin_init', function() {
     exit;
 });
 
+
+/**
+ * Export Pages to CSV
+ *
+ * Add to functions.php temporarily, run export, then remove.
+ * Access via: Tools → Export Pages CSV
+ *
+ * @package NWU2025
+ */
+
+// Add admin menu item
+add_action('admin_menu', function() {
+    add_management_page(
+        'Export Pages to CSV',
+        'Export Pages CSV',
+        'manage_options',
+        'export-pages-csv',
+        'nwu_export_pages_csv_page'
+    );
+});
+
+function nwu_export_pages_csv_page() {
+    ?>
+    <div class="wrap">
+        <h1>Export Pages to CSV</h1>
+        <p>Click the button below to download a CSV of all pages with metadata.</p>
+        <form method="post">
+            <?php wp_nonce_field('export_pages_csv', 'export_nonce'); ?>
+            <p>
+                <label>
+                    <input type="checkbox" name="include_drafts" value="1" checked>
+                    Include drafts and private pages
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="checkbox" name="include_children" value="1" checked>
+                    Show parent page hierarchy
+                </label>
+            </p>
+            <p>
+                <input type="submit" name="export_pages" class="button button-primary" value="Download CSV">
+            </p>
+        </form>
+    </div>
+    <?php
+}
+
+// Handle the export
+add_action('admin_init', function() {
+    if (!isset($_POST['export_pages']) || !current_user_can('manage_options')) {
+        return;
+    }
+
+    if (!wp_verify_nonce($_POST['export_nonce'], 'export_pages_csv')) {
+        wp_die('Security check failed');
+    }
+
+    $include_drafts = isset($_POST['include_drafts']);
+    $include_children = isset($_POST['include_children']);
+
+    // Query all pages
+    $args = [
+        'post_type' => 'page',
+        'posts_per_page' => -1,
+        'orderby' => 'menu_order title',
+        'order' => 'ASC',
+        'post_status' => $include_drafts ? ['publish', 'draft', 'private', 'pending'] : 'publish',
+    ];
+
+    $pages = get_posts($args);
+
+    // Set headers for CSV download
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename=nwu-pages-export-' . date('Y-m-d') . '.csv');
+
+    // Open output stream
+    $output = fopen('php://output', 'w');
+
+    // Add BOM for Excel UTF-8 compatibility
+    fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
+
+    // CSV header row
+    $headers = [
+        'ID',
+        'Title',
+        'Slug',
+        'Status',
+        'Parent Page',
+        'Parent ID',
+        'Hierarchy Level',
+        'Full Path',
+        'URL',
+        'Author',
+        'Date Created',
+        'Last Modified',
+        'Word Count',
+        'Has Featured Image',
+        'Template',
+        'Menu Order',
+        'Comments',
+        'Action Needed',
+        'Notes',
+    ];
+
+    fputcsv($output, $headers);
+
+    // Helper function to get page depth
+    function nwu_get_page_depth($page_id) {
+        $depth = 0;
+        $parent_id = wp_get_post_parent_id($page_id);
+        while ($parent_id) {
+            $depth++;
+            $parent_id = wp_get_post_parent_id($parent_id);
+        }
+        return $depth;
+    }
+
+    // Helper function to get full hierarchy path
+    function nwu_get_page_hierarchy_path($page_id) {
+        $path = [];
+        $current_id = $page_id;
+        while ($current_id) {
+            $page = get_post($current_id);
+            array_unshift($path, $page->post_title);
+            $current_id = $page->post_parent;
+        }
+        return implode(' → ', $path);
+    }
+
+    // Output each page
+    foreach ($pages as $page) {
+        $parent_title = '';
+        $parent_id = '';
+
+        if ($page->post_parent) {
+            $parent = get_post($page->post_parent);
+            $parent_title = $parent ? $parent->post_title : '';
+            $parent_id = $page->post_parent;
+        }
+
+        $author = get_userdata($page->post_author);
+        $word_count = str_word_count(strip_tags($page->post_content));
+        $template = get_page_template_slug($page->ID);
+        $has_featured = has_post_thumbnail($page->ID) ? 'Yes' : 'No';
+
+        $row = [
+            $page->ID,
+            $page->post_title,
+            $page->post_name,
+            $page->post_status,
+            $parent_title,
+            $parent_id,
+            nwu_get_page_depth($page->ID),
+            $include_children ? nwu_get_page_hierarchy_path($page->ID) : $page->post_title,
+            get_permalink($page->ID),
+            $author ? $author->display_name : '',
+            $page->post_date,
+            $page->post_modified,
+            $word_count,
+            $has_featured,
+            $template ?: 'Default',
+            $page->menu_order,
+            $page->comment_count,
+            '', // Action Needed - empty for team to fill
+            '', // Notes - empty for team to fill
+        ];
+
+        fputcsv($output, $row);
+    }
+
+    fclose($output);
+    exit;
+});
+
