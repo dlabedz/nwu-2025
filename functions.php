@@ -301,3 +301,105 @@ add_filter( 'block_editor_settings_all', function( $settings ) {
     return $settings;
 }, 10, 1 );
 
+
+/**
+ * Export Plugins to CSV
+ *
+ * Access via: Tools → Export Plugins CSV
+ *
+ * @package NWU2025
+ */
+
+add_action('admin_menu', function() {
+    add_management_page(
+        'Export Plugins to CSV',
+        'Export Plugins CSV',
+        'manage_options',
+        'export-plugins-csv',
+        'nwu_export_plugins_csv_page'
+    );
+});
+
+function nwu_export_plugins_csv_page() {
+    ?>
+    <div class="wrap">
+        <h1>Export Plugins to CSV</h1>
+        <p>Download a CSV of all installed plugins.</p>
+        <form method="post">
+            <?php wp_nonce_field('export_plugins_csv', 'export_plugins_nonce'); ?>
+            <p>
+                <input type="submit" name="export_plugins" class="button button-primary" value="Download CSV">
+            </p>
+        </form>
+    </div>
+    <?php
+}
+
+add_action('admin_init', function() {
+    if (!isset($_POST['export_plugins']) || !current_user_can('manage_options')) {
+        return;
+    }
+
+    if (!wp_verify_nonce($_POST['export_plugins_nonce'], 'export_plugins_csv')) {
+        wp_die('Security check failed');
+    }
+
+    // Get all plugins
+    if (!function_exists('get_plugins')) {
+        require_once ABSPATH . 'wp-admin/includes/plugin.php';
+    }
+
+    $all_plugins = get_plugins();
+    $active_plugins = get_option('active_plugins', []);
+
+    // Set headers for CSV download
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename=nwu-plugins-' . date('Y-m-d') . '.csv');
+
+    $output = fopen('php://output', 'w');
+
+    // Add BOM for Excel
+    fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
+
+    // Header row
+    $headers = [
+        'Plugin Name',
+        'Status',
+        'Version',
+        'Author',
+        'Description',
+        'Plugin URI',
+        'Folder/File',
+        'Requires WP',
+        'Requires PHP',
+        'Keep/Remove',
+        'Notes',
+    ];
+
+    fputcsv($output, $headers);
+
+    // Output each plugin
+    foreach ($all_plugins as $plugin_file => $plugin_data) {
+        $is_active = in_array($plugin_file, $active_plugins) ? 'Active' : 'Inactive';
+
+        $row = [
+            $plugin_data['Name'],
+            $is_active,
+            $plugin_data['Version'],
+            strip_tags($plugin_data['Author']),
+            strip_tags($plugin_data['Description']),
+            $plugin_data['PluginURI'],
+            $plugin_file,
+            $plugin_data['RequiresWP'] ?: 'Not specified',
+            $plugin_data['RequiresPHP'] ?: 'Not specified',
+            '', // Keep/Remove - empty for team
+            '', // Notes - empty for team
+        ];
+
+        fputcsv($output, $row);
+    }
+
+    fclose($output);
+    exit;
+});
+
