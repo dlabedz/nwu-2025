@@ -18,6 +18,8 @@
     // Base transparent button styles
     background-color: transparent;
     border: 4px solid #0A0A0A;
+    border-bottom: none; // Remove actual bottom border
+    box-shadow: inset 0 -4px 0 0 #0A0A0A; // Create bottom border with box-shadow
     color: #0A0A0A;
 
     // Match your default button typography
@@ -29,25 +31,25 @@
     text-transform: uppercase;
     text-align: center;
     text-decoration: none;
-
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 
     &:hover,
     &:focus {
         background-color: #0A0A0A;
         color: #FEFEFE !important;
-        border-color: transparent;
+        box-shadow: none; // Remove the box-shadow bottom border on hover
     }
 
-	@include button-hover-pattern;
+    @include button-hover-pattern;
 }
 
 .cta-button__decoration {
     flex-shrink: 0;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     max-width: 250px;
     position: absolute;
+    bottom: 0;
 
     img {
         width: 100%;
@@ -59,12 +61,11 @@
         justify-content: flex-end;
         transform: rotate(-34deg) scaleX(-1);
         left: 0;
-        bottom: -35px;
     }
 
     &--right {
         justify-content: flex-start;
-        right: -35px;
+        right: 0;
     }
 
     // Hide decorative images on mobile

@@ -125,7 +125,7 @@ if (empty($heading)) {
 		<?php if ($show_lines): ?>
 			<div class="homepage-banner__lines">
 				<img class="homepage-banner__lines-svg"
-					src="<?php echo get_template_directory_uri(); ?>/assets/images/NWU-Scribble-1.svg"
+					src="<?php echo get_template_directory_uri(); ?>/assets/images/Nwu-squiggle.png"
 					alt=""
 					aria-hidden="true">
 			</div>
