@@ -57,10 +57,9 @@ $chapters = new WP_Query( $args );
 								<?php the_post_thumbnail( 'medium_large' ); ?>
 							</a>
 						<?php else : ?>
-							<a href="<?php the_permalink(); ?>" class="chapter-card__image chapter-card__image--placeholder">
-								<div class="chapter-placeholder">
-									<?php echo be_icon( [ 'icon' => 'groups', 'size' => 80 ] ); ?>
-								</div>
+							<a href="<?php the_permalink(); ?>" class="chapter-card__image">
+								<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/NWU-fallback.png' ); ?>"
+									alt="<?php echo esc_attr( get_the_title() ); ?>">
 							</a>
 						<?php endif; ?>
 

@@ -4745,7 +4745,6 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 }
 .chapter-card__image {
   display: block;
-  aspect-ratio: 4/3;
   overflow: hidden;
   position: relative;
   border: 1px solid var(--wp--custom--color--neutral-300);
