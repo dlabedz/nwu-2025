@@ -50,6 +50,16 @@ function be_site_footer_top() {
 						echo wp_kses_post($address);
 					echo '</div>';
 				}
+
+				// Email Address
+				$email_address = get_field('email_address', 'option');
+				if ($email_address) {
+					echo '<div class="email-address">';
+						echo '<a href="' . esc_url('mailto:' . $email_address) . '">';
+							echo esc_html($email_address);
+						echo '</a>';
+					echo '</div>';
+				}
 			echo '</div>';
 
 		echo '</div>';
