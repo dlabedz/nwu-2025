@@ -5889,6 +5889,80 @@ h1.front {
   background: var(--wp--preset--color--cyan);
 }
 
+/* Newsletter Form
+--------------------------------------------- */
+.nwu-newsletter-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.nwu-newsletter-form .mc-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.nwu-newsletter-form .mc-field-group label {
+  font-family: var(--wp--preset--font-family--dm-sans);
+  font-size: var(--wp--preset--font-size--small);
+  font-weight: 600;
+  color: var(--wp--preset--color--white);
+}
+.nwu-newsletter-form .mc-field-group label .required {
+  color: var(--wp--preset--color--red);
+}
+.nwu-newsletter-form .mc-field-group input[type=email],
+.nwu-newsletter-form .mc-field-group input[type=text] {
+  background: var(--wp--preset--color--white);
+  border: 2px solid var(--wp--preset--color--white);
+  border-radius: var(--wp--custom--border-radius--tiny);
+  color: var(--wp--preset--color--foreground);
+  font-size: var(--wp--preset--font-size--small);
+  padding: 12px;
+  width: 100%;
+}
+.nwu-newsletter-form .mc-field-group input[type=email]:focus,
+.nwu-newsletter-form .mc-field-group input[type=text]:focus {
+  outline: 2px solid var(--wp--preset--color--cyan);
+  outline-offset: 2px;
+}
+.nwu-newsletter-form .mc-field-group input[type=email]::placeholder,
+.nwu-newsletter-form .mc-field-group input[type=text]::placeholder {
+  color: var(--wp--custom--color--neutral-500);
+}
+.nwu-newsletter-form .button {
+  background: var(--wp--preset--color--white);
+  color: var(--wp--preset--color--foreground);
+  border: 4px solid var(--wp--preset--color--foreground);
+  font-family: "DM Sans";
+  font-size: 16.5px;
+  font-weight: 900;
+  letter-spacing: 2.475px;
+  text-transform: uppercase;
+  padding: 11px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.nwu-newsletter-form .button:hover, .nwu-newsletter-form .button:focus {
+  background: var(--wp--preset--color--foreground);
+  color: var(--wp--preset--color--white);
+}
+.nwu-newsletter-form #mce-responses {
+  margin-top: 8px;
+}
+.nwu-newsletter-form #mce-responses .response {
+  padding: 12px;
+  border-radius: var(--wp--custom--border-radius--tiny);
+  font-size: var(--wp--preset--font-size--small);
+}
+.nwu-newsletter-form #mce-responses #mce-error-response {
+  background: var(--wp--preset--color--red);
+  color: var(--wp--preset--color--white);
+}
+.nwu-newsletter-form #mce-responses #mce-success-response {
+  background: var(--wp--preset--color--cyan);
+  color: var(--wp--preset--color--foreground);
+}
+
 /* Width Utilities
 --------------------------------------------- */
 .u-width-full {

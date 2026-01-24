@@ -138,10 +138,13 @@ function be_site_footer_top() {
 				echo '</p>';
 			}
 
-			// Newsletter Form (CiviCRM embed area)
+
 			echo '<div class="newsletter-form">';
-				// Add CiviCRM newsletter form embed here
+				if ( function_exists( 'be_newsletter_form' ) ) {
+					be_newsletter_form();
+				}
 			echo '</div>';
+
 
 		echo '</div>';
 

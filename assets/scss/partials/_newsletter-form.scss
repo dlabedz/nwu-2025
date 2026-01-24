@@ -1,0 +1,88 @@
+/* Newsletter Form
+--------------------------------------------- */
+
+.nwu-newsletter-form {
+
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.mc-field-group {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+
+		label {
+			font-family: var(--wp--preset--font-family--dm-sans);
+			font-size: var(--wp--preset--font-size--small);
+			font-weight: 600;
+			color: var(--wp--preset--color--white);
+
+			.required {
+				color: var(--wp--preset--color--red);
+			}
+		}
+
+		input[type="email"],
+		input[type="text"] {
+			background: var(--wp--preset--color--white);
+			border: 2px solid var(--wp--preset--color--white);
+			border-radius: var(--wp--custom--border-radius--tiny);
+			color: var(--wp--preset--color--foreground);
+			font-size: var(--wp--preset--font-size--small);
+			padding: 12px;
+			width: 100%;
+
+			&:focus {
+				outline: 2px solid var(--wp--preset--color--cyan);
+				outline-offset: 2px;
+			}
+
+			&::placeholder {
+				color: var(--wp--custom--color--neutral-500);
+			}
+		}
+	}
+
+	.button {
+		background: var(--wp--preset--color--white);
+		color: var(--wp--preset--color--foreground);
+		border: 4px solid var(--wp--preset--color--foreground);
+		font-family: "DM Sans";
+		font-size: 16.5px;
+		font-weight: 900;
+		letter-spacing: 2.475px;
+		text-transform: uppercase;
+		padding: 11px 16px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+
+		&:hover,
+		&:focus {
+			background: var(--wp--preset--color--foreground);
+			color: var(--wp--preset--color--white);
+		}
+	}
+
+	#mce-responses {
+		margin-top: 8px;
+
+		.response {
+			padding: 12px;
+			border-radius: var(--wp--custom--border-radius--tiny);
+			font-size: var(--wp--preset--font-size--small);
+		}
+
+		#mce-error-response {
+			background: var(--wp--preset--color--red);
+			color: var(--wp--preset--color--white);
+		}
+
+		#mce-success-response {
+			background: var(--wp--preset--color--cyan);
+			color: var(--wp--preset--color--foreground);
+		}
+	}
+}
