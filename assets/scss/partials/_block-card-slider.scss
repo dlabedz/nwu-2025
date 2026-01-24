@@ -224,3 +224,27 @@
     transform: none;
     width: 100%;
 }
+
+
+.block-card-slider {
+  .swiper {
+    // Critical for trackpad gestures to work properly
+    touch-action: pan-y pinch-zoom;
+    -webkit-overflow-scrolling: touch;
+
+    &-wrapper {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+
+    &-slide {
+      // Prevent text selection during swipe
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+  }
+}

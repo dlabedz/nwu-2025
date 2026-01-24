@@ -139,11 +139,29 @@ document.addEventListener('DOMContentLoaded', function() {
             slidesPerView: 1,
             spaceBetween: 16,
             loop: <?php echo count($cards) > 1 ? 'true' : 'false'; ?>,
+
+            // TRACKPAD SUPPORT - This is what you're missing!
+            mousewheel: {
+                enabled: true,
+                forceToAxis: true,
+                sensitivity: 1,
+                releaseOnEdges: true,
+            },
+
+            // Keyboard support (already working)
             keyboard: {
                 enabled: true,
                 onlyInViewport: true,
             },
+
+            // Better touch/swipe settings
+            grabCursor: true,
+            simulateTouch: true,
+            touchRatio: 1,
+            touchAngle: 45,
+
             watchSlidesProgress: true,
+
             breakpoints: {
                 640: {
                     slidesPerView: 2,
@@ -154,6 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     spaceBetween: 24,
                 },
             },
+
             on: {
                 init: function() {
                     equalizeSlideHeights(this);

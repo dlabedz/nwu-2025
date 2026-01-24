@@ -1252,6 +1252,22 @@ div.wpforms-container.u-width-full {
   width: 100%;
 }
 
+.block-card-slider .swiper {
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+}
+.block-card-slider .swiper-wrapper {
+  cursor: grab;
+}
+.block-card-slider .swiper-wrapper:active {
+  cursor: grabbing;
+}
+.block-card-slider .swiper-slide {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
 /* Homepage Banner Block
 ================================================================================================== */
 /**
