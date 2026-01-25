@@ -8,8 +8,9 @@
 
 	// Element variables
 	const menuToggle = document.querySelector('.menu-toggle');
+	const memberPagesToggle = document.querySelector('.member-pages-toggle');
 	const navMenu = document.querySelector('.nav-menu[role="navigation"]');
-	const body = document.body;
+	const navMembers = document.querySelector('.nav-menu-members');
 
 	const elementExists = function(element) {
 		if ( typeof(element) != 'undefined' && element != null ) {
@@ -22,148 +23,54 @@
 	const toggleMenu = function(event) {
 		if ( !event.target.closest('.menu-toggle') ) return;
 
+		// Close members menu if open
+		if ( elementExists(memberPagesToggle) && memberPagesToggle.classList.contains('active') ) {
+			memberPagesToggle.classList.remove('active');
+			if ( elementExists(navMembers) ) {
+				navMembers.classList.remove('active');
+			}
+		}
+
+		// Toggle primary menu
 		if ( elementExists(navMenu) ) {
 			navMenu.classList.toggle('active');
 		}
 
-		if ( elementExists(menuToggle) ) {
-			menuToggle.classList.toggle('active');
+		menuToggle.classList.toggle('active');
+	}
+
+	const toggleMemberPages = function(event) {
+		if ( !event.target.closest('.member-pages-toggle') ) return;
+
+		// Close main menu if open
+		if ( elementExists(menuToggle) && menuToggle.classList.contains('active') ) {
+			menuToggle.classList.remove('active');
+			if ( elementExists(navMenu) ) {
+				navMenu.classList.remove('active');
+			}
 		}
 
-		// Toggle body class to prevent scrolling when menu is open
-		body.classList.toggle('menu-open');
-
-		// Set aria-expanded attribute for accessibility
-		if ( elementExists(menuToggle) ) {
-			const isExpanded = menuToggle.classList.contains('active');
-			menuToggle.setAttribute('aria-expanded', isExpanded);
+		// Toggle members menu
+		if ( elementExists(navMembers) ) {
+			navMembers.classList.toggle('active');
 		}
+
+		memberPagesToggle.classList.toggle('active');
 	}
 
 	const toggleSubMenu = function(event) {
 		if ( !event.target.closest('.submenu-expand') ) return;
-
+		event.target.closest('.submenu-expand').classList.toggle('expanded');
 		event.preventDefault();
-		event.stopPropagation();
-
-		const button = event.target.closest('.submenu-expand');
-		const submenu = button.nextElementSibling;
-
-		button.classList.toggle('expanded');
-
-		// Set aria-expanded for accessibility
-		const isExpanded = button.classList.contains('expanded');
-		button.setAttribute('aria-expanded', isExpanded);
-
-		// Actually toggle the submenu display
-		if (submenu && submenu.classList.contains('sub-menu')) {
-			if (isExpanded) {
-				submenu.style.display = 'block';
-			} else {
-				submenu.style.display = 'none';
-			}
-		}
-	}
-
-	// Close menu when clicking outside (mobile only)
-	const closeMenuOnClickOutside = function(event) {
-		if (!elementExists(navMenu) || !elementExists(menuToggle)) return;
-
-		// Only apply on mobile viewports
-		if (window.innerWidth > 768) return;
-
-		const isMenuOpen = navMenu.classList.contains('active');
-		const clickedInsideMenu = event.target.closest('.nav-menu') || event.target.closest('.menu-toggle') || event.target.closest('.site-header__toggles');
-
-		if (isMenuOpen && !clickedInsideMenu) {
-			navMenu.classList.remove('active');
-			menuToggle.classList.remove('active');
-			body.classList.remove('menu-open');
-			menuToggle.setAttribute('aria-expanded', 'false');
-
-			// Close all submenus when closing main menu
-			closeAllSubmenus();
-		}
-	}
-
-	// Close menu on escape key (mobile only)
-	const closeMenuOnEscape = function(event) {
-		if (event.key === 'Escape' || event.keyCode === 27) {
-			if (window.innerWidth > 768) return;
-
-			if (elementExists(navMenu) && navMenu.classList.contains('active')) {
-				navMenu.classList.remove('active');
-
-				if (elementExists(menuToggle)) {
-					menuToggle.classList.remove('active');
-					menuToggle.setAttribute('aria-expanded', 'false');
-					menuToggle.focus(); // Return focus to toggle button
-				}
-
-				body.classList.remove('menu-open');
-
-				// Close all submenus when closing main menu
-				closeAllSubmenus();
-			}
-		}
-	}
-
-	// Close all open submenus
-	const closeAllSubmenus = function() {
-		const expandedButtons = document.querySelectorAll('.submenu-expand.expanded');
-		expandedButtons.forEach(function(button) {
-			button.classList.remove('expanded');
-			button.setAttribute('aria-expanded', 'false');
-
-			const submenu = button.nextElementSibling;
-			if (submenu && submenu.classList.contains('sub-menu')) {
-				submenu.style.display = 'none';
-			}
-		});
 	}
 
 	// Add functions to click event listener
 	document.addEventListener('click', function(event) {
 		toggleMenu(event);
+		if ( elementExists(memberPagesToggle) ) {
+			toggleMemberPages(event);
+		}
 		toggleSubMenu(event);
-		closeMenuOnClickOutside(event);
 	});
-
-	// Add keyboard event listener
-	document.addEventListener('keydown', closeMenuOnEscape);
-
-	// Set initial ARIA attributes
-	if (elementExists(menuToggle)) {
-		menuToggle.setAttribute('aria-expanded', 'false');
-		menuToggle.setAttribute('aria-label', 'Toggle navigation menu');
-	}
-
-	// Set ARIA attributes on submenu toggles
-	const submenuToggles = document.querySelectorAll('.submenu-expand');
-	submenuToggles.forEach(function(toggle) {
-		toggle.setAttribute('aria-expanded', 'false');
-		toggle.setAttribute('aria-label', 'Toggle submenu');
-	});
-
-	// Archive Filters Auto-Submit
-	const archiveFilters = document.getElementById('archive-filters');
-	if (archiveFilters) {
-		const filterSelects = archiveFilters.querySelectorAll('.auto-submit-filter');
-
-		// Auto-submit when dropdown changes, but remove empty values first
-		filterSelects.forEach(select => {
-			select.addEventListener('change', function() {
-				// Remove empty select values before submitting
-				const allSelects = archiveFilters.querySelectorAll('select');
-				allSelects.forEach(sel => {
-					if (sel.value === '') {
-						sel.removeAttribute('name');
-					}
-				});
-
-				archiveFilters.submit();
-			});
-		});
-	}
 
 })();

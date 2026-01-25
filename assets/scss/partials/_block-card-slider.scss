@@ -164,10 +164,13 @@
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
+	max-width: 170px;
+	height: auto;
 }
 
 .card-slider__image img {
     transition: transform 0.3s ease;
+
 }
 
 .card-slider__card:hover .card-slider__image img {

@@ -17,10 +17,12 @@ function be_register_menus() {
 		[
 			'primary' => esc_html__( 'Primary Navigation Menu', 'nwu-2025' ),
 			'utility' => esc_html__( 'Utility Menu', 'nwu-2025' ),
+			'members' => esc_html__( 'Members Navigation Menu', 'nwu-2025' ),
 		]
 	);
 }
 add_action( 'after_setup_theme', 'be_register_menus' );
+
 
 /**
  * Site Header
@@ -44,6 +46,10 @@ function be_site_header() {
 				'depth' => 1 // No submenus for utility menu
 			) );
 		}
+		// Add member pages toggle button inside utility menu area (mobile only, logged in only)
+		if ( is_user_logged_in() ) {
+			echo be_member_pages_toggle();
+		}
 		echo '</nav>';
 
 		echo '<nav class="nav-menu" role="navigation" aria-label="Primary Navigation">';
@@ -55,6 +61,18 @@ function be_site_header() {
 			) );
 		}
 		echo '</nav>';
+
+		// Members menu - only show to logged-in users
+		if ( is_user_logged_in() && has_nav_menu( 'members' ) ) {
+			echo '<nav class="nav-menu-members" role="navigation" aria-label="Members Navigation">';
+			wp_nav_menu( array(
+				'theme_location' => 'members',
+				'menu_id' => 'members-menu',
+				'container_class' => 'nav-members',
+				'depth' => 2 // Allow one level of submenus
+			) );
+			echo '</nav>';
+		}
 	echo '</div>';
 }
 add_action( 'tha_header_bottom', 'be_site_header', 11 );
@@ -71,11 +89,24 @@ function be_mobile_menu_toggle() {
 }
 
 /**
+ * Member pages toggle (mobile only)
+ */
+function be_member_pages_toggle() {
+	$output  = '<button aria-label="Toggle Member Pages" aria-expanded="false" class="member-pages-toggle">';
+	$output .= '<span class="member-pages-toggle__text">Member Pages</span>';
+	$output .= be_icon( array( 'icon' => 'chevron-large-right', 'class' => 'arrow', 'size' => 20, 'force' => true ) );
+	$output .= be_icon( array( 'icon' => 'close', 'class' => 'close', 'force' => true ) );
+	$output .= '</button>';
+	return $output;
+}
+
+/**
  * Add a dropdown icon to menu items with children
  */
 function be_nav_add_dropdown_icons( $output, $item, $depth, $args ) {
 
-	if ( ! isset( $args->theme_location ) || 'primary' !== $args->theme_location ) {
+	// Apply to both primary and members menus
+	if ( ! isset( $args->theme_location ) || ! in_array( $args->theme_location, array( 'primary', 'members' ) ) ) {
 		return $output;
 	}
 
