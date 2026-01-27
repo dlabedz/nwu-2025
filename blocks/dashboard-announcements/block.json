@@ -1,0 +1,23 @@
+{
+	"name": "nwu/dashboard-announcements",
+	"title": "Dashboard Announcements",
+	"description": "Displays announcements for member dashboard",
+	"style": "block-dashboard-announcements",
+	"category": "theme",
+	"icon": "megaphone",
+	"apiVersion": 2,
+	"keywords": ["dashboard", "announcements", "members"],
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": false,
+		"anchor": false,
+		"multiple": false,
+		"color": {
+			"text": false,
+			"background": false
+		}
+	}
+}

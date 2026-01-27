@@ -1,0 +1,295 @@
+/* Member Dashboard
+---------------------------------------------------------------------------------------------------- */
+
+.dashboard-wrapper {
+	// Wrapper contains all dashboard sections
+}
+
+/* Dashboard Top Section - Sidebar + Greeting
+--------------------------------------------- */
+
+.dashboard-top-section {
+	display: grid;
+	grid-template-columns: 250px 1fr;
+	gap: var(--wp--custom--layout--block-gap-large);
+	max-width: var(--wp--custom--layout--wide);
+	margin: 0 auto;
+	padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
+
+	@include media("<=tablet") {
+		grid-template-columns: 1fr;
+
+		.dashboard-sidebar {
+			order: 2; // Move sidebar below greeting on mobile
+		}
+	}
+}
+
+/* Dashboard Sidebar Navigation
+--------------------------------------------- */
+
+.dashboard-sidebar {
+
+	&__title {
+		// Hidden but accessible title for screen readers
+	}
+
+	.dashboard-nav {
+		// Navigation wrapper
+	}
+
+	.dashboard-menu {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		background: var(--wp--preset--color--newsprint);
+		padding: 1em;
+
+		li {
+			margin-bottom: 8px;
+
+			a {
+				display: block;
+				color: var(--wp--preset--color--foreground);
+				text-decoration: none;
+				font-family: var(--wp--preset--font-family--dm-sans);
+				font-size: var(--wp--preset--font-size--small);
+				font-weight: 600;
+				transition: 0.2s ease;
+
+				&:hover,
+				&:focus {
+					text-decoration: underline;
+				}
+			}
+
+			&.current-menu-item a,
+			&.current_page_item a {
+				text-decoration: underline;
+			}
+		}
+
+		// Submenu styles (if needed)
+		.sub-menu {
+			list-style: none;
+			padding-left: 16px;
+			margin-top: 8px;
+
+			li {
+				margin-bottom: 4px;
+
+				a {
+					padding: 8px 12px;
+					font-size: var(--wp--preset--font-size--tiny);
+					background: transparent;
+					border-left: 2px solid var(--wp--preset--color--newsprint);
+
+					&:hover,
+					&:focus {
+						background: var(--wp--preset--color--newsprint);
+						border-left-color: var(--wp--preset--color--cyan);
+					}
+				}
+			}
+		}
+	}
+
+	.no-menu-assigned {
+		padding: 16px;
+		background: var(--wp--preset--color--yellow);
+		color: var(--wp--preset--color--foreground);
+		border-radius: 4px;
+		font-size: var(--wp--preset--font-size--small);
+	}
+}
+
+/* Dashboard Greeting Section
+--------------------------------------------- */
+
+.dashboard-greeting {
+
+	h1 {
+		margin-bottom: 8px;
+		font-family: var(--wp--preset--font-family--oswald);
+		font-size: var(--wp--preset--font-size--x-large);
+		line-height: var(--wp--custom--line-height--small);
+	}
+
+	.dashboard-logout-link {
+		font-size: var(--wp--preset--font-size--small);
+		color: var(--wp--custom--color--neutral-600);
+		margin-bottom: var(--wp--custom--layout--block-gap);
+
+		a {
+			color: var(--wp--preset--color--blue);
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.dashboard-intro {
+		font-size: var(--wp--preset--font-size--medium);
+		line-height: var(--wp--custom--line-height--normal);
+
+		p {
+			margin: 0;
+		}
+
+		a {
+			color: var(--wp--preset--color--blue);
+			text-decoration: underline;
+			font-weight: 600;
+
+			&:hover {
+				color: var(--wp--preset--color--navy);
+			}
+		}
+	}
+}
+
+/* Dashboard Content Wrapper - For content-width sections
+--------------------------------------------- */
+
+.dashboard-content-wrapper {
+	max-width: var(--wp--custom--layout--wide);
+	margin: 0 auto;
+	padding: 0 var(--wp--custom--layout--padding) var(--wp--custom--layout--block-gap-large);
+}
+
+/* Dashboard Announcements - Content Width with Red Border
+--------------------------------------------- */
+
+.dashboard-announcements {
+	border: 3px solid var(--wp--preset--color--red);
+	padding: var(--wp--custom--layout--block-gap);
+	margin-bottom: var(--wp--custom--layout--block-gap-large);
+
+	.block-area,
+	> * {
+		// Block area styling
+
+		h2 {
+			font-family: var(--wp--preset--font-family--oswald);
+			font-size: var(--wp--preset--font-size--x-large);
+			text-transform: uppercase;
+			margin-bottom: var(--wp--custom--layout--block-gap);
+			color: var(--wp--preset--color--foreground);
+			margin-top: 0;
+		}
+
+		h3 {
+			font-family: var(--wp--preset--font-family--oswald);
+			font-size: var(--wp--preset--font-size--large);
+			margin-bottom: 8px;
+		}
+
+		p {
+			margin-bottom: 16px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		a {
+			color: var(--wp--preset--color--blue);
+			text-decoration: underline;
+
+			&:hover {
+				color: var(--wp--preset--color--navy);
+			}
+		}
+	}
+
+	// Fallback message styling
+	> p {
+		font-size: var(--wp--preset--font-size--small);
+		color: var(--wp--custom--color--neutral-600);
+		font-style: italic;
+		margin: 0;
+	}
+}
+
+/* Dashboard Content Row - Chapter + Events
+--------------------------------------------- */
+
+.dashboard-content-row {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--wp--custom--layout--block-gap-large);
+	max-width: var(--wp--custom--layout--wide);
+	margin: 0 auto;
+	padding: 0 var(--wp--custom--layout--padding) var(--wp--custom--layout--block-gap-large);
+
+	@include media("<=tablet") {
+		grid-template-columns: 1fr;
+	}
+}
+
+.dashboard-chapter-updates,
+.dashboard-events-calendar {
+
+	h2 {
+		font-family: var(--wp--preset--font-family--oswald);
+		font-size: var(--wp--preset--font-size--x-large);
+		text-transform: uppercase;
+		margin-bottom: var(--wp--custom--layout--block-gap);
+		color: var(--wp--preset--color--foreground);
+	}
+
+	.block-area {
+		// Block area content
+
+		h3 {
+			font-family: var(--wp--preset--font-family--dm-sans);
+			font-size: var(--wp--preset--font-size--medium);
+			font-weight: 700;
+			margin-bottom: 8px;
+		}
+
+		p {
+			font-size: var(--wp--preset--font-size--small);
+			line-height: var(--wp--custom--line-height--normal);
+			margin-bottom: 16px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		a {
+			color: var(--wp--preset--color--blue);
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	// Fallback message styling
+	> p {
+		font-size: var(--wp--preset--font-size--small);
+		color: var(--wp--custom--color--neutral-600);
+		font-style: italic;
+	}
+}
+
+/* Dashboard Chapter Updates Specific
+--------------------------------------------- */
+
+.dashboard-chapter-updates {
+	background: var(--wp--preset--color--yellow);
+	padding: 1em;
+}
+
+/* Dashboard Events Calendar Specific
+--------------------------------------------- */
+
+.dashboard-events-calendar {
+	background: var(--wp--preset--color--cyan);
+	padding: 1em;
+}
