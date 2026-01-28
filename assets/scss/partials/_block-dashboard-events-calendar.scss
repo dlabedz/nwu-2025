@@ -1,0 +1,245 @@
+/* Dashboard Events Calendar Block
+--------------------------------------------- */
+
+.block-dashboard-events-calendar {
+	margin-top: 0;
+	background: var(--wp--preset--color--cyan);
+	padding: 1em;
+
+	.calendar-header {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		gap: 16px;
+		margin-bottom: var(--wp--custom--layout--block-gap);
+
+		h2 {
+			margin: 0;
+			font-size: var(--wp--preset--font-size--large);
+			text-align: center;
+			grid-column: 2; // Place in center column
+
+			@include media(">=tablet") {
+				font-size: var(--wp--preset--font-size--x-large);
+			}
+		}
+	}
+
+	.calendar-nav {
+		display: contents; // Makes children act as direct grid items
+
+		&__prev {
+			grid-column: 1; // Place in left column
+			width: 36px;
+			height: 36px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: var(--wp--preset--color--background);
+			border: 1px solid var(--wp--preset--color--newsprint);
+			border-radius: var(--wp--custom--border-radius--tiny);
+			text-decoration: none;
+			transition: all 0.2s ease;
+
+			svg {
+				fill: var(--wp--preset--color--navy);
+			}
+
+			&:hover {
+				background: var(--wp--preset--color--navy);
+				border-color: var(--wp--preset--color--navy);
+
+				svg {
+					fill: var(--wp--preset--color--white);
+				}
+			}
+		}
+
+		&__next {
+			grid-column: 3; // Place in right column
+			width: 36px;
+			height: 36px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: var(--wp--preset--color--background);
+			border: 1px solid var(--wp--preset--color--newsprint);
+			border-radius: var(--wp--custom--border-radius--tiny);
+			text-decoration: none;
+			transition: all 0.2s ease;
+
+			svg {
+				fill: var(--wp--preset--color--navy);
+			}
+
+			&:hover {
+				background: var(--wp--preset--color--navy);
+				border-color: var(--wp--preset--color--navy);
+
+				svg {
+					fill: var(--wp--preset--color--white);
+				}
+			}
+		}
+	}
+
+	.calendar-grid {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		gap: 4px;
+		margin-bottom: var(--wp--custom--layout--block-gap);
+
+		@include media(">=tablet") {
+			gap: 8px;
+		}
+	}
+
+	.calendar-day-header {
+		color: var(--wp--preset--color--black);
+		text-align: center;
+		padding: 8px 4px;
+		font-size: var(--wp--preset--font-size--tiny);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+
+		@include media(">=tablet") {
+			padding: 12px 8px;
+			font-size: var(--wp--preset--font-size--small);
+		}
+	}
+
+	.calendar-day {
+		min-height: 40px;
+		padding: 4px;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		@include media(">=tablet") {
+			min-height: 50px;
+			padding: 8px;
+		}
+
+		&--empty {
+			background: transparent;
+			border: none;
+		}
+
+		&--weekend {
+		}
+
+		&--today {
+			background: var(--wp--preset--color--yellow);
+			border-color: var(--wp--preset--color--navy);
+			border-width: 2px;
+
+			.calendar-day__number {
+				font-weight: 700;
+				color: var(--wp--preset--color--navy);
+			}
+		}
+
+		&--has-events {
+			cursor: pointer;
+
+			&:hover {
+				background: var(--wp--custom--color--neutral-50);
+				border-color: var(--wp--preset--color--cyan);
+			}
+
+			&.calendar-day--today:hover {
+				background: var(--wp--preset--color--yellow);
+			}
+		}
+	}
+
+	.calendar-day__number {
+		font-size: var(--wp--preset--font-size--small);
+		font-weight: 600;
+		color: var(--wp--preset--color--foreground);
+		line-height: 1;
+
+		@include media(">=tablet") {
+			font-size: var(--wp--preset--font-size--medium);
+		}
+	}
+
+	.calendar-day__events {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px;
+		margin-top: 6px;
+
+		@include media(">=tablet") {
+			margin-top: 8px;
+		}
+	}
+
+	.event-dot {
+		width: 8px;
+		height: 8px;
+		background: var(--wp--preset--color--cyan);
+		border-radius: 50%;
+		display: block;
+		text-decoration: none;
+		transition: all 0.2s ease;
+
+		@include media(">=tablet") {
+			width: 10px;
+			height: 10px;
+		}
+
+		&:hover {
+			background: var(--wp--preset--color--blue);
+			transform: scale(1.2);
+		}
+	}
+
+	.calendar-footer {
+		text-align: center;
+		padding-top: var(--wp--custom--layout--block-gap);
+		border-top: 1px solid var(--wp--preset--color--newsprint);
+
+		.view-all-events {
+			color: var(--wp--preset--color--blue);
+			text-decoration: none;
+			font-weight: 600;
+			font-size: var(--wp--preset--font-size--small);
+			display: inline-flex;
+			align-items: center;
+			gap: 4px;
+
+			&:hover {
+				color: var(--wp--preset--color--navy);
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+// Mobile-specific adjustments
+@include media("<tablet") {
+	.block-dashboard-events-calendar {
+
+		.calendar-day-header {
+			font-size: 10px;
+			padding: 6px 2px;
+		}
+
+		.calendar-day {
+			min-height: 50px;
+			padding: 4px 2px;
+		}
+
+		.calendar-day__number {
+			font-size: var(--wp--preset--font-size--tiny);
+		}
+
+		.event-dot {
+			width: 6px;
+			height: 6px;
+		}
+	}
+}

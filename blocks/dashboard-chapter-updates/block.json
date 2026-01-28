@@ -1,0 +1,22 @@
+{
+	"name": "nwu/dashboard-chapter-updates",
+	"title": "Dashboard Chapter Updates",
+	"description": "Displays chapter updates for member dashboard",
+	"category": "theme",
+	"icon": "groups",
+	"apiVersion": 2,
+	"keywords": ["dashboard", "chapter", "updates", "members"],
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": false,
+		"anchor": false,
+		"multiple": false,
+		"color": {
+			"text": false,
+			"background": false
+		}
+	}
+}

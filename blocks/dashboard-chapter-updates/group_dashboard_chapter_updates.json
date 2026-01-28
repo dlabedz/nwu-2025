@@ -1,0 +1,65 @@
+{
+    "key": "group_dashboard_chapter_updates",
+    "title": "Dashboard Chapter Updates Block",
+    "fields": [
+        {
+            "key": "field_dashboard_ch_title",
+            "label": "Section Title",
+            "name": "chapter_updates_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "My Chapter Updates",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_dashboard_ch_content",
+            "label": "Content",
+            "name": "chapter_updates_content",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Add general chapter updates that apply to all members",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "nwu/dashboard-chapter-updates"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+}
+

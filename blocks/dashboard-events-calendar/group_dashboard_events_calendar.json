@@ -1,0 +1,64 @@
+{
+    "key": "group_dashboard_events_calendar",
+    "title": "Dashboard Events Calendar Block",
+    "fields": [
+        {
+            "key": "field_dashboard_ev_past",
+            "label": "Show Past Events",
+            "name": "show_past_events",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Include events that have already occurred",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_dashboard_ev_chapter",
+            "label": "Show Only My Chapter Events",
+            "name": "chapter_events_only",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Filter events to only show those for the user's assigned chapter",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "nwu/dashboard-events-calendar"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+}

@@ -1,0 +1,22 @@
+{
+	"name": "nwu/dashboard-events-calendar",
+	"title": "Dashboard Events Calendar",
+	"description": "Displays monthly events calendar for member dashboard",
+	"category": "theme",
+	"icon": "calendar-alt",
+	"apiVersion": 2,
+	"keywords": ["dashboard", "events", "calendar", "members"],
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "render.php"
+	},
+	"supports": {
+		"align": false,
+		"anchor": false,
+		"multiple": false,
+		"color": {
+			"text": false,
+			"background": false
+		}
+	}
+}

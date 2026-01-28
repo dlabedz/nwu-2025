@@ -1,0 +1,18 @@
+{
+    "name": "cwp/membership-signup",
+    "title": "Membership Signup Form",
+    "description": "Displays intro text and CiviCRM membership form",
+    "style": "block-membership-signup",
+    "category": "theme",
+    "icon": "id-alt",
+    "apiVersion": 2,
+    "keywords": ["membership", "form", "civicrm"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": true
+    }
+}

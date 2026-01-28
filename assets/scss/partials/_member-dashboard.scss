@@ -150,146 +150,39 @@
 	}
 }
 
-/* Dashboard Content Wrapper - For content-width sections
+/* Dashboard Content Wrapper - Contains all blocks added via editor
 --------------------------------------------- */
 
 .dashboard-content-wrapper {
 	max-width: var(--wp--custom--layout--wide);
 	margin: 0 auto;
 	padding: 0 var(--wp--custom--layout--padding) var(--wp--custom--layout--block-gap-large);
-}
 
-/* Dashboard Announcements - Content Width with Red Border
---------------------------------------------- */
-
-.dashboard-announcements {
-	border: 3px solid var(--wp--preset--color--red);
-	padding: var(--wp--custom--layout--block-gap);
-	margin-bottom: var(--wp--custom--layout--block-gap-large);
-
-	.block-area,
+	// Standard spacing for all blocks
 	> * {
-		// Block area styling
+		margin-bottom: var(--wp--custom--layout--block-gap-large);
 
-		h2 {
-			font-family: var(--wp--preset--font-family--oswald);
-			font-size: var(--wp--preset--font-size--x-large);
-			text-transform: uppercase;
-			margin-bottom: var(--wp--custom--layout--block-gap);
-			color: var(--wp--preset--color--foreground);
-			margin-top: 0;
-		}
-
-		h3 {
-			font-family: var(--wp--preset--font-family--oswald);
-			font-size: var(--wp--preset--font-size--large);
-			margin-bottom: 8px;
-		}
-
-		p {
-			margin-bottom: 16px;
-
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
-
-		a {
-			color: var(--wp--preset--color--blue);
-			text-decoration: underline;
-
-			&:hover {
-				color: var(--wp--preset--color--navy);
-			}
+		&:last-child {
+			margin-bottom: 0;
 		}
 	}
 
-	// Fallback message styling
-	> p {
-		font-size: var(--wp--preset--font-size--small);
-		color: var(--wp--custom--color--neutral-600);
-		font-style: italic;
-		margin: 0;
-	}
-}
+	// Two-column grid: 55% chapter updates, 45% events calendar
+	// Applied to Group block with class "dashboard-content-row"
+	.dashboard-content-row {
+		display: grid;
+		grid-template-columns: 55fr 45fr; // 55% / 45% ratio
+		gap: var(--wp--custom--layout--block-gap-large);
 
-/* Dashboard Content Row - Chapter + Events
---------------------------------------------- */
-
-.dashboard-content-row {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: var(--wp--custom--layout--block-gap-large);
-	max-width: var(--wp--custom--layout--wide);
-	margin: 0 auto;
-	padding: 0 var(--wp--custom--layout--padding) var(--wp--custom--layout--block-gap-large);
-
-	@include media("<=tablet") {
-		grid-template-columns: 1fr;
-	}
-}
-
-.dashboard-chapter-updates,
-.dashboard-events-calendar {
-
-	h2 {
-		font-family: var(--wp--preset--font-family--oswald);
-		font-size: var(--wp--preset--font-size--x-large);
-		text-transform: uppercase;
-		margin-bottom: var(--wp--custom--layout--block-gap);
-		color: var(--wp--preset--color--foreground);
-	}
-
-	.block-area {
-		// Block area content
-
-		h3 {
-			font-family: var(--wp--preset--font-family--dm-sans);
-			font-size: var(--wp--preset--font-size--medium);
-			font-weight: 700;
-			margin-bottom: 8px;
+		@include media("<=tablet") {
+			grid-template-columns: 1fr;
+			gap: var(--wp--custom--layout--block-gap);
 		}
 
-		p {
-			font-size: var(--wp--preset--font-size--small);
-			line-height: var(--wp--custom--line-height--normal);
-			margin-bottom: 16px;
-
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
-
-		a {
-			color: var(--wp--preset--color--blue);
-			text-decoration: none;
-
-			&:hover {
-				text-decoration: underline;
-			}
+		// Remove bottom margin from blocks inside the row
+		// The row itself handles spacing
+		> * {
+			margin-bottom: 0;
 		}
 	}
-
-	// Fallback message styling
-	> p {
-		font-size: var(--wp--preset--font-size--small);
-		color: var(--wp--custom--color--neutral-600);
-		font-style: italic;
-	}
-}
-
-/* Dashboard Chapter Updates Specific
---------------------------------------------- */
-
-.dashboard-chapter-updates {
-	background: var(--wp--preset--color--yellow);
-	padding: 1em;
-}
-
-/* Dashboard Events Calendar Specific
---------------------------------------------- */
-
-.dashboard-events-calendar {
-	background: var(--wp--preset--color--cyan);
-	padding: 1em;
 }

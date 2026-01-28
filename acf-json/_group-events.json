@@ -12,7 +12,7 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -30,7 +30,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
@@ -59,6 +59,82 @@
             "placeholder": "Carnegie Hall, Cambridge MA",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_event_registration_link",
+            "label": "Registration Link",
+            "name": "registration_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Add a link for event registration or more information",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_event_scope",
+            "label": "Event Scope",
+            "name": "event_scope",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Is this event for all chapters or a specific chapter?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "all-chapters": "All Chapters",
+                "single-chapter": "Specific Chapter"
+            },
+            "default_value": "all-chapters",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_event_chapter",
+            "label": "Chapter",
+            "name": "event_chapter",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Select which chapter this event is for",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_event_scope",
+                        "operator": "==",
+                        "value": "single-chapter"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "chapters"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 0,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
         }
     ],
     "location": [
@@ -66,7 +142,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "event"
+                "value": "events"
             }
         ]
     ],
@@ -79,5 +155,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1234567890
+    "modified": 1738046400
 }

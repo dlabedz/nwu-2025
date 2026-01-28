@@ -3938,6 +3938,279 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
   margin-bottom: var(--wp--custom--layout--block-gap);
 }
 
+/* Dashboard Chapter Updates Block
+--------------------------------------------- */
+.block-dashboard-chapter-updates {
+  background: var(--wp--preset--color--yellow);
+  padding: 1em;
+}
+.block-dashboard-chapter-updates h2 {
+  margin-bottom: var(--wp--custom--layout--block-gap);
+}
+.block-dashboard-chapter-updates .chapter-updates-content {
+  margin-bottom: var(--wp--custom--layout--block-gap);
+}
+.block-dashboard-chapter-updates .chapter-updates-content > *:first-child {
+  margin-top: 0;
+}
+.block-dashboard-chapter-updates .chapter-updates-content > *:last-child {
+  margin-bottom: 0;
+}
+.block-dashboard-chapter-updates .chapter-link {
+  margin-top: var(--wp--custom--layout--block-gap);
+  margin-bottom: 0;
+}
+.block-dashboard-chapter-updates .chapter-link a {
+  color: var(--wp--preset--color--blue);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.block-dashboard-chapter-updates .chapter-link a:hover {
+  color: var(--wp--preset--color--navy);
+  text-decoration: underline;
+}
+.block-dashboard-chapter-updates .no-chapter-assigned {
+  color: var(--wp--custom--color--neutral-600);
+  font-style: italic;
+  margin-top: var(--wp--custom--layout--block-gap);
+  margin-bottom: 0;
+}
+
+/* Dashboard Events Calendar Block
+--------------------------------------------- */
+.block-dashboard-events-calendar {
+  margin-top: 0;
+  background: var(--wp--preset--color--cyan);
+  padding: 1em;
+}
+.block-dashboard-events-calendar .calendar-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: var(--wp--custom--layout--block-gap);
+}
+.block-dashboard-events-calendar .calendar-header h2 {
+  margin: 0;
+  font-size: var(--wp--preset--font-size--large);
+  text-align: center;
+  grid-column: 2;
+}
+@media (min-width: 768px) {
+  .block-dashboard-events-calendar .calendar-header h2 {
+    font-size: var(--wp--preset--font-size--x-large);
+  }
+}
+.block-dashboard-events-calendar .calendar-nav {
+  display: contents;
+}
+.block-dashboard-events-calendar .calendar-nav__prev {
+  grid-column: 1;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--wp--preset--color--background);
+  border: 1px solid var(--wp--preset--color--newsprint);
+  border-radius: var(--wp--custom--border-radius--tiny);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.block-dashboard-events-calendar .calendar-nav__prev svg {
+  fill: var(--wp--preset--color--navy);
+}
+.block-dashboard-events-calendar .calendar-nav__prev:hover {
+  background: var(--wp--preset--color--navy);
+  border-color: var(--wp--preset--color--navy);
+}
+.block-dashboard-events-calendar .calendar-nav__prev:hover svg {
+  fill: var(--wp--preset--color--white);
+}
+.block-dashboard-events-calendar .calendar-nav__next {
+  grid-column: 3;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--wp--preset--color--background);
+  border: 1px solid var(--wp--preset--color--newsprint);
+  border-radius: var(--wp--custom--border-radius--tiny);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.block-dashboard-events-calendar .calendar-nav__next svg {
+  fill: var(--wp--preset--color--navy);
+}
+.block-dashboard-events-calendar .calendar-nav__next:hover {
+  background: var(--wp--preset--color--navy);
+  border-color: var(--wp--preset--color--navy);
+}
+.block-dashboard-events-calendar .calendar-nav__next:hover svg {
+  fill: var(--wp--preset--color--white);
+}
+.block-dashboard-events-calendar .calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: var(--wp--custom--layout--block-gap);
+}
+@media (min-width: 768px) {
+  .block-dashboard-events-calendar .calendar-grid {
+    gap: 8px;
+  }
+}
+.block-dashboard-events-calendar .calendar-day-header {
+  color: var(--wp--preset--color--black);
+  text-align: center;
+  padding: 8px 4px;
+  font-size: var(--wp--preset--font-size--tiny);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+@media (min-width: 768px) {
+  .block-dashboard-events-calendar .calendar-day-header {
+    padding: 12px 8px;
+    font-size: var(--wp--preset--font-size--small);
+  }
+}
+.block-dashboard-events-calendar .calendar-day {
+  min-height: 40px;
+  padding: 4px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .block-dashboard-events-calendar .calendar-day {
+    min-height: 50px;
+    padding: 8px;
+  }
+}
+.block-dashboard-events-calendar .calendar-day--empty {
+  background: transparent;
+  border: none;
+}
+.block-dashboard-events-calendar .calendar-day--today {
+  background: var(--wp--preset--color--yellow);
+  border-color: var(--wp--preset--color--navy);
+  border-width: 2px;
+}
+.block-dashboard-events-calendar .calendar-day--today .calendar-day__number {
+  font-weight: 700;
+  color: var(--wp--preset--color--navy);
+}
+.block-dashboard-events-calendar .calendar-day--has-events {
+  cursor: pointer;
+}
+.block-dashboard-events-calendar .calendar-day--has-events:hover {
+  background: var(--wp--custom--color--neutral-50);
+  border-color: var(--wp--preset--color--cyan);
+}
+.block-dashboard-events-calendar .calendar-day--has-events.calendar-day--today:hover {
+  background: var(--wp--preset--color--yellow);
+}
+.block-dashboard-events-calendar .calendar-day__number {
+  font-size: var(--wp--preset--font-size--small);
+  font-weight: 600;
+  color: var(--wp--preset--color--foreground);
+  line-height: 1;
+}
+@media (min-width: 768px) {
+  .block-dashboard-events-calendar .calendar-day__number {
+    font-size: var(--wp--preset--font-size--medium);
+  }
+}
+.block-dashboard-events-calendar .calendar-day__events {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+@media (min-width: 768px) {
+  .block-dashboard-events-calendar .calendar-day__events {
+    margin-top: 8px;
+  }
+}
+.block-dashboard-events-calendar .event-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--wp--preset--color--cyan);
+  border-radius: 50%;
+  display: block;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+@media (min-width: 768px) {
+  .block-dashboard-events-calendar .event-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+.block-dashboard-events-calendar .event-dot:hover {
+  background: var(--wp--preset--color--blue);
+  transform: scale(1.2);
+}
+.block-dashboard-events-calendar .calendar-footer {
+  text-align: center;
+  padding-top: var(--wp--custom--layout--block-gap);
+  border-top: 1px solid var(--wp--preset--color--newsprint);
+}
+.block-dashboard-events-calendar .calendar-footer .view-all-events {
+  color: var(--wp--preset--color--blue);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--wp--preset--font-size--small);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.block-dashboard-events-calendar .calendar-footer .view-all-events:hover {
+  color: var(--wp--preset--color--navy);
+  text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+  .block-dashboard-events-calendar .calendar-day-header {
+    font-size: 10px;
+    padding: 6px 2px;
+  }
+  .block-dashboard-events-calendar .calendar-day {
+    min-height: 50px;
+    padding: 4px 2px;
+  }
+  .block-dashboard-events-calendar .calendar-day__number {
+    font-size: var(--wp--preset--font-size--tiny);
+  }
+  .block-dashboard-events-calendar .event-dot {
+    width: 6px;
+    height: 6px;
+  }
+}
+.membership-signup-block {
+  padding: 3em 0;
+  background: var(--wp--preset--color--newsprint);
+}
+
+.membership-signup-content {
+  max-width: 765px;
+  margin: 0 auto;
+}
+
+.membership-signup-title {
+  margin-bottom: var(--wp--custom--layout--block-gap);
+}
+
+.membership-signup-form {
+  margin-top: var(--wp--custom--layout--block-gap);
+}
+
 /* Site Header
 ---------------------------------------------------------------------------------------------------- */
 .site-header {
@@ -6363,129 +6636,32 @@ h1.front {
   color: var(--wp--preset--color--navy);
 }
 
-/* Dashboard Content Wrapper - For content-width sections
+/* Dashboard Content Wrapper - Contains all blocks added via editor
 --------------------------------------------- */
 .dashboard-content-wrapper {
   max-width: var(--wp--custom--layout--wide);
   margin: 0 auto;
   padding: 0 var(--wp--custom--layout--padding) var(--wp--custom--layout--block-gap-large);
 }
-
-/* Dashboard Announcements - Content Width with Red Border
---------------------------------------------- */
-.dashboard-announcements {
-  border: 3px solid var(--wp--preset--color--red);
-  padding: var(--wp--custom--layout--block-gap);
+.dashboard-content-wrapper > * {
   margin-bottom: var(--wp--custom--layout--block-gap-large);
 }
-.dashboard-announcements .block-area h2,
-.dashboard-announcements > * h2 {
-  font-family: var(--wp--preset--font-family--oswald);
-  font-size: var(--wp--preset--font-size--x-large);
-  text-transform: uppercase;
-  margin-bottom: var(--wp--custom--layout--block-gap);
-  color: var(--wp--preset--color--foreground);
-  margin-top: 0;
-}
-.dashboard-announcements .block-area h3,
-.dashboard-announcements > * h3 {
-  font-family: var(--wp--preset--font-family--oswald);
-  font-size: var(--wp--preset--font-size--large);
-  margin-bottom: 8px;
-}
-.dashboard-announcements .block-area p,
-.dashboard-announcements > * p {
-  margin-bottom: 16px;
-}
-.dashboard-announcements .block-area p:last-child,
-.dashboard-announcements > * p:last-child {
+.dashboard-content-wrapper > *:last-child {
   margin-bottom: 0;
 }
-.dashboard-announcements .block-area a,
-.dashboard-announcements > * a {
-  color: var(--wp--preset--color--blue);
-  text-decoration: underline;
-}
-.dashboard-announcements .block-area a:hover,
-.dashboard-announcements > * a:hover {
-  color: var(--wp--preset--color--navy);
-}
-.dashboard-announcements > p {
-  font-size: var(--wp--preset--font-size--small);
-  color: var(--wp--custom--color--neutral-600);
-  font-style: italic;
-  margin: 0;
-}
-
-/* Dashboard Content Row - Chapter + Events
---------------------------------------------- */
-.dashboard-content-row {
+.dashboard-content-wrapper .dashboard-content-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 55fr 45fr;
   gap: var(--wp--custom--layout--block-gap-large);
-  max-width: var(--wp--custom--layout--wide);
-  margin: 0 auto;
-  padding: 0 var(--wp--custom--layout--padding) var(--wp--custom--layout--block-gap-large);
 }
 @media (max-width: 768px) {
-  .dashboard-content-row {
+  .dashboard-content-wrapper .dashboard-content-row {
     grid-template-columns: 1fr;
+    gap: var(--wp--custom--layout--block-gap);
   }
 }
-
-.dashboard-chapter-updates h2,
-.dashboard-events-calendar h2 {
-  font-family: var(--wp--preset--font-family--oswald);
-  font-size: var(--wp--preset--font-size--x-large);
-  text-transform: uppercase;
-  margin-bottom: var(--wp--custom--layout--block-gap);
-  color: var(--wp--preset--color--foreground);
-}
-.dashboard-chapter-updates .block-area h3,
-.dashboard-events-calendar .block-area h3 {
-  font-family: var(--wp--preset--font-family--dm-sans);
-  font-size: var(--wp--preset--font-size--medium);
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.dashboard-chapter-updates .block-area p,
-.dashboard-events-calendar .block-area p {
-  font-size: var(--wp--preset--font-size--small);
-  line-height: var(--wp--custom--line-height--normal);
-  margin-bottom: 16px;
-}
-.dashboard-chapter-updates .block-area p:last-child,
-.dashboard-events-calendar .block-area p:last-child {
+.dashboard-content-wrapper .dashboard-content-row > * {
   margin-bottom: 0;
-}
-.dashboard-chapter-updates .block-area a,
-.dashboard-events-calendar .block-area a {
-  color: var(--wp--preset--color--blue);
-  text-decoration: none;
-}
-.dashboard-chapter-updates .block-area a:hover,
-.dashboard-events-calendar .block-area a:hover {
-  text-decoration: underline;
-}
-.dashboard-chapter-updates > p,
-.dashboard-events-calendar > p {
-  font-size: var(--wp--preset--font-size--small);
-  color: var(--wp--custom--color--neutral-600);
-  font-style: italic;
-}
-
-/* Dashboard Chapter Updates Specific
---------------------------------------------- */
-.dashboard-chapter-updates {
-  background: var(--wp--preset--color--yellow);
-  padding: 1em;
-}
-
-/* Dashboard Events Calendar Specific
---------------------------------------------- */
-.dashboard-events-calendar {
-  background: var(--wp--preset--color--cyan);
-  padding: 1em;
 }
 
 /* Width Utilities

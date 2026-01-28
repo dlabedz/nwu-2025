@@ -1,0 +1,49 @@
+/* Dashboard Chapter Updates Block
+--------------------------------------------- */
+
+.block-dashboard-chapter-updates {
+	background: var(--wp--preset--color--yellow);
+	padding: 1em;
+
+	h2 {
+		margin-bottom: var(--wp--custom--layout--block-gap);
+	}
+
+	.chapter-updates-content {
+		margin-bottom: var(--wp--custom--layout--block-gap);
+
+		& > *:first-child {
+			margin-top: 0;
+		}
+
+		& > *:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.chapter-link {
+		margin-top: var(--wp--custom--layout--block-gap);
+		margin-bottom: 0;
+
+		a {
+			color: var(--wp--preset--color--blue);
+			text-decoration: none;
+			font-weight: 600;
+			display: inline-flex;
+			align-items: center;
+			gap: 4px;
+
+			&:hover {
+				color: var(--wp--preset--color--navy);
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.no-chapter-assigned {
+		color: var(--wp--custom--color--neutral-600);
+		font-style: italic;
+		margin-top: var(--wp--custom--layout--block-gap);
+		margin-bottom: 0;
+	}
+}
