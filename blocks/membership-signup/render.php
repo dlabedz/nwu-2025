@@ -18,31 +18,49 @@ if (!empty($form_title)) {
 
 echo '<div class="membership-signup-form">';
 
-// Check if CiviCRM classes are available
-if (!class_exists('CRM_Core_Invoke')) {
-    // Show placeholder when CiviCRM not available
-    echo '<div style="padding: 40px; background: #f9f9f9; border: 2px dashed #ccc; text-align: center; border-radius: 4px;">';
-    echo '<p style="margin: 0; color: #666; font-size: 16px;">📋 CiviCRM membership form will appear here</p>';
-    echo '<p style="margin: 10px 0 0 0; color: #999; font-size: 14px;">(CiviCRM not implemented locally - form displays on staging/production)</p>';
-    echo '</div>';
+// Check if we're on local (no CiviCRM) or staging/production
+if (class_exists('CRM_Core_Invoke')) {
+    // Staging/Production: Embed the form via seamless iframe
+    $form_url = home_url('/civicrm/member-signup');
+    ?>
+    <iframe
+        src="<?php echo esc_url($form_url); ?>"
+        id="civicrm-form-iframe"
+        class="civicrm-form-iframe"
+        width="100%"
+        frameborder="0"
+        scrolling="no"
+        title="Membership Signup Form">
+    </iframe>
+
+    <script>
+    // Auto-resize iframe to content height
+    window.addEventListener('message', function(e) {
+        if (e.data && e.data.frameHeight) {
+            var iframe = document.getElementById('civicrm-form-iframe');
+            if (iframe) {
+                iframe.style.height = e.data.frameHeight + 'px';
+            }
+        }
+    });
+
+    // Fallback: Set initial height
+    document.addEventListener('DOMContentLoaded', function() {
+        var iframe = document.getElementById('civicrm-form-iframe');
+        if (iframe) {
+            iframe.style.height = '1400px'; // Default height
+        }
+    });
+    </script>
+    <?php
 } else {
-    // Use CiviCRM's page callback to render inline
-    try {
-        if (function_exists('civi_wp')) {
-            civi_wp()->initialize();
-        }
-
-        // Capture the form output
-        ob_start();
-        CRM_Core_Invoke::invoke(['civicrm', 'member-signup']);
-        $form_html = ob_get_clean();
-
-        echo $form_html;
-    } catch (Exception $e) {
-        if (is_admin()) {
-            echo '<p style="color: red;">Error loading form: ' . esc_html($e->getMessage()) . '</p>';
-        }
-    }
+    // Local: Show placeholder
+    ?>
+    <div class="civicrm-placeholder">
+        <p style="margin: 0 0 10px 0; font-size: 18px; color: #666;">📋 CiviCRM Membership Form</p>
+        <p style="margin: 0; font-size: 14px; color: #999;">Form will display here on staging/production</p>
+    </div>
+    <?php
 }
 
 echo '</div>';

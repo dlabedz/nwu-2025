@@ -4342,13 +4342,8 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
   }
 }
 .membership-signup-block {
-  padding: 3em 0;
+  margin: var(--wp--custom--layout--block-gap-large) 0;
   background: var(--wp--preset--color--newsprint);
-}
-
-.membership-signup-content {
-  max-width: 765px;
-  margin: 0 auto;
 }
 
 .membership-signup-title {
@@ -4357,6 +4352,25 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 
 .membership-signup-form {
   margin-top: var(--wp--custom--layout--block-gap);
+}
+
+/* Seamless iframe - no borders, no scrollbars */
+.civicrm-form-iframe {
+  display: block;
+  width: 100%;
+  border: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Placeholder styling */
+.civicrm-placeholder {
+  padding: 60px 20px;
+  background: #f9f9f9;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  text-align: center;
 }
 
 /* Site Header
