@@ -10,18 +10,18 @@
 		display: grid;
 		grid-template-columns: auto 1fr auto;
 		align-items: center;
-		gap: 16px;
 		margin-bottom: var(--wp--custom--layout--block-gap);
 
-		h2 {
-			margin: 0;
-			font-size: var(--wp--preset--font-size--large);
+		h3 {
+			font-family: Oswald;
+			font-size: 20px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: normal;
+			text-transform: uppercase;
 			text-align: center;
 			grid-column: 2; // Place in center column
-
-			@include media(">=tablet") {
-				font-size: var(--wp--preset--font-size--x-large);
-			}
+			grid-row: 1; // ← Explicit row placement
 		}
 	}
 
@@ -30,14 +30,12 @@
 
 		&__prev {
 			grid-column: 1; // Place in left column
+			grid-row: 1; // ← Explicit row placement
 			width: 36px;
 			height: 36px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			background: var(--wp--preset--color--background);
-			border: 1px solid var(--wp--preset--color--newsprint);
-			border-radius: var(--wp--custom--border-radius--tiny);
 			text-decoration: none;
 			transition: all 0.2s ease;
 
@@ -46,25 +44,20 @@
 			}
 
 			&:hover {
-				background: var(--wp--preset--color--navy);
-				border-color: var(--wp--preset--color--navy);
-
 				svg {
-					fill: var(--wp--preset--color--white);
+					fill: var(--wp--preset--color--red);
 				}
 			}
 		}
 
 		&__next {
 			grid-column: 3; // Place in right column
+			grid-row: 1; // ← Explicit row placement
 			width: 36px;
 			height: 36px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			background: var(--wp--preset--color--background);
-			border: 1px solid var(--wp--preset--color--newsprint);
-			border-radius: var(--wp--custom--border-radius--tiny);
 			text-decoration: none;
 			transition: all 0.2s ease;
 
@@ -73,11 +66,9 @@
 			}
 
 			&:hover {
-				background: var(--wp--preset--color--navy);
-				border-color: var(--wp--preset--color--navy);
 
 				svg {
-					fill: var(--wp--preset--color--white);
+					fill: var(--wp--preset--color--red);
 				}
 			}
 		}
@@ -110,7 +101,7 @@
 	}
 
 	.calendar-day {
-		min-height: 40px;
+		min-height: 35px;
 		padding: 4px;
 		position: relative;
 		display: flex;
@@ -118,7 +109,7 @@
 		align-items: center;
 
 		@include media(">=tablet") {
-			min-height: 50px;
+			min-height: 35px;
 			padding: 8px;
 		}
 
@@ -150,7 +141,7 @@
 			}
 
 			&.calendar-day--today:hover {
-				background: var(--wp--preset--color--yellow);
+				background: var(--wp--preset--color--red);
 			}
 		}
 	}
@@ -229,7 +220,7 @@
 		}
 
 		.calendar-day {
-			min-height: 50px;
+			min-height: 35px;
 			padding: 4px 2px;
 		}
 
@@ -242,4 +233,32 @@
 			height: 6px;
 		}
 	}
+}
+
+
+.block-dashboard-events-calendar {
+	position: relative;
+
+	&.is-loading {
+		opacity: 0.6;
+		pointer-events: none;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 40px;
+			height: 40px;
+			margin: -20px 0 0 -20px;
+			border: 3px solid var(--wp--preset--color--newsprint);
+			border-top-color: var(--wp--preset--color--blue);
+			border-radius: 50%;
+			animation: spin 0.6s linear infinite;
+		}
+	}
+}
+
+@keyframes spin {
+	to { transform: rotate(360deg); }
 }

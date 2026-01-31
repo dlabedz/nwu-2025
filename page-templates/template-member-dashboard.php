@@ -23,6 +23,18 @@ get_header();
 
 <div class="dashboard-wrapper">
 
+	<!-- Page Header: Breadcrumbs + Title -->
+	<div class="dashboard-page-header">
+		<?php
+		// Breadcrumbs
+		if ( function_exists( 'yoast_breadcrumb' ) ) {
+			yoast_breadcrumb( '<p id="breadcrumbs" class="breadcrumb">', '</p>' );
+		}
+		?>
+
+		<h1 class="dashboard-page-title"><?php the_title(); ?></h1>
+	</div>
+
 	<!-- Section 1: Sidebar + Main Greeting -->
 	<div class="dashboard-top-section">
 		<aside class="dashboard-sidebar">
@@ -46,7 +58,15 @@ get_header();
 		</aside>
 
 		<main class="dashboard-greeting">
-			<h1><?php printf( esc_html__( 'Hello, %s!', 'nwu-2025' ), esc_html( $first_name ) ); ?></h1>
+			<h2 class="dashboard-greeting-title">
+				<?php
+				printf(
+					/* translators: %s: user first name */
+					esc_html__( 'Hello, %s!', 'nwu-2025' ),
+					esc_html( $first_name )
+				);
+				?>
+			</h2>
 
 			<p class="dashboard-logout-link">
 				<?php

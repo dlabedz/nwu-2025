@@ -5,6 +5,47 @@
 	// Wrapper contains all dashboard sections
 }
 
+/* Dashboard Page Header - Breadcrumbs + Title
+--------------------------------------------- */
+
+.dashboard-page-header {
+	max-width: var(--wp--custom--layout--wide);
+	margin: 0 auto;
+	padding: var(--wp--custom--layout--block-gap) var(--wp--custom--layout--padding) 0;
+
+	.breadcrumb {
+		margin-bottom: var(--wp--custom--layout--block-gap);
+		font-size: var(--wp--preset--font-size--small);
+		color: var(--wp--custom--color--neutral-600);
+
+		a {
+			color: var(--wp--preset--color--blue);
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		.sep {
+			margin: 0 8px;
+			color: var(--wp--custom--color--neutral-400);
+		}
+	}
+
+	.dashboard-page-title {
+		margin: var(--wp--custom--layout--block-gap-large) 0 0 0;
+		font-family: var(--wp--preset--font-family--oswald);
+		font-size: var(--wp--preset--font-size--x-large);
+		line-height: var(--wp--custom--line-height--small);
+		color: var(--wp--preset--color--foreground);
+
+		@include media(">=tablet") {
+			font-size: 48px; // Larger on desktop
+		}
+	}
+}
+
 /* Dashboard Top Section - Sidebar + Greeting
 --------------------------------------------- */
 
@@ -108,11 +149,16 @@
 
 .dashboard-greeting {
 
-	h1 {
+	.dashboard-greeting-title {
 		margin-bottom: 8px;
 		font-family: var(--wp--preset--font-family--oswald);
-		font-size: var(--wp--preset--font-size--x-large);
+		font-size: var(--wp--preset--font-size--large); // Smaller than page title
 		line-height: var(--wp--custom--line-height--small);
+		color: var(--wp--preset--color--foreground);
+
+		@include media(">=tablet") {
+			font-size: var(--wp--preset--font-size--x-large);
+		}
 	}
 
 	.dashboard-logout-link {
@@ -121,7 +167,7 @@
 		margin-bottom: var(--wp--custom--layout--block-gap);
 
 		a {
-			color: var(--wp--preset--color--blue);
+			color: var(--wp--preset--color--foreground);
 			text-decoration: none;
 
 			&:hover {
@@ -139,7 +185,7 @@
 		}
 
 		a {
-			color: var(--wp--preset--color--blue);
+			color: var(--wp--preset--color--foreground);
 			text-decoration: underline;
 			font-weight: 600;
 

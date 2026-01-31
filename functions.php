@@ -1172,3 +1172,65 @@ function nwu_generate_page_html($page, $include_meta = true, $include_featured =
 
     return $html;
 }
+
+/**
+ * Enqueue dashboard calendar script
+ */
+function nwu_enqueue_dashboard_calendar_script() {
+	// Check if file exists
+	$script_path = get_theme_file_path( '/assets/js/dashboard-calendar.js' );
+
+	if ( ! file_exists( $script_path ) ) {
+		error_log( 'Calendar script file does not exist: ' . $script_path );
+		return;
+	}
+
+	wp_enqueue_script(
+		'nwu-dashboard-calendar',
+		get_theme_file_uri( '/assets/js/dashboard-calendar.js' ),
+		array(), // No dependencies
+		filemtime( $script_path ), // Use file modification time for cache busting
+		true // Load in footer
+	);
+
+	wp_localize_script(
+		'nwu-dashboard-calendar',
+		'nwu_calendar',
+		array(
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+			'nonce'    => wp_create_nonce( 'calendar_navigation' ),
+		)
+	);
+}
+add_action( 'wp_enqueue_scripts', 'nwu_enqueue_dashboard_calendar_script' );
+
+/**
+ * AJAX handler for calendar month loading
+ */
+function nwu_load_calendar_month() {
+	check_ajax_referer( 'calendar_navigation', 'nonce' );
+
+	$month = isset( $_POST['month'] ) ? intval( $_POST['month'] ) : date( 'n' );
+	$year  = isset( $_POST['year'] ) ? intval( $_POST['year'] ) : date( 'Y' );
+
+	// Set query params for the block render
+	$_GET['cal_month'] = $month;
+	$_GET['cal_year']  = $year;
+
+	// Start output buffering
+	ob_start();
+
+	// Include the calendar render template
+	// Note: You'll need to extract the calendar HTML generation into a separate function
+	// For now, we'll just return the wrapper HTML
+	include get_template_directory() . '/blocks/dashboard-events-calendar/render.php';
+
+	$html = ob_get_clean();
+
+	wp_send_json_success( array( 'html' => $html ) );
+}
+add_action( 'wp_ajax_load_calendar_month', 'nwu_load_calendar_month' );
+add_action( 'wp_ajax_nopriv_load_calendar_month', 'nwu_load_calendar_month' );
+
+
+

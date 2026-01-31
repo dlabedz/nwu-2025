@@ -26,23 +26,25 @@ if ( empty( $announcements ) ) {
 ?>
 
 <div class="dashboard-announcements-block">
-	<h2><?php echo esc_html( $section_title ); ?></h2>
+	<div class="dashboard-announcements-block-inner">
+		<h3><?php echo esc_html( $section_title ); ?></h3>
 
-	<div class="announcements-list">
-		<?php foreach ( $announcements as $announcement ) : ?>
-			<article class="announcement-item">
-				<?php if ( ! empty( $announcement['title'] ) ) : ?>
-					<h3 class="announcement-title">
-						<?php echo esc_html( $announcement['title'] ); ?>
-					</h3>
-				<?php endif; ?>
+		<div class="announcements-list">
+			<?php foreach ( $announcements as $announcement ) : ?>
+				<article class="announcement-item">
+					<?php if ( ! empty( $announcement['title'] ) ) : ?>
+						<p class="announcement-title">
+							<?php echo esc_html( $announcement['title'] ); ?>
+						</p>
+					<?php endif; ?>
 
-				<?php if ( ! empty( $announcement['text'] ) ) : ?>
-					<div class="announcement-text">
-						<?php echo wp_kses_post( $announcement['text'] ); ?>
+					<?php if ( ! empty( $announcement['text'] ) ) : ?>
+						<div class="announcement-text">
+							<?php echo wp_kses_post( $announcement['text'] ); ?>
 					</div>
-				<?php endif; ?>
-			</article>
-		<?php endforeach; ?>
+					<?php endif; ?>
+				</article>
+			<?php endforeach; ?>
+		</div>
 	</div>
 </div>

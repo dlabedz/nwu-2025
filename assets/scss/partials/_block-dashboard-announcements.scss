@@ -3,14 +3,17 @@
 
 .dashboard-announcements-block {
 	border: 5px solid var(--wp--preset--color--red);
-	padding: 1em;
+	padding: 2em;
+	position: relative;
 
-	h2 {
-		font-family: var(--wp--preset--font-family--oswald);
-		font-size: var(--wp--preset--font-size--x-large);
+	h3 {
+		font-family: Oswald;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 29px; /* 120.833% */
 		text-transform: uppercase;
 		margin-top: 0;
-		margin-bottom: var(--wp--custom--layout--block-gap);
 		color: var(--wp--preset--color--foreground);
 	}
 
@@ -19,6 +22,45 @@
 		font-style: italic;
 		font-size: var(--wp--preset--font-size--small);
 		margin: 0;
+	}
+
+	@media (min-width: 768px) {
+		&::before {
+			content: '';
+			position: absolute;
+			width: 92px;
+			height: 92px;
+			top: 0;
+			left: 0;
+			background: var(--wp--preset--color--red);
+		}
+
+		&::after {
+			content: '!';
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 2;
+			font-family: Oswald;
+			font-size: 51px;
+			font-style: normal;
+			font-weight: 700;
+			color: var(--wp--preset--color--white);
+			width: 92px;
+			height: 92px;
+			margin-top: 27px;
+			margin-left: 36px;
+		}
+	}
+
+
+}
+
+.dashboard-announcements-block-inner{
+	max-width: 900px;
+
+	@media (min-width: 768px) {
+		margin-left: 150px;
 	}
 }
 
@@ -33,7 +75,7 @@
 
 .announcement-item {
 	padding-bottom: var(--wp--custom--layout--block-gap);
-	border-bottom: 1px solid var(--wp--preset--color--newsprint);
+	border-bottom: 1px solid var(--wp--preset--color--black);
 
 	&:last-child {
 		border-bottom: none;
@@ -41,18 +83,17 @@
 	}
 
 	.announcement-title {
-		font-family: var(--wp--preset--font-family--oswald);
-		font-size: var(--wp--preset--font-size--large);
 		margin: 0 0 8px;
 		color: var(--wp--preset--color--foreground);
+		font-weight: 700;
 	}
 
 	.announcement-text {
-		font-size: var(--wp--preset--font-size--medium);
 		line-height: var(--wp--custom--line-height--normal);
 
 		p {
 			margin-bottom: 16px;
+			margin-top: 0;
 
 			&:last-child {
 				margin-bottom: 0;
