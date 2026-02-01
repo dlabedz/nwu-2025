@@ -894,6 +894,149 @@ div.wpforms-container.u-width-full {
   max-width: 100%;
 }
 
+/* CiviCRM Forms
+--------------------------------------------- */
+.wp-block-group.civicrm-membership-form.is-layout-constrained.wp-block-group-is-layout-constrained {
+  background: var(--wp--preset--color--newsprint);
+  padding: 3em;
+}
+
+.wp-block-group.civicrm-membership-form-inner.is-layout-constrained.wp-block-group-is-layout-constrained {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#bootstrap-theme .btn-group > .btn:first-child {
+  margin-left: -3px;
+  position: absolute;
+  top: -43px;
+}
+
+.form-group {
+  max-width: 800px !important;
+}
+
+.civicrm-membership-form {
+  padding: 40px;
+}
+.civicrm-membership-form h2 {
+  margin-bottom: 24px;
+}
+
+/* CiviCRM form field styling */
+.crm-container input[type=text],
+.crm-container input[type=email],
+.crm-container input[type=tel],
+.crm-container select,
+.crm-container textarea {
+  border: 4px solid var(--wp--preset--color--foreground);
+  padding: 12px;
+  font-size: var(--wp--preset--font-size--small);
+  width: 100%;
+}
+.crm-container .crm-button,
+.crm-container input[type=submit] {
+  background: var(--wp--preset--color--blue);
+  color: var(--wp--preset--color--white);
+  padding: 12px 24px;
+  border: none;
+  font-family: var(--wp--preset--font-family--dm-sans);
+  font-weight: 700;
+  cursor: pointer;
+}
+.crm-container .crm-button:hover,
+.crm-container input[type=submit]:hover {
+  background: var(--wp--preset--color--navy);
+}
+.crm-container label {
+  font-family: var(--wp--preset--font-family--dm-sans);
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+#bootstrap-theme .form-control {
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 4px 8px;
+  font-family: "DM Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  line-height: 1.428571429;
+  color: var(--wp--preset--color--black);
+  background-color: white;
+  background-image: none;
+  border: 4px solid var(--wp--preset--color--black);
+  border-radius: 0px;
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+#bootstrap-theme .btn-primary {
+  color: var(--wp--preset--color--black);
+  background-color: transparent;
+  border: 4px solid var(--wp--preset--color--black);
+  width: 100%;
+  text-align: center;
+}
+
+.af-markup p {
+  font-style: italic;
+}
+
+af-field.ng-isolate-scope.af-field-type-radio {
+  display: flex;
+  flex-direction: column;
+}
+
+.crm-af-field.ng-scope {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#bootstrap-theme .radio input[type=radio], #bootstrap-theme .radio-inline input[type=radio], #bootstrap-theme .checkbox input[type=checkbox], #bootstrap-theme .checkbox-inline input[type=checkbox] {
+  /* position: absolute; */
+  margin-top: 0px;
+  margin-left: 0px;
+}
+
+#bootstrap-theme .radio-inline, #bootstrap-theme .checkbox-inline {
+  position: relative;
+  display: flex;
+  /* padding-left: 20px; */
+  margin-bottom: 0;
+  font-weight: 400;
+  /* vertical-align: middle; */
+  cursor: pointer;
+  align-items: flex-start;
+  /* width: 100%; */
+}
+
+#bootstrap-theme hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid var(--wp--preset--color--black);
+}
+
+.crm-container ul.crm-checkbox-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  max-width: 100%;
+  overflow-y: auto;
+}
+
+.crm-container ul.crm-checkbox-list li:nth-child(even) label {
+  background-color: transparent;
+}
+
 /* Custom Blocks
 --------------------------------------------- */
 /* Accordion Block
@@ -4341,19 +4484,6 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
     transform: rotate(360deg);
   }
 }
-.membership-signup-block {
-  margin: var(--wp--custom--layout--block-gap-large) 0;
-  background: var(--wp--preset--color--newsprint);
-}
-
-.membership-signup-title {
-  margin-bottom: var(--wp--custom--layout--block-gap);
-}
-
-.membership-signup-form {
-  margin-top: var(--wp--custom--layout--block-gap);
-}
-
 /* Site Header
 ---------------------------------------------------------------------------------------------------- */
 .site-header {
