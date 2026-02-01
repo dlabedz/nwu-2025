@@ -493,7 +493,7 @@ div.wpforms-container.u-width-full {
   max-width: 100%;
 }
 
-/* CiviCRM Forms
+/* CiviCRM Forms - Enhanced Styling
 --------------------------------------------- */
 .wp-block-group.civicrm-membership-form.is-layout-constrained.wp-block-group-is-layout-constrained {
   background: var(--wp--preset--color--newsprint);
@@ -519,7 +519,6 @@ div.wpforms-container.u-width-full {
 .crm-container input[type=text],
 .crm-container input[type=email],
 .crm-container input[type=tel],
-.crm-container select,
 .crm-container textarea {
   border: 4px solid var(--wp--preset--color--foreground);
   padding: 12px;
@@ -577,12 +576,32 @@ div.wpforms-container.u-width-full {
   background-color: transparent !important;
 }
 .crm-container ul.crm-checkbox-list li input[type=checkbox] {
-  margin: 4px 0 0 0;
-  width: 20px;
-  height: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  width: 25px;
+  height: 25px;
   flex-shrink: 0;
   cursor: pointer;
-  accent-color: var(--wp--preset--color--blue);
+  border: 4px solid var(--wp--preset--color--black);
+  border-radius: 0;
+  background-color: white;
+  position: relative;
+}
+.crm-container ul.crm-checkbox-list li input[type=checkbox]:checked {
+  background-color: var(--wp--preset--color--black);
+}
+.crm-container ul.crm-checkbox-list li input[type=checkbox]:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 .crm-container ul.crm-checkbox-list li input[type=checkbox]:checked + label {
   background-color: transparent !important;
@@ -591,6 +610,7 @@ div.wpforms-container.u-width-full {
 .crm-container ul.crm-checkbox-list li label {
   font-weight: 400 !important;
   margin: 0;
+  padding-top: 2px;
   flex: 1;
   cursor: pointer;
 }
@@ -685,7 +705,57 @@ div.wpforms-container.u-width-full {
   /* RADIO BUTTON STYLING */
 }
 #bootstrap-theme .radio,
-#bootstrap-theme .radio-inline,
+#bootstrap-theme .radio-inline {
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  cursor: pointer;
+}
+#bootstrap-theme .radio input[type=radio],
+#bootstrap-theme .radio-inline input[type=radio] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  margin: 0 !important;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: 4px solid var(--wp--preset--color--black);
+  border-radius: 50%;
+  background-color: white;
+}
+#bootstrap-theme .radio input[type=radio]:checked,
+#bootstrap-theme .radio-inline input[type=radio]:checked {
+  background-color: var(--wp--preset--color--black);
+}
+#bootstrap-theme .radio input[type=radio]:checked::after,
+#bootstrap-theme .radio-inline input[type=radio]:checked::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+}
+#bootstrap-theme .radio label,
+#bootstrap-theme .radio-inline label {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  font-weight: 400 !important;
+  cursor: pointer;
+}
+#bootstrap-theme {
+  /* CHECKBOX STYLING (for non-list checkboxes) */
+}
 #bootstrap-theme .checkbox,
 #bootstrap-theme .checkbox-inline {
   position: relative;
@@ -696,28 +766,42 @@ div.wpforms-container.u-width-full {
   font-weight: 400;
   cursor: pointer;
 }
-#bootstrap-theme .radio input[type=radio],
-#bootstrap-theme .radio input[type=checkbox],
-#bootstrap-theme .radio-inline input[type=radio],
-#bootstrap-theme .radio-inline input[type=checkbox],
-#bootstrap-theme .checkbox input[type=radio],
 #bootstrap-theme .checkbox input[type=checkbox],
-#bootstrap-theme .checkbox-inline input[type=radio],
 #bootstrap-theme .checkbox-inline input[type=checkbox] {
-  position: relative;
-  margin: 4px 0 0 0 !important;
-  width: 20px;
-  height: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0 !important;
+  width: 25px;
+  height: 25px;
   flex-shrink: 0;
   cursor: pointer;
-  accent-color: var(--wp--preset--color--blue);
+  border: 4px solid var(--wp--preset--color--black);
+  border-radius: 0;
+  background-color: white;
+  position: relative;
 }
-#bootstrap-theme .radio label,
-#bootstrap-theme .radio-inline label,
+#bootstrap-theme .checkbox input[type=checkbox]:checked,
+#bootstrap-theme .checkbox-inline input[type=checkbox]:checked {
+  background-color: var(--wp--preset--color--black);
+}
+#bootstrap-theme .checkbox input[type=checkbox]:checked::after,
+#bootstrap-theme .checkbox-inline input[type=checkbox]:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
 #bootstrap-theme .checkbox label,
 #bootstrap-theme .checkbox-inline label {
   flex: 1;
   margin: 0;
+  padding-top: 2px;
   font-weight: 400 !important;
   cursor: pointer;
 }
@@ -748,7 +832,7 @@ af-field.ng-isolate-scope.af-field-type-email {
   width: 100% !important;
 }
 
-/* SELECT2 DROPDOWN STYLING */
+/* SELECT2 DROPDOWN STYLING - 1px border */
 div[id^=s2id_] {
   width: 100% !important;
 }
@@ -757,9 +841,9 @@ div[id^=s2id_] .select2-container {
 }
 div[id^=s2id_] .select2-choice {
   height: 50px !important;
-  line-height: 50px !important;
+  line-height: 48px !important;
   padding: 0 12px !important;
-  border: 4px solid var(--wp--preset--color--black) !important;
+  border: 1px solid var(--wp--preset--color--black) !important;
   border-radius: 0 !important;
   background: white !important;
   font-family: "DM Sans";
@@ -767,9 +851,11 @@ div[id^=s2id_] .select2-choice {
   color: var(--wp--preset--color--black) !important;
 }
 div[id^=s2id_] .select2-choice .select2-arrow {
-  border-left: 4px solid var(--wp--preset--color--black) !important;
+  border-left: 1px solid var(--wp--preset--color--black) !important;
   background: transparent !important;
   width: 40px;
+  height: 48px !important;
+  top: 0 !important;
 }
 div[id^=s2id_] .select2-choice .select2-arrow b {
   background-position: 0 8px !important;
@@ -780,8 +866,21 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
 }
 
 .select2-drop {
-  border: 4px solid var(--wp--preset--color--black) !important;
+  border: 1px solid var(--wp--preset--color--black) !important;
   border-radius: 0 !important;
+  margin-top: -1px;
+}
+.select2-drop .select2-results {
+  padding: 0;
+}
+.select2-drop .select2-results li {
+  padding: 8px 12px;
+  font-family: "DM Sans";
+  font-size: 18px;
+}
+.select2-drop .select2-results li.select2-highlighted {
+  background: var(--wp--preset--color--newsprint) !important;
+  color: var(--wp--preset--color--black) !important;
 }
 
 /* Specific Field Overrides */
