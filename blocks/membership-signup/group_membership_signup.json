@@ -3,23 +3,13 @@
     "title": "Membership Signup Form",
     "fields": [
         {
-            "key": "field_form_title",
+            "key": "field_membership_form_title",
             "label": "Form Title",
             "name": "form_title",
             "type": "text",
-            "instructions": "Title that appears above the form",
+            "instructions": "Optional heading above the form",
             "required": 0,
-            "placeholder": "Become a Member"
-        },
-        {
-            "key": "field_form_shortcode",
-            "label": "Form Shortcode",
-            "name": "form_shortcode",
-            "type": "text",
-            "instructions": "Default: [civicrm component=\"afform\" name=\"afformMembershipSignup\"]",
-            "required": 0,
-            "default_value": "[civicrm component=\"afform\" name=\"afformMembershipSignup\"]",
-            "placeholder": "[civicrm component=\"afform\" name=\"afformMembershipSignup\"]"
+            "default_value": "Join the National Writers Union"
         }
     ],
     "location": [
@@ -30,5 +20,9 @@
                 "value": "cwp/membership-signup"
             }
         ]
-    ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top"
 }

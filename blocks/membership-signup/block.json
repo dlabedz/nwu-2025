@@ -1,28 +1,17 @@
 {
-    "key": "group_membership_signup",
-    "title": "Membership Signup Form",
-    "fields": [
-        {
-            "key": "field_membership_form_title",
-            "label": "Form Title",
-            "name": "form_title",
-            "type": "text",
-            "instructions": "Optional heading above the form",
-            "required": 0,
-            "default_value": "Join the National Writers Union"
-        }
-    ],
-    "location": [
-        [
-            {
-                "param": "block",
-                "operator": "==",
-                "value": "cwp/membership-signup"
-            }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "top"
+    "name": "cwp/membership-signup",
+    "title": "Membership Signup",
+    "description": "CiviCRM membership signup form",
+    "category": "theme",
+    "icon": "feedback",
+    "apiVersion": 2,
+    "keywords": ["civicrm", "membership", "form"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "anchor": false
+    }
 }
