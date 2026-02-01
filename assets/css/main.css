@@ -1007,6 +1007,7 @@ div.wpforms-container.u-width-full {
   text-transform: uppercase !important;
   padding: 0.75em !important;
   transition: 0.3s ease-in;
+  margin-top: 25px;
 }
 #bootstrap-theme .btn-primary:hover {
   background: var(--wp--preset--color--black) !important;
@@ -1018,8 +1019,7 @@ div.wpforms-container.u-width-full {
 }
 
 af-field.ng-isolate-scope.af-field-type-radio {
-  display: flex !important;
-  flex-direction: column !important;
+  margin-top: 10px;
 }
 
 .crm-af-field.ng-scope {
@@ -1092,6 +1092,18 @@ div#s2id_signup-questions-membership-fee-5 {
 #bootstrap-theme .form-group {
   margin-bottom: 15px;
   width: 100% !important;
+}
+
+#bootstrap-theme label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.select2-default {
+  color: var(--wp--preset--color--black) !important;
 }
 
 /* Custom Blocks
