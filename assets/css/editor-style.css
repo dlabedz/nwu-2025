@@ -605,6 +605,11 @@ div.wpforms-container.u-width-full {
   letter-spacing: 2.475px !important;
   text-transform: uppercase !important;
   padding: 0.75em !important;
+  transition: 0.3s ease-in;
+}
+#bootstrap-theme .btn:hover {
+  background: var(--wp--preset--color--black);
+  color: var(--wp--preset--color--white);
 }
 
 .af-markup p {
@@ -620,6 +625,7 @@ af-field.ng-isolate-scope.af-field-type-radio {
   display: flex !important;
   flex-direction: column !important;
   align-items: flex-start !important;
+  width: 100% !important;
 }
 
 #bootstrap-theme .radio input[type=radio], #bootstrap-theme .radio-inline input[type=radio], #bootstrap-theme .checkbox input[type=checkbox], #bootstrap-theme .checkbox-inline input[type=checkbox] {
@@ -658,6 +664,18 @@ af-field.ng-isolate-scope.af-field-type-radio {
 
 .crm-container ul.crm-checkbox-list li:nth-child(even) label {
   background-color: transparent !important;
+}
+
+af-field.ng-isolate-scope.af-field-type-email {
+  width: 100% !important;
+}
+
+af-field.ng-isolate-scope.af-field-type-text {
+  display: flex !important;
+}
+
+af-field.ng-isolate-scope.af-field-type-email {
+  display: flex !important;
 }
 
 body {
