@@ -257,10 +257,14 @@ div.wpforms-container {
 
 		li {
 			background-color: transparent !important;
-			padding: 8px 0;
+			padding: 12px 0;
 			display: flex;
 			align-items: flex-start;
 			gap: 12px;
+
+			&:first-child {
+				padding-top: 0;
+			}
 
 			&:nth-child(even) label {
 				background-color: transparent !important;
@@ -270,7 +274,7 @@ div.wpforms-container {
 				appearance: none;
 				-webkit-appearance: none;
 				-moz-appearance: none;
-				position: static !important;
+				position: relative !important;
 				margin: 0 !important;
 				width: 25px;
 				height: 25px;
@@ -287,13 +291,13 @@ div.wpforms-container {
 					&::after {
 						content: '';
 						position: absolute;
-						left: 4px;
-						top: 1px;
+						left: 50%;
+						top: 50%;
+						transform: translate(-50%, -50%) rotate(45deg);
 						width: 5px;
 						height: 10px;
 						border: solid white;
 						border-width: 0 2px 2px 0;
-						transform: rotate(45deg);
 					}
 				}
 
@@ -398,6 +402,13 @@ div.wpforms-container {
 		border-top: 1px solid var(--wp--preset--color--black) !important;
 	}
 
+	/* RADIO BUTTON SPACING FIX */
+	.radio-inline + .radio-inline,
+	.checkbox-inline + .checkbox-inline {
+		margin-top: 0 !important;
+		margin-left: 0 !important;
+	}
+
 	/* RADIO BUTTON STYLING - Critical Override */
 	.radio,
 	.radio-inline {
@@ -479,11 +490,15 @@ div.wpforms-container {
 		cursor: pointer;
 		min-height: 25px;
 
+		&:last-child {
+			margin-bottom: 0 !important;
+		}
+
 		input[type="checkbox"] {
 			appearance: none !important;
 			-webkit-appearance: none !important;
 			-moz-appearance: none !important;
-			position: static !important;
+			position: relative !important;
 			float: none !important;
 			margin: 0 !important;
 			padding: 0 !important;
@@ -507,13 +522,13 @@ div.wpforms-container {
 				&::after {
 					content: '';
 					position: absolute;
-					left: 4px;
-					top: 1px;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%) rotate(45deg);
 					width: 5px;
 					height: 10px;
 					border: solid white;
 					border-width: 0 2px 2px 0;
-					transform: rotate(45deg);
 				}
 			}
 

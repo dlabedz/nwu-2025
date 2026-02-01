@@ -968,10 +968,13 @@ div.wpforms-container.u-width-full {
 }
 .crm-container ul.crm-checkbox-list li {
   background-color: transparent !important;
-  padding: 8px 0;
+  padding: 12px 0;
   display: flex;
   align-items: flex-start;
   gap: 12px;
+}
+.crm-container ul.crm-checkbox-list li:first-child {
+  padding-top: 0;
 }
 .crm-container ul.crm-checkbox-list li:nth-child(even) label {
   background-color: transparent !important;
@@ -980,7 +983,7 @@ div.wpforms-container.u-width-full {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  position: static !important;
+  position: relative !important;
   margin: 0 !important;
   width: 25px;
   height: 25px;
@@ -997,13 +1000,13 @@ div.wpforms-container.u-width-full {
 .crm-container ul.crm-checkbox-list li input[type=checkbox]:checked::after {
   content: "";
   position: absolute;
-  left: 4px;
-  top: 1px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
   width: 5px;
   height: 10px;
   border: solid white;
   border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
 }
 .crm-container ul.crm-checkbox-list li input[type=checkbox]:checked + label {
   background-color: transparent !important;
@@ -1105,6 +1108,14 @@ div.wpforms-container.u-width-full {
   border-top: 1px solid var(--wp--preset--color--black) !important;
 }
 #bootstrap-theme {
+  /* RADIO BUTTON SPACING FIX */
+}
+#bootstrap-theme .radio-inline + .radio-inline,
+#bootstrap-theme .checkbox-inline + .checkbox-inline {
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+}
+#bootstrap-theme {
   /* RADIO BUTTON STYLING - Critical Override */
 }
 #bootstrap-theme .radio,
@@ -1188,12 +1199,16 @@ div.wpforms-container.u-width-full {
   cursor: pointer;
   min-height: 25px;
 }
+#bootstrap-theme .checkbox:last-child,
+#bootstrap-theme .checkbox-inline:last-child {
+  margin-bottom: 0 !important;
+}
 #bootstrap-theme .checkbox input[type=checkbox],
 #bootstrap-theme .checkbox-inline input[type=checkbox] {
   appearance: none !important;
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
-  position: static !important;
+  position: relative !important;
   float: none !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -1219,13 +1234,13 @@ div.wpforms-container.u-width-full {
 #bootstrap-theme .checkbox-inline input[type=checkbox]:checked::after {
   content: "";
   position: absolute;
-  left: 4px;
-  top: 1px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
   width: 5px;
   height: 10px;
   border: solid white;
   border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
 }
 #bootstrap-theme .checkbox input[type=checkbox]:focus,
 #bootstrap-theme .checkbox-inline input[type=checkbox]:focus {
