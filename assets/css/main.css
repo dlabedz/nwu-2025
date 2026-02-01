@@ -980,15 +980,16 @@ div.wpforms-container.u-width-full {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  margin: 0;
+  position: static !important;
+  margin: 0 !important;
   width: 25px;
   height: 25px;
+  min-width: 25px;
   flex-shrink: 0;
   cursor: pointer;
   border: 4px solid var(--wp--preset--color--black);
   border-radius: 0;
   background-color: white;
-  position: relative;
 }
 .crm-container ul.crm-checkbox-list li input[type=checkbox]:checked {
   background-color: var(--wp--preset--color--black);
@@ -1010,10 +1011,11 @@ div.wpforms-container.u-width-full {
 }
 .crm-container ul.crm-checkbox-list li label {
   font-weight: 400 !important;
-  margin: 0;
-  padding-top: 2px;
+  margin: 0 !important;
+  padding: 2px 0 0 0 !important;
   flex: 1;
   cursor: pointer;
+  line-height: 1.4;
 }
 
 /* Bootstrap Theme Overrides */
@@ -1103,36 +1105,46 @@ div.wpforms-container.u-width-full {
   border-top: 1px solid var(--wp--preset--color--black) !important;
 }
 #bootstrap-theme {
-  /* RADIO BUTTON STYLING */
+  /* RADIO BUTTON STYLING - Critical Override */
 }
 #bootstrap-theme .radio,
 #bootstrap-theme .radio-inline {
-  position: relative;
+  position: relative !important;
   display: flex !important;
   align-items: center !important;
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: 16px !important;
+  margin-bottom: 12px !important;
+  padding-left: 0 !important;
   font-weight: 400;
   cursor: pointer;
+  min-height: 30px;
 }
 #bootstrap-theme .radio input[type=radio],
 #bootstrap-theme .radio-inline input[type=radio] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  position: relative;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  position: static !important;
+  float: none !important;
   margin: 0 !important;
-  width: 30px;
-  height: 30px;
-  flex-shrink: 0;
+  padding: 0 !important;
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  max-width: 30px !important;
+  flex-shrink: 0 !important;
   cursor: pointer;
-  border: 4px solid var(--wp--preset--color--black);
-  border-radius: 50%;
-  background-color: white;
+  border: 4px solid var(--wp--preset--color--black) !important;
+  border-radius: 50% !important;
+  background-color: white !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
 #bootstrap-theme .radio input[type=radio]:checked,
 #bootstrap-theme .radio-inline input[type=radio]:checked {
-  background-color: var(--wp--preset--color--black);
+  background-color: var(--wp--preset--color--black) !important;
+  border-color: var(--wp--preset--color--black) !important;
 }
 #bootstrap-theme .radio input[type=radio]:checked::after,
 #bootstrap-theme .radio-inline input[type=radio]:checked::after {
@@ -1146,45 +1158,62 @@ div.wpforms-container.u-width-full {
   border-radius: 50%;
   background-color: white;
 }
+#bootstrap-theme .radio input[type=radio]:focus,
+#bootstrap-theme .radio-inline input[type=radio]:focus {
+  outline: 2px solid var(--wp--preset--color--blue);
+  outline-offset: 2px;
+}
 #bootstrap-theme .radio label,
 #bootstrap-theme .radio-inline label {
-  flex: 1;
-  margin: 0;
-  padding: 0;
+  flex: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
   font-weight: 400 !important;
   cursor: pointer;
+  line-height: 1.4;
+  position: static !important;
 }
 #bootstrap-theme {
   /* CHECKBOX STYLING (for non-list checkboxes) */
 }
 #bootstrap-theme .checkbox,
 #bootstrap-theme .checkbox-inline {
-  position: relative;
+  position: relative !important;
   display: flex !important;
   align-items: flex-start !important;
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: 16px !important;
+  margin-bottom: 12px !important;
+  padding-left: 0 !important;
   font-weight: 400;
   cursor: pointer;
+  min-height: 25px;
 }
 #bootstrap-theme .checkbox input[type=checkbox],
 #bootstrap-theme .checkbox-inline input[type=checkbox] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  position: static !important;
+  float: none !important;
   margin: 0 !important;
-  width: 25px;
-  height: 25px;
-  flex-shrink: 0;
+  padding: 0 !important;
+  width: 25px !important;
+  height: 25px !important;
+  min-width: 25px !important;
+  max-width: 25px !important;
+  flex-shrink: 0 !important;
   cursor: pointer;
-  border: 4px solid var(--wp--preset--color--black);
-  border-radius: 0;
-  background-color: white;
-  position: relative;
+  border: 4px solid var(--wp--preset--color--black) !important;
+  border-radius: 0 !important;
+  background-color: white !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
 #bootstrap-theme .checkbox input[type=checkbox]:checked,
 #bootstrap-theme .checkbox-inline input[type=checkbox]:checked {
-  background-color: var(--wp--preset--color--black);
+  background-color: var(--wp--preset--color--black) !important;
+  border-color: var(--wp--preset--color--black) !important;
 }
 #bootstrap-theme .checkbox input[type=checkbox]:checked::after,
 #bootstrap-theme .checkbox-inline input[type=checkbox]:checked::after {
@@ -1198,13 +1227,20 @@ div.wpforms-container.u-width-full {
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
+#bootstrap-theme .checkbox input[type=checkbox]:focus,
+#bootstrap-theme .checkbox-inline input[type=checkbox]:focus {
+  outline: 2px solid var(--wp--preset--color--blue);
+  outline-offset: 2px;
+}
 #bootstrap-theme .checkbox label,
 #bootstrap-theme .checkbox-inline label {
-  flex: 1;
-  margin: 0;
-  padding-top: 2px;
+  flex: 1 !important;
+  margin: 0 !important;
+  padding: 2px 0 0 0 !important;
   font-weight: 400 !important;
   cursor: pointer;
+  line-height: 1.4;
+  position: static !important;
 }
 
 /* Angular Field Containers */
@@ -1224,7 +1260,7 @@ af-field.ng-isolate-scope.af-field-type-radio {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
 }
 af-field.ng-isolate-scope {
   /* Email Field Type */

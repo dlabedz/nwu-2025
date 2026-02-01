@@ -270,15 +270,16 @@ div.wpforms-container {
 				appearance: none;
 				-webkit-appearance: none;
 				-moz-appearance: none;
-				margin: 0;
+				position: static !important;
+				margin: 0 !important;
 				width: 25px;
 				height: 25px;
+				min-width: 25px;
 				flex-shrink: 0;
 				cursor: pointer;
 				border: 4px solid var(--wp--preset--color--black);
 				border-radius: 0;
 				background-color: white;
-				position: relative;
 
 				&:checked {
 					background-color: var(--wp--preset--color--black);
@@ -304,10 +305,11 @@ div.wpforms-container {
 
 			label {
 				font-weight: 400 !important;
-				margin: 0;
-				padding-top: 2px;
+				margin: 0 !important;
+				padding: 2px 0 0 0 !important;
 				flex: 1;
 				cursor: pointer;
+				line-height: 1.4;
 			}
 		}
 	}
@@ -396,33 +398,43 @@ div.wpforms-container {
 		border-top: 1px solid var(--wp--preset--color--black) !important;
 	}
 
-	/* RADIO BUTTON STYLING */
+	/* RADIO BUTTON STYLING - Critical Override */
 	.radio,
 	.radio-inline {
-		position: relative;
+		position: relative !important;
 		display: flex !important;
 		align-items: center !important;
-		gap: 12px;
-		margin-bottom: 10px;
+		gap: 16px !important;
+		margin-bottom: 12px !important;
+		padding-left: 0 !important;
 		font-weight: 400;
 		cursor: pointer;
+		min-height: 30px;
 
 		input[type="radio"] {
-			appearance: none;
-			-webkit-appearance: none;
-			-moz-appearance: none;
-			position: relative;
+			appearance: none !important;
+			-webkit-appearance: none !important;
+			-moz-appearance: none !important;
+			position: static !important;
+			float: none !important;
 			margin: 0 !important;
-			width: 30px;
-			height: 30px;
-			flex-shrink: 0;
+			padding: 0 !important;
+			width: 30px !important;
+			height: 30px !important;
+			min-width: 30px !important;
+			max-width: 30px !important;
+			flex-shrink: 0 !important;
 			cursor: pointer;
-			border: 4px solid var(--wp--preset--color--black);
-			border-radius: 50%;
-			background-color: white;
+			border: 4px solid var(--wp--preset--color--black) !important;
+			border-radius: 50% !important;
+			background-color: white !important;
+			background-image: none !important;
+			box-shadow: none !important;
+			outline: none !important;
 
 			&:checked {
-				background-color: var(--wp--preset--color--black);
+				background-color: var(--wp--preset--color--black) !important;
+				border-color: var(--wp--preset--color--black) !important;
 
 				&::after {
 					content: '';
@@ -436,44 +448,61 @@ div.wpforms-container {
 					background-color: white;
 				}
 			}
+
+			&:focus {
+				outline: 2px solid var(--wp--preset--color--blue);
+				outline-offset: 2px;
+			}
 		}
 
 		label {
-			flex: 1;
-			margin: 0;
-			padding: 0;
+			flex: 1 !important;
+			margin: 0 !important;
+			padding: 0 !important;
 			font-weight: 400 !important;
 			cursor: pointer;
+			line-height: 1.4;
+			position: static !important;
 		}
 	}
 
 	/* CHECKBOX STYLING (for non-list checkboxes) */
 	.checkbox,
 	.checkbox-inline {
-		position: relative;
+		position: relative !important;
 		display: flex !important;
 		align-items: flex-start !important;
-		gap: 12px;
-		margin-bottom: 10px;
+		gap: 16px !important;
+		margin-bottom: 12px !important;
+		padding-left: 0 !important;
 		font-weight: 400;
 		cursor: pointer;
+		min-height: 25px;
 
 		input[type="checkbox"] {
-			appearance: none;
-			-webkit-appearance: none;
-			-moz-appearance: none;
+			appearance: none !important;
+			-webkit-appearance: none !important;
+			-moz-appearance: none !important;
+			position: static !important;
+			float: none !important;
 			margin: 0 !important;
-			width: 25px;
-			height: 25px;
-			flex-shrink: 0;
+			padding: 0 !important;
+			width: 25px !important;
+			height: 25px !important;
+			min-width: 25px !important;
+			max-width: 25px !important;
+			flex-shrink: 0 !important;
 			cursor: pointer;
-			border: 4px solid var(--wp--preset--color--black);
-			border-radius: 0;
-			background-color: white;
-			position: relative;
+			border: 4px solid var(--wp--preset--color--black) !important;
+			border-radius: 0 !important;
+			background-color: white !important;
+			background-image: none !important;
+			box-shadow: none !important;
+			outline: none !important;
 
 			&:checked {
-				background-color: var(--wp--preset--color--black);
+				background-color: var(--wp--preset--color--black) !important;
+				border-color: var(--wp--preset--color--black) !important;
 
 				&::after {
 					content: '';
@@ -487,14 +516,21 @@ div.wpforms-container {
 					transform: rotate(45deg);
 				}
 			}
+
+			&:focus {
+				outline: 2px solid var(--wp--preset--color--blue);
+				outline-offset: 2px;
+			}
 		}
 
 		label {
-			flex: 1;
-			margin: 0;
-			padding-top: 2px;
+			flex: 1 !important;
+			margin: 0 !important;
+			padding: 2px 0 0 0 !important;
 			font-weight: 400 !important;
 			cursor: pointer;
+			line-height: 1.4;
+			position: static !important;
 		}
 	}
 }
@@ -516,7 +552,7 @@ af-field.ng-isolate-scope {
 		margin-top: 10px;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 0;
 	}
 
 	/* Email Field Type */
