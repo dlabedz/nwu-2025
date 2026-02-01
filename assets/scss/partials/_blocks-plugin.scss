@@ -543,3 +543,246 @@ div[id^="s2id_"] {
 	}
 }
 
+/* CiviCRM Contribution/Payment Form Specific Styling
+--------------------------------------------- */
+
+.crm-contribution-page-id-27.crm-block.crm-contribution-main-form-block {
+
+	/* RADIO BUTTON STYLING */
+	.radio,
+	.radio-inline {
+		position: relative !important;
+		display: flex !important;
+		align-items: center !important;
+		gap: 16px !important;
+		margin-bottom: 12px !important;
+		padding-left: 0 !important;
+		font-weight: 400;
+		cursor: pointer;
+		min-height: 30px;
+
+		input[type="radio"] {
+			appearance: none !important;
+			-webkit-appearance: none !important;
+			-moz-appearance: none !important;
+			position: relative !important;
+			float: none !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			width: 30px !important;
+			height: 30px !important;
+			min-width: 30px !important;
+			max-width: 30px !important;
+			flex-shrink: 0 !important;
+			cursor: pointer;
+			border: 4px solid var(--wp--preset--color--black) !important;
+			border-radius: 50% !important;
+			background-color: white !important;
+			background-image: none !important;
+			box-shadow: none !important;
+			outline: none !important;
+
+			&:checked {
+				background-color: var(--wp--preset--color--black) !important;
+				border-color: var(--wp--preset--color--black) !important;
+
+				&::after {
+					content: '' !important;
+					position: absolute !important;
+					left: 50% !important;
+					top: 50% !important;
+					transform: translate(-50%, -50%) !important;
+					width: 10px !important;
+					height: 10px !important;
+					border-radius: 50% !important;
+					background-color: white !important;
+				}
+			}
+
+			&:focus {
+				outline: 2px solid var(--wp--preset--color--blue);
+				outline-offset: 2px;
+			}
+		}
+
+		label {
+			flex: 1 !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			font-weight: 400 !important;
+			cursor: pointer;
+			line-height: 1.4;
+			position: static !important;
+		}
+	}
+
+	/* SELECT DROPDOWN STYLING */
+	select.form-control,
+	select.crm-form-select {
+		height: 50px !important;
+		border: 1px solid var(--wp--preset--color--black) !important;
+		border-radius: 0 !important;
+		background: white !important;
+		font-family: "DM Sans" !important;
+		font-size: 18px !important;
+		line-height: 25px !important;
+		padding: 9px 12px !important;
+		cursor: pointer !important;
+		appearance: none !important;
+		-webkit-appearance: none !important;
+		-moz-appearance: none !important;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230A0A0A' d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z'/%3E%3C/svg%3E") !important;
+		background-repeat: no-repeat !important;
+		background-position: right 12px center !important;
+		background-size: 24px !important;
+		padding-right: 40px !important;
+
+		&:focus {
+			outline: 2px solid var(--wp--preset--color--blue);
+			outline-offset: 2px;
+		}
+	}
+
+	/* SUBMIT BUTTON STYLING */
+	button[type="submit"],
+	input[type="submit"],
+	.crm-submit-buttons button,
+	.crm-submit-buttons input,
+	.btn-primary {
+		display: inline-block !important;
+		width: 100%;
+		margin-bottom: 0;
+		margin-top: 25px;
+		padding: .75em !important;
+		text-align: center;
+		white-space: nowrap;
+		cursor: pointer;
+		background-image: none;
+		background-color: transparent !important;
+		border: 4px solid var(--wp--preset--color--black) !important;
+		border-radius: 0px !important;
+		color: var(--wp--preset--color--black) !important;
+		font-family: "DM Sans" !important;
+		font-size: 16.5px !important;
+		font-style: normal;
+		font-weight: 900 !important;
+		line-height: 22.5px;
+		letter-spacing: 2.475px !important;
+		text-transform: uppercase !important;
+		transition: all .3s ease-in;
+		user-select: none;
+
+		&:hover,
+		&:focus {
+			background: var(--wp--preset--color--black) !important;
+			color: var(--wp--preset--color--white) !important;
+		}
+	}
+
+	/* TEXT INPUTS */
+	input[type="text"],
+	input[type="email"],
+	input[type="tel"],
+	input[type="number"],
+	textarea.form-control {
+		border: 4px solid var(--wp--preset--color--black) !important;
+		border-radius: 0 !important;
+		font-family: "DM Sans" !important;
+		font-size: 18px !important;
+		line-height: 25px !important;
+		padding: 9px 12px !important;
+
+		&:focus {
+			outline: 2px solid var(--wp--preset--color--blue);
+			outline-offset: 2px;
+		}
+	}
+
+	/* CHECKBOX STYLING */
+	.checkbox,
+	.checkbox-inline {
+		position: relative !important;
+		display: flex !important;
+		align-items: flex-start !important;
+		gap: 16px !important;
+		margin-bottom: 12px !important;
+		padding-left: 0 !important;
+		font-weight: 400;
+		cursor: pointer;
+		min-height: 25px;
+
+		&:last-child {
+			margin-bottom: 0 !important;
+		}
+
+		input[type="checkbox"] {
+			appearance: none !important;
+			-webkit-appearance: none !important;
+			-moz-appearance: none !important;
+			position: relative !important;
+			float: none !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			width: 25px !important;
+			height: 25px !important;
+			min-width: 25px !important;
+			max-width: 25px !important;
+			flex-shrink: 0 !important;
+			cursor: pointer;
+			border: 4px solid var(--wp--preset--color--black) !important;
+			border-radius: 0 !important;
+			background-color: white !important;
+			background-image: none !important;
+			box-shadow: none !important;
+			outline: none !important;
+
+			&:checked {
+				background-color: var(--wp--preset--color--black) !important;
+				border-color: var(--wp--preset--color--black) !important;
+
+				&::after {
+					content: '';
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%) rotate(45deg);
+					width: 5px;
+					height: 10px;
+					border: solid white;
+					border-width: 0 2px 2px 0;
+				}
+			}
+
+			&:focus {
+				outline: 2px solid var(--wp--preset--color--blue);
+				outline-offset: 2px;
+			}
+		}
+
+		label {
+			flex: 1 !important;
+			margin: 0 !important;
+			padding: 2px 0 0 0 !important;
+			font-weight: 400 !important;
+			cursor: pointer;
+			line-height: 1.4;
+			position: static !important;
+		}
+	}
+
+	/* LABELS */
+	label {
+		display: inline-block;
+		max-width: 100%;
+		margin-bottom: 5px;
+		font-weight: 700;
+		margin-top: 10px;
+	}
+
+	/* FORM GROUPS */
+	.form-group {
+		margin-bottom: 15px;
+		width: 100% !important;
+	}
+}
+
