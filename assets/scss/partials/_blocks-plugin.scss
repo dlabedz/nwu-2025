@@ -254,18 +254,16 @@ div.wpforms-container {
 		max-width: 100%;
 
 		li {
+			position: relative;
 			background-color: transparent !important;
-			padding: 16px 0;
+			margin: 0 0 15px 0 !important;
+			padding: 0 !important;
 			display: flex;
 			align-items: flex-start;
 			gap: 12px;
 
-			&:first-child {
-				padding-top: 0;
-			}
-
 			&:last-child {
-				padding-bottom: 0;
+				margin-bottom: 0 !important;
 			}
 
 			&:nth-child(even) label {
@@ -324,8 +322,8 @@ div.wpforms-container {
 /* Bootstrap Theme Overrides */
 #bootstrap-theme {
 
-	/* Form Controls */
-	.form-control {
+	/* Form Controls - Exclude Select2 */
+	.form-control:not(.select2-container):not([class*="select2"]) {
 		display: block;
 		width: 100%;
 		height: 50px !important;
@@ -341,6 +339,14 @@ div.wpforms-container {
 		border: 4px solid var(--wp--preset--color--black) !important;
 		border-radius: 0px !important;
 		transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	}
+
+	/* Select2 specific override */
+	.select2-container .form-control,
+	[class*="select2"] .form-control {
+		border: none !important;
+		padding: 0 !important;
+		height: auto !important;
 	}
 
 	/* Form Groups */
@@ -428,7 +434,7 @@ div.wpforms-container {
 			appearance: none !important;
 			-webkit-appearance: none !important;
 			-moz-appearance: none !important;
-			position: static !important;
+			position: relative !important;
 			float: none !important;
 			margin: 0 !important;
 			padding: 0 !important;
@@ -450,15 +456,15 @@ div.wpforms-container {
 				border-color: var(--wp--preset--color--black) !important;
 
 				&::after {
-					content: '';
-					position: absolute;
-					left: 50%;
-					top: 50%;
-					transform: translate(-50%, -50%);
-					width: 10px;
-					height: 10px;
-					border-radius: 50%;
-					background-color: white;
+					content: '' !important;
+					position: absolute !important;
+					left: 50% !important;
+					top: 50% !important;
+					transform: translate(-50%, -50%) !important;
+					width: 10px !important;
+					height: 10px !important;
+					border-radius: 50% !important;
+					background-color: white !important;
 				}
 			}
 

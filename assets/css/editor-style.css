@@ -564,17 +564,16 @@ div.wpforms-container.u-width-full {
   max-width: 100%;
 }
 .crm-container ul.crm-checkbox-list li {
+  position: relative;
   background-color: transparent !important;
-  padding: 16px 0;
+  margin: 0 0 15px 0 !important;
+  padding: 0 !important;
   display: flex;
   align-items: flex-start;
   gap: 12px;
 }
-.crm-container ul.crm-checkbox-list li:first-child {
-  padding-top: 0;
-}
 .crm-container ul.crm-checkbox-list li:last-child {
-  padding-bottom: 0;
+  margin-bottom: 0 !important;
 }
 .crm-container ul.crm-checkbox-list li:nth-child(even) label {
   background-color: transparent !important;
@@ -623,9 +622,9 @@ div.wpforms-container.u-width-full {
 
 /* Bootstrap Theme Overrides */
 #bootstrap-theme {
-  /* Form Controls */
+  /* Form Controls - Exclude Select2 */
 }
-#bootstrap-theme .form-control {
+#bootstrap-theme .form-control:not(.select2-container):not([class*=select2]) {
   display: block;
   width: 100%;
   height: 50px !important;
@@ -641,6 +640,15 @@ div.wpforms-container.u-width-full {
   border: 4px solid var(--wp--preset--color--black) !important;
   border-radius: 0px !important;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+#bootstrap-theme {
+  /* Select2 specific override */
+}
+#bootstrap-theme .select2-container .form-control,
+#bootstrap-theme [class*=select2] .form-control {
+  border: none !important;
+  padding: 0 !important;
+  height: auto !important;
 }
 #bootstrap-theme {
   /* Form Groups */
@@ -735,7 +743,7 @@ div.wpforms-container.u-width-full {
   appearance: none !important;
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
-  position: static !important;
+  position: relative !important;
   float: none !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -759,15 +767,15 @@ div.wpforms-container.u-width-full {
 }
 #bootstrap-theme .radio input[type=radio]:checked::after,
 #bootstrap-theme .radio-inline input[type=radio]:checked::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: white;
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: white !important;
 }
 #bootstrap-theme .radio input[type=radio]:focus,
 #bootstrap-theme .radio-inline input[type=radio]:focus {
