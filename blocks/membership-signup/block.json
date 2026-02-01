@@ -2,6 +2,7 @@
     "name": "cwp/membership-signup",
     "title": "Membership Signup",
     "description": "CiviCRM membership signup form",
+    "style": "block-membership-signup",
     "category": "theme",
     "icon": "feedback",
     "apiVersion": 2,
@@ -12,6 +13,11 @@
     },
     "supports": {
         "align": false,
-        "anchor": false
+        "anchor": false,
+        "color": {
+            "text": false,
+            "background": false,
+            "link": false
+        }
     }
 }
