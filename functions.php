@@ -1267,5 +1267,3 @@ function nwu_debug_shortcodes() {
     error_log('CiviCRM shortcode exists? ' . (isset($shortcode_tags['civicrm']) ? 'YES' : 'NO'));
 }
 add_action('wp_footer', 'nwu_debug_shortcodes');
-
-
