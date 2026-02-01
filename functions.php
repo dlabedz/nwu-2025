@@ -1232,7 +1232,25 @@ function nwu_load_calendar_month() {
 add_action( 'wp_ajax_load_calendar_month', 'nwu_load_calendar_month' );
 add_action( 'wp_ajax_nopriv_load_calendar_month', 'nwu_load_calendar_month' );
 
+/**
+ * Force register CiviCRM shortcode
+ */
+function nwu_force_civicrm_shortcode() {
+    if (function_exists('civi_wp')) {
+        $civi = civi_wp();
+        if ($civi && isset($civi->shortcodes)) {
+            // Remove any existing civicrm shortcode first
+            remove_shortcode('civicrm');
 
+            // Re-add it
+            add_shortcode('civicrm', [$civi->shortcodes, 'render_single']);
+
+            // Debug: log that we did this
+            error_log('CiviCRM shortcode registered manually');
+        }
+    }
+}
+add_action('init', 'nwu_force_civicrm_shortcode', 999);
 
 
 
