@@ -958,28 +958,28 @@ div.wpforms-container.u-width-full {
 #bootstrap-theme .form-control {
   display: block;
   width: 100%;
-  height: 50px;
+  height: 50px !important;
   padding: 4px 8px;
   font-family: "DM Sans";
-  font-size: 18px;
+  font-size: 18px !important;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   line-height: 1.428571429;
-  color: var(--wp--preset--color--black);
+  color: var(--wp--preset--color--black) !important;
   background-color: white;
   background-image: none;
-  border: 4px solid var(--wp--preset--color--black);
-  border-radius: 0px;
+  border: 4px solid var(--wp--preset--color--black) !important;
+  border-radius: 0px !important;
   -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
 #bootstrap-theme .btn-primary {
-  color: var(--wp--preset--color--black);
-  background-color: transparent;
-  border: 4px solid var(--wp--preset--color--black);
+  color: var(--wp--preset--color--black) !important;
+  background-color: transparent !important;
+  border: 4px solid var(--wp--preset--color--black) !important;
   width: 100%;
   text-align: center;
 }
@@ -989,14 +989,14 @@ div.wpforms-container.u-width-full {
 }
 
 af-field.ng-isolate-scope.af-field-type-radio {
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 .crm-af-field.ng-scope {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
 }
 
 #bootstrap-theme .radio input[type=radio], #bootstrap-theme .radio-inline input[type=radio], #bootstrap-theme .checkbox input[type=checkbox], #bootstrap-theme .checkbox-inline input[type=checkbox] {
@@ -1007,34 +1007,31 @@ af-field.ng-isolate-scope.af-field-type-radio {
 
 #bootstrap-theme .radio-inline, #bootstrap-theme .checkbox-inline {
   position: relative;
-  display: flex;
-  /* padding-left: 20px; */
+  display: flex !important;
   margin-bottom: 0;
   font-weight: 400;
-  /* vertical-align: middle; */
   cursor: pointer;
-  align-items: flex-start;
-  /* width: 100%; */
+  align-items: flex-start !important;
 }
 
 #bootstrap-theme hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid var(--wp--preset--color--black);
+  border-top: 1px solid var(--wp--preset--color--black) !important;
 }
 
 .crm-container ul.crm-checkbox-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  background: transparent;
+  background: transparent !important;
   max-width: 100%;
   overflow-y: auto;
 }
 
 .crm-container ul.crm-checkbox-list li:nth-child(even) label {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 /* Custom Blocks
