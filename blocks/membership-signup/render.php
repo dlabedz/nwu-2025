@@ -18,49 +18,30 @@ if (!empty($form_title)) {
 
 echo '<div class="membership-signup-form">';
 
-// Check if we're on local (no CiviCRM) or staging/production
-if (class_exists('CRM_Core_Invoke')) {
-    // Staging/Production: Embed the form via seamless iframe
-    $form_url = home_url('/civicrm/member-signup');
-    ?>
-    <iframe
-        src="<?php echo esc_url($form_url); ?>"
-        id="civicrm-form-iframe"
-        class="civicrm-form-iframe"
-        width="100%"
-        frameborder="0"
-        scrolling="no"
-        title="Membership Signup Form">
-    </iframe>
-
-    <script>
-    // Auto-resize iframe to content height
-    window.addEventListener('message', function(e) {
-        if (e.data && e.data.frameHeight) {
-            var iframe = document.getElementById('civicrm-form-iframe');
-            if (iframe) {
-                iframe.style.height = e.data.frameHeight + 'px';
-            }
-        }
-    });
-
-    // Fallback: Set initial height
-    document.addEventListener('DOMContentLoaded', function() {
-        var iframe = document.getElementById('civicrm-form-iframe');
-        if (iframe) {
-            iframe.style.height = '1400px'; // Default height
-        }
-    });
-    </script>
-    <?php
-} else {
+// Check if CiviCRM is available
+if (!class_exists('CRM_Core_Invoke')) {
     // Local: Show placeholder
-    ?>
-    <div class="civicrm-placeholder">
-        <p style="margin: 0 0 10px 0; font-size: 18px; color: #666;">📋 CiviCRM Membership Form</p>
-        <p style="margin: 0; font-size: 14px; color: #999;">Form will display here on staging/production</p>
-    </div>
-    <?php
+    echo '<div class="civicrm-placeholder">';
+    echo '<p>📋 CiviCRM Membership Form will display here on staging/production</p>';
+    echo '</div>';
+} else {
+    // Staging/Production: Invoke CiviCRM directly
+
+    // Make sure CiviCRM is initialized
+    if (function_exists('civi_wp')) {
+        civi_wp()->initialize();
+    }
+
+    // Add CiviCRM resources (CSS, JS)
+    CRM_Core_Resources::singleton()->addCoreResources();
+
+    // Get the Afform and render it
+    echo '<div id="bootstrap-theme">';
+    echo CRM_Core_Smarty::singleton()->fetchWith('string:<div af-form-name="afformMembershipSignup"></div>', []);
+    echo '</div>';
+
+    // Load the Angular module for this specific form
+    CRM_Core_Resources::singleton()->addScriptFile('civicrm', 'ang/afformMembershipSignup.aff.js', -9000, 'html-header', FALSE);
 }
 
 echo '</div>';

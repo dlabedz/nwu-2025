@@ -11,21 +11,3 @@
     margin-top: var(--wp--custom--layout--block-gap);
 }
 
-/* Seamless iframe - no borders, no scrollbars */
-.civicrm-form-iframe {
-    display: block;
-    width: 100%;
-    border: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-/* Placeholder styling */
-.civicrm-placeholder {
-    padding: 60px 20px;
-    background: #f9f9f9;
-    border: 2px dashed #ccc;
-    border-radius: 8px;
-    text-align: center;
-}
