@@ -963,18 +963,19 @@ div.wpforms-container.u-width-full {
   border: none !important;
   width: 100% !important;
   max-width: 100%;
-  max-height: 100%;
-  overflow-y: auto;
 }
 .crm-container ul.crm-checkbox-list li {
   background-color: transparent !important;
-  padding: 12px 0;
+  padding: 16px 0;
   display: flex;
   align-items: flex-start;
   gap: 12px;
 }
 .crm-container ul.crm-checkbox-list li:first-child {
   padding-top: 0;
+}
+.crm-container ul.crm-checkbox-list li:last-child {
+  padding-bottom: 0;
 }
 .crm-container ul.crm-checkbox-list li:nth-child(even) label {
   background-color: transparent !important;
@@ -1285,12 +1286,15 @@ af-field.ng-isolate-scope.af-field-type-email {
 }
 
 /* SELECT2 DROPDOWN STYLING - 1px border */
+.select2-container,
 div[id^=s2id_] {
   width: 100% !important;
 }
+.select2-container .select2-container,
 div[id^=s2id_] .select2-container {
   width: 100% !important;
 }
+.select2-container .select2-choice,
 div[id^=s2id_] .select2-choice {
   height: 50px !important;
   line-height: 48px !important;
@@ -1298,10 +1302,12 @@ div[id^=s2id_] .select2-choice {
   border: 1px solid var(--wp--preset--color--black) !important;
   border-radius: 0 !important;
   background: white !important;
+  background-image: none !important;
   font-family: "DM Sans";
   font-size: 18px !important;
   color: var(--wp--preset--color--black) !important;
 }
+.select2-container .select2-choice .select2-arrow,
 div[id^=s2id_] .select2-choice .select2-arrow {
   border-left: 1px solid var(--wp--preset--color--black) !important;
   background: transparent !important;
@@ -1309,8 +1315,15 @@ div[id^=s2id_] .select2-choice .select2-arrow {
   height: 48px !important;
   top: 0 !important;
 }
+.select2-container .select2-choice .select2-arrow b,
 div[id^=s2id_] .select2-choice .select2-arrow b {
   background-position: 0 8px !important;
+}
+
+/* Select2 wrapper */
+.select2-container-multi,
+.select2-container {
+  border: none !important;
 }
 
 .select2-default {
