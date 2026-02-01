@@ -984,7 +984,7 @@ div.wpforms-container.u-width-full {
   text-align: center;
 }
 
-#bootstrap-theme .btn {
+#bootstrap-theme .btn-primary {
   display: inline-block !important;
   margin-bottom: 0;
   text-align: center;
@@ -1008,9 +1008,9 @@ div.wpforms-container.u-width-full {
   padding: 0.75em !important;
   transition: 0.3s ease-in;
 }
-#bootstrap-theme .btn:hover {
-  background: var(--wp--preset--color--black);
-  color: var(--wp--preset--color--white);
+#bootstrap-theme .btn-primary:hover {
+  background: var(--wp--preset--color--black) !important;
+  color: var(--wp--preset--color--white) !important;
 }
 
 .af-markup p {
@@ -1071,12 +1071,27 @@ af-field.ng-isolate-scope.af-field-type-email {
   width: 100% !important;
 }
 
-af-field.ng-isolate-scope.af-field-type-text {
-  display: flex !important;
+ul#signup-questions-type-of-work-6 label.ng-binding {
+  font-weight: 400 !important;
 }
 
-af-field.ng-isolate-scope.af-field-type-email {
-  display: flex !important;
+#bootstrap-theme input[type=radio], #bootstrap-theme input[type=checkbox] {
+  margin: 4px 0 0;
+  margin-top: 1px \9 ;
+  line-height: normal;
+}
+
+.crm-container ul.crm-checkbox-list li input:checked + label {
+  background-color: transparent !important;
+}
+
+div#s2id_signup-questions-membership-fee-5 {
+  width: 100%;
+}
+
+#bootstrap-theme .form-group {
+  margin-bottom: 15px;
+  width: 100% !important;
 }
 
 /* Custom Blocks
