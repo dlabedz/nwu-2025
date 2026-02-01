@@ -984,6 +984,30 @@ div.wpforms-container.u-width-full {
   text-align: center;
 }
 
+#bootstrap-theme .btn {
+  display: inline-block !important;
+  margin-bottom: 0;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  background-image: none;
+  border: 0;
+  line-height: 1.428571429;
+  border-radius: 0px !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: "DM Sans" !important;
+  font-size: 16.5px !important;
+  font-style: normal;
+  font-weight: 900 !important;
+  line-height: 22.5px; /* 136.364% */
+  letter-spacing: 2.475px !important;
+  text-transform: uppercase !important;
+  padding: 0.75em !important;
+}
+
 .af-markup p {
   font-style: italic;
 }
@@ -1025,8 +1049,11 @@ af-field.ng-isolate-scope.af-field-type-radio {
   list-style: none;
   margin: 0;
   padding: 0;
-  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  width: 100% !important;
   max-width: 100%;
+  max-height: 100%;
   overflow-y: auto;
 }
 
