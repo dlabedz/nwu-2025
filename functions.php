@@ -1258,4 +1258,12 @@ function nwu_force_civicrm_shortcode() {
 }
 add_action('init', 'nwu_force_civicrm_shortcode', 999);
 
-
+/**
+ * Debug: Check if shortcode exists
+ */
+function nwu_debug_shortcodes() {
+    global $shortcode_tags;
+    error_log('ALL REGISTERED SHORTCODES: ' . implode(', ', array_keys($shortcode_tags)));
+    error_log('CiviCRM shortcode exists? ' . (isset($shortcode_tags['civicrm']) ? 'YES' : 'NO'));
+}
+add_action('wp_footer', 'nwu_debug_shortcodes');
