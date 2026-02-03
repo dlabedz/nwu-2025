@@ -264,8 +264,9 @@ label,
 }
 
 // Standard alignment - matches u-width-constrained
-.alignwide:not(.is-layout-constrained) > *,
-.alignfull:not(.is-layout-constrained) > * {
+// Exception: Not for columns - they handle their own layout
+.alignwide:not(.is-layout-constrained) > *:not(.wp-block-column),
+.alignfull:not(.is-layout-constrained) > *:not(.wp-block-column) {
 	width: calc(100% - 32px);
 	max-width: 100%;
 	margin-left: auto;
@@ -335,3 +336,21 @@ label,
 // .wp-block-columns {
 // 	gap: 0 !important;
 // }
+
+
+/* Columns - Full Width Support
+--------------------------------------------- */
+
+// Remove default constraining on alignfull columns
+.wp-block-columns.alignfull {
+	// Let columns be truly full-width
+	> .wp-block-column {
+		// Remove any default constraints
+		& > * {
+			// Don't constrain content inside full-width columns
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+}
+

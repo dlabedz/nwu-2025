@@ -114,7 +114,7 @@
 				"neutral-900": "#212121"
 			},
 			"layout": {
-				"content": "800px",
+				"content": "1132px",
 				"wide": "1200px",
 				"sidebar": "336px",
 				"page": "var(--wp--custom--layout--content)",
@@ -275,7 +275,7 @@
 		"elements": {
 			"link": {
 				"color": {
-					"text": "var(--wp--custom--color--link)"
+					"text": "var(--wp--preset--color--blue)"
 				}
 			},
 			"button": {

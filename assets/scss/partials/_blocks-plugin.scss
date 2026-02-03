@@ -786,3 +786,35 @@ div[id^="s2id_"] {
 	}
 }
 
+/* All in One SEO Breadcrumbs
+--------------------------------------------- */
+
+.aioseo-breadcrumbs {
+	max-width: 100%;
+	margin: 0 auto var(--wp--custom--layout--block-gap);
+	font-size: var(--wp--preset--font-size--tiny);
+	line-height: var(--wp--custom--line-height--small);
+
+	@include media(">=tablet") {
+		max-width: clamp(700px, 85vw, 1132px);
+	}
+
+	a {
+		color: var(--wp--preset--color--foreground);
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.breadcrumb-separator {
+		margin: 0 8px;
+		display: inline-block;
+		vertical-align: middle;
+
+		svg {
+			fill: currentColor;
+		}
+	}
+}

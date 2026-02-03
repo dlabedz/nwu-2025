@@ -272,16 +272,16 @@ label .wpforms-required-label,
   padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
 }
 
-.alignwide:not(.is-layout-constrained) > *,
-.alignfull:not(.is-layout-constrained) > * {
+.alignwide:not(.is-layout-constrained) > *:not(.wp-block-column),
+.alignfull:not(.is-layout-constrained) > *:not(.wp-block-column) {
   width: calc(100% - 32px);
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 @media (min-width: 768px) {
-  .alignwide:not(.is-layout-constrained) > *,
-  .alignfull:not(.is-layout-constrained) > * {
+  .alignwide:not(.is-layout-constrained) > *:not(.wp-block-column),
+  .alignfull:not(.is-layout-constrained) > *:not(.wp-block-column) {
     width: clamp(700px, 85vw, 1152px);
   }
 }
@@ -333,6 +333,13 @@ label .wpforms-required-label,
 --------------------------------------------- */
 .wp-block-columns.is-style-no-gap {
   gap: 0 !important;
+}
+
+/* Columns - Full Width Support
+--------------------------------------------- */
+.wp-block-columns.alignfull > .wp-block-column > * {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* WordPress SEO
@@ -1111,6 +1118,35 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
 .crm-contribution-page-id-27.crm-block.crm-contribution-main-form-block .form-group {
   margin-bottom: 15px;
   width: 100% !important;
+}
+
+/* All in One SEO Breadcrumbs
+--------------------------------------------- */
+.aioseo-breadcrumbs {
+  max-width: 100%;
+  margin: 0 auto var(--wp--custom--layout--block-gap);
+  font-size: var(--wp--preset--font-size--tiny);
+  line-height: var(--wp--custom--line-height--small);
+}
+@media (min-width: 768px) {
+  .aioseo-breadcrumbs {
+    max-width: clamp(700px, 85vw, 1132px);
+  }
+}
+.aioseo-breadcrumbs a {
+  color: var(--wp--preset--color--foreground);
+  text-decoration: none;
+}
+.aioseo-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+.aioseo-breadcrumbs .breadcrumb-separator {
+  margin: 0 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.aioseo-breadcrumbs .breadcrumb-separator svg {
+  fill: currentColor;
 }
 
 body {

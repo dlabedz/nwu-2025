@@ -1,143 +1,54 @@
 /* Group Block Styles
 --------------------------------------------- */
 
-// Contained (centered, constrained)
+// These styles now ADD to the default constrained behavior
+// rather than fighting against full-width default
+
+// Contained (centered, constrained) - This is now mostly redundant but kept for semantic clarity
 .wp-block-group.is-style-contained {
-	// For WordPress 6.0+
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
+	// Already constrained by default, but enforce centering
 	& > * {
-		width: calc(100% - 32px);
-		max-width: 100%;
-
-		@include media(">=tablet") {
-			width: clamp(700px, 85vw, 1152px);
-		}
-	}
-
-	// Legacy support for older WP versions
-	& > .wp-block-group__inner-container {
-		width: calc(100% - 32px);
-		max-width: 100%;
 		margin-left: auto;
 		margin-right: auto;
-
-		@include media(">=tablet") {
-			width: clamp(700px, 85vw, 1152px);
-		}
 	}
 }
 
 // Contained Left (constrained, left-aligned)
 .wp-block-group.is-style-contained-left {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-
 	& > * {
-		width: calc(100% - 32px);
-		max-width: 100%;
-
-		@include media(">=tablet") {
-			width: clamp(700px, 85vw, 1132px);
-		}
-	}
-
-	// Legacy support
-	& > .wp-block-group__inner-container {
-		width: calc(100% - 32px);
-		max-width: 100%;
-		margin-left: 0;
+		margin-left: clamp(16px, 5vw, 153px);
 		margin-right: auto;
-
-		@include media(">=tablet") {
-			width: clamp(700px, 85vw, 1132px);
-		}
 	}
 }
 
 // Contained Right (constrained, right-aligned)
 .wp-block-group.is-style-contained-right {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-
 	& > * {
-		width: calc(100% - 32px);
-		max-width: 100%;
-
-		@include media(">=tablet") {
-			width: clamp(700px, 85vw, 1132px);
-		}
-	}
-
-	// Legacy support
-	& > .wp-block-group__inner-container {
-		width: calc(100% - 32px);
-		max-width: 100%;
 		margin-left: auto;
-		margin-right: 0;
-
-		@include media(">=tablet") {
-			width: clamp(700px, 85vw, 1132px);
-		}
+		margin-right: clamp(16px, 5vw, 153px);
 	}
 }
 
-// Half Width Left
+// Half Width Left - Override default constraint
 .wp-block-group.is-style-half-left {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-
 	& > * {
-		width: calc(100% - 32px);
-		max-width: 100%;
-
 		@include media(">=tablet") {
 			width: clamp(350px, 42.5vw, 566px);
+			max-width: 566px;
 		}
-	}
-
-	// Legacy support
-	& > .wp-block-group__inner-container {
-		width: calc(100% - 32px);
-		max-width: 100%;
-		margin-left: 0;
+		margin-left: clamp(16px, 5vw, 153px);
 		margin-right: auto;
-
-		@include media(">=tablet") {
-			width: clamp(350px, 42.5vw, 566px);
-		}
 	}
 }
 
-// Half Width Right
+// Half Width Right - Override default constraint
 .wp-block-group.is-style-half-right {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-
 	& > * {
-		width: calc(100% - 32px);
-		max-width: 100%;
-
 		@include media(">=tablet") {
 			width: clamp(350px, 42.5vw, 566px);
+			max-width: 566px;
 		}
-	}
-
-	// Legacy support
-	& > .wp-block-group__inner-container {
-		width: calc(100% - 32px);
-		max-width: 100%;
 		margin-left: auto;
-		margin-right: 0;
-
-		@include media(">=tablet") {
-			width: clamp(350px, 42.5vw, 566px);
-		}
+		margin-right: clamp(16px, 5vw, 153px);
 	}
 }

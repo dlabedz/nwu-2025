@@ -61,6 +61,7 @@
 
 		@include media("<=mobile_menu") {
 			display: flex;
+			justify-content: flex-end;
 		}
 	}
 

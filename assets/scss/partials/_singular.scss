@@ -1,35 +1,173 @@
-/* Singular
+/* Singular - Constrained by Default with Specific Full-Width Exceptions
 ---------------------------------------------------------------------------------------------------- */
-
-/* Full Width Content System
---------------------------------------------- */
-
-.site-inner {
-	padding-left: 0;
-	padding-right: 0;
-}
 
 .entry-content,
 .block-area {
-	& > * {
-		margin-left: 0;
-		margin-right: 0;
-		max-width: 100%;
-		width: 100%;
 
-		// Exception for blocks that set their own alignment
-		&.alignwide,
-		&.alignfull {
+	// CONSTRAIN: All text/content blocks - width only, NO padding
+	& > p,
+	& > div:not([class*="wp-block"]):not([class*="block-"]),
+	& > .wp-block-paragraph,
+	& > h1, & > h2, & > h3, & > h4, & > h5, & > h6,
+	& > .wp-block-heading,
+	& > ul, & > ol,
+	& > .wp-block-list,
+	& > .wp-block-quote,
+	& > .wp-block-pullquote,
+	& > .wp-block-table,
+	& > table,
+	& > .wp-block-image:not(.alignfull),
+	& > .wp-block-gallery:not(.alignfull),
+	& > .wp-block-video:not(.alignfull),
+	& > .wp-block-audio,
+	& > .wp-block-file,
+	& > .wp-block-embed,
+	& > .wp-block-code,
+	& > .wp-block-preformatted,
+	& > .wp-block-verse,
+	& > .wp-block-button,
+	& > .wp-block-buttons,
+	& > .wp-block-freeform {
+		width: 100%;
+		max-width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		// NO padding - inherited from .site-inner
+
+		@include media(">=tablet") {
+			max-width: clamp(700px, 85vw, 1132px);
+		}
+	}
+
+	// CONSTRAIN: Group blocks - width only, NO padding
+	& > .wp-block-group:not(.alignfull) {
+		width: 100%;
+		max-width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+
+		@include media(">=tablet") {
+			max-width: clamp(700px, 85vw, 1132px);
+		}
+	}
+
+	// Old WYSIWYG content - constrain internals
+	& > .wp-block-freeform {
+		> * {
 			max-width: 100%;
 		}
 
+		img {
+			max-width: 100%;
+			height: auto;
+		}
 	}
 
-	// & > * + * {
-	// 	margin-top: var( --wp--style--block-gap );
-	// }
+	& > div:not([class*="wp-block"]):not([class*="block-"]) {
+		> * {
+			max-width: 100%;
+		}
 
+		img, table {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
+	// FULL-WIDTH: Columns and Covers
+	& > .wp-block-columns,
+	& > .wp-block-cover {
+		width: 100%;
+		max-width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	// FULL-WIDTH: Columns with alignfull
+	& > .wp-block-columns.alignfull {
+		width: 100vw;
+		max-width: 100vw;
+		margin-left: calc(-1 * var(--site-padding));
+		margin-right: calc(-1 * var(--site-padding));
+		padding: 0;
+
+		.wp-block-column {
+			padding: 0;
+
+			> * {
+				width: 100%;
+				max-width: 100%;
+				margin: 0;
+				padding: 0;
+			}
+		}
+	}
+
+	// FULL-WIDTH: Group blocks with alignfull
+	& > .wp-block-group.alignfull {
+		width: 100vw;
+		max-width: 100vw;
+		margin-left: calc(-1 * var(--site-padding));
+		margin-right: calc(-1 * var(--site-padding));
+		padding: 0;
+	}
+
+	// FULL-WIDTH: ANY block with alignfull
+	& > .alignfull {
+		width: 100vw;
+		max-width: 100vw;
+		margin-left: calc(-1 * var(--site-padding));
+		margin-right: calc(-1 * var(--site-padding));
+		padding: 0;
+	}
+
+	// FULL-WIDTH: All custom blocks
+	//& > [class*="block-"],
+	& > [class*="hero"],
+	& > [class*="banner"],
+	& > [class*="card-slider"],
+	& > [class*="cta"],
+	& > [class*="locations"],
+	& > [class*="jump-links"],
+	& > [class*="image-cards"],
+	& > [class*="block-news-grid"],
+	//& > [class*="grid"],
+	& > [class*="quote"],
+	& > [class*="story"]
+	 {
+		width: 100vw;
+		max-width: 100vw;
+		margin-left: calc(-1 * var(--site-padding));
+		margin-right: calc(-1 * var(--site-padding));
+		padding: 0;
+	}
+
+	// FULL-WIDTH: CiviCRM, utility class, separator
+	& > .wp-block-group.civicrm-membership-form,
+	& > .u-width-full,
+	& > .wp-block-separator {
+		width: 100vw;
+		max-width: 100vw;
+		margin-left: calc(-1 * var(--site-padding));
+		margin-right: calc(-1 * var(--site-padding));
+		padding: 0;
+	}
+
+	// Standard spacing between blocks
+	& > * + * {
+		margin-top: var(--wp--style--block-gap);
+	}
+
+	// Extra spacing for full-width sections
 	& > .alignfull,
+	& > [class*="hero"],
+	& > [class*="banner"],
+	& > [class*="card-slider"],
+	& > [class*="news"],
+	& > [class*="story"],
+	& > [class*="grid"],
 	& > .wp-block-separator {
 		&:not(:first-child) {
 			margin-top: var(--wp--custom--layout--block-gap-large);
@@ -40,82 +178,25 @@
 		}
 	}
 
+	// Adjacent background sections collapse spacing
 	& > .alignfull.has-background + .alignfull.has-background {
-		margin-top: calc( -1 * var(--wp--custom--layout--block-gap-large) );
+		margin-top: calc(-1 * var(--wp--custom--layout--block-gap-large));
 	}
 }
 
 .full-width-content .entry-content {
-	&:first-child > .alignfull.has-background:first-child {
-		margin-top: 0;
+	&:first-child > .alignfull.has-background:first-child,
+	&:first-child > [class*="hero"]:first-child,
+	&:first-child > [class*="banner"]:first-child,
+	&:first-child > [class*="news"]:first-child {
+		margin-top: calc(-1 * var(--wp--custom--layout--block-gap-large));
 	}
 
-	&:last-child > .alignfull.has-background:last-child {
-		margin-bottom: 0;
-	}
-}
-
-/* Single Post Content Constraint
---------------------------------------------- */
-
-.single-post {
-	.entry-content {
-		// Override the full-width default for single posts
-		> * {
-			width: calc(100% - 32px);
-			max-width: 100%;
-			margin-left: auto;
-			margin-right: auto;
-
-			@include media(">=tablet") {
-				width: clamp(700px, 85vw, 1132px);
-			}
-		}
-
-		// Allow blocks to explicitly break out to full width
-		> .alignfull,
-		> .u-width-full,
-		> [class*="is-style-full"] {
-			width: 100%;
-			max-width: 100%;
-		}
-
-		// Allow wide blocks
-		> .alignwide,
-		> .u-width-wide {
-			width: calc(100% - 32px);
-			max-width: 100%;
-			margin-left: auto;
-			margin-right: auto;
-
-			@include media(">=tablet") {
-				width: clamp(900px, 90vw, 1400px);
-			}
-		}
-
-		// Maintain full width for groups/covers that have explicit width classes
-		> .wp-block-group.u-width-full,
-		> .wp-block-cover.u-width-full {
-			width: 100%;
-
-			> * {
-				width: 100%;
-				margin-left: 0;
-				margin-right: 0;
-			}
-		}
-
-		// Nested content within constrained blocks should be full width of parent
-		> .wp-block-group:not(.u-width-full),
-		> .wp-block-cover:not(.u-width-full),
-		> .wp-block-columns {
-			> * {
-				width: 100%;
-				max-width: 100%;
-				margin-left: 0;
-				margin-right: 0;
-			}
-		}
+	&:last-child > .alignfull.has-background:last-child,
+	&:last-child > [class*="hero"]:last-child,
+	&:last-child > [class*="banner"]:last-child,
+	&:last-child > [class*="news"]:last-child {
+		margin-bottom: calc(-1 * var(--wp--custom--layout--block-gap-large));
 	}
 }
 
@@ -126,24 +207,91 @@ h1.front {
 	display: none;
 }
 
-/* Entry Header/Footer
+/* Entry Header - Constrained
 --------------------------------------------- */
 
-.entry-header,
+.entry-header-wrapper {
+	max-width: 100%;
+	margin: 0 auto var(--wp--custom--layout--block-gap-large);
+
+	@include media(">=tablet") {
+		max-width: clamp(700px, 85vw, 1132px);
+	}
+}
+
+.entry-header {
+	max-width: none;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+
+	.entry-title {
+		margin: 0;
+	}
+}
+
+// Page titles output via tha_entry_top (before .entry-content)
+article > .entry-title,
+.entry > .entry-title {
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: var(--wp--custom--layout--block-gap-large);
+
+	@include media(">=tablet") {
+		max-width: clamp(700px, 85vw, 1132px);
+	}
+}
+
+// If page title is output as first child of entry-content
+.entry-content > h1:first-child,
+.site-main > h1:first-child {
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+
+	@include media(">=tablet") {
+		max-width: clamp(700px, 85vw, 1132px);
+	}
+}
+
+/* Event Meta
+--------------------------------------------- */
+
+.event-meta {
+	max-width: 100%;
+	margin: var(--wp--custom--layout--block-gap) auto;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+
+	@include media(">=tablet") {
+		max-width: clamp(700px, 85vw, 1132px);
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+
+		svg {
+			fill: var(--wp--preset--color--foreground);
+		}
+	}
+}
+
+/* Entry Footer/Comments
+--------------------------------------------- */
+
 .entry-footer,
 .after-entry,
 .entry-comments {
-	max-width: 1132px; // Use fixed width instead of variable
+	max-width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: clamp(16px, 5vw, 153px); // Use clamp for responsive padding
-	padding-right: clamp(16px, 5vw, 153px);
 
-	// Allow utility classes to override
-	&.u-width-full {
-		max-width: 100%;
-		padding-left: 0;
-		padding-right: 0;
+	@include media(">=tablet") {
+		max-width: clamp(700px, 85vw, 1132px);
 	}
 }
 
@@ -157,6 +305,66 @@ h1.front {
 
 /* Single Post
 --------------------------------------------- */
+
+/* 404 / No Results Page
+--------------------------------------------- */
+
+.no-results.not-found {
+	max-width: 100%;
+	margin: 0 auto;
+
+	@include media(">=tablet") {
+		max-width: clamp(700px, 85vw, 1132px);
+	}
+
+	.entry-header {
+		width: 100%;
+		max-width: none;
+		padding: 0;
+		margin: 0 0 var(--wp--custom--layout--block-gap-large);
+	}
+
+	.entry-content {
+		width: 100%;
+		max-width: none;
+		padding: 0;
+
+		& > * {
+			width: 100%;
+			max-width: none;
+			padding-left: 0;
+			padding-right: 0;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.wp-block-search {
+			margin-top: var(--wp--custom--layout--block-gap);
+		}
+	}
+}
+
+// If 404 block area has custom blocks
+.block-area-404 {
+	max-width: 100%;
+	margin: 0 auto;
+
+	@include media(">=tablet") {
+		max-width: clamp(700px, 85vw, 1132px);
+	}
+
+	// Full-width blocks break out
+	& > .alignfull,
+	& > [class*="hero"],
+	& > [class*="banner"],
+	& > .u-width-full {
+		width: 100vw;
+		max-width: 100vw;
+		margin-left: calc(-1 * var(--site-padding));
+		margin-right: calc(-1 * var(--site-padding));
+		padding: 0;
+	}
+}
 
 /* Comments
 --------------------------------------------- */
@@ -291,115 +499,4 @@ h1.front {
 .nav-links {
 	display: flex;
 	justify-content: space-between;
-}
-
-/* Event Meta
---------------------------------------------- */
-
-.event-meta {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 24px;
-	padding: 24px 0;
-	margin-bottom: 24px;
-	border-bottom: 1px solid var(--wp--custom--color--neutral-300);
-
-	@include media("<tablet") {
-		flex-direction: column;
-		gap: 16px;
-	}
-
-	&__item {
-		display: flex;
-		align-items: center;
-		gap: 8px;
-		font-size: var(--wp--preset--font-size--medium);
-
-		svg {
-			fill: var(--wp--preset--color--red);
-			flex-shrink: 0;
-		}
-
-		span {
-			font-weight: 500;
-		}
-	}
-
-	&__date {
-		svg {
-			fill: var(--wp--preset--color--blue);
-		}
-	}
-
-	&__time {
-		svg {
-			fill: var(--wp--preset--color--cyan);
-		}
-	}
-
-	&__location {
-		svg {
-			fill: var(--wp--preset--color--red);
-		}
-	}
-}
-
-/* Auto-constrain content blocks
---------------------------------------------- */
-
-.entry-content,
-.block-area {
-
-	// Text/reading blocks - constrained for readability
-	& > .wp-block-paragraph,
-	& > .wp-block-heading,
-	& > .wp-block-list,
-	& > .wp-block-quote,
-	& > .wp-block-pullquote,
-	& > .wp-block-verse {
-		width: calc(100% - 32px);
-		max-width: 100%;
-		margin-left: auto;
-		margin-right: auto;
-		padding-left: clamp(16px, 5vw, 153px);
-		padding-right: clamp(16px, 5vw, 153px);
-
-		@include media(">=tablet") {
-			width: clamp(700px, 85vw, 1132px);
-		}
-	}
-
-	// Layout blocks - stay full-width (users can add styles if needed)
-	& > .wp-block-group,
-	& > .wp-block-cover,
-	& > .wp-block-columns {
-		// Keep full-width by default
-		// Users can add .u-width-constrained or block styles
-	}
-
-	// Media blocks - stay full-width (users can add alignwide/alignfull)
-	& > .wp-block-image,
-	& > .wp-block-gallery,
-	& > .wp-block-video {
-		// Keep full-width by default
-	}
-
-	// Utility class overrides
-	& > .u-width-full {
-		width: 100% !important;
-		max-width: 100% !important;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-		margin-left: 0 !important;
-		margin-right: 0 !important;
-	}
-
-	// Nested blocks inside groups/columns keep their full width
-	.wp-block-group > *,
-	.wp-block-column > * {
-		width: 100%;
-		max-width: 100%;
-		padding-left: 0;
-		padding-right: 0;
-	}
 }

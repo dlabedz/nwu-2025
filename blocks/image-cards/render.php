@@ -20,10 +20,12 @@ if (!empty($block['anchor'])) {
 	$block_id = $block['anchor'];
 }
 
-$class_name = 'block-image-cards';
+// Add 'alignfull' to make this block full-width by default
+$class_name = 'block-image-cards alignfull';  // ← CHANGED: Added 'alignfull'
 if (!empty($block['className'])) {
 	$class_name .= ' ' . $block['className'];
 }
+
 
 ?>
 

@@ -1,19 +1,16 @@
-/* Box Sizing
+/* Layout Variables
 --------------------------------------------- */
 
-html{
-	overflow-x: hidden;
+:root {
+	--site-padding: clamp(16px, 5vw, 153px);
 }
+
+/* Box Sizing
+--------------------------------------------- */
 
 html,
 input[type="search"] {
 	box-sizing: border-box;
-}
-
-body {
-	@include media("<360px") {
-		--wp--custom--layout--padding: 10px;
-	}
 }
 
 *, *:before, *:after {
@@ -24,17 +21,21 @@ body {
 --------------------------------------------- */
 
 .wrap {
-	max-width: calc( var(--wp--custom--layout--wide) + calc( 2 * var(--wp--custom--layout--padding ) ) );
+	max-width: calc(var(--wp--custom--layout--wide) + calc(2 * var(--wp--custom--layout--padding)));
 	margin: 0 auto;
 	padding-left: var(--wp--custom--layout--padding);
 	padding-right: var(--wp--custom--layout--padding);
 }
 
-// Site inner - now without padding since content is full-width
+/* Site Inner
+--------------------------------------------- */
+
 .site-inner {
-	//padding-top: var(--wp--custom--layout--block-gap-large);
-	//padding-bottom: var(--wp--custom--layout--block-gap-large);
+	padding: var(--wp--custom--layout--block-gap-large) var(--site-padding);
 }
+
+/* Full Width Content Layout
+--------------------------------------------- */
 
 body.full-width-content {
 	--wp--custom--layout--page: var(--wp--custom--layout--wide);
@@ -55,7 +56,7 @@ body.full-width-content {
 }
 
 .screen-reader-text:focus,
-.screen-reader-shortcut:focus  {
+.screen-reader-shortcut:focus {
 	clip: auto !important;
 	height: auto;
 	width: auto;
@@ -88,34 +89,17 @@ body.full-width-content {
 			max-width: var(--wp--custom--layout--wide);
 			margin-left: auto;
 			margin-right: auto;
-			padding-left: var(--wp--custom--layout--padding);
-			padding-right: var(--wp--custom--layout--padding);
 		}
 
 		.site-main {
 			float: none;
 			width: 100%;
-			max-width: 100%; // Remove constraint since content handles its own width now
+			max-width: var(--wp--custom--layout--content);
 		}
 
 		.sidebar-primary {
 			float: none;
 			width: 100%;
 		}
-	}
-}
-
-/* Content Area Utilities Support
---------------------------------------------- */
-
-// Ensure utility classes work within content areas
-.content-area,
-.site-main {
-	// Allow utility classes to override default widths
-	.u-width-constrained,
-	.u-width-half,
-	.u-width-wide,
-	.u-width-narrow {
-		// Utility classes handle their own width
 	}
 }
