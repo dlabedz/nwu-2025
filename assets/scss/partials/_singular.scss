@@ -150,15 +150,28 @@
 	}
 
 	// Standard spacing between blocks
-	& > * + * {
-		margin-top: var(--wp--style--block-gap);
+& > * + * {
+	margin-top: var(--wp--style--block-gap);
+}
+
+// Reset spacing for blocks that handle their own
+& > [class*="card-slider"],
+& > [class*="story"],
+& > [class*="cta"],
+& > [class*="jump-links"] {
+	margin-top: 0;
+	margin-bottom: 0;
+
+	// And reset the spacing for whatever comes after them
+	+ * {
+		margin-top: 0;
 	}
+}
 
 	// Extra spacing for full-width sections
 	& > .alignfull,
 	& > [class*="hero"],
 	& > [class*="banner"],
-	& > [class*="card-slider"],
 	& > [class*="news"],
 	& > [class*="story"],
 	& > [class*="grid"],
@@ -180,19 +193,98 @@
 
 .full-width-content .entry-content {
 	&:first-child > .alignfull.has-background:first-child,
-	&:first-child > [class*="hero"]:first-child,
-	&:first-child > [class*="banner"]:first-child,
-	&:first-child > [class*="news"]:first-child {
+	// &:first-child > [class*="hero"]:first-child,
+	&:first-child > [class*="banner"]:first-child {
 		margin-top: calc(-1 * var(--wp--custom--layout--block-gap-large));
 	}
 
 	&:last-child > .alignfull.has-background:last-child,
 	&:last-child > [class*="hero"]:last-child,
-	&:last-child > [class*="banner"]:last-child,
-	&:last-child > [class*="news"]:last-child {
+	&:last-child > [class*="banner"]:last-child {
 		margin-bottom: calc(-1 * var(--wp--custom--layout--block-gap-large));
 	}
 }
+
+/* Smart Block Spacing - Automatic Rules
+--------------------------------------------- */
+
+// Remove spacing between same block types (they should touch)
+.entry-content,
+.block-area {
+
+	// Heroes/Banners touch when stacked
+	& > [class*="hero"] + [class*="hero"],
+	& > [class*="banner"] + [class*="banner"],
+	& > [class*="hero"] + [class*="banner"],
+	& > [class*="banner"] + [class*="hero"] {
+		margin-top: 0 !important;
+	}
+
+	// Card sliders touch when stacked
+	& > [class*="card-slider"] + [class*="card-slider"] {
+		margin-top: 0 !important;
+	}
+
+	// News/Grid blocks touch when stacked
+	& > [class*="news"] + [class*="news"],
+	& > [class*="grid"] + [class*="grid"],
+	& > [class*="news"] + [class*="grid"],
+	& > [class*="grid"] + [class*="news"] {
+		margin-top: 0 !important;
+	}
+
+	// Story blocks always touch (no spacing ever)
+	& > [class*="story"] {
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
+
+		+ * {
+			margin-top: 0 !important;
+		}
+	}
+
+	// Blocks with same background color touch
+	& > .has-navy-background-color + .has-navy-background-color,
+	& > .has-blue-background-color + .has-blue-background-color,
+	& > .has-red-background-color + .has-red-background-color,
+	& > .has-cyan-background-color + .has-cyan-background-color,
+	& > .has-yellow-background-color + .has-yellow-background-color,
+	& > .has-lavender-background-color + .has-lavender-background-color,
+	& > .has-jade-background-color + .has-jade-background-color,
+	& > .has-violet-background-color + .has-violet-background-color,
+	& > .has-newsprint-background-color + .has-newsprint-background-color,
+	& > .has-cerulean-background-color + .has-cerulean-background-color {
+		margin-top: 0 !important;
+	}
+
+	// CTA buttons touch other blocks (no gap above or below)
+	& > [class*="cta"] {
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
+	}
+
+	// Quote blocks keep normal spacing (override the default large spacing)
+	& > [class*="quote"] {
+		&:not(:first-child) {
+			margin-top: var(--wp--style--block-gap) !important;
+		}
+		&:not(:last-child) {
+			margin-bottom: var(--wp--style--block-gap) !important;
+		}
+	}
+
+	// Locations/Maps touch each other
+	& > [class*="locations"] + [class*="locations"],
+	& > [class*="map"] + [class*="map"] {
+		margin-top: 0 !important;
+	}
+
+	// Jump links touch the block above (no gap)
+	& > [class*="jump-links"] {
+		margin-top: 0 !important;
+	}
+}
+
 
 /* Entry Content
 --------------------------------------------- */

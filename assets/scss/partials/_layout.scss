@@ -30,8 +30,48 @@ input[type="search"] {
 /* Site Inner
 --------------------------------------------- */
 
+/* Site Inner
+--------------------------------------------- */
+
 .site-inner {
 	padding: var(--wp--custom--layout--block-gap-large) var(--site-padding);
+}
+
+// Remove top padding when first block is full-width or has background
+.site-inner:has(.entry-content > :first-child.has-background),
+.site-inner:has(.entry-content > :first-child.alignfull),
+.site-inner:has(.entry-content > :first-child[class*="hero"]),
+.site-inner:has(.entry-content > :first-child[class*="banner"]),
+.site-inner:has(.entry-content > :first-child[class*="homepage-banner"]),
+.site-inner:has(.block-area > :first-child.has-background),
+.site-inner:has(.block-area > :first-child.alignfull),
+.site-inner:has(.block-area > :first-child[class*="hero"]),
+.site-inner:has(.block-area > :first-child[class*="banner"]) {
+	padding-top: 0;
+}
+
+// Remove bottom padding when last block is full-width or has background
+.site-inner:has(.entry-content > :last-child.has-background),
+.site-inner:has(.entry-content > :last-child.alignfull),
+.site-inner:has(.entry-content > :last-child[class*="hero"]),
+.site-inner:has(.entry-content > :last-child[class*="banner"]),
+.site-inner:has(.block-area > :last-child.has-background),
+.site-inner:has(.block-area > :last-child.alignfull),
+.site-inner:has(.block-area > :last-child[class*="hero"]),
+.site-inner:has(.block-area > :last-child[class*="banner"]) {
+	padding-bottom: 0;
+}
+
+// Remove ONLY vertical padding on full-width-content pages (keep horizontal)
+body.full-width-content .site-inner {
+	padding-top: 0;
+	padding-bottom: 0;
+	// padding-left and padding-right inherit from base rule (var(--site-padding))
+}
+
+// Homepage should have no bottom padding
+body.home .site-inner {
+	padding-bottom: 0;
 }
 
 /* Full Width Content Layout

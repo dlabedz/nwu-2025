@@ -341,47 +341,6 @@
 	}
 }
 
-.archive-topics {
-	padding: var(--wp--custom--layout--block-gap-large) 0;
-	background-color: var(--wp--preset--color--newsprint);
-	text-align: center;
-
-	h4 {
-		display: inline-block;
-		margin-bottom: 24px;
-		padding-top: 5px;
-		border-top: 3px solid var(--wp--preset--color--foreground);
-	}
-
-	.topic-tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 12px;
-		justify-content: center;
-	}
-
-	.topic-tag {
-		border: 2px solid var(--wp--preset--color--black);
-		border-radius: 999px;
-		background: transparent;
-		color: var(--wp--preset--color--black);
-		font-family: var(--wp--preset--font-family--dm-mono);
-		font-size: 16px;
-		font-weight: 400;
-		line-height: 20px;
-		letter-spacing: 0.32px;
-		text-transform: capitalize;
-		padding: 10px 20px;
-		text-decoration: none;
-		transition: all 0.2s;
-
-		&:hover {
-			background: var(--wp--preset--color--foreground);
-			color: var(--wp--preset--color--white);
-		}
-	}
-}
-
 /* Chapters Archive
 --------------------------------------------- */
 
@@ -506,11 +465,75 @@
 	}
 }
 
-/* Chapters Info Section */
+/* Archive Topics - Full Width
+--------------------------------------------- */
+
+.archive-topics {
+	padding: var(--wp--custom--layout--block-gap-large) 0;
+	background-color: var(--wp--preset--color--newsprint);
+	text-align: center;
+
+	// Break out of parent container to full width
+	width: 100vw;
+	margin-left: calc(-1 * var(--site-padding));
+	margin-right: calc(-1 * var(--site-padding));
+
+	// Inner content constrained
+	> * {
+		max-width: var(--wp--custom--layout--page);
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: var(--site-padding);
+		padding-right: var(--site-padding);
+	}
+
+	h4 {
+		display: inline-block;
+		margin-bottom: 24px;
+		padding-top: 5px;
+		border-top: 3px solid var(--wp--preset--color--foreground);
+	}
+
+	.topic-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		justify-content: center;
+	}
+
+	.topic-tag {
+		border: 2px solid var(--wp--preset--color--black);
+		border-radius: 999px;
+		background: transparent;
+		color: var(--wp--preset--color--black);
+		font-family: var(--wp--preset--font-family--dm-mono);
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 20px;
+		letter-spacing: 0.32px;
+		text-transform: capitalize;
+		padding: 10px 20px;
+		text-decoration: none;
+		transition: all 0.2s;
+
+		&:hover {
+			background: var(--wp--preset--color--foreground);
+			color: var(--wp--preset--color--white);
+		}
+	}
+}
+
+/* Chapters Info Section - Full Width
+--------------------------------------------- */
+
 .chapters-info {
 	padding: var(--wp--custom--layout--block-gap-large) 0;
 	background: var(--wp--custom--color--neutral-100);
-	margin: var(--wp--custom--layout--block-gap-large) calc(-1 * var(--wp--custom--layout--padding));
+
+	// Break out to full width
+	width: 100vw;
+	margin-left: calc(-1 * var(--site-padding));
+	margin-right: calc(-1 * var(--site-padding));
 
 	&__grid {
 		max-width: var(--wp--custom--layout--wide);
