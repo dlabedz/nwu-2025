@@ -367,7 +367,6 @@ input[type=search] {
 .site-inner:has(.entry-content > :first-child.has-background),
 .site-inner:has(.entry-content > :first-child.alignfull),
 .site-inner:has(.entry-content > :first-child[class*=hero]),
-.site-inner:has(.entry-content > :first-child[class*=banner]),
 .site-inner:has(.entry-content > :first-child[class*=homepage-banner]),
 .site-inner:has(.block-area > :first-child.has-background),
 .site-inner:has(.block-area > :first-child.alignfull),
@@ -2893,7 +2892,6 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
 .block-area > .wp-block-columns.alignfull .wp-block-column > * {
   width: 100%;
   max-width: 100%;
-  margin: 0;
 }
 .entry-content > .wp-block-group.alignfull,
 .block-area > .wp-block-group.alignfull {
