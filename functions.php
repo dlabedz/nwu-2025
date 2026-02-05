@@ -1233,37 +1233,14 @@ add_action( 'wp_ajax_load_calendar_month', 'nwu_load_calendar_month' );
 add_action( 'wp_ajax_nopriv_load_calendar_month', 'nwu_load_calendar_month' );
 
 /**
- * Force register CiviCRM shortcode with debugging
+ * Add page slug as body class
  */
-function nwu_force_civicrm_shortcode() {
-    if (function_exists('civi_wp')) {
-        $civi = civi_wp();
-        if ($civi && isset($civi->shortcodes)) {
-            remove_shortcode('civicrm');
-
-            // Wrap the original method with debugging
-            add_shortcode('civicrm', function($atts, $content, $tag) use ($civi) {
-                error_log('CiviCRM Shortcode called with: ' . print_r($atts, true));
-
-                $result = $civi->shortcodes->render_single($atts, $content, $tag);
-
-                error_log('CiviCRM Shortcode returned: ' . substr($result, 0, 500));
-
-                return $result;
-            });
-
-            error_log('CiviCRM shortcode registered manually');
-        }
-    }
-}
-add_action('init', 'nwu_force_civicrm_shortcode', 999);
-
-/**
- * Debug: Check if shortcode exists
- */
-function nwu_debug_shortcodes() {
-    global $shortcode_tags;
-    error_log('ALL REGISTERED SHORTCODES: ' . implode(', ', array_keys($shortcode_tags)));
-    error_log('CiviCRM shortcode exists? ' . (isset($shortcode_tags['civicrm']) ? 'YES' : 'NO'));
-}
-add_action('wp_footer', 'nwu_debug_shortcodes');
+add_filter( 'body_class', function( $classes ) {
+	if ( is_singular() ) {
+		$post = get_post();
+		if ( $post && isset( $post->post_name ) ) {
+			$classes[] = 'page-' . sanitize_html_class( $post->post_name );
+		}
+	}
+	return $classes;
+}, 9999 );

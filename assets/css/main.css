@@ -395,6 +395,10 @@ body.home .site-inner {
   padding-bottom: 0;
 }
 
+body.page-membership .site-inner {
+  padding-bottom: 0;
+}
+
 /* Full Width Content Layout
 --------------------------------------------- */
 body.full-width-content {

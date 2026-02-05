@@ -73,6 +73,11 @@ body.home .site-inner {
 	padding-bottom: 0;
 }
 
+// Membership page should have no bottom padding
+body.page-membership .site-inner {
+	padding-bottom: 0;
+}
+
 /* Full Width Content Layout
 --------------------------------------------- */
 
