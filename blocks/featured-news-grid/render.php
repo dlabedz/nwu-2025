@@ -9,11 +9,50 @@
  * @license      GPL-2.0+
  **/
 
-$featured_posts = get_field('featured_posts');
+$display_mode = get_field('display_mode') ?: 'manual';
 
-if (!$featured_posts || empty($featured_posts)) {
-    echo '<div class="block-featured-news-grid block-featured-news-grid--empty">Select posts to feature</div>';
-    return;
+// Get posts based on display mode
+if ($display_mode === 'manual') {
+    $featured_posts = get_field('featured_posts');
+
+    if (!$featured_posts || empty($featured_posts)) {
+        echo '<div class="block-featured-news-grid block-featured-news-grid--empty">Select posts to feature</div>';
+        return;
+    }
+} else {
+    // Tag filtering mode
+    $filter_tag = get_field('filter_tag');
+    $posts_per_page = get_field('posts_per_page') ?: 4;
+
+    if (!$filter_tag) {
+        echo '<div class="block-featured-news-grid block-featured-news-grid--empty">Select a tag to filter posts</div>';
+        return;
+    }
+
+    // Query posts by tag
+    $args = array(
+        'post_type' => 'post',
+        'posts_per_page' => $posts_per_page,
+        'post_status' => 'publish',
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'post_tag',
+                'field' => 'term_id',
+                'terms' => $filter_tag,
+            ),
+        ),
+    );
+
+    $query = new WP_Query($args);
+
+    if (!$query->have_posts()) {
+        echo '<div class="block-featured-news-grid block-featured-news-grid--empty">No posts found with the selected tag</div>';
+        return;
+    }
+
+    $featured_posts = $query->posts;
 }
 ?>
 
@@ -56,7 +95,7 @@ if (!$featured_posts || empty($featured_posts)) {
                         <a href="<?php echo esc_url(get_permalink($post_id)); ?>">
                             <?php echo esc_html(get_the_title($post_id)); ?>
                         </a>
-						<img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/black-arrow.svg'); ?>" alt="" aria-hidden="true">
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/black-arrow.svg'); ?>" alt="" aria-hidden="true">
                     </h3>
 
                     <?php if ($excerpt): ?>
@@ -94,6 +133,10 @@ if (!$featured_posts || empty($featured_posts)) {
                     <?php endif; ?>
                 </div>
             </article>
-        <?php endforeach; wp_reset_postdata(); ?>
+        <?php endforeach;
+
+        // Reset post data - important for tag query mode
+        wp_reset_postdata();
+        ?>
     </div>
 </div>

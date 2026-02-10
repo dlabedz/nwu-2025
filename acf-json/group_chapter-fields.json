@@ -1,0 +1,61 @@
+{
+    "key": "group_chapter_fields",
+    "title": "Chapter Details",
+    "fields": [
+        {
+            "key": "field_chapter_image_caption",
+            "label": "Image Caption",
+            "name": "chapter_image_caption",
+            "type": "textarea",
+            "instructions": "Optional caption for the featured image",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_chapter_contact_info",
+            "label": "Contact Information",
+            "name": "chapter_contact_info",
+            "type": "wysiwyg",
+            "instructions": "Add chapter address, phone, email, and other contact details",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "chapter"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "high",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+}

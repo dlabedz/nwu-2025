@@ -3,6 +3,21 @@
     "title": "Featured News Grid",
     "fields": [
         {
+            "key": "field_display_mode",
+            "label": "Display Mode",
+            "name": "display_mode",
+            "type": "radio",
+            "instructions": "Choose how to select posts to display",
+            "choices": {
+                "manual": "Manual Selection",
+                "tag": "Filter by Tag"
+            },
+            "default_value": "manual",
+            "layout": "horizontal",
+            "return_format": "value",
+            "required": 1
+        },
+        {
             "key": "field_featured_posts",
             "label": "Featured Posts",
             "name": "featured_posts",
@@ -14,7 +29,61 @@
             "min": 1,
             "max": 4,
             "required": 1,
-            "ui": 1
+            "ui": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_display_mode",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_filter_tag",
+            "label": "Filter by Tag",
+            "name": "filter_tag",
+            "type": "taxonomy",
+            "instructions": "Select a tag to filter posts",
+            "taxonomy": "post_tag",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_display_mode",
+                        "operator": "==",
+                        "value": "tag"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_posts_per_page",
+            "label": "Number of Posts",
+            "name": "posts_per_page",
+            "type": "number",
+            "instructions": "How many posts to display (1-8)",
+            "default_value": 4,
+            "min": 1,
+            "max": 8,
+            "step": 1,
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_display_mode",
+                        "operator": "==",
+                        "value": "tag"
+                    }
+                ]
+            ]
         }
     ],
     "location": [

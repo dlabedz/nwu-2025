@@ -1,166 +1,130 @@
-// Single Chapter Styles
-// _single-chapter.scss
+// ============================================================================
+// Single Chapter Styling
+// ============================================================================
 
-.single-chapter {
+.chapter-header {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 32px;
+	margin-bottom: 48px;
 
-	.entry-header {
-		margin-bottom: 2rem;
-
-		@media (min-width: 768px) {
-			margin-bottom: 3rem;
-		}
+	// Tablet and up: two columns
+	@media (min-width: 768px) {
+		grid-template-columns: 430px 1fr;
+		gap: 40px;
 	}
 
-	.entry-title {
-		// H1 styles from your standardization
-		color: var(--wp--preset--color--foreground);
-		font-family: Oswald, sans-serif;
-		font-size: 56px;
-		font-weight: 400;
-		line-height: 60px;
-		letter-spacing: -0.56px;
-		margin: 0;
+	@media (min-width: 1024px) {
+		gap: 56px;
+	}
+}
+
+.chapter-header__image-column {
+	// Mobile: full width
+	// Tablet+: fixed at 430px (handled by grid)
+}
+
+.chapter-header__image {
+	margin-bottom: 16px;
+
+	img {
+		width: 100%;
+		height: auto;
+		display: block;
+
+		// Max width constraint
+		max-width: 430px;
 
 		@media (max-width: 767px) {
-			font-size: 36px;
-			line-height: 41px;
-			letter-spacing: -0.36px;
+			// On mobile, can be full width
+			max-width: 100%;
+		}
+	}
+}
+
+.chapter-header__caption {
+	color: var(--wp--preset--color--foreground);
+
+	/* Sm Paragraph */
+	font-family: "DM Sans";
+	font-size: 16.5px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px; /* 145.455% */
+
+	p {
+		margin: 0;
+
+		&:not(:last-child) {
+			margin-bottom: 8px;
+		}
+	}
+}
+
+.chapter-header__contact-column {
+	// Contact info container
+}
+
+.chapter-header__contact {
+
+
+
+	// Typography for contact info
+	h2, h3, h4, h5, h6 {
+		margin-top: 0;
+
+		&:not(:last-child) {
+			margin-bottom: 16px;
 		}
 	}
 
-	.chapter-featured-image {
-		margin-bottom: 2rem;
+	p {
+		/* Regular Paragraph */
+		font-family: "DM Sans";
+		font-size: 18px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 25px; /* 138.889% */
 
 		@media (min-width: 768px) {
-			margin-bottom: 3rem;
+			font-size: 22px;
 		}
 
-		img {
-			width: 100%;
-			height: auto;
-			display: block;
-			border-radius: 0; // Adjust if you want rounded corners
-		}
-	}
+		margin: 0;
 
-	.entry-content {
-		// Body text styling
-		color: var(--wp--preset--color--foreground);
-		font-family: "DM Sans", sans-serif;
-		font-size: 18px;
-		font-weight: 400;
-		line-height: 25px;
-
-		// Add spacing between paragraphs
-		p {
-			margin-bottom: 1.5rem;
-		}
-
-		// Style headings within content
-		h2 {
-			color: var(--wp--preset--color--foreground);
-			font-family: Oswald, sans-serif;
-			font-size: 48px;
-			font-weight: 400;
-			line-height: 41px;
-			letter-spacing: -0.48px;
-			margin-top: 3rem;
-			margin-bottom: 1.5rem;
-
-			@media (max-width: 767px) {
-				font-size: 36px;
-				line-height: 41px;
-			}
-		}
-
-		h3 {
-			color: var(--wp--preset--color--foreground);
-			font-family: Oswald, sans-serif;
-			font-size: 36px;
-			font-weight: 400;
-			line-height: 41px;
-			letter-spacing: -0.36px;
-			margin-top: 2.5rem;
-			margin-bottom: 1.25rem;
-
-			@media (max-width: 767px) {
-				font-size: 28px;
-				line-height: 34px;
-			}
-		}
-
-		h4 {
-			color: var(--wp--preset--color--foreground);
-			font-family: "DM Sans", sans-serif;
-			font-size: 16.5px;
-			font-weight: 900;
-			line-height: 22.5px;
-			letter-spacing: 2.475px;
-			text-transform: uppercase;
-			margin-top: 2rem;
-			margin-bottom: 1rem;
-		}
-
-		// Links
-		a {
-			color: var(--wp--preset--color--blue);
-			text-decoration: underline;
-			transition: color 0.2s ease;
-
-			&:hover,
-			&:focus {
-				color: var(--wp--preset--color--navy);
-			}
-		}
-
-		// Lists
-		ul,
-		ol {
-			margin-bottom: 1.5rem;
-			padding-left: 1.5rem;
-
-			li {
-				margin-bottom: 0.5rem;
-			}
-		}
-
-		// Images within content
-		img {
-			max-width: 100%;
-			height: auto;
-			border-radius: 0;
-		}
-
-		// Blockquotes
-		blockquote {
-			border-left: 4px solid var(--wp--preset--color--cyan);
-			padding-left: 1.5rem;
-			margin: 2rem 0;
-			font-style: italic;
+		&:not(:last-child) {
+			margin-bottom: 12px;
 		}
 	}
 
-	// Page links (for multi-page posts)
-	.page-links {
-		margin-top: 2rem;
-		padding-top: 2rem;
-		border-top: 2px solid var(--wp--preset--color--newsprint);
-		font-family: "DM Mono", monospace;
-		font-size: 16px;
+	a {
+		color: var(--wp--preset--color--blue);
+		text-decoration: underline;
 
-		a {
-			display: inline-block;
-			padding: 0.5rem 1rem;
-			margin: 0.25rem;
-			background: var(--wp--preset--color--newsprint);
-			color: var(--wp--preset--color--foreground);
-			text-decoration: none;
-			transition: background 0.2s ease;
+		&:hover,
+		&:focus {
+			color: var(--wp--preset--color--navy);
+		}
+	}
 
-			&:hover,
-			&:focus {
-				background: var(--wp--preset--color--cyan);
+	// Lists
+	ul, ol {
+		margin: 0 0 16px 0;
+		padding-left: 24px;
+
+		li {
+			font-family: "DM Sans";
+			font-size: 18px;
+			line-height: 25px;
+
+			&:not(:last-child) {
+				margin-bottom: 8px;
 			}
 		}
+	}
+
+	// Strong/bold text
+	strong {
+		font-weight: 700;
 	}
 }
