@@ -45,7 +45,7 @@ $text_color_map = [
 			<?php foreach ($cards as $card) :
 				$title = isset($card['card_title']) ? $card['card_title'] : '';
 				$text = isset($card['card_text']) ? $card['card_text'] : '';
-				$link = isset($card['card_link']) ? $card['card_link'] : null;
+				$tag = isset($card['card_tag']) ? $card['card_tag'] : null;
 				$bg_color = isset($card['background_color']) ? $card['background_color'] : 'cyan';
 				$text_color = isset($card['text_color']) ? $card['text_color'] : 'dark';
 
@@ -55,6 +55,14 @@ $text_color_map = [
 
 				// Determine button classes based on text color
 				$button_class = ($text_color === 'light') ? 'button-light' : 'button-dark';
+
+				// Get tag link and name if tag is selected
+				$tag_link = '';
+				$tag_name = '';
+				if (!empty($tag) && is_object($tag)) {
+					$tag_link = get_term_link($tag);
+					$tag_name = $tag->name;
+				}
 			?>
 				<div class="two-column-cards__card"
 					 style="background-color: <?php echo esc_attr($bg_color_value); ?>; color: <?php echo esc_attr($text_color_value); ?>;">
@@ -67,13 +75,11 @@ $text_color_map = [
 						<p class="two-column-cards__text"><?php echo esc_html($text); ?></p>
 					<?php endif; ?>
 
-					<?php if (!empty($link) && !empty($link['url'])) : ?>
+					<?php if (!empty($tag_link) && !is_wp_error($tag_link) && !empty($tag_name)) : ?>
 						<div class="two-column-cards__button-wrapper">
-							<a href="<?php echo esc_url($link['url']); ?>"
-							   class="two-column-cards__button <?php echo esc_attr($button_class); ?>"
-							   <?php echo !empty($link['target']) ? 'target="' . esc_attr($link['target']) . '"' : ''; ?>
-							   <?php echo !empty($link['target']) && $link['target'] === '_blank' ? 'rel="noopener noreferrer"' : ''; ?>>
-								<?php echo esc_html($link['title']); ?>
+							<a href="<?php echo esc_url($tag_link); ?>"
+							   class="two-column-cards__button <?php echo esc_attr($button_class); ?>">
+								<?php echo esc_html(sprintf(__('More on %s', 'nwu-2025'), $tag_name)); ?>
 							</a>
 						</div>
 					<?php endif; ?>
