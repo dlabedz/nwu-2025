@@ -38,9 +38,9 @@ $columns_class = $both_columns ? 'locations-map__columns--two' : 'locations-map_
 ?>
 
 <div <?php echo $anchor; ?> class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
-	<div class="<?php echo esc_attr( $container_class ); ?>">
 
-		<?php if ( $col1_has_content || $col2_has_content ) : ?>
+	<?php if ( $col1_has_content || $col2_has_content ) : ?>
+	<div class="<?php echo esc_attr( $container_class ); ?>">
 		<div class="locations-map__columns <?php echo esc_attr( $columns_class ); ?>">
 			<?php if ( $col1_has_content ) : ?>
 			<div class="locations-map__column">
@@ -70,35 +70,35 @@ $columns_class = $both_columns ? 'locations-map__columns--two' : 'locations-map_
 			</div>
 			<?php endif; ?>
 		</div>
-		<?php endif; ?>
-
-		<?php if ( $map_embed ) : ?>
-		<div class="locations-map__embed">
-			<?php
-			// Allow Flourish embed code with specific tags/attributes
-			$allowed_html = array(
-				'div' => array(
-					'class' => array(),
-					'data-src' => array(),
-					'data-width' => array(),
-					'data-height' => array(),
-				),
-				'script' => array(
-					'src' => array(),
-					'async' => array(),
-				),
-				'noscript' => array(),
-				'img' => array(
-					'src' => array(),
-					'width' => array(),
-					'height' => array(),
-					'alt' => array(),
-				),
-			);
-			echo wp_kses( $map_embed, $allowed_html );
-			?>
-		</div>
-		<?php endif; ?>
-
 	</div>
+	<?php endif; ?>
+
+	<?php if ( $map_embed ) : ?>
+	<div class="locations-map__embed">
+		<?php
+		// Allow Flourish embed code with specific tags/attributes
+		$allowed_html = array(
+			'div' => array(
+				'class' => array(),
+				'data-src' => array(),
+				'data-width' => array(),
+				'data-height' => array(),
+			),
+			'script' => array(
+				'src' => array(),
+				'async' => array(),
+			),
+			'noscript' => array(),
+			'img' => array(
+				'src' => array(),
+				'width' => array(),
+				'height' => array(),
+				'alt' => array(),
+			),
+		);
+		echo wp_kses( $map_embed, $allowed_html );
+		?>
+	</div>
+	<?php endif; ?>
+
 </div>
