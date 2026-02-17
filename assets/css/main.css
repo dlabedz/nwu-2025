@@ -1591,6 +1591,7 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
 ---------------------------------------------------------------------------------------------------- */
 .site-header {
   position: relative;
+  background: var(--wp--preset--color--red);
 }
 .site-header .wrap {
   display: grid;
@@ -1598,6 +1599,7 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
   width: 100%;
   max-width: 100%;
   padding: 0;
+  align-items: center;
 }
 @media (max-width: 768px) {
   .site-header .wrap {
@@ -1605,6 +1607,7 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
     padding: 0;
     gap: 0;
     background: var(--wp--preset--color--navy);
+    align-items: stretch;
   }
 }
 .site-header__logo {

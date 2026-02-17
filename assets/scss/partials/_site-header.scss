@@ -3,6 +3,7 @@
 
 .site-header {
 	position: relative;
+	background: var(--wp--preset--color--red);
 
 	.wrap {
 		display: grid;
@@ -10,12 +11,14 @@
 		width: 100%;
 		max-width: 100%;
 		padding: 0;
+		align-items: center; // Add this to vertically center the logo
 
 		@include media("<=mobile_menu") {
 			grid-template-columns: auto 1fr;
 			padding: 0;
 			gap: 0;
 			background: var(--wp--preset--color--navy);
+			align-items: stretch; // Override on mobile to keep full height
 		}
 	}
 
