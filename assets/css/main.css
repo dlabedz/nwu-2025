@@ -2087,6 +2087,11 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
   position: relative;
   z-index: 98;
 }
+@media (min-width: 769px) {
+  .nav-menu-members {
+    grid-column: 1/-1;
+  }
+}
 @media (max-width: 768px) {
   .nav-menu-members {
     order: 4;
