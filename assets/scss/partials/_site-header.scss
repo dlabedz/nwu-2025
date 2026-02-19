@@ -26,7 +26,7 @@
 		background: var(--wp--preset--color--red);
 		padding: 0;
 		align-self: start;
-		height: 210px; // Set explicit height to match desired nav-container height
+		height: 208px; // Set explicit height to match desired nav-container height
 		background: var(--wp--preset--color--red);
 
 		@include media(">mobile_menu") {
@@ -247,7 +247,16 @@
 		&.current-menu-item > a,
 		&.current-menu-ancestor > a {
 			@include media(">mobile_menu") {
-				border-top: 2px solid white;
+				position: relative;
+				&:before{
+					content:"";
+					border-top: 2px solid white;
+					display: block;
+					position: absolute;
+					top: -1px;
+					height: 100%;
+					width: 100%;
+				}
 			}
 
 			@include media("<=mobile_menu") {
@@ -293,7 +302,7 @@
 		}
 
 		.menu-item {
-			padding: .25em 1em;
+			padding: 0.5em 1em 0.25em 1em;
 
 			a {
 				padding: .25em 0 .25em 0;
@@ -324,7 +333,7 @@
 			z-index: 99;
 			display: block;
 			top: 100%;
-			margin-top: 0;
+			margin-top: 2px;
 
 			.menu-item {
 				float: none;
