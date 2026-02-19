@@ -3,7 +3,6 @@
 
 .site-header {
 	position: relative;
-	background: var(--wp--preset--color--red);
 
 	.wrap {
 		display: grid;
@@ -11,14 +10,13 @@
 		width: 100%;
 		max-width: 100%;
 		padding: 0;
-		align-items: center; // Vertically center the logo
 
 		@include media("<=mobile_menu") {
 			grid-template-columns: auto 1fr;
 			padding: 0;
 			gap: 0;
 			background: var(--wp--preset--color--navy);
-			align-items: stretch; // Override on mobile
+			align-items: stretch;
 		}
 	}
 
@@ -26,27 +24,41 @@
 		display: block;
 		line-height: 0;
 		background: var(--wp--preset--color--red);
-		padding: 1rem;
+		padding: 0;
+		align-self: start;
+		height: 208px; // Set explicit height to match desired nav-container height
 
 		@include media(">mobile_menu") {
-			padding: 1.5rem;
+			padding: 0;
+		}
+
+		@include media("<=mobile_menu") {
+			height: auto; // Reset for mobile
 		}
 
 		img {
-			height: auto;
-			width: 100%;
+			width: auto; // Maintain aspect ratio
 			max-width: 338px;
+
+			@include media(">mobile_menu") {
+				height: 100%; // Make image fill the container on desktop
+			}
 
 			@include media("<=mobile_menu") {
 				max-width: 140px;
+				height: auto; // Reset for mobile
 			}
 		}
 	}
 
 	.nav-container {
 		display: flex;
-		flex-direction: column; // Stack utility, primary, and members menus
+		flex-direction: column; // Stack utility and primary menus
 		background: var(--wp--preset--color--navy);
+
+		@include media(">mobile_menu") {
+			max-height: 208px; // Constrain to logo height
+		}
 
 		@include media("<=mobile_menu") {
 			grid-column: 1 / -1;
@@ -73,6 +85,11 @@
 			align-items: stretch;
 		}
 	}
+}
+
+// Homepage specific - add blue background to header wrap
+.home .site-header .wrap {
+	background: var(--wp--preset--color--blue);
 }
 
 .search-toggle,
@@ -270,7 +287,7 @@
 		}
 
 		.menu-item {
-			padding: 1em 1em 1em 1em;
+			padding: .5em 1em;
 
 			a {
 				padding: .25em 0 .25em 0;
@@ -578,13 +595,12 @@
 	position: relative;
 	z-index: 98; // Below main nav submenus (which are z-index: 99)
 
-	// Make it span both grid columns on desktop
 	@include media(">mobile_menu") {
-		grid-column: 1 / -1; // Span from first to last column
+		grid-column: 2; // Only occupy the second column (where nav-container is)
 	}
 
 	@include media("<=mobile_menu") {
-		order: 4; // After primary menu on mobile
+		grid-column: 1 / -1; // Span full width on mobile
 	}
 
 	ul {
@@ -608,7 +624,7 @@
 
 		.menu-item {
 			position: relative;
-			padding: 1em;
+			padding: .5em 1em;
 
 			a {
 				color: var(--wp--preset--color--navy);

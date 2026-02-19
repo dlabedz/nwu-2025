@@ -61,19 +61,20 @@ function be_site_header() {
 			) );
 		}
 		echo '</nav>';
+	echo '</div>'; // Close nav-container BEFORE members menu
 
-		// Members menu - only show to logged-in users
-		if ( is_user_logged_in() && has_nav_menu( 'members' ) ) {
-			echo '<nav class="nav-menu-members" role="navigation" aria-label="Members Navigation">';
-			wp_nav_menu( array(
-				'theme_location' => 'members',
-				'menu_id' => 'members-menu',
-				'container_class' => 'nav-members',
-				'depth' => 2 // Allow one level of submenus
-			) );
-			echo '</nav>';
-		}
-	echo '</div>';
+	// Members menu - only show to logged-in users
+	// Now OUTSIDE nav-container so it can span both grid columns
+	if ( is_user_logged_in() && has_nav_menu( 'members' ) ) {
+		echo '<nav class="nav-menu-members" role="navigation" aria-label="Members Navigation">';
+		wp_nav_menu( array(
+			'theme_location' => 'members',
+			'menu_id' => 'members-menu',
+			'container_class' => 'nav-members',
+			'depth' => 2 // Allow one level of submenus
+		) );
+		echo '</nav>';
+	}
 }
 add_action( 'tha_header_bottom', 'be_site_header', 11 );
 

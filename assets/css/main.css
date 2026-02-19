@@ -1591,7 +1591,6 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
 ---------------------------------------------------------------------------------------------------- */
 .site-header {
   position: relative;
-  background: var(--wp--preset--color--red);
 }
 .site-header .wrap {
   display: grid;
@@ -1599,7 +1598,6 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
   width: 100%;
   max-width: 100%;
   padding: 0;
-  align-items: center;
 }
 @media (max-width: 768px) {
   .site-header .wrap {
@@ -1614,27 +1612,44 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
   display: block;
   line-height: 0;
   background: var(--wp--preset--color--red);
-  padding: 1rem;
+  padding: 0;
+  align-self: start;
+  height: 208px;
 }
 @media (min-width: 769px) {
   .site-header__logo {
-    padding: 1.5rem;
+    padding: 0;
+  }
+}
+@media (max-width: 768px) {
+  .site-header__logo {
+    height: auto;
   }
 }
 .site-header__logo img {
-  height: auto;
-  width: 100%;
+  width: auto;
   max-width: 338px;
+}
+@media (min-width: 769px) {
+  .site-header__logo img {
+    height: 100%;
+  }
 }
 @media (max-width: 768px) {
   .site-header__logo img {
     max-width: 140px;
+    height: auto;
   }
 }
 .site-header .nav-container {
   display: flex;
   flex-direction: column;
   background: var(--wp--preset--color--navy);
+}
+@media (min-width: 769px) {
+  .site-header .nav-container {
+    max-height: 208px;
+  }
 }
 @media (max-width: 768px) {
   .site-header .nav-container {
@@ -1660,6 +1675,10 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
   .site-header .wrap {
     align-items: stretch;
   }
+}
+
+.home .site-header .wrap {
+  background: var(--wp--preset--color--blue);
 }
 
 .search-toggle,
@@ -1839,7 +1858,7 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
     justify-content: flex-start;
   }
   .nav-menu .menu-item {
-    padding: 1em 1em 1em 1em;
+    padding: 0.5em 1em;
   }
   .nav-menu .menu-item a {
     padding: 0.25em 0 0.25em 0;
@@ -2089,12 +2108,12 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
 }
 @media (min-width: 769px) {
   .nav-menu-members {
-    grid-column: 1/-1;
+    grid-column: 2;
   }
 }
 @media (max-width: 768px) {
   .nav-menu-members {
-    order: 4;
+    grid-column: 1/-1;
   }
 }
 .nav-menu-members ul {
@@ -2113,7 +2132,7 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
   }
   .nav-menu-members .menu-item {
     position: relative;
-    padding: 1em;
+    padding: 0.5em 1em;
   }
   .nav-menu-members .menu-item a {
     color: var(--wp--preset--color--navy);
