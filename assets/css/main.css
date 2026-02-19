@@ -1614,7 +1614,8 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
   background: var(--wp--preset--color--red);
   padding: 0;
   align-self: start;
-  height: 208px;
+  height: 210px;
+  background: var(--wp--preset--color--red);
 }
 @media (min-width: 769px) {
   .site-header__logo {
@@ -1646,11 +1647,6 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
   flex-direction: column;
   background: var(--wp--preset--color--navy);
 }
-@media (min-width: 769px) {
-  .site-header .nav-container {
-    max-height: 208px;
-  }
-}
 @media (max-width: 768px) {
   .site-header .nav-container {
     grid-column: 1/-1;
@@ -1679,6 +1675,13 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
 
 .home .site-header .wrap {
   background: var(--wp--preset--color--blue);
+}
+
+.home .site-header {
+  margin-bottom: 0;
+}
+.home .site-header + * {
+  margin-top: 0;
 }
 
 .search-toggle,
@@ -1858,7 +1861,7 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
     justify-content: flex-start;
   }
   .nav-menu .menu-item {
-    padding: 0.5em 1em;
+    padding: 0.25em 1em;
   }
   .nav-menu .menu-item a {
     padding: 0.25em 0 0.25em 0;
@@ -1881,6 +1884,7 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
     z-index: 99;
     display: block;
     top: 100%;
+    margin-top: 0;
   }
   .nav-menu .sub-menu .menu-item {
     float: none;

@@ -26,7 +26,8 @@
 		background: var(--wp--preset--color--red);
 		padding: 0;
 		align-self: start;
-		height: 208px; // Set explicit height to match desired nav-container height
+		height: 210px; // Set explicit height to match desired nav-container height
+		background: var(--wp--preset--color--red);
 
 		@include media(">mobile_menu") {
 			padding: 0;
@@ -55,10 +56,6 @@
 		display: flex;
 		flex-direction: column; // Stack utility and primary menus
 		background: var(--wp--preset--color--navy);
-
-		@include media(">mobile_menu") {
-			max-height: 208px; // Constrain to logo height
-		}
 
 		@include media("<=mobile_menu") {
 			grid-column: 1 / -1;
@@ -90,6 +87,15 @@
 // Homepage specific - add blue background to header wrap
 .home .site-header .wrap {
 	background: var(--wp--preset--color--blue);
+}
+
+// Homepage specific - eliminate gap between header and first block
+.home .site-header {
+	margin-bottom: 0;
+
+	+ * {
+		margin-top: 0;
+	}
 }
 
 .search-toggle,
@@ -287,7 +293,7 @@
 		}
 
 		.menu-item {
-			padding: .5em 1em;
+			padding: .25em 1em;
 
 			a {
 				padding: .25em 0 .25em 0;
@@ -318,6 +324,7 @@
 			z-index: 99;
 			display: block;
 			top: 100%;
+			margin-top: 0;
 
 			.menu-item {
 				float: none;
