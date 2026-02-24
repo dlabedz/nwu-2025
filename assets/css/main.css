@@ -6771,10 +6771,10 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 .block-dashboard-events-calendar .calendar-footer {
   text-align: center;
   padding-top: var(--wp--custom--layout--block-gap);
-  border-top: 1px solid var(--wp--preset--color--newsprint);
+  border-top: 1px solid var(--wp--preset--color--black);
 }
 .block-dashboard-events-calendar .calendar-footer .view-all-events {
-  color: var(--wp--preset--color--blue);
+  color: var(--wp--preset--color--black);
   text-decoration: none;
   font-weight: 600;
   font-size: var(--wp--preset--font-size--small);
