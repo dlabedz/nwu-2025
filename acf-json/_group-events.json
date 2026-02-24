@@ -1,6 +1,6 @@
 {
     "key": "group_events",
-    "title": "Event Information",
+    "title": "Event Details",
     "fields": [
         {
             "key": "field_event_date",
@@ -8,11 +8,11 @@
             "name": "event_date",
             "aria-label": "",
             "type": "date_picker",
-            "instructions": "Select the date of the event",
+            "instructions": "",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -26,27 +26,7 @@
             "name": "event_time",
             "aria-label": "",
             "type": "text",
-            "instructions": "Enter the time of the event (e.g., 6:00 PM EST)",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "6:00 PM EST",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_event_location",
-            "label": "Location",
-            "name": "event_location",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Enter the event location",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -56,7 +36,27 @@
             },
             "default_value": "",
             "maxlength": "",
-            "placeholder": "Carnegie Hall, Cambridge MA",
+            "placeholder": "e.g., 7:00 PM EST",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_event_location",
+            "label": "Event Location",
+            "name": "event_location",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
             "prepend": "",
             "append": ""
         },
@@ -66,7 +66,7 @@
             "name": "registration_link",
             "aria-label": "",
             "type": "link",
-            "instructions": "Add a link for event registration or more information",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -83,18 +83,18 @@
             "aria-label": "",
             "type": "select",
             "instructions": "Is this event for all chapters or a specific chapter?",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
             "choices": {
-                "all-chapters": "All Chapters",
-                "single-chapter": "Specific Chapter"
+                "all": "All Chapters",
+                "specific": "Specific Chapter"
             },
-            "default_value": "all-chapters",
+            "default_value": "all",
             "return_format": "value",
             "multiple": 0,
             "allow_null": 0,
@@ -104,7 +104,7 @@
         },
         {
             "key": "field_event_chapter",
-            "label": "Chapter",
+            "label": "Event Chapter",
             "name": "event_chapter",
             "aria-label": "",
             "type": "post_object",
@@ -115,26 +115,23 @@
                     {
                         "field": "field_event_scope",
                         "operator": "==",
-                        "value": "single-chapter"
+                        "value": "specific"
                     }
                 ]
             ],
             "wrapper": {
-                "width": "50",
+                "width": "",
                 "class": "",
                 "id": ""
             },
             "post_type": [
                 "chapters"
             ],
-            "post_status": "",
             "taxonomy": "",
             "return_format": "id",
             "multiple": 0,
             "allow_null": 0,
-            "bidirectional": 0,
-            "ui": 1,
-            "bidirectional_target": []
+            "ui": 1
         }
     ],
     "location": [
@@ -147,7 +144,7 @@
         ]
     ],
     "menu_order": 0,
-    "position": "acf_after_title",
+    "position": "normal",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
@@ -155,5 +152,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1738046400
+    "modified": 1738368000
 }

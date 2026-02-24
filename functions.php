@@ -1205,6 +1205,167 @@ function nwu_enqueue_dashboard_calendar_script() {
 add_action( 'wp_enqueue_scripts', 'nwu_enqueue_dashboard_calendar_script' );
 
 /**
+ * Generate calendar HTML
+ */
+function nwu_generate_calendar_html($month, $year, $show_past_events = false, $chapter_events_only = false) {
+	// Get user's chapter if filtering by chapter
+	$user_chapter = null;
+	if ( $chapter_events_only ) {
+		$user_id      = get_current_user_id();
+		$user_chapter = get_user_meta( $user_id, 'nwu_user_chapter', true );
+	}
+
+	// Calculate first and last day of month
+	$first_day = strtotime( "$year-$month-01" );
+	$last_day  = strtotime( date( 'Y-m-t', $first_day ) );
+
+	// Query events for this month
+	$args = array(
+		'post_type'      => 'events',
+		'posts_per_page' => -1,
+		'meta_query'     => array(
+			array(
+				'key'     => 'event_date',
+				'value'   => array( date( 'Y-m-d', $first_day ), date( 'Y-m-d', $last_day ) ),
+				'compare' => 'BETWEEN',
+				'type'    => 'DATE',
+			),
+		),
+		'orderby'        => 'meta_value',
+		'order'          => 'ASC',
+		'meta_key'       => 'event_date',
+	);
+
+	// Filter by chapter if needed
+	if ( $chapter_events_only && ! empty( $user_chapter ) ) {
+		$args['meta_query']['relation'] = 'AND';
+		$args['meta_query'][] = array(
+			'relation' => 'OR',
+			array(
+				'key'     => 'event_scope',
+				'value'   => 'all',
+				'compare' => '=',
+			),
+			array(
+				'key'     => 'event_chapter',
+				'value'   => $user_chapter,
+				'compare' => '=',
+			),
+		);
+	}
+
+	$events_query = new WP_Query( $args );
+
+	// Organize events by day
+	$events_by_day = array();
+	if ( $events_query->have_posts() ) {
+		while ( $events_query->have_posts() ) {
+			$events_query->the_post();
+			$event_date = get_field( 'event_date' );
+			if ( $event_date ) {
+				$day = date( 'j', strtotime( $event_date ) );
+				if ( ! isset( $events_by_day[ $day ] ) ) {
+					$events_by_day[ $day ] = array();
+				}
+				$events_by_day[ $day ][] = get_the_ID();
+			}
+		}
+		wp_reset_postdata();
+	}
+
+	// Calculate navigation URLs
+	$prev_month = $month - 1;
+	$prev_year  = $year;
+	if ( $prev_month < 1 ) {
+		$prev_month = 12;
+		$prev_year--;
+	}
+
+	$next_month = $month + 1;
+	$next_year  = $year;
+	if ( $next_month > 12 ) {
+		$next_month = 1;
+		$next_year++;
+	}
+
+	$prev_url = add_query_arg( array( 'cal_month' => $prev_month, 'cal_year' => $prev_year ) );
+	$next_url = add_query_arg( array( 'cal_month' => $next_month, 'cal_year' => $next_year ) );
+
+	// Get calendar grid data
+	$month_start_day = date( 'w', $first_day );
+	$days_in_month   = date( 't', $first_day );
+	$today_day       = ( date( 'n' ) == $month && date( 'Y' ) == $year ) ? date( 'j' ) : 0;
+
+	// Start building HTML
+	ob_start();
+	?>
+	<div class="calendar-wrapper">
+		<div class="calendar-header">
+			<h3><?php echo esc_html( date( 'F Y', $first_day ) ); ?></h3>
+
+			<div class="calendar-nav">
+				<a href="<?php echo esc_url( $prev_url ); ?>" class="calendar-nav__prev" aria-label="<?php esc_attr_e( 'Previous Month', 'nwu-2025' ); ?>">
+					<?php echo be_icon( array( 'icon' => 'chevron-large-left', 'size' => 24 ) ); ?>
+				</a>
+				<a href="<?php echo esc_url( $next_url ); ?>" class="calendar-nav__next" aria-label="<?php esc_attr_e( 'Next Month', 'nwu-2025' ); ?>">
+					<?php echo be_icon( array( 'icon' => 'chevron-large-right', 'size' => 24 ) ); ?>
+				</a>
+			</div>
+		</div>
+
+		<div class="calendar-grid">
+			<div class="calendar-day-header">Sun</div>
+			<div class="calendar-day-header">Mon</div>
+			<div class="calendar-day-header">Tue</div>
+			<div class="calendar-day-header">Wed</div>
+			<div class="calendar-day-header">Thu</div>
+			<div class="calendar-day-header">Fri</div>
+			<div class="calendar-day-header">Sat</div>
+
+			<?php
+			for ( $i = 0; $i < $month_start_day; $i++ ) {
+				echo '<div class="calendar-day calendar-day--empty"></div>';
+			}
+
+			for ( $day = 1; $day <= $days_in_month; $day++ ) {
+				$day_classes   = array( 'calendar-day' );
+				$day_of_week   = date( 'w', strtotime( "$year-$month-$day" ) );
+				$has_events    = isset( $events_by_day[ $day ] );
+				$is_today      = ( $day == $today_day );
+
+				if ( $is_today ) {
+					$day_classes[] = 'calendar-day--today';
+				}
+				if ( $has_events ) {
+					$day_classes[] = 'calendar-day--has-events';
+				}
+				if ( $day_of_week == 0 || $day_of_week == 6 ) {
+					$day_classes[] = 'calendar-day--weekend';
+				}
+
+				echo '<div class="' . esc_attr( implode( ' ', $day_classes ) ) . '">';
+				echo '<span class="calendar-day-number">' . esc_html( $day ) . '</span>';
+
+				if ( $has_events ) {
+					echo '<span class="calendar-event-dot"></span>';
+				}
+
+				echo '</div>';
+			}
+			?>
+		</div>
+
+		<div class="calendar-footer">
+			<a href="<?php echo esc_url( get_post_type_archive_link( 'events' ) ); ?>" class="view-all-events">
+				<?php esc_html_e( 'View All Events →', 'nwu-2025' ); ?>
+			</a>
+		</div>
+	</div>
+	<?php
+	return ob_get_clean();
+}
+
+/**
  * AJAX handler for calendar month loading
  */
 function nwu_load_calendar_month() {
@@ -1213,19 +1374,7 @@ function nwu_load_calendar_month() {
 	$month = isset( $_POST['month'] ) ? intval( $_POST['month'] ) : date( 'n' );
 	$year  = isset( $_POST['year'] ) ? intval( $_POST['year'] ) : date( 'Y' );
 
-	// Set query params for the block render
-	$_GET['cal_month'] = $month;
-	$_GET['cal_year']  = $year;
-
-	// Start output buffering
-	ob_start();
-
-	// Include the calendar render template
-	// Note: You'll need to extract the calendar HTML generation into a separate function
-	// For now, we'll just return the wrapper HTML
-	include get_template_directory() . '/blocks/dashboard-events-calendar/render.php';
-
-	$html = ob_get_clean();
+	$html = nwu_generate_calendar_html($month, $year);
 
 	wp_send_json_success( array( 'html' => $html ) );
 }
