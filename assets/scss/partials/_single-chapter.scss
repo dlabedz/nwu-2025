@@ -36,8 +36,8 @@
 		max-width: 430px;
 
 		@media (max-width: 767px) {
-			// On mobile, can be full width
-			max-width: 100%;
+			max-width: 430px;
+			margin: 0 auto;
 		}
 	}
 }

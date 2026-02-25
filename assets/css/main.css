@@ -7577,7 +7577,8 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 }
 @media (max-width: 767px) {
   .chapter-header__image img {
-    max-width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
   }
 }
 
