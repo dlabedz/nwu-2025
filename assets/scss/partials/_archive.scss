@@ -574,3 +574,91 @@
 		}
 	}
 }
+
+
+/* Archive Header Top Row
+--------------------------------------------- */
+
+.archive-header__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 32px;
+
+    @include media("<tablet") {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .archive-title {
+        margin: 0; // Remove default margin since we're controlling spacing here
+        flex-shrink: 0;
+    }
+}
+
+/* Archive Search Form
+--------------------------------------------- */
+
+.archive-search-form {
+    flex-shrink: 0;
+
+    @include media("<tablet") {
+        width: 100%;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        border: 2px solid var(--wp--preset--color--foreground);
+		border-radius: 35px;
+        background: var(--wp--preset--color--background);
+        overflow: hidden;
+        transition: border-color 0.2s;
+
+        &:focus-within {
+            border-color: var(--wp--preset--color--red);
+        }
+    }
+
+	&__input {
+		border: none;
+		outline: none;
+		padding: 10px 14px 10px 6px; // more padding on the right now
+		font-family: "DM Sans";
+		font-size: 16.5px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		background: transparent;
+		color: var(--wp--preset--color--foreground);
+		width: 260px;
+
+
+		@include media("<tablet") {
+			width: 100%;
+		}
+	}
+
+	&__button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: transparent;
+		color: var(--wp--preset--color--foreground);
+		border: none;
+		padding: 10px 6px 10px 12px; // more padding on the left now
+		cursor: pointer;
+		transition: color 0.2s;
+		flex-shrink: 0;
+
+		&:hover {
+			color: var(--wp--preset--color--red);
+		}
+
+		svg {
+			display: block;
+		}
+	}
+}

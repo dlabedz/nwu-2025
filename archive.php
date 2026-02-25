@@ -122,7 +122,30 @@ if ( is_category() ) {
 	<div class="">
 
 		<header class="archive-header u-width-constrained">
+		<div class="archive-header__top">
 			<h1 class="archive-title"><?php echo esc_html( $page_title ); ?></h1>
+			<form class="archive-search-form" role="search" method="get" action="<?php echo esc_url( home_url( '/news-events-archive/' ) ); ?>">
+				<label for="archive-search" class="screen-reader-text">
+					<?php esc_html_e( 'Search news and events', 'nwu-2025' ); ?>
+				</label>
+				<div class="archive-search-form__inner">
+					<button type="submit" class="archive-search-form__button" aria-label="<?php esc_attr_e( 'Submit search', 'nwu-2025' ); ?>">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+							<circle cx="11" cy="11" r="8"/>
+							<line x1="21" y1="21" x2="16.65" y2="16.65"/>
+						</svg>
+					</button>
+					<input
+						type="search"
+						id="archive-search"
+						class="archive-search-form__input"
+						name="s"
+						placeholder="<?php esc_attr_e( 'Search Archives', 'nwu-2025' ); ?>"
+						value="<?php echo esc_attr( get_search_query() ); ?>"
+					/>
+				</div>
+			</form>
+		</div>
 
 			<!-- Filter Bar -->
 			<?php
@@ -271,6 +294,7 @@ if ( is_category() ) {
 				</div>
 
 			</form>
+			</div>
 		</header>
 
 		<!-- Archive Listing -->
