@@ -6880,7 +6880,7 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 }
 @media (max-width: 767px) {
   .chapter-header__image img {
-    max-width: 100%;
+    max-width: 430px !important;
   }
 }
 
@@ -7546,104 +7546,6 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
   width: 1px;
   border: 0;
   overflow: hidden;
-}
-
-.chapter-header {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-  margin-bottom: 48px;
-}
-@media (min-width: 768px) {
-  .chapter-header {
-    grid-template-columns: 430px 1fr;
-    gap: 40px;
-  }
-}
-@media (min-width: 1024px) {
-  .chapter-header {
-    gap: 56px;
-  }
-}
-
-.chapter-header__image {
-  margin-bottom: 16px;
-}
-.chapter-header__image img {
-  width: 100%;
-  height: auto;
-  display: block;
-  max-width: 430px;
-}
-@media (max-width: 767px) {
-  .chapter-header__image img {
-    max-width: 430px;
-    margin: 0 auto;
-  }
-}
-
-.chapter-header__caption {
-  color: var(--wp--preset--color--foreground);
-  /* Sm Paragraph */
-  font-family: "DM Sans";
-  font-size: 16.5px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 145.455% */
-}
-.chapter-header__caption p {
-  margin: 0;
-}
-.chapter-header__caption p:not(:last-child) {
-  margin-bottom: 8px;
-}
-
-.chapter-header__contact h2, .chapter-header__contact h3, .chapter-header__contact h4, .chapter-header__contact h5, .chapter-header__contact h6 {
-  margin-top: 0;
-}
-.chapter-header__contact h2:not(:last-child), .chapter-header__contact h3:not(:last-child), .chapter-header__contact h4:not(:last-child), .chapter-header__contact h5:not(:last-child), .chapter-header__contact h6:not(:last-child) {
-  margin-bottom: 16px;
-}
-.chapter-header__contact p {
-  /* Regular Paragraph */
-  font-family: "DM Sans";
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 25px; /* 138.889% */
-}
-@media (min-width: 768px) {
-  .chapter-header__contact p {
-    font-size: 22px;
-  }
-}
-.chapter-header__contact p {
-  margin: 0;
-}
-.chapter-header__contact p:not(:last-child) {
-  margin-bottom: 12px;
-}
-.chapter-header__contact a {
-  color: var(--wp--preset--color--blue);
-  text-decoration: underline;
-}
-.chapter-header__contact a:hover, .chapter-header__contact a:focus {
-  color: var(--wp--preset--color--navy);
-}
-.chapter-header__contact ul, .chapter-header__contact ol {
-  margin: 0 0 16px 0;
-  padding-left: 24px;
-}
-.chapter-header__contact ul li, .chapter-header__contact ol li {
-  font-family: "DM Sans";
-  font-size: 18px;
-  line-height: 25px;
-}
-.chapter-header__contact ul li:not(:last-child), .chapter-header__contact ol li:not(:last-child) {
-  margin-bottom: 8px;
-}
-.chapter-header__contact strong {
-  font-weight: 700;
 }
 
 /* Newsletter Form

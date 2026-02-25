@@ -60,7 +60,7 @@
 		max-width: 430px;
 
 		@media (max-width: 767px) {
-			max-width: 100%;
+			max-width: 430px !important;
 		}
 	}
 }
