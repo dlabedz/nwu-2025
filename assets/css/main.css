@@ -6899,16 +6899,6 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
   margin-bottom: 8px;
 }
 
-.chapter-header__contact {
-  background-color: var(--wp--preset--color--newsprint);
-  padding: 24px;
-  border-radius: 4px;
-}
-@media (min-width: 768px) {
-  .chapter-header__contact {
-    padding: 32px;
-  }
-}
 .chapter-header__contact h2, .chapter-header__contact h3, .chapter-header__contact h4, .chapter-header__contact h5, .chapter-header__contact h6 {
   margin-top: 0;
 }
