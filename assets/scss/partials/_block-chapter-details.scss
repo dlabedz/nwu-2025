@@ -1,0 +1,147 @@
+// ============================================================================
+// Chapter Details Block
+// ============================================================================
+
+// Editor-specific styles
+.chapter-details-block--editor {
+	padding: 20px;
+	background: #f0f0f1;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	margin-bottom: 20px;
+}
+
+.chapter-details-block__editor-notice {
+	p {
+		margin: 0;
+		font-size: 14px;
+
+		&:not(:last-child) {
+			margin-bottom: 8px;
+		}
+
+		strong {
+			display: block;
+			font-size: 15px;
+			margin-bottom: 4px;
+		}
+	}
+}
+
+// Frontend styles (same as before)
+.chapter-header {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 32px;
+	margin-bottom: 48px;
+
+	@media (min-width: 768px) {
+		grid-template-columns: 430px 1fr;
+		gap: 40px;
+	}
+
+	@media (min-width: 1024px) {
+		gap: 56px;
+	}
+}
+
+.chapter-header__image-column {
+	// Mobile: full width
+	// Tablet+: fixed at 430px (handled by grid)
+}
+
+.chapter-header__image {
+	margin-bottom: 16px;
+
+	img {
+		width: 100%;
+		height: auto;
+		display: block;
+		max-width: 430px;
+
+		@media (max-width: 767px) {
+			max-width: 100%;
+		}
+	}
+}
+
+.chapter-header__caption {
+	color: var(--wp--preset--color--foreground);
+	font-family: "DM Sans";
+	font-size: 16.5px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px;
+
+	p {
+		margin: 0;
+
+		&:not(:last-child) {
+			margin-bottom: 8px;
+		}
+	}
+}
+
+.chapter-header__contact-column {
+	// Contact info container
+}
+
+.chapter-header__contact {
+	background-color: var(--wp--preset--color--newsprint);
+	padding: 24px;
+	border-radius: 4px;
+
+	@media (min-width: 768px) {
+		padding: 32px;
+	}
+
+	h2, h3, h4, h5, h6 {
+		margin-top: 0;
+
+		&:not(:last-child) {
+			margin-bottom: 16px;
+		}
+	}
+
+	p {
+		font-family: "DM Sans";
+		font-size: 18px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 25px;
+		margin: 0;
+
+		&:not(:last-child) {
+			margin-bottom: 12px;
+		}
+	}
+
+	a {
+		color: var(--wp--preset--color--blue);
+		text-decoration: underline;
+
+		&:hover,
+		&:focus {
+			color: var(--wp--preset--color--navy);
+		}
+	}
+
+	ul, ol {
+		margin: 0 0 16px 0;
+		padding-left: 24px;
+
+		li {
+			font-family: "DM Sans";
+			font-size: 18px;
+			line-height: 25px;
+
+			&:not(:last-child) {
+				margin-bottom: 8px;
+			}
+		}
+	}
+
+	strong {
+		font-weight: 700;
+	}
+}

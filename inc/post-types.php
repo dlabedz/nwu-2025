@@ -52,6 +52,10 @@ function register_chapters_cpt() {
 		'supports'            => [ 'title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'custom-fields' ],
 		'show_in_rest'        => true,
 		'rest_base'           => 'chapters',
+		'template'            => [
+			[ 'acf/chapter-details' ],
+		],
+		'template_lock'       => false, // Allow users to add blocks after chapter-details
 	];
 
 	register_post_type( 'chapter', $args );
@@ -249,12 +253,12 @@ register_activation_hook( __FILE__, __NAMESPACE__ . '\\flush_rewrite_rules_on_ac
  * Load single-chapter.php template for chapter posts
  */
 function load_chapter_template( $template ) {
-    if ( is_singular( 'chapter' ) ) {
-        $chapter_template = get_template_directory() . '/single-chapter.php';
-        if ( file_exists( $chapter_template ) ) {
-            return $chapter_template;
-        }
-    }
-    return $template;
+	if ( is_singular( 'chapter' ) ) {
+		$chapter_template = get_template_directory() . '/single-chapter.php';
+		if ( file_exists( $chapter_template ) ) {
+			return $chapter_template;
+		}
+	}
+	return $template;
 }
 add_filter( 'template_include', __NAMESPACE__ . '\\load_chapter_template', 99 );

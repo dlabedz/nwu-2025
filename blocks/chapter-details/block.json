@@ -1,0 +1,28 @@
+{
+    "name": "acf/chapter-details",
+    "title": "Chapter Details",
+    "description": "Chapter contact information and image caption (automatically added to all chapter posts)",
+    "category": "text",
+    "icon": "admin-home",
+    "keywords": ["chapter", "contact", "caption", "info"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "blocks/chapter-details/render.php"
+    },
+    "supports": {
+        "anchor": false,
+        "align": false,
+        "multiple": false,
+        "reusable": false,
+        "lock": false
+    },
+    "example": {
+        "attributes": {
+            "mode": "edit",
+            "data": {
+                "chapter_image_caption": "Chapter meeting location",
+                "chapter_contact_info": "<p><strong>Address:</strong><br>123 Main St<br>City, State 12345</p><p><strong>Email:</strong> chapter@nwu.org</p>"
+            }
+        }
+    }
+}

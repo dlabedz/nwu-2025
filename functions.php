@@ -1393,3 +1393,92 @@ add_filter( 'body_class', function( $classes ) {
 	}
 	return $classes;
 }, 9999 );
+
+
+/**
+ * ONE-TIME SCRIPT: Add Chapter Details block to existing chapters
+ *
+ * HOW TO USE:
+ * 1. Add this code to functions.php
+ * 2. Load any WordPress admin page
+ * 3. You'll see a success notice
+ * 4. Remove this entire function block from functions.php
+ *
+ * IMPORTANT: This modifies the database. Run it on each environment separately:
+ * - Run on LOCAL, or
+ * - Push code to STAGING and run there, or
+ * - Do both separately
+ *
+ * Do NOT rely on Git to sync database changes!
+ */
+add_action( 'admin_init', function() {
+	// Check if we've already run this script
+	$option_key = 'nwu_chapter_details_block_added';
+
+	if ( get_option( $option_key ) ) {
+		return; // Already ran, exit
+	}
+
+	// Get all chapter posts (published, draft, private, etc.)
+	$chapters = get_posts( [
+		'post_type'      => 'chapter',
+		'posts_per_page' => -1,
+		'post_status'    => 'any', // Include all statuses
+	] );
+
+	if ( empty( $chapters ) ) {
+		// No chapters found, mark as complete anyway
+		update_option( $option_key, time() );
+		return;
+	}
+
+	$updated_count = 0;
+	$skipped_count = 0;
+
+	foreach ( $chapters as $chapter ) {
+		$content = $chapter->post_content;
+
+		// Check if this chapter already has the chapter-details block
+		if ( strpos( $content, 'wp:acf/chapter-details' ) !== false ) {
+			$skipped_count++;
+			continue; // Skip - already has it
+		}
+
+		// Create the Chapter Details block markup
+		$chapter_details_block = '<!-- wp:acf/chapter-details /-->';
+
+		// Prepend the block to existing content
+		if ( ! empty( trim( $content ) ) ) {
+			// Chapter has existing content - add block with spacing
+			$new_content = $chapter_details_block . "\n\n" . $content;
+		} else {
+			// Chapter has no content - just add the block
+			$new_content = $chapter_details_block;
+		}
+
+		// Update the chapter post
+		$result = wp_update_post( [
+			'ID'           => $chapter->ID,
+			'post_content' => $new_content,
+		], true ); // true = return WP_Error on failure
+
+		if ( ! is_wp_error( $result ) ) {
+			$updated_count++;
+		}
+	}
+
+	// Mark as complete with timestamp
+	update_option( $option_key, time() );
+
+	// Show admin notice with results
+	add_action( 'admin_notices', function() use ( $updated_count, $skipped_count ) {
+		$message = '<strong>Chapter Details Block Script Complete!</strong><br>';
+		$message .= 'Updated: ' . $updated_count . ' chapter(s)<br>';
+		$message .= 'Skipped (already had block): ' . $skipped_count . ' chapter(s)<br>';
+		$message .= '<em>You can now remove the one-time script from functions.php</em>';
+
+		echo '<div class="notice notice-success is-dismissible">';
+		echo '<p>' . $message . '</p>';
+		echo '</div>';
+	} );
+}, 99 );

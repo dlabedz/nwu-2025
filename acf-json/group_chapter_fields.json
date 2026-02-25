@@ -46,9 +46,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "block",
                 "operator": "==",
-                "value": "chapter"
+                "value": "acf\/chapter-details"
             }
         ]
     ],
@@ -62,5 +62,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1770696991
+    "modified": 1771992042
 }
