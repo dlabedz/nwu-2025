@@ -32,7 +32,7 @@ $image_caption = get_field('image_caption');
 
 $classes = [
     'block-news-events-hero',
-	'u-bleed-left',
+    'u-bleed-left',
     'has-' . $bg_color . '-background-color',
     'has-' . $text_color . '-text'
 ];
@@ -51,7 +51,32 @@ if ($image_id) {
 
         <!-- Featured Post Section -->
         <div class="hero-featured-post">
-            <div class="hero-featured-post__label">Pinned Post</div>
+
+            <div class="hero-featured-post__top">
+                <div class="hero-featured-post__label">Pinned Post</div>
+
+                <form class="hero-archive-search-form" role="search" method="get" action="<?php echo esc_url( home_url( '/news-events-archive/' ) ); ?>">
+                    <label for="hero-archive-search" class="screen-reader-text">
+                        <?php esc_html_e( 'Search news and events', 'nwu-2025' ); ?>
+                    </label>
+                    <div class="hero-archive-search-form__inner">
+                        <button type="submit" class="archive-search-form__button" aria-label="<?php esc_attr_e( 'Submit search', 'nwu-2025' ); ?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <circle cx="11" cy="11" r="8"/>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                            </svg>
+                        </button>
+                        <input
+                            type="search"
+                            id="hero-archive-search"
+                            class="hero-archive-search-form__input"
+                            name="s"
+                            placeholder="<?php esc_attr_e( 'Search Archives', 'nwu-2025' ); ?>"
+                            value="<?php echo esc_attr( get_search_query() ); ?>"
+                        />
+                    </div>
+                </form>
+            </div>
 
             <h1 class="hero-featured-post__title">
                 <?php echo esc_html($post_title); ?>
@@ -77,6 +102,7 @@ if ($image_id) {
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
+
         </div>
 
         <!-- Featured Event Section (Optional) -->

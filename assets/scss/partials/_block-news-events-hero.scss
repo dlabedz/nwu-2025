@@ -32,6 +32,27 @@
             color: #FEFEFE;
             opacity: 0.8;
         }
+
+        .archive-search-form__inner {
+            border-color: #FEFEFE;
+        }
+
+        .archive-search-form__input {
+            color: #FEFEFE;
+
+            &::placeholder {
+                color: #FEFEFE;
+                opacity: 0.6;
+            }
+        }
+
+        .archive-search-form__button {
+            color: #FEFEFE;
+
+            &:hover {
+                color: var(--wp--preset--color--cyan);
+            }
+        }
     }
 
     &.has-dark-text {
@@ -58,25 +79,36 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-	max-width: 1000px;
+    max-width: 1000px;
 
-	@include media(">=tablet") {
+    @include media(">=tablet") {
         padding-left: 3em;
     }
 
+    &__top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 24px;
+
+        @include media("<tablet") {
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
 
     &__label {
         font-size: 16.5px;
-		font-style: normal;
-		font-weight: 900;
-		line-height: 22.5px; /* 136.364% */
-		letter-spacing: 2.475px;
-		text-transform: uppercase;
-		padding-top: 5px;
-		display: inline-block;
-		border-top: 3px solid currentColor;
-		width: auto;
-		max-width: fit-content;
+        font-style: normal;
+        font-weight: 900;
+        line-height: 22.5px; /* 136.364% */
+        letter-spacing: 2.475px;
+        text-transform: uppercase;
+        padding-top: 5px;
+        display: inline-block;
+        border-top: 3px solid currentColor;
+        width: auto;
+        max-width: fit-content;
     }
 
     &__title {
@@ -85,9 +117,9 @@
 
     &__excerpt {
         font-size: 30px;
-		font-style: normal;
-		font-weight: 400;
-		line-height: normal;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
     }
 
     &__button {
@@ -161,3 +193,67 @@
         margin-top: 8px;
     }
 }
+
+
+.hero-archive-search-form {
+    flex-shrink: 0;
+
+    @include media("<tablet") {
+        width: 100%;
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        border: 2px solid var(--wp--preset--color--foreground);
+		border-radius: 35px;
+		background: transparent;
+        overflow: hidden;
+        transition: border-color 0.2s;
+
+        &:focus-within {
+            border-color: var(--wp--preset--color--red);
+        }
+    }
+
+	&__input {
+		border: none;
+		outline: none;
+		padding: 10px 14px 10px 6px; // more padding on the right now
+		font-family: "DM Sans";
+		font-size: 16.5px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		background: transparent;
+		color: var(--wp--preset--color--foreground);
+		width: 260px;
+
+
+		@include media("<tablet") {
+			width: 100%;
+		}
+	}
+
+	&__button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: transparent;
+		color: var(--wp--preset--color--foreground);
+		border: none;
+		padding: 10px 6px 10px 12px; // more padding on the left now
+		cursor: pointer;
+		transition: color 0.2s;
+		flex-shrink: 0;
+
+		&:hover {
+			color: var(--wp--preset--color--red);
+		}
+
+		svg {
+			display: block;
+		}
+	}
+}
+
