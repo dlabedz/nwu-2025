@@ -1,7 +1,7 @@
 /* Login Screen - Constrained
 --------------------------------------------- */
 
-.login {
+.page-login {
 	// Constrain login form
 	#login {
 		width: calc(100% - 32px);
@@ -26,5 +26,45 @@
 	// Login logo
 	#login h1 a {
 		margin: 0 auto;
+	}
+
+	// Form fields
+	input[type="text"],
+	input[type="password"] {
+		border: 4px solid #0A0A0A;
+		border-radius: 0;
+		box-shadow: none;
+
+		&:focus {
+			border-color: var(--wp--preset--color--blue, #054296);
+			box-shadow: none;
+			outline: 2px solid var(--wp--preset--color--blue, #054296);
+			outline-offset: 2px;
+		}
+	}
+
+	// Submit button
+	.tml-button {
+		background: transparent;
+		border: 4px solid #0A0A0A;
+		border-radius: 0;
+		box-shadow: none;
+		color: #0A0A0A;
+		padding: .5em 1em;
+		font-family: "DM Sans", sans-serif;
+		font-size: 16.5px;
+		font-weight: 900;
+		letter-spacing: 2.475px;
+		text-shadow: none;
+		text-transform: uppercase;
+		transition: background 0.2s ease, color 0.2s ease;
+
+		&:hover,
+		&:focus {
+			background: #0A0A0A;
+			border-color: #0A0A0A;
+			color: #FEFEFE;
+			box-shadow: none;
+		}
 	}
 }

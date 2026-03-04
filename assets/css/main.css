@@ -8274,23 +8274,57 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 
 /* Login Screen - Constrained
 --------------------------------------------- */
-.login #login {
+.page-login #login {
   width: calc(100% - 32px);
   max-width: 400px;
   margin: 0 auto;
   padding: 0 clamp(16px, 5vw, 40px);
 }
-.login form {
+.page-login form {
   width: 100%;
 }
-.login .message,
-.login #login_error {
+.page-login .message,
+.page-login #login_error {
   width: 100%;
   max-width: 400px;
   margin: 0 auto 20px;
 }
-.login #login h1 a {
+.page-login #login h1 a {
   margin: 0 auto;
+}
+.page-login input[type=text],
+.page-login input[type=password] {
+  border: 4px solid #0A0A0A;
+  border-radius: 0;
+  box-shadow: none;
+}
+.page-login input[type=text]:focus,
+.page-login input[type=password]:focus {
+  border-color: var(--wp--preset--color--blue, #054296);
+  box-shadow: none;
+  outline: 2px solid var(--wp--preset--color--blue, #054296);
+  outline-offset: 2px;
+}
+.page-login .tml-button {
+  background: transparent;
+  border: 4px solid #0A0A0A;
+  border-radius: 0;
+  box-shadow: none;
+  color: #0A0A0A;
+  padding: 0.5em 1em;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16.5px;
+  font-weight: 900;
+  letter-spacing: 2.475px;
+  text-shadow: none;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.page-login .tml-button:hover, .page-login .tml-button:focus {
+  background: #0A0A0A;
+  border-color: #0A0A0A;
+  color: #FEFEFE;
+  box-shadow: none;
 }
 
 /* Width Utilities
