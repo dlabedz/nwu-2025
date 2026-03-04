@@ -171,14 +171,34 @@ add_filter( 'template_include', 'be_template_hierarchy' );
 
 
 /**
- * Hide admin bar on frontend
+ * Show admin bar only for specific user roles on the frontend
  */
-add_action('after_setup_theme', 'remove_admin_bar');
-function remove_admin_bar() {
-    if (!is_admin()) {
-        show_admin_bar(false);
+function nwu_admin_bar_visibility() {
+    if ( is_admin() ) {
+        return; // Always show in WP admin
+    }
+
+    $roles_with_admin_bar = [
+        'administrator',
+        'chapter-chair',
+        'grievance_contract',
+        'monitor',
+    ];
+
+    $current_user = wp_get_current_user();
+
+    if ( empty( $current_user->roles ) ) {
+        show_admin_bar( false );
+        return;
+    }
+
+    $has_role = array_intersect( $roles_with_admin_bar, $current_user->roles );
+
+    if ( empty( $has_role ) ) {
+        show_admin_bar( false );
     }
 }
+add_action( 'after_setup_theme', 'nwu_admin_bar_visibility' );
 
 /**
  * Register all navigation menus for NWU 2025 theme
