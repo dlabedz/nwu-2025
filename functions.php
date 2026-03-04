@@ -1503,28 +1503,3 @@ add_action( 'admin_init', function() {
 		echo '</div>';
 	} );
 }, 99 );
-
-// TEMPORARY - Get Chapter Post IDs
-add_action( 'admin_notices', 'nwu_show_chapter_ids' );
-function nwu_show_chapter_ids() {
-	if ( ! current_user_can( 'manage_options' ) ) {
-		return;
-	}
-
-	$chapters = get_posts( array(
-		'post_type'      => 'chapter',
-		'posts_per_page' => -1,
-		'orderby'        => 'title',
-		'order'          => 'ASC',
-	) );
-
-	echo '<div class="notice notice-info is-dismissible">';
-	echo '<h3>Chapter Post IDs (for CiviCRM mapping):</h3>';
-	echo '<pre style="background: white; padding: 15px; border: 1px solid #ccc;">';
-	foreach ( $chapters as $chapter ) {
-		printf( "%-35s ID: %d\n", $chapter->post_title, $chapter->ID );
-	}
-	echo '</pre>';
-	echo '<p><em>Remove this code after copying the IDs.</em></p>';
-	echo '</div>';
-}
