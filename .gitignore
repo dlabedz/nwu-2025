@@ -118,3 +118,7 @@ coverage/
 !assets/fonts/
 !screenshot.png
 !README.md
+
+# Ignore all plugins except our custom one
+plugins/*
+!plugins/nwu-civicrm-integration/
