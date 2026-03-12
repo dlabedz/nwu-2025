@@ -8416,6 +8416,39 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
   box-shadow: none;
 }
 
+/* CiviCRM Afform - Your Profile
+---------------------------------------------------------------------------------------------------- */
+afform-your-profile af-field {
+  display: block;
+  margin-bottom: 24px;
+}
+afform-your-profile button.af-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  padding: 12px 28px;
+  border: 4px solid var(--wp--preset--color--foreground);
+  border-radius: 0;
+  background: transparent;
+  color: var(--wp--preset--color--foreground);
+  font-family: var(--wp--preset--font-family--dm-sans);
+  font-size: 16.5px;
+  font-weight: 900;
+  letter-spacing: 2.475px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: static;
+  float: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+afform-your-profile button.af-button:hover, afform-your-profile button.af-button:focus {
+  background: var(--wp--preset--color--foreground);
+  color: #fefefe;
+  outline: none;
+  box-shadow: none;
+}
+
 /* Width Utilities
 --------------------------------------------- */
 .u-width-full {
