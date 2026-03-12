@@ -8417,16 +8417,17 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 }
 
 /* CiviCRM Afform - Your Profile
----------------------------------------------------------------------------------------------------- */
+--------------------------------------------- */
 afform-your-profile af-field {
   display: block;
   margin-bottom: 24px;
 }
-afform-your-profile button.af-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 40px;
+afform-your-profile button.af-button.btn.btn-primary {
+  display: block !important;
+  position: relative !important;
+  float: none !important;
+  clear: both !important;
+  margin-top: 40px !important;
   padding: 12px 28px;
   border: 4px solid var(--wp--preset--color--foreground);
   border-radius: 0;
@@ -8438,11 +8439,10 @@ afform-your-profile button.af-button {
   letter-spacing: 2.475px;
   text-transform: uppercase;
   cursor: pointer;
-  position: static;
-  float: none;
   transition: background 0.2s ease, color 0.2s ease;
+  width: auto;
 }
-afform-your-profile button.af-button:hover, afform-your-profile button.af-button:focus {
+afform-your-profile button.af-button.btn.btn-primary:hover, afform-your-profile button.af-button.btn.btn-primary:focus {
   background: var(--wp--preset--color--foreground);
   color: #fefefe;
   outline: none;
