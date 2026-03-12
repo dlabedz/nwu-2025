@@ -8445,37 +8445,26 @@ body.page-civicrm .site-inner {
 
 /* CiviCRM Afform - Your Profile
 --------------------------------------------- */
-afform-your-profile af-field {
+#bootstrap-theme afform-your-profile af-field {
   display: block;
   margin-bottom: 24px;
   width: 100%;
 }
-afform-your-profile #bootstrap-theme button.af-button.btn.btn-primary {
-  display: block !important;
+#bootstrap-theme afform-your-profile button.af-button.btn.btn-primary {
   width: auto !important;
+  display: block !important;
   position: static !important;
   float: none !important;
   clear: both !important;
   margin-top: 40px !important;
-  padding: 12px 28px !important;
-  border: 4px solid var(--wp--preset--color--foreground) !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  color: var(--wp--preset--color--foreground) !important;
-  font-family: var(--wp--preset--font-family--dm-sans) !important;
-  font-size: 16.5px !important;
-  font-weight: 900 !important;
-  letter-spacing: 2.475px !important;
-  text-transform: uppercase !important;
-  cursor: pointer !important;
 }
-afform-your-profile #bootstrap-theme button.af-button.btn.btn-primary:hover, afform-your-profile #bootstrap-theme button.af-button.btn.btn-primary:focus {
+#bootstrap-theme afform-your-profile button.af-button.btn.btn-primary:hover, #bootstrap-theme afform-your-profile button.af-button.btn.btn-primary:focus {
   background: var(--wp--preset--color--foreground) !important;
   color: #fefefe !important;
   outline: none !important;
   box-shadow: none !important;
 }
-afform-your-profile .af-admin-edit-form-link {
+#bootstrap-theme afform-your-profile .af-admin-edit-form-link {
   display: none;
 }
 

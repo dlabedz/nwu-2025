@@ -36,7 +36,7 @@ body.page-civicrm {
 /* CiviCRM Afform - Your Profile
 --------------------------------------------- */
 
-afform-your-profile {
+#bootstrap-theme afform-your-profile {
 
 	af-field {
 		display: block;
@@ -44,25 +44,13 @@ afform-your-profile {
 		width: 100%;
 	}
 
-	// Override theme's _block-accordion.scss rule that sets width: 100%
-	#bootstrap-theme button.af-button.btn.btn-primary {
-		display: block !important;
+	button.af-button.btn.btn-primary {
 		width: auto !important;
+		display: block !important;
 		position: static !important;
 		float: none !important;
 		clear: both !important;
 		margin-top: 40px !important;
-		padding: 12px 28px !important;
-		border: 4px solid var(--wp--preset--color--foreground) !important;
-		border-radius: 0 !important;
-		background: transparent !important;
-		color: var(--wp--preset--color--foreground) !important;
-		font-family: var(--wp--preset--font-family--dm-sans) !important;
-		font-size: 16.5px !important;
-		font-weight: 900 !important;
-		letter-spacing: 2.475px !important;
-		text-transform: uppercase !important;
-		cursor: pointer !important;
 
 		&:hover,
 		&:focus {
@@ -73,7 +61,6 @@ afform-your-profile {
 		}
 	}
 
-	// Hide admin gear menu on frontend
 	.af-admin-edit-form-link {
 		display: none;
 	}
