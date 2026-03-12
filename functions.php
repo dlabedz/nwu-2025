@@ -1503,3 +1503,34 @@ add_action( 'admin_init', function() {
 		echo '</div>';
 	} );
 }, 99 );
+
+/**
+ * Redirect non-admin users away from WordPress admin
+ * Members should only access the front-end
+ */
+add_action( 'admin_init', 'nwu_restrict_admin_access' );
+function nwu_restrict_admin_access() {
+	// Allow admins, editors, authors, contributors
+	if ( current_user_can( 'edit_posts' ) ) {
+		return;
+	}
+
+	// Allow AJAX requests
+	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+		return;
+	}
+
+	// Redirect members and subscribers to their account page
+	wp_redirect( home_url( '/my-account/' ) ); // Update with your actual account page URL
+	exit;
+}
+
+/**
+ * Hide admin bar for members on front-end
+ */
+add_action( 'after_setup_theme', 'nwu_hide_admin_bar_for_members' );
+function nwu_hide_admin_bar_for_members() {
+	if ( ! current_user_can( 'edit_posts' ) ) {
+		show_admin_bar( false );
+	}
+}
