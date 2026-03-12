@@ -2,6 +2,18 @@
  * Styles added form by form
 ---------------------------------------------------------------------------------------------------- */
 
+/* CiviCRM Page Layout
+--------------------------------------------- */
+
+body.page-civicrm {
+	.site-inner {
+		padding: 0 var(--wp--custom--layout--padding);
+		max-width: var(--wp--custom--layout--wide);
+		margin: 0 auto;
+		box-sizing: border-box;
+	}
+}
+
 /* CiviCRM Global - Fix Bootstrap overflow
 --------------------------------------------- */
 

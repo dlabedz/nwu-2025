@@ -8419,6 +8419,15 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 /* CiviCRM Form Styles
  * Styles added form by form
 ---------------------------------------------------------------------------------------------------- */
+/* CiviCRM Page Layout
+--------------------------------------------- */
+body.page-civicrm .site-inner {
+  padding: 0 var(--wp--custom--layout--padding);
+  max-width: var(--wp--custom--layout--wide);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 /* CiviCRM Global - Fix Bootstrap overflow
 --------------------------------------------- */
 #crm-container.crm-container {
