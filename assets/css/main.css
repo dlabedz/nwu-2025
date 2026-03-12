@@ -8094,6 +8094,95 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 
 /* Member Dashboard
 ---------------------------------------------------------------------------------------------------- */
+/* Dashboard CiviCRM Afform - Membership Table
+--------------------------------------------- */
+.dashboard-wrapper .crm-container,
+.dashboard-wrapper .crm-search-display-table {
+  font-family: var(--wp--preset--font-family--dm-sans);
+  font-size: var(--wp--preset--font-size--small);
+  color: var(--wp--preset--color--foreground);
+}
+.dashboard-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+.dashboard-wrapper table thead {
+  border-bottom: 3px solid var(--wp--preset--color--navy);
+}
+.dashboard-wrapper table thead th {
+  padding: 10px 16px;
+  text-align: left;
+  font-family: var(--wp--preset--font-family--dm-sans);
+  font-size: var(--wp--preset--font-size--tiny);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--wp--preset--color--foreground);
+  cursor: pointer;
+}
+.dashboard-wrapper table thead th.text-right {
+  text-align: right;
+}
+.dashboard-wrapper table thead th .crm-i {
+  margin-right: 6px;
+  opacity: 0.4;
+  font-size: 10px;
+}
+.dashboard-wrapper table thead th .crm-i:not(.disabled) {
+  opacity: 1;
+  color: var(--wp--preset--color--blue);
+}
+.dashboard-wrapper table thead th:hover {
+  background: var(--wp--preset--color--newsprint);
+}
+.dashboard-wrapper table tbody tr {
+  border-bottom: 1px solid var(--wp--preset--color--newsprint);
+  transition: background 0.15s ease;
+}
+.dashboard-wrapper table tbody tr:hover {
+  background: color-mix(in srgb, var(--wp--preset--color--newsprint) 40%, transparent);
+}
+.dashboard-wrapper table tbody tr td {
+  padding: 12px 16px;
+  font-family: var(--wp--preset--font-family--dm-sans);
+  font-size: var(--wp--preset--font-size--small);
+  color: var(--wp--preset--color--foreground);
+  vertical-align: middle;
+}
+.dashboard-wrapper table tbody tr td.text-right {
+  text-align: right;
+}
+.dashboard-wrapper table tbody tr td .alert-info {
+  padding: 16px;
+  background: var(--wp--preset--color--newsprint);
+  color: var(--wp--preset--color--foreground);
+  border: none;
+  border-radius: 0;
+  font-family: var(--wp--preset--font-family--dm-sans);
+  font-size: var(--wp--preset--font-size--small);
+  text-align: center;
+  margin: 0;
+}
+.dashboard-wrapper .crm-search-display-table a {
+  color: var(--wp--preset--color--foreground);
+  font-family: var(--wp--preset--font-family--dm-sans);
+  font-size: var(--wp--preset--font-size--tiny);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 2px solid var(--wp--preset--color--foreground);
+}
+.dashboard-wrapper .crm-search-display-table a:hover {
+  color: var(--wp--preset--color--navy);
+  border-bottom-color: var(--wp--preset--color--navy);
+}
+.dashboard-wrapper .crm-loading,
+.dashboard-wrapper .crm-btn-loading {
+  opacity: 0.6;
+}
+
 /* Dashboard Page Header - Breadcrumbs + Title
 --------------------------------------------- */
 .dashboard-page-header {

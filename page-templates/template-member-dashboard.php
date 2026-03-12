@@ -26,12 +26,10 @@ get_header();
 	<!-- Page Header: Breadcrumbs + Title -->
 	<div class="dashboard-page-header">
 		<?php
-		// Breadcrumbs
-		if ( function_exists( 'yoast_breadcrumb' ) ) {
-			yoast_breadcrumb( '<p id="breadcrumbs" class="breadcrumb">', '</p>' );
+		if ( function_exists( 'aioseo_breadcrumbs' ) ) {
+			aioseo_breadcrumbs();
 		}
 		?>
-
 		<h1 class="dashboard-page-title"><?php the_title(); ?></h1>
 	</div>
 
@@ -80,28 +78,25 @@ get_header();
 			</p>
 
 			<div class="dashboard-intro">
-				<p>
-					<?php
-					printf(
-						/* translators: Quick links for dashboard actions */
-						wp_kses_post( __( 'From your account dashboard you can manage your <a href="%1$s">benefits</a>, <a href="%2$s">membership</a>, find <a href="%3$s">other members</a>, <a href="%4$s">create a post</a>, or request <a href="%5$s">services</a> or <a href="%6$s">support</a>.', 'nwu-2025' ) ),
-						esc_url( '#' ),
-						esc_url( home_url( '/edit-member-profile' ) ),
-						esc_url( '#' ),
-						esc_url( '#' ),
-						esc_url( '#' ),
-						esc_url( '#' )
-					);
-					?>
-				</p>
+				<?php
+				$intro_block = get_posts( array(
+					'post_type'      => 'block_area',
+					'name'           => 'dashboard-intro',
+					'posts_per_page' => 1,
+					'post_status'    => 'publish',
+				) );
+
+				if ( $intro_block ) {
+					echo do_shortcode( apply_filters( 'the_content', $intro_block[0]->post_content ) );
+				}
+				?>
 			</div>
 		</main>
 	</div>
 
-	<!-- Section 2: Page Content (All blocks added via editor) -->
+	<!-- Section 2: Full-width blocks added via editor -->
 	<div class="dashboard-content-wrapper">
 		<?php
-		// This renders all blocks added to the page content in the WordPress editor
 		while ( have_posts() ) :
 			the_post();
 			the_content();
