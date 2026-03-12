@@ -2,24 +2,22 @@
  * Styles added form by form
 ---------------------------------------------------------------------------------------------------- */
 
-/* CiviCRM Global Container - prevents overflow
+/* CiviCRM Global - Fix Bootstrap overflow
 --------------------------------------------- */
 
 #crm-container.crm-container {
 	max-width: 100%;
-	overflow-x: hidden;
 	box-sizing: border-box;
 
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box;
-	}
-
-	// Prevent Bootstrap rows from bleeding outside
+	// Fix Bootstrap 3 negative margins bleeding outside theme layout
 	.row {
 		margin-left: 0;
 		margin-right: 0;
+	}
+
+	[class*="col-"] {
+		padding-left: 0;
+		padding-right: 0;
 	}
 }
 
@@ -30,8 +28,10 @@ afform-your-profile {
 	display: block;
 	width: 100%;
 
+	// Force flex column so button always renders after all fields
 	af-form {
-		display: block;
+		display: flex !important;
+		flex-direction: column !important;
 		width: 100%;
 	}
 
@@ -41,12 +41,19 @@ afform-your-profile {
 		width: 100%;
 	}
 
-	// Fix submit button overlap and position
+	.af-container {
+		display: block;
+		width: 100%;
+	}
+
+	// Submit button — always last in the flex column
 	button.af-button.btn.btn-primary {
+		order: 999 !important;
 		display: block !important;
-		position: relative !important;
+		position: static !important;
 		float: none !important;
 		clear: both !important;
+		align-self: flex-start;
 		margin-top: 40px !important;
 		padding: 12px 28px;
 		border: 4px solid var(--wp--preset--color--foreground);
@@ -61,7 +68,6 @@ afform-your-profile {
 		cursor: pointer;
 		transition: background 0.2s ease, color 0.2s ease;
 		width: auto;
-		z-index: 1;
 
 		&:hover,
 		&:focus {
