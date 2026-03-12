@@ -36,7 +36,11 @@ body.page-civicrm {
 /* CiviCRM Afform - Your Profile
 --------------------------------------------- */
 
-#bootstrap-theme afform-your-profile {
+afform-your-profile {
+
+	fieldset.af-container {
+		padding-bottom: 80px !important;
+	}
 
 	af-field {
 		display: block;

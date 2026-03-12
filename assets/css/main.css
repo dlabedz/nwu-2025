@@ -8445,12 +8445,15 @@ body.page-civicrm .site-inner {
 
 /* CiviCRM Afform - Your Profile
 --------------------------------------------- */
-#bootstrap-theme afform-your-profile af-field {
+afform-your-profile fieldset.af-container {
+  padding-bottom: 80px !important;
+}
+afform-your-profile af-field {
   display: block;
   margin-bottom: 24px;
   width: 100%;
 }
-#bootstrap-theme afform-your-profile button.af-button.btn.btn-primary {
+afform-your-profile button.af-button.btn.btn-primary {
   width: auto !important;
   display: block !important;
   position: static !important;
@@ -8458,13 +8461,13 @@ body.page-civicrm .site-inner {
   clear: both !important;
   margin-top: 40px !important;
 }
-#bootstrap-theme afform-your-profile button.af-button.btn.btn-primary:hover, #bootstrap-theme afform-your-profile button.af-button.btn.btn-primary:focus {
+afform-your-profile button.af-button.btn.btn-primary:hover, afform-your-profile button.af-button.btn.btn-primary:focus {
   background: var(--wp--preset--color--foreground) !important;
   color: #fefefe !important;
   outline: none !important;
   box-shadow: none !important;
 }
-#bootstrap-theme afform-your-profile .af-admin-edit-form-link {
+afform-your-profile .af-admin-edit-form-link {
   display: none;
 }
 
