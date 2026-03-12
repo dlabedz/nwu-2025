@@ -37,15 +37,6 @@ body.page-civicrm {
 --------------------------------------------- */
 
 afform-your-profile {
-	display: block;
-	width: 100%;
-
-	// Force flex column so button always renders after all fields
-	af-form {
-		display: flex !important;
-		flex-direction: column !important;
-		width: 100%;
-	}
 
 	af-field {
 		display: block;
@@ -53,40 +44,32 @@ afform-your-profile {
 		width: 100%;
 	}
 
-	.af-container {
-		display: block;
-		width: 100%;
-	}
-
-	// Submit button — always last in the flex column
-	button.af-button.btn.btn-primary {
-		order: 999 !important;
+	// Override theme's _block-accordion.scss rule that sets width: 100%
+	#bootstrap-theme button.af-button.btn.btn-primary {
 		display: block !important;
+		width: auto !important;
 		position: static !important;
 		float: none !important;
 		clear: both !important;
-		align-self: flex-start;
 		margin-top: 40px !important;
-		padding: 12px 28px;
-		border: 4px solid var(--wp--preset--color--foreground);
-		border-radius: 0;
-		background: transparent;
-		color: var(--wp--preset--color--foreground);
-		font-family: var(--wp--preset--font-family--dm-sans);
-		font-size: 16.5px;
-		font-weight: 900;
-		letter-spacing: 2.475px;
-		text-transform: uppercase;
-		cursor: pointer;
-		transition: background 0.2s ease, color 0.2s ease;
-		width: auto;
+		padding: 12px 28px !important;
+		border: 4px solid var(--wp--preset--color--foreground) !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		color: var(--wp--preset--color--foreground) !important;
+		font-family: var(--wp--preset--font-family--dm-sans) !important;
+		font-size: 16.5px !important;
+		font-weight: 900 !important;
+		letter-spacing: 2.475px !important;
+		text-transform: uppercase !important;
+		cursor: pointer !important;
 
 		&:hover,
 		&:focus {
-			background: var(--wp--preset--color--foreground);
-			color: #fefefe;
-			outline: none;
-			box-shadow: none;
+			background: var(--wp--preset--color--foreground) !important;
+			color: #fefefe !important;
+			outline: none !important;
+			box-shadow: none !important;
 		}
 	}
 

@@ -8445,51 +8445,35 @@ body.page-civicrm .site-inner {
 
 /* CiviCRM Afform - Your Profile
 --------------------------------------------- */
-afform-your-profile {
-  display: block;
-  width: 100%;
-}
-afform-your-profile af-form {
-  display: flex !important;
-  flex-direction: column !important;
-  width: 100%;
-}
 afform-your-profile af-field {
   display: block;
   margin-bottom: 24px;
   width: 100%;
 }
-afform-your-profile .af-container {
-  display: block;
-  width: 100%;
-}
-afform-your-profile button.af-button.btn.btn-primary {
-  order: 999 !important;
+afform-your-profile #bootstrap-theme button.af-button.btn.btn-primary {
   display: block !important;
+  width: auto !important;
   position: static !important;
   float: none !important;
   clear: both !important;
-  align-self: flex-start;
   margin-top: 40px !important;
-  padding: 12px 28px;
-  border: 4px solid var(--wp--preset--color--foreground);
-  border-radius: 0;
-  background: transparent;
-  color: var(--wp--preset--color--foreground);
-  font-family: var(--wp--preset--font-family--dm-sans);
-  font-size: 16.5px;
-  font-weight: 900;
-  letter-spacing: 2.475px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-  width: auto;
+  padding: 12px 28px !important;
+  border: 4px solid var(--wp--preset--color--foreground) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--wp--preset--color--foreground) !important;
+  font-family: var(--wp--preset--font-family--dm-sans) !important;
+  font-size: 16.5px !important;
+  font-weight: 900 !important;
+  letter-spacing: 2.475px !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
 }
-afform-your-profile button.af-button.btn.btn-primary:hover, afform-your-profile button.af-button.btn.btn-primary:focus {
-  background: var(--wp--preset--color--foreground);
-  color: #fefefe;
-  outline: none;
-  box-shadow: none;
+afform-your-profile #bootstrap-theme button.af-button.btn.btn-primary:hover, afform-your-profile #bootstrap-theme button.af-button.btn.btn-primary:focus {
+  background: var(--wp--preset--color--foreground) !important;
+  color: #fefefe !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 afform-your-profile .af-admin-edit-form-link {
   display: none;
