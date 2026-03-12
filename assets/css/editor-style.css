@@ -600,7 +600,7 @@ div.wpforms-container .wpforms-submit-container {
 #bootstrap-theme {
   /* Button Group Fix */
 }
-#bootstrap-theme .btn-group > .btn:first-child {
+#bootstrap-theme .btn-group > .btn:first-child:not(.af-button) {
   margin-left: -3px;
   position: absolute;
   top: -43px;

@@ -275,7 +275,7 @@ div.wpforms-container {
 	}
 
 	/* Button Group Fix */
-	.btn-group > .btn:first-child {
+	.btn-group > .btn:first-child:not(.af-button) {
 		margin-left: -3px;
 		position: absolute;
 		top: -43px;
