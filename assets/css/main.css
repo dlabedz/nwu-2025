@@ -8416,11 +8416,40 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
   box-shadow: none;
 }
 
+/* CiviCRM Form Styles
+ * Styles added form by form
+---------------------------------------------------------------------------------------------------- */
+/* CiviCRM Global Container - prevents overflow
+--------------------------------------------- */
+#crm-container.crm-container {
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+#crm-container.crm-container *,
+#crm-container.crm-container *::before,
+#crm-container.crm-container *::after {
+  box-sizing: border-box;
+}
+#crm-container.crm-container .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /* CiviCRM Afform - Your Profile
 --------------------------------------------- */
+afform-your-profile {
+  display: block;
+  width: 100%;
+}
+afform-your-profile af-form {
+  display: block;
+  width: 100%;
+}
 afform-your-profile af-field {
   display: block;
   margin-bottom: 24px;
+  width: 100%;
 }
 afform-your-profile button.af-button.btn.btn-primary {
   display: block !important;
@@ -8441,12 +8470,16 @@ afform-your-profile button.af-button.btn.btn-primary {
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
   width: auto;
+  z-index: 1;
 }
 afform-your-profile button.af-button.btn.btn-primary:hover, afform-your-profile button.af-button.btn.btn-primary:focus {
   background: var(--wp--preset--color--foreground);
   color: #fefefe;
   outline: none;
   box-shadow: none;
+}
+afform-your-profile .af-admin-edit-form-link {
+  display: none;
 }
 
 /* Width Utilities

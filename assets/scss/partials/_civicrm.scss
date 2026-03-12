@@ -1,15 +1,47 @@
+/* CiviCRM Form Styles
+ * Styles added form by form
+---------------------------------------------------------------------------------------------------- */
+
+/* CiviCRM Global Container - prevents overflow
+--------------------------------------------- */
+
+#crm-container.crm-container {
+	max-width: 100%;
+	overflow-x: hidden;
+	box-sizing: border-box;
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	// Prevent Bootstrap rows from bleeding outside
+	.row {
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
 
 /* CiviCRM Afform - Your Profile
 --------------------------------------------- */
 
 afform-your-profile {
+	display: block;
+	width: 100%;
+
+	af-form {
+		display: block;
+		width: 100%;
+	}
 
 	af-field {
 		display: block;
 		margin-bottom: 24px;
+		width: 100%;
 	}
 
-	// Fix submit button overlap with checkbox list
+	// Fix submit button overlap and position
 	button.af-button.btn.btn-primary {
 		display: block !important;
 		position: relative !important;
@@ -29,6 +61,7 @@ afform-your-profile {
 		cursor: pointer;
 		transition: background 0.2s ease, color 0.2s ease;
 		width: auto;
+		z-index: 1;
 
 		&:hover,
 		&:focus {
@@ -37,5 +70,10 @@ afform-your-profile {
 			outline: none;
 			box-shadow: none;
 		}
+	}
+
+	// Hide admin gear menu on frontend
+	.af-admin-edit-form-link {
+		display: none;
 	}
 }
