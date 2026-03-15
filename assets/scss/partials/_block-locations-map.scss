@@ -4,6 +4,8 @@
 .block-locations-map {
 	padding-top: var(--wp--custom--layout--block-gap-large);
 	padding-bottom: 0; // Default: no bottom padding
+	padding-left: 1em;
+	padding-right: 1em;
 
 	/* White background - everything constrained */
 	&.bg-white {
@@ -15,6 +17,8 @@
 
 		@include media(">=tablet") {
 			max-width: clamp(700px, 85vw, 1152px);
+			padding-left: 0em;
+			padding-right: 0em;
 		}
 
 		// Map stays within constrained width

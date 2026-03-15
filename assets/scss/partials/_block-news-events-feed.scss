@@ -6,8 +6,12 @@
 .block-news-events-feed {
 	background: var(--wp--preset--color--background);
 	color: var(--wp--preset--color--foreground);
-	padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
+	padding: 1em 0;
 	position: relative;
+
+	@include media(">=tablet") {
+		padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
+	}
 
 	@include media(">=desktop") {
 		padding: var(--wp--custom--layout--block-gap-large) 0;
@@ -35,10 +39,15 @@
 	position: absolute;
 	width: 150px;
 	left: -75px;
+	display: none;
 
 	img{
 		width: 100%;
 		height: auto;
+	}
+
+	@include media(">=tablet") {
+		display: block;
 	}
 
 }

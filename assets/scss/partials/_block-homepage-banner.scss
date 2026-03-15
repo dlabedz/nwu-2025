@@ -11,6 +11,11 @@
     overflow: hidden;
     background: var(--wp--preset--color--blue);
     min-height: 400px;
+	padding: 1em;
+
+	@include media(">=tablet") {
+            padding: 0;
+        }
 
     &__container {
         position: relative;

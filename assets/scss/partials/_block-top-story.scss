@@ -43,7 +43,7 @@
 .block-top-story__container {
 	background: var(--wp--preset--color--foreground);
 	color: var(--wp--preset--color--background);
-	padding: var(--wp--custom--layout--block-gap-large) 3em;
+	padding: 1.5em;
 	width: calc(100% - 2rem);
 	max-width: 100%;
 	position: relative;
@@ -52,6 +52,7 @@
 	@include media(">=tablet") {
 		width: 89.57vw;
 		max-width: 78.375rem;
+		padding: var(--wp--custom--layout--block-gap-large) 3em;
 	}
 }
 
