@@ -8446,7 +8446,7 @@ body.page-civicrm .site-inner {
 /* CiviCRM Afform - Your Profile
 --------------------------------------------- */
 afform-your-profile fieldset.af-container {
-  padding-bottom: 230px !important;
+  padding-bottom: 80px !important;
 }
 afform-your-profile af-field {
   display: block;
