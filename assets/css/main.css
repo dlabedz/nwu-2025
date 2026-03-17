@@ -8606,6 +8606,31 @@ afform-your-profile .af-admin-edit-form-link {
   display: none;
 }
 
+#bootstrap-theme .crm-container .btn.btn-sm.btn-default {
+  display: inline-block;
+  border: 2px solid var(--wp--preset--color--foreground) !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  font-family: var(--wp--preset--font-family--dm-mono) !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  letter-spacing: 0.32px !important;
+  text-transform: capitalize !important;
+  text-decoration: none !important;
+  padding: 10px 20px !important;
+  color: var(--wp--preset--color--foreground) !important;
+  box-shadow: none !important;
+}
+#bootstrap-theme .crm-container .btn.btn-sm.btn-default:hover, #bootstrap-theme .crm-container .btn.btn-sm.btn-default:focus {
+  background: var(--wp--preset--color--foreground) !important;
+  color: var(--wp--preset--color--white) !important;
+  text-decoration: none !important;
+}
+#bootstrap-theme .crm-container .btn.btn-sm.btn-default .crm-i.fa-external-link {
+  display: none;
+}
+
 /* Width Utilities
 --------------------------------------------- */
 .u-width-full {
