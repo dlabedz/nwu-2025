@@ -1,0 +1,48 @@
+// =============================================================================
+// Typography — Mobile Size Reductions
+// NWU 2025
+//
+// This file ONLY reduces heading and large paragraph sizes on mobile (<768px).
+// All tablet and desktop styles remain wherever they are already defined
+// (theme.json, _blocks-core.scss, block-level styles, etc.).
+//
+// Reduction is ~10% on font-size; line-height scaled by the same ratio.
+// Per designer request: "A few pixels or like 10% or so. Merci!"
+// =============================================================================
+
+@include media("<tablet") {
+
+	// H1: 56px → 50px / 60px → 54px
+	h1 {
+		font-size: 50px;
+		line-height: 54px;
+	}
+
+	// H2: 48px → 43px / 41px → 37px
+	h2 {
+		font-size: 43px;
+		line-height: 37px;
+	}
+
+	// H3: 36px → 32px / 41px → 37px
+	h3 {
+		font-size: 32px;
+		line-height: 37px;
+	}
+
+	// H5 (DM Mono display): 38px → 34px / 45px → 41px
+	h5 {
+		font-size: 34px;
+		line-height: 41px;
+	}
+
+	// Large paragraph: 24px → 22px / 29px → 26px
+	// Targets Gutenberg's large font-size class and any custom .large usage
+	.has-large-font-size,
+	.is-style-large,
+	p.large {
+		font-size: 22px;
+		line-height: 26px;
+	}
+
+}
