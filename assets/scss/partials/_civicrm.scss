@@ -71,7 +71,7 @@ afform-your-profile {
 }
 
 // Update Credit Card billing button — styled as pill term (matches .taxonomy-term)
-#bootstrap-theme .crm-container .btn.btn-sm.btn-default {
+#bootstrap-theme.crm-container .btn.btn-sm.btn-default {
     display: inline-block;
     border: 2px solid var(--wp--preset--color--foreground) !important;
     border-radius: 999px !important;
@@ -94,7 +94,6 @@ afform-your-profile {
         text-decoration: none !important;
     }
 
-    // Hide the external link icon CiviCRM injects
     .crm-i.fa-external-link {
         display: none;
     }

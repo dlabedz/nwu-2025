@@ -8606,7 +8606,7 @@ afform-your-profile .af-admin-edit-form-link {
   display: none;
 }
 
-#bootstrap-theme .crm-container .btn.btn-sm.btn-default {
+#bootstrap-theme.crm-container .btn.btn-sm.btn-default {
   display: inline-block;
   border: 2px solid var(--wp--preset--color--foreground) !important;
   border-radius: 999px !important;
@@ -8622,12 +8622,12 @@ afform-your-profile .af-admin-edit-form-link {
   color: var(--wp--preset--color--foreground) !important;
   box-shadow: none !important;
 }
-#bootstrap-theme .crm-container .btn.btn-sm.btn-default:hover, #bootstrap-theme .crm-container .btn.btn-sm.btn-default:focus {
+#bootstrap-theme.crm-container .btn.btn-sm.btn-default:hover, #bootstrap-theme.crm-container .btn.btn-sm.btn-default:focus {
   background: var(--wp--preset--color--foreground) !important;
   color: var(--wp--preset--color--white) !important;
   text-decoration: none !important;
 }
-#bootstrap-theme .crm-container .btn.btn-sm.btn-default .crm-i.fa-external-link {
+#bootstrap-theme.crm-container .btn.btn-sm.btn-default .crm-i.fa-external-link {
   display: none;
 }
 
