@@ -3,6 +3,7 @@
     "title": "Locations Map",
     "description": "Two column content with embedded Flourish map",
     "style": "block-locations-map",
+    "viewScript": "file:./script.js",
     "category": "theme",
     "icon": "location-alt",
     "apiVersion": 2,

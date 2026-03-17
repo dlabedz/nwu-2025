@@ -75,29 +75,40 @@ $columns_class = $both_columns ? 'locations-map__columns--two' : 'locations-map_
 
 	<?php if ( $map_embed ) : ?>
 	<div class="locations-map__embed">
-		<?php
-		// Allow Flourish embed code with specific tags/attributes
-		$allowed_html = array(
-			'div' => array(
-				'class' => array(),
-				'data-src' => array(),
-				'data-width' => array(),
-				'data-height' => array(),
-			),
-			'script' => array(
-				'src' => array(),
-				'async' => array(),
-			),
-			'noscript' => array(),
-			'img' => array(
-				'src' => array(),
-				'width' => array(),
-				'height' => array(),
-				'alt' => array(),
-			),
-		);
-		echo wp_kses( $map_embed, $allowed_html );
-		?>
+		<div class="locations-map__embed-wrapper">
+
+			<!-- Mobile scroll trap overlay -->
+			<div class="locations-map__scroll-overlay" aria-hidden="true">
+				<div class="locations-map__scroll-hint">
+					<span><?php esc_html_e( 'Tap to interact with map', 'nwu-2025' ); ?></span>
+				</div>
+			</div>
+
+			<?php
+			// Allow Flourish embed code with specific tags/attributes
+			$allowed_html = array(
+				'div' => array(
+					'class'       => array(),
+					'data-src'    => array(),
+					'data-width'  => array(),
+					'data-height' => array(),
+				),
+				'script' => array(
+					'src'   => array(),
+					'async' => array(),
+				),
+				'noscript' => array(),
+				'img' => array(
+					'src'    => array(),
+					'width'  => array(),
+					'height' => array(),
+					'alt'    => array(),
+				),
+			);
+			echo wp_kses( $map_embed, $allowed_html );
+			?>
+
+		</div>
 	</div>
 	<?php endif; ?>
 

@@ -3,7 +3,7 @@
 
 .block-locations-map {
 	padding-top: var(--wp--custom--layout--block-gap-large);
-	padding-bottom: 0; // Default: no bottom padding
+	padding-bottom: 0;
 	padding-left: 1em;
 	padding-right: 1em;
 
@@ -13,7 +13,7 @@
 		max-width: 100%;
 		margin-left: auto;
 		margin-right: auto;
-		padding-bottom: var(--wp--custom--layout--block-gap-large); // Add bottom padding for white
+		padding-bottom: var(--wp--custom--layout--block-gap-large);
 
 		@include media(">=tablet") {
 			max-width: clamp(700px, 85vw, 1152px);
@@ -21,13 +21,11 @@
 			padding-right: 0em;
 		}
 
-		// Map stays within constrained width
 		.locations-map__embed {
 			width: 100%;
 			margin: 0;
 		}
 
-		// Content has no extra padding (inherited from block)
 		.content-container {
 			padding-left: 0;
 			padding-right: 0;
@@ -40,10 +38,10 @@
 		width: 100vw;
 		margin-left: calc(-50vw + 50%);
 		margin-right: calc(-50vw + 50%);
-		padding-bottom: 0; // No bottom padding - map goes to edge
+		padding-bottom: 0;
 	}
 
-	/* Content Container - for white bg (no extra padding) */
+	/* Content Container - white bg */
 	.content-container {
 		max-width: 100%;
 		margin-left: auto;
@@ -54,12 +52,12 @@
 		}
 	}
 
-	/* Full Width Container - Blue background content area */
+	/* Full Width Container - blue bg */
 	.full-width-container {
 		padding: 0;
 	}
 
-	/* Constrain content inside full-width container (blue bg) */
+	/* Constrain content inside full-width container */
 	.full-width-container .locations-map__columns {
 		max-width: 100%;
 		margin-left: auto;
@@ -78,14 +76,12 @@
 	gap: var(--wp--custom--layout--block-gap-large);
 	margin-bottom: var(--wp--custom--layout--block-gap-large);
 
-	/* Two columns - only split on tablet+ */
 	&.locations-map__columns--two {
 		@include media(">=tablet") {
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 
-	/* Single column - always full width */
 	&.locations-map__columns--single {
 		grid-template-columns: 1fr;
 	}
@@ -123,7 +119,7 @@
 	}
 }
 
-/* Map Embed - Default: Full Width Edge to Edge (for blue bg) */
+/* Map Embed */
 .locations-map__embed {
 	width: 100vw;
 	margin-left: calc(-50vw + 50%);
@@ -131,7 +127,6 @@
 	margin-bottom: 0;
 	min-height: 400px;
 
-	/* Flourish embed responsiveness */
 	.flourish-embed {
 		width: 100%;
 		height: auto;
@@ -141,6 +136,49 @@
 		width: 100%;
 		min-height: 500px;
 		display: block;
+	}
+}
+
+/* Scroll trap wrapper */
+.locations-map__embed-wrapper {
+	position: relative;
+}
+
+/* Overlay — mobile only */
+.locations-map__scroll-overlay {
+	display: none;
+
+	@include media("<tablet") {
+		display: flex;
+		position: absolute;
+		inset: 0;
+		z-index: 10;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		background: transparent;
+	}
+}
+
+.locations-map__scroll-hint {
+	background: rgba(0, 0, 0, 0.6);
+	border-radius: 4px;
+	padding: 10px 20px;
+	pointer-events: none;
+
+	span {
+		color: #fff;
+		font-family: "DM Sans", sans-serif;
+		font-size: 16px;
+		line-height: 1.4;
+	}
+}
+
+/* Active state — overlay removed, map is interactive */
+.locations-map__embed-wrapper.is-active {
+
+	.locations-map__scroll-overlay {
+		display: none;
 	}
 }
 
