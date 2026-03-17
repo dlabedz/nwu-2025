@@ -220,7 +220,7 @@
 		border-bottom: 1px solid var(--wp--custom--color--neutral-300);
 
 		@include media("<tablet") {
-			grid-template-columns: 1fr;
+			grid-template-columns: auto 1fr; // thumbnail inline with text
 			gap: 12px;
 		}
 
@@ -232,9 +232,9 @@
 			flex-shrink: 0;
 
 			@include media("<tablet") {
-				width: 100%;
-				flex-direction: row;
-				align-items: center;
+				width: auto;            // natural width from thumbnail
+				flex-direction: column; // stack thumbnail over date/author
+				align-items: flex-start;
 			}
 		}
 
@@ -259,8 +259,8 @@
 			}
 
 			@include media("<tablet") {
-				width: 120px;
-				height: 120px;
+				width: 132px;  // ~10% larger than previous 120px
+				height: 132px;
 			}
 		}
 
@@ -301,18 +301,18 @@
 		}
 
 		&__excerpt {
-		margin-top: 8px;
-		color: var(--wp--preset--color--foreground);
-		font-family: "DM Sans";
-		font-size: 18px;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 25px; /* 138.889% */
+			margin-top: 8px;
+			color: var(--wp--preset--color--foreground);
+			font-family: "DM Sans";
+			font-size: 18px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 25px; /* 138.889% */
 
-		p {
-			margin: 0;
+			p {
+				margin: 0;
+			}
 		}
-	}
 
 		&__arrow {
 			margin-top: 5px;
