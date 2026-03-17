@@ -81,6 +81,7 @@
     align-items: center;
     gap: 16px;
     margin-bottom: var(--wp--custom--layout--block-gap-large);
+    justify-content: center;
 }
 
 .bleed-right .card-slider__title-wrapper {
@@ -93,22 +94,52 @@
     padding-right: var(--wp--custom--layout--padding);
 }
 
-.bleed-none .card-slider__title-wrapper {
-    justify-content: center;
-}
-
+/* Arrow buttons — reset default <button> styles, then apply arrow design */
 .card-slider__arrow {
+    /* button reset */
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    line-height: 1;
+
+    /* arrow design */
     flex-shrink: 0;
     width: 70px;
     height: 33px;
     display: flex;
     align-items: center;
+    justify-content: center;
     color: var(--wp--preset--color--foreground);
-}
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 
-.card-slider__arrow svg {
-    width: 100%;
-    height: 100%;
+    svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    &:hover {
+        opacity: 0.65;
+    }
+
+    &--prev:hover {
+        transform: translateX(-3px);
+    }
+
+    &--next:hover {
+        transform: translateX(3px);
+    }
+
+    /* Swiper adds .swiper-button-disabled when at loop edges (non-loop mode) */
+    &.swiper-button-disabled {
+        opacity: 0.25;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
 }
 
 .card-slider__main-title {
@@ -171,7 +202,6 @@
 
 .card-slider__image img {
     transition: transform 0.3s ease;
-
 }
 
 .card-slider__card:hover .card-slider__image img {
