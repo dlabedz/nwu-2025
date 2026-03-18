@@ -94,13 +94,25 @@ get_header();
 		</main>
 	</div>
 
-	<!-- Section 2: Full-width blocks added via editor -->
+	<!-- Section 2: CiviCRM forms or full-width blocks added via editor -->
 	<div class="dashboard-content-wrapper">
 		<?php
-		while ( have_posts() ) :
-			the_post();
-			the_content();
-		endwhile;
+		if ( function_exists( 'civicrm_initialize' ) && isset( $_GET['civiwp'] ) && $_GET['civiwp'] === 'CiviCRM' ) {
+			// CiviCRM is handling this request — output it directly
+			// and skip the_content() to prevent the duplicate
+			civicrm_initialize();
+			$config = CRM_Core_Config::singleton();
+			ob_start();
+			CRM_Core_Invoke::invoke( explode( '/', CRM_Utils_Array::value( 'q', $_GET, '' ) ) );
+			$civicrm_output = ob_get_clean();
+			echo $civicrm_output;
+		} else {
+			// Normal dashboard page — render block content as usual
+			while ( have_posts() ) :
+				the_post();
+				the_content();
+			endwhile;
+		}
 		?>
 	</div>
 

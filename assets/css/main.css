@@ -8624,18 +8624,19 @@ afform-your-profile .af-admin-edit-form-link {
   display: none;
 }
 
-.CRM_Contribute_Form_UpdateBilling .breadcrumb {
+#crm-container.crm-container .breadcrumb {
   display: none !important;
 }
+
 .CRM_Contribute_Form_UpdateBilling .help {
-  background: var(--wp--preset--color--newsprint);
+  background: var(--wp--preset--color--newsprint) !important;
   border-left: 4px solid var(--wp--preset--color--navy);
   padding: 16px 20px;
   margin-bottom: 32px;
   font-family: "DM Sans", sans-serif;
-  font-size: 16.5px;
-  line-height: 24px;
-  color: var(--wp--preset--color--foreground);
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--wp--preset--color--foreground) !important;
 }
 .CRM_Contribute_Form_UpdateBilling .help .crm-i {
   margin-right: 8px;
@@ -8667,16 +8668,28 @@ afform-your-profile .af-admin-edit-form-link {
   width: auto;
   text-align: left;
   margin-bottom: 6px;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
 }
 .CRM_Contribute_Form_UpdateBilling .crm-section .label label {
   font-family: "DM Sans", sans-serif;
-  font-size: 16.5px;
+  font-size: 13px;
   font-weight: 900;
-  line-height: 22.5px;
-  letter-spacing: 2.475px;
+  line-height: 18px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--wp--preset--color--foreground);
-  display: block;
+  display: inline;
+}
+.CRM_Contribute_Form_UpdateBilling .crm-section .label .crm-marker {
+  color: var(--wp--preset--color--red);
+  font-size: 13px;
+  line-height: 18px;
+  display: inline;
+  position: static;
+  float: none;
+  margin: 0;
 }
 .CRM_Contribute_Form_UpdateBilling .crm-section .content {
   float: none;
@@ -8686,8 +8699,7 @@ afform-your-profile .af-admin-edit-form-link {
   clear: both;
 }
 .CRM_Contribute_Form_UpdateBilling .crm-marker {
-  color: var(--wp--preset--color--red);
-  margin-left: 4px;
+  color: var(--wp--preset--color--red) !important;
 }
 .CRM_Contribute_Form_UpdateBilling input.crm-form-text {
   background: var(--wp--preset--color--background) !important;
@@ -8695,9 +8707,9 @@ afform-your-profile .af-admin-edit-form-link {
   border-radius: 0 !important;
   color: var(--wp--preset--color--foreground) !important;
   font-family: "DM Sans", sans-serif !important;
-  font-size: 18px !important;
-  line-height: 25px !important;
-  padding: 10px 14px !important;
+  font-size: 15px !important;
+  line-height: 22px !important;
+  padding: 8px 12px !important;
   width: 100% !important;
   box-shadow: none !important;
 }
@@ -8711,10 +8723,10 @@ afform-your-profile .af-admin-edit-form-link {
   border-radius: 0 !important;
   color: var(--wp--preset--color--foreground) !important;
   font-family: "DM Sans", sans-serif !important;
-  font-size: 18px !important;
+  font-size: 15px !important;
   height: auto !important;
   line-height: normal !important;
-  padding: 10px 14px !important;
+  padding: 8px 12px !important;
   width: 100% !important;
   box-shadow: none !important;
 }
@@ -8727,11 +8739,11 @@ afform-your-profile .af-admin-edit-form-link {
   border-radius: 0 !important;
   color: var(--wp--preset--color--foreground) !important;
   font-family: "DM Sans", sans-serif !important;
-  font-size: 18px !important;
+  font-size: 15px !important;
   height: auto !important;
-  padding: 10px 14px !important;
+  padding: 8px 12px !important;
   box-shadow: none !important;
-  line-height: 25px !important;
+  line-height: 22px !important;
 }
 .CRM_Contribute_Form_UpdateBilling .crm-submit-buttons {
   display: flex;
