@@ -18,12 +18,8 @@ if ( ! is_user_logged_in() ) {
 $current_user = wp_get_current_user();
 $first_name   = $current_user->first_name ? $current_user->first_name : $current_user->user_login;
 
-// If CiviCRM is handling this request, unhook it from the_content filter
-// so it doesn't render a second time via apply_filters( 'the_content', ... )
-if ( function_exists( 'civicrm_initialize' ) && isset( $_GET['civiwp'] ) && $_GET['civiwp'] === 'CiviCRM' ) {
-	civicrm_initialize();
-	remove_filter( 'the_content', array( 'CRM_Utils_Hook', 'alterContent' ), 99 );
-}
+// Detect if CiviCRM is handling a form request
+$is_civicrm_request = isset( $_GET['civiwp'] ) && $_GET['civiwp'] === 'CiviCRM';
 
 get_header();
 ?>
@@ -84,8 +80,11 @@ get_header();
 				?>
 			</p>
 
-			<div class="dashboard-intro">
-				<?php
+			<?php
+			// Only show the intro block on the normal dashboard view,
+			// not when CiviCRM is rendering a form — avoids triggering
+			// CiviCRM's the_content hook a second time
+			if ( ! $is_civicrm_request ) :
 				$intro_block = get_posts( array(
 					'post_type'      => 'block_area',
 					'name'           => 'dashboard-intro',
@@ -93,33 +92,23 @@ get_header();
 					'post_status'    => 'publish',
 				) );
 
-				if ( $intro_block ) {
-					// CiviCRM filter already removed above if civiwp is set,
-					// so this apply_filters call won't trigger a second CiviCRM render
-					echo do_shortcode( apply_filters( 'the_content', $intro_block[0]->post_content ) );
-				}
-				?>
-			</div>
+				if ( $intro_block ) : ?>
+					<div class="dashboard-intro">
+						<?php echo do_shortcode( apply_filters( 'the_content', $intro_block[0]->post_content ) ); ?>
+					</div>
+				<?php endif;
+			endif;
+			?>
 		</main>
 	</div>
 
 	<!-- Section 2: CiviCRM forms or full-width blocks added via editor -->
 	<div class="dashboard-content-wrapper">
 		<?php
-		if ( function_exists( 'civicrm_initialize' ) && isset( $_GET['civiwp'] ) && $_GET['civiwp'] === 'CiviCRM' ) {
-			// CiviCRM is handling this request — output it directly
-			$config = CRM_Core_Config::singleton();
-			ob_start();
-			CRM_Core_Invoke::invoke( explode( '/', CRM_Utils_Array::value( 'q', $_GET, '' ) ) );
-			$civicrm_output = ob_get_clean();
-			echo $civicrm_output;
-		} else {
-			// Normal dashboard page — render block content as usual
-			while ( have_posts() ) :
-				the_post();
-				the_content();
-			endwhile;
-		}
+		while ( have_posts() ) :
+			the_post();
+			the_content();
+		endwhile;
 		?>
 	</div>
 
