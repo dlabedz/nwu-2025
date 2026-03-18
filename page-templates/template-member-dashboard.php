@@ -18,6 +18,13 @@ if ( ! is_user_logged_in() ) {
 $current_user = wp_get_current_user();
 $first_name   = $current_user->first_name ? $current_user->first_name : $current_user->user_login;
 
+// If CiviCRM is handling this request, unhook it from the_content filter
+// so it doesn't render a second time via apply_filters( 'the_content', ... )
+if ( function_exists( 'civicrm_initialize' ) && isset( $_GET['civiwp'] ) && $_GET['civiwp'] === 'CiviCRM' ) {
+	civicrm_initialize();
+	remove_filter( 'the_content', array( 'CRM_Utils_Hook', 'alterContent' ), 99 );
+}
+
 get_header();
 ?>
 
@@ -87,6 +94,8 @@ get_header();
 				) );
 
 				if ( $intro_block ) {
+					// CiviCRM filter already removed above if civiwp is set,
+					// so this apply_filters call won't trigger a second CiviCRM render
 					echo do_shortcode( apply_filters( 'the_content', $intro_block[0]->post_content ) );
 				}
 				?>
@@ -99,8 +108,6 @@ get_header();
 		<?php
 		if ( function_exists( 'civicrm_initialize' ) && isset( $_GET['civiwp'] ) && $_GET['civiwp'] === 'CiviCRM' ) {
 			// CiviCRM is handling this request — output it directly
-			// and skip the_content() to prevent the duplicate
-			civicrm_initialize();
 			$config = CRM_Core_Config::singleton();
 			ob_start();
 			CRM_Core_Invoke::invoke( explode( '/', CRM_Utils_Array::value( 'q', $_GET, '' ) ) );
