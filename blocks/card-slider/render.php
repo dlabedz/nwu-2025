@@ -150,6 +150,8 @@ document.addEventListener('DOMContentLoaded', function() {
         new Swiper(blockEl.querySelector('.<?php echo esc_js($slider_id); ?>'), {
             slidesPerView: 1,
             spaceBetween: 16,
+            // loop is safe again: overflow:visible is now gated to 768px+ in CSS,
+            // so mobile no longer clips the cloned slides that loop prepends at negative X.
             loop: <?php echo count($cards) > 1 ? 'true' : 'false'; ?>,
 
             // Slower, smoother transition

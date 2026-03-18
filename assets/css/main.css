@@ -783,26 +783,26 @@ label .wpforms-required-label,
 
 @media (max-width: 767px) {
   h1 {
-    font-size: 50px;
-    line-height: 54px;
+    font-size: 47px;
+    line-height: 51px;
   }
   h2 {
-    font-size: 43px;
-    line-height: 37px;
+    font-size: 40px;
+    line-height: 34px;
   }
   h3 {
-    font-size: 32px;
-    line-height: 37px;
+    font-size: 29px;
+    line-height: 34px;
   }
   h5 {
-    font-size: 34px;
-    line-height: 41px;
+    font-size: 31px;
+    line-height: 38px;
   }
   .has-large-font-size,
   .is-style-large,
   p.large {
-    font-size: 22px;
-    line-height: 26px;
+    font-size: 19px;
+    line-height: 23px;
   }
 }
 /* WordPress SEO
@@ -2856,7 +2856,7 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
 }
 @media (max-width: 767px) {
   .archive-listing .archive-item {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
     gap: 12px;
   }
 }
@@ -2869,7 +2869,7 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
 }
 @media (max-width: 767px) {
   .archive-listing .archive-item__meta {
-    width: auto;
+    width: 100%;
     flex-direction: column;
     align-items: flex-start;
   }
@@ -2894,8 +2894,8 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
 }
 @media (max-width: 767px) {
   .archive-listing .archive-item__thumbnail {
-    width: 132px;
-    height: 132px;
+    width: 100%;
+    height: auto;
   }
 }
 .archive-listing .archive-item__meta-text {
@@ -3962,6 +3962,8 @@ article > .entry-title,
   padding: var(--wp--custom--layout--block-gap-large) 0;
 }
 
+/* Container: standard contained layout on mobile for all bleed variants.
+   Bleed kicks in at tablet (768px) and above. */
 .card-slider__container {
   max-width: var(--wp--custom--layout--wide);
   margin: 0 auto;
@@ -3970,34 +3972,29 @@ article > .entry-title,
   z-index: 1;
 }
 
-.bleed-none .card-slider__container {
-  padding: 0 var(--wp--custom--layout--padding);
+@media (min-width: 768px) {
+  .bleed-left .card-slider__container {
+    padding-left: 0;
+    margin-left: 0;
+    margin-right: auto;
+    max-width: calc(var(--wp--custom--layout--wide) + var(--wp--custom--layout--padding));
+  }
+  .bleed-right .card-slider__container {
+    padding-right: 0;
+    margin-right: 0;
+    margin-left: auto;
+    max-width: calc(var(--wp--custom--layout--wide) + var(--wp--custom--layout--padding));
+  }
 }
-
-.bleed-left .card-slider__container {
-  padding-left: 0;
-  margin-left: 0;
-  margin-right: auto;
-  max-width: calc(var(--wp--custom--layout--wide) + var(--wp--custom--layout--padding));
-}
-
 @media (min-width: 1200px) {
   .bleed-left .card-slider__container {
     margin-left: calc((100vw - var(--wp--custom--layout--wide)) / 2);
   }
-}
-.bleed-right .card-slider__container {
-  padding-right: 0;
-  margin-right: 0;
-  margin-left: auto;
-  max-width: calc(var(--wp--custom--layout--wide) + var(--wp--custom--layout--padding));
-}
-
-@media (min-width: 1200px) {
   .bleed-right .card-slider__container {
     margin-right: calc((100vw - var(--wp--custom--layout--wide)) / 2);
   }
 }
+/* Title wrapper: centered on mobile, bleed-adjusted at tablet+ */
 .card-slider__title-wrapper {
   display: flex;
   align-items: center;
@@ -4006,16 +4003,16 @@ article > .entry-title,
   justify-content: center;
 }
 
-.bleed-right .card-slider__title-wrapper {
-  justify-content: flex-start;
-  padding-left: var(--wp--custom--layout--padding);
+@media (min-width: 768px) {
+  .bleed-right .card-slider__title-wrapper {
+    justify-content: flex-start;
+    padding-left: var(--wp--custom--layout--padding);
+  }
+  .bleed-left .card-slider__title-wrapper {
+    justify-content: flex-end;
+    padding-right: var(--wp--custom--layout--padding);
+  }
 }
-
-.bleed-left .card-slider__title-wrapper {
-  justify-content: flex-end;
-  padding-right: var(--wp--custom--layout--padding);
-}
-
 /* Arrow buttons — reset default <button> styles, then apply arrow design */
 .card-slider__arrow {
   /* button reset */
@@ -4052,7 +4049,7 @@ article > .entry-title,
   transform: translateX(3px);
 }
 .card-slider__arrow {
-  /* Swiper adds .swiper-button-disabled when at loop edges (non-loop mode) */
+  /* Swiper adds .swiper-button-disabled when at loop edges (rewind mode) */
 }
 .card-slider__arrow.swiper-button-disabled {
   opacity: 0.25;
@@ -4069,14 +4066,14 @@ article > .entry-title,
   color: var(--wp--preset--color--foreground);
 }
 
-.bleed-left .card-slider__main-title {
-  padding-left: var(--wp--custom--layout--padding);
+@media (min-width: 768px) {
+  .bleed-left .card-slider__main-title {
+    padding-left: var(--wp--custom--layout--padding);
+  }
+  .bleed-right .card-slider__main-title {
+    padding-right: var(--wp--custom--layout--padding);
+  }
 }
-
-.bleed-right .card-slider__main-title {
-  padding-right: var(--wp--custom--layout--padding);
-}
-
 .card-slider__card {
   overflow: hidden;
   box-shadow: var(--wp--custom--box-shadow--1);
@@ -4147,23 +4144,19 @@ article > .entry-title,
   padding-bottom: 24px;
 }
 
-.bleed-left .swiper,
-.bleed-right .swiper {
-  overflow: visible;
+/* overflow: visible only needed when slides bleed past the container edge.
+   On mobile the slider is contained, so leave overflow at its default (hidden)
+   to prevent Swiper clipping and positioning conflicts on narrow viewports. */
+@media (min-width: 768px) {
+  .bleed-left .swiper,
+  .bleed-right .swiper {
+    overflow: visible;
+  }
 }
-
-.bleed-none .swiper-wrapper {
-  justify-content: center;
-}
-
-.bleed-left .swiper-wrapper {
-  justify-content: flex-start;
-}
-
-.bleed-right .swiper-wrapper {
-  justify-content: flex-end;
-}
-
+/* Do NOT set justify-content on .swiper-wrapper for any bleed variant.
+   Swiper positions slides via translateX(); adding flex alignment on the
+   wrapper creates a position mismatch that produces touch dead zones.
+   Bleed alignment is handled by container padding/margin above. */
 .swiper-button-next,
 .swiper-button-prev,
 .swiper-pagination {

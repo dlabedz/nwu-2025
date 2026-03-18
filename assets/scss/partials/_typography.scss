@@ -6,43 +6,40 @@
 // All tablet and desktop styles remain wherever they are already defined
 // (theme.json, _blocks-core.scss, block-level styles, etc.).
 //
-// Reduction is ~10% on font-size; line-height scaled by the same ratio.
-// Per designer request: "A few pixels or like 10% or so. Merci!"
 // =============================================================================
 
 @include media("<tablet") {
 
-	// H1: 56px → 50px / 60px → 54px
+	// H1: 56px → 47px / 60px → 51px
 	h1 {
-		font-size: 50px;
-		line-height: 54px;
+		font-size: 47px;
+		line-height: 51px;
 	}
 
-	// H2: 48px → 43px / 41px → 37px
+	// H2: 48px → 40px / 41px → 34px
 	h2 {
-		font-size: 43px;
-		line-height: 37px;
+		font-size: 40px;
+		line-height: 34px;
 	}
 
-	// H3: 36px → 32px / 41px → 37px
+	// H3: 36px → 29px / 41px → 34px
 	h3 {
-		font-size: 32px;
-		line-height: 37px;
+		font-size: 29px;
+		line-height: 34px;
 	}
 
-	// H5 (DM Mono display): 38px → 34px / 45px → 41px
+	// H5 (DM Mono display): 38px → 31px / 45px → 38px
 	h5 {
-		font-size: 34px;
-		line-height: 41px;
+		font-size: 31px;
+		line-height: 38px;
 	}
 
-	// Large paragraph: 24px → 22px / 29px → 26px
-	// Targets Gutenberg's large font-size class and any custom .large usage
+	// Large paragraph: 24px → 19px / 29px → 23px
 	.has-large-font-size,
 	.is-style-large,
 	p.large {
-		font-size: 22px;
-		line-height: 26px;
+		font-size: 19px;
+		line-height: 23px;
 	}
 
 }

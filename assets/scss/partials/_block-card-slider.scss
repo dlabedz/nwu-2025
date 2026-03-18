@@ -38,6 +38,8 @@
     padding: var(--wp--custom--layout--block-gap-large) 0;
 }
 
+/* Container: standard contained layout on mobile for all bleed variants.
+   Bleed kicks in at tablet (768px) and above. */
 .card-slider__container {
     max-width: var(--wp--custom--layout--wide);
     margin: 0 auto;
@@ -46,36 +48,33 @@
     z-index: 1;
 }
 
-.bleed-none .card-slider__container {
-    padding: 0 var(--wp--custom--layout--padding);
-}
+@media (min-width: 768px) {
+    .bleed-left .card-slider__container {
+        padding-left: 0;
+        margin-left: 0;
+        margin-right: auto;
+        max-width: calc(var(--wp--custom--layout--wide) + var(--wp--custom--layout--padding));
+    }
 
-.bleed-left .card-slider__container {
-    padding-left: 0;
-    margin-left: 0;
-    margin-right: auto;
-    max-width: calc(var(--wp--custom--layout--wide) + var(--wp--custom--layout--padding));
+    .bleed-right .card-slider__container {
+        padding-right: 0;
+        margin-right: 0;
+        margin-left: auto;
+        max-width: calc(var(--wp--custom--layout--wide) + var(--wp--custom--layout--padding));
+    }
 }
 
 @media (min-width: 1200px) {
     .bleed-left .card-slider__container {
         margin-left: calc((100vw - var(--wp--custom--layout--wide)) / 2);
     }
-}
 
-.bleed-right .card-slider__container {
-    padding-right: 0;
-    margin-right: 0;
-    margin-left: auto;
-    max-width: calc(var(--wp--custom--layout--wide) + var(--wp--custom--layout--padding));
-}
-
-@media (min-width: 1200px) {
     .bleed-right .card-slider__container {
         margin-right: calc((100vw - var(--wp--custom--layout--wide)) / 2);
     }
 }
 
+/* Title wrapper: centered on mobile, bleed-adjusted at tablet+ */
 .card-slider__title-wrapper {
     display: flex;
     align-items: center;
@@ -84,14 +83,16 @@
     justify-content: center;
 }
 
-.bleed-right .card-slider__title-wrapper {
-    justify-content: flex-start;
-    padding-left: var(--wp--custom--layout--padding);
-}
+@media (min-width: 768px) {
+    .bleed-right .card-slider__title-wrapper {
+        justify-content: flex-start;
+        padding-left: var(--wp--custom--layout--padding);
+    }
 
-.bleed-left .card-slider__title-wrapper {
-    justify-content: flex-end;
-    padding-right: var(--wp--custom--layout--padding);
+    .bleed-left .card-slider__title-wrapper {
+        justify-content: flex-end;
+        padding-right: var(--wp--custom--layout--padding);
+    }
 }
 
 /* Arrow buttons — reset default <button> styles, then apply arrow design */
@@ -134,7 +135,7 @@
         transform: translateX(3px);
     }
 
-    /* Swiper adds .swiper-button-disabled when at loop edges (non-loop mode) */
+    /* Swiper adds .swiper-button-disabled when at loop edges (rewind mode) */
     &.swiper-button-disabled {
         opacity: 0.25;
         cursor: not-allowed;
@@ -151,12 +152,14 @@
     color: var(--wp--preset--color--foreground);
 }
 
-.bleed-left .card-slider__main-title {
-    padding-left: var(--wp--custom--layout--padding);
-}
+@media (min-width: 768px) {
+    .bleed-left .card-slider__main-title {
+        padding-left: var(--wp--custom--layout--padding);
+    }
 
-.bleed-right .card-slider__main-title {
-    padding-right: var(--wp--custom--layout--padding);
+    .bleed-right .card-slider__main-title {
+        padding-right: var(--wp--custom--layout--padding);
+    }
 }
 
 .card-slider__card {
@@ -229,22 +232,20 @@
     padding-bottom: 24px;
 }
 
-.bleed-left .swiper,
-.bleed-right .swiper {
-    overflow: visible;
+/* overflow: visible only needed when slides bleed past the container edge.
+   On mobile the slider is contained, so leave overflow at its default (hidden)
+   to prevent Swiper clipping and positioning conflicts on narrow viewports. */
+@media (min-width: 768px) {
+    .bleed-left .swiper,
+    .bleed-right .swiper {
+        overflow: visible;
+    }
 }
 
-.bleed-none .swiper-wrapper {
-    justify-content: center;
-}
-
-.bleed-left .swiper-wrapper {
-    justify-content: flex-start;
-}
-
-.bleed-right .swiper-wrapper {
-    justify-content: flex-end;
-}
+/* Do NOT set justify-content on .swiper-wrapper for any bleed variant.
+   Swiper positions slides via translateX(); adding flex alignment on the
+   wrapper creates a position mismatch that produces touch dead zones.
+   Bleed alignment is handled by container padding/margin above. */
 
 .swiper-button-next,
 .swiper-button-prev,
@@ -259,26 +260,25 @@
     width: 100%;
 }
 
-
 .block-card-slider {
-  .swiper {
-    // Critical for trackpad gestures to work properly
-    touch-action: pan-y pinch-zoom;
-    -webkit-overflow-scrolling: touch;
+    .swiper {
+        // Critical for trackpad gestures to work properly
+        touch-action: pan-y pinch-zoom;
+        -webkit-overflow-scrolling: touch;
 
-    &-wrapper {
-      cursor: grab;
+        &-wrapper {
+            cursor: grab;
 
-      &:active {
-        cursor: grabbing;
-      }
+            &:active {
+                cursor: grabbing;
+            }
+        }
+
+        &-slide {
+            // Prevent text selection during swipe
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
     }
-
-    &-slide {
-      // Prevent text selection during swipe
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-  }
 }

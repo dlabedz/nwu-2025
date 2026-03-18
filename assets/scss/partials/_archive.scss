@@ -220,7 +220,7 @@
 		border-bottom: 1px solid var(--wp--custom--color--neutral-300);
 
 		@include media("<tablet") {
-			grid-template-columns: auto 1fr; // thumbnail inline with text
+			grid-template-columns: 1fr; // single column — everything stacks
 			gap: 12px;
 		}
 
@@ -232,8 +232,8 @@
 			flex-shrink: 0;
 
 			@include media("<tablet") {
-				width: auto;            // natural width from thumbnail
-				flex-direction: column; // stack thumbnail over date/author
+				width: 100%;
+				flex-direction: column; // stack thumbnail above date/author
 				align-items: flex-start;
 			}
 		}
@@ -259,8 +259,8 @@
 			}
 
 			@include media("<tablet") {
-				width: 132px;  // ~10% larger than previous 120px
-				height: 132px;
+				width: 100%;  // full width on mobile
+				height: auto; // aspect-ratio drives height
 			}
 		}
 
@@ -278,7 +278,7 @@
 				line-height: 25px; /* 156.25% */
 			}
 
-			.archive-item__author{
+			.archive-item__author {
 				font-size: 16.5px;
 				font-style: normal;
 				font-weight: 700;
@@ -634,7 +634,6 @@
 		background: transparent;
 		color: var(--wp--preset--color--foreground);
 		width: 260px;
-
 
 		@include media("<tablet") {
 			width: 100%;
