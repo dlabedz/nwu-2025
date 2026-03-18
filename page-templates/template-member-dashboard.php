@@ -18,9 +18,6 @@ if ( ! is_user_logged_in() ) {
 $current_user = wp_get_current_user();
 $first_name   = $current_user->first_name ? $current_user->first_name : $current_user->user_login;
 
-// Detect if CiviCRM is handling a form request
-$is_civicrm_request = isset( $_GET['civiwp'] ) && $_GET['civiwp'] === 'CiviCRM';
-
 get_header();
 ?>
 
@@ -80,11 +77,8 @@ get_header();
 				?>
 			</p>
 
-			<?php
-			// Only show the intro block on the normal dashboard view,
-			// not when CiviCRM is rendering a form — avoids triggering
-			// CiviCRM's the_content hook a second time
-			if ( ! $is_civicrm_request ) :
+			<div class="dashboard-intro">
+				<?php
 				$intro_block = get_posts( array(
 					'post_type'      => 'block_area',
 					'name'           => 'dashboard-intro',
@@ -92,13 +86,13 @@ get_header();
 					'post_status'    => 'publish',
 				) );
 
-				if ( $intro_block ) : ?>
-					<div class="dashboard-intro">
-						<?php echo do_shortcode( apply_filters( 'the_content', $intro_block[0]->post_content ) ); ?>
-					</div>
-				<?php endif;
-			endif;
-			?>
+				if ( $intro_block ) {
+					// Use do_blocks() + do_shortcode() instead of apply_filters( 'the_content', ... )
+					// to avoid triggering CiviCRM's the_content hook and rendering a duplicate form
+					echo do_shortcode( do_blocks( $intro_block[0]->post_content ) );
+				}
+				?>
+			</div>
 		</main>
 	</div>
 
