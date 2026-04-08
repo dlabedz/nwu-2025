@@ -8645,7 +8645,7 @@ afform-your-profile .af-admin-edit-form-link {
 }
 .CRM_Contribute_Form_UpdateBilling fieldset {
   border: none;
-  padding: 0;
+  padding: 0px;
   margin: 0 0 40px;
 }
 .CRM_Contribute_Form_UpdateBilling legend {
