@@ -8801,6 +8801,250 @@ afform-your-profile .af-admin-edit-form-link {
   opacity: 1;
 }
 
+.crm-profile-name-Authors_Coalition_Survey .messages.help {
+  background: var(--wp--preset--color--newsprint) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 1.5em !important;
+  margin-bottom: 40px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px !important;
+  line-height: 25px;
+  color: var(--wp--preset--color--foreground) !important;
+}
+.crm-profile-name-Authors_Coalition_Survey .messages.help p {
+  margin: 0 0 1em;
+}
+.crm-profile-name-Authors_Coalition_Survey .messages.help p:last-child {
+  margin-bottom: 0;
+}
+.crm-profile-name-Authors_Coalition_Survey .messages.help strong {
+  font-weight: 700;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-section.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding: 0;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-section.form-item .clear {
+  display: none;
+}
+.crm-profile-name-Authors_Coalition_Survey .label {
+  float: none !important;
+  width: auto !important;
+  text-align: left !important;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.crm-profile-name-Authors_Coalition_Survey .label label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--wp--preset--color--foreground);
+  display: inline;
+  margin: 0;
+}
+.crm-profile-name-Authors_Coalition_Survey .label .crm-marker {
+  color: var(--wp--preset--color--red) !important;
+  font-size: 13px;
+  line-height: 18px;
+  display: inline;
+  position: static;
+  float: none;
+  margin: 0;
+}
+.crm-profile-name-Authors_Coalition_Survey .content.edit-value,
+.crm-profile-name-Authors_Coalition_Survey .edit-value.content {
+  float: none !important;
+  width: auto !important;
+}
+.crm-profile-name-Authors_Coalition_Survey input.crm-form-text,
+.crm-profile-name-Authors_Coalition_Survey input.crm-form-date {
+  background: var(--wp--preset--color--background) !important;
+  border: 4px solid var(--wp--preset--color--foreground) !important;
+  border-radius: 0 !important;
+  color: var(--wp--preset--color--foreground) !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 18px !important;
+  line-height: 25px !important;
+  padding: 10px 14px !important;
+  width: 100% !important;
+  box-shadow: none !important;
+}
+.crm-profile-name-Authors_Coalition_Survey input.crm-form-text:focus,
+.crm-profile-name-Authors_Coalition_Survey input.crm-form-date:focus {
+  outline: 2px solid var(--wp--preset--color--blue) !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+.crm-profile-name-Authors_Coalition_Survey .helprow-pre {
+  margin-bottom: 4px !important;
+}
+.crm-profile-name-Authors_Coalition_Survey .helprow-pre .content.description {
+  font-family: "DM Mono", monospace;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--wp--preset--color--foreground);
+  opacity: 0.6;
+  display: flex;
+  gap: 0;
+  padding: 0;
+}
+.crm-profile-name-Authors_Coalition_Survey .helprow-pre .content.description hr {
+  border: none;
+  border-top: 1px solid var(--wp--preset--color--foreground);
+  opacity: 0.2;
+  margin: 8px 0 16px;
+  width: 100%;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-multiple-checkbox-radio-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-option-label-pair {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.crm-profile-name-Authors_Coalition_Survey input.crm-form-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px;
+  border: 3px solid var(--wp--preset--color--foreground) !important;
+  border-radius: 0 !important;
+  background: var(--wp--preset--color--background) !important;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  vertical-align: middle;
+}
+.crm-profile-name-Authors_Coalition_Survey input.crm-form-checkbox:checked {
+  background: var(--wp--preset--color--navy) !important;
+  border-color: var(--wp--preset--color--navy) !important;
+}
+.crm-profile-name-Authors_Coalition_Survey input.crm-form-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 6px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+.crm-profile-name-Authors_Coalition_Survey input.crm-form-checkbox:focus {
+  outline: 2px solid var(--wp--preset--color--blue) !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-option-label-pair label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16.5px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--wp--preset--color--foreground);
+  cursor: pointer;
+  margin: 0;
+}
+.crm-profile-name-Authors_Coalition_Survey #editrow-custom_137 .crm-option-label-pair {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.crm-profile-name-Authors_Coalition_Survey #editrow-custom_137 .crm-option-label-pair label {
+  font-size: 18px;
+  line-height: 25px;
+}
+.crm-profile-name-Authors_Coalition_Survey #editrow-custom_137 .edit-value.content {
+  display: flex;
+  flex-direction: column;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-option-edit-link {
+  display: none !important;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-submit-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  padding: 0;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-submit-buttons button.crm-button-type-next {
+  display: inline-block;
+  border: 4px solid var(--wp--preset--color--foreground) !important;
+  background: transparent !important;
+  color: var(--wp--preset--color--foreground) !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 16.5px !important;
+  font-weight: 900 !important;
+  line-height: 22.5px !important;
+  letter-spacing: 2.475px !important;
+  text-transform: uppercase !important;
+  padding: 12px 24px !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-submit-buttons button.crm-button-type-next .crm-i {
+  display: none;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-submit-buttons button.crm-button-type-next:hover, .crm-profile-name-Authors_Coalition_Survey .crm-submit-buttons button.crm-button-type-next:focus {
+  background: var(--wp--preset--color--foreground) !important;
+  color: #fefefe !important;
+  outline: none !important;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-submit-buttons a.button.cancel {
+  display: inline-flex;
+  align-items: center;
+  border: 4px solid var(--wp--preset--color--foreground) !important;
+  background: transparent !important;
+  color: var(--wp--preset--color--foreground) !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 16.5px !important;
+  font-weight: 900 !important;
+  line-height: 22.5px !important;
+  letter-spacing: 2.475px !important;
+  text-transform: uppercase !important;
+  padding: 12px 24px !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  opacity: 0.6;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-submit-buttons a.button.cancel span {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-submit-buttons a.button.cancel .crm-i {
+  display: none;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-submit-buttons a.button.cancel:hover, .crm-profile-name-Authors_Coalition_Survey .crm-submit-buttons a.button.cancel:focus {
+  background: var(--wp--preset--color--foreground) !important;
+  color: #fefefe !important;
+  opacity: 1;
+  text-decoration: none !important;
+}
+
 /* Width Utilities
 --------------------------------------------- */
 .u-width-full {
