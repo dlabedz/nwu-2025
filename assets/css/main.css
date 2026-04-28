@@ -8831,7 +8831,7 @@ afform-your-profile .af-admin-edit-form-link {
 @media (min-width: 768px) {
   .crm-profile-name-Authors_Coalition_Survey .crm-section {
     display: grid;
-    grid-template-columns: 1fr 110px 130px;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 0 16px;
     align-items: center;
   }
@@ -8862,9 +8862,9 @@ afform-your-profile .af-admin-edit-form-link {
 @media (min-width: 768px) {
   .crm-profile-name-Authors_Coalition_Survey .helprow-pre .content.description {
     grid-column: 2/4;
-    text-align: justify;
-    text-align-last: justify;
-    text-align: -webkit-justify;
+    text-align: left;
+    text-align-last: left;
+    text-align: -webkit-left;
   }
 }
 .crm-profile-name-Authors_Coalition_Survey .crm-section.form-item {

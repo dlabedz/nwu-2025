@@ -366,7 +366,7 @@ afform-your-profile {
         // Desktop: 3-column grid
         @include media(">=tablet") {
             display: grid;
-            grid-template-columns: 1fr 110px 130px;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 0 16px;
             align-items: center;
         }
@@ -405,9 +405,9 @@ afform-your-profile {
 
                 // Spread "Electronic" and "Paper Print" to align with each column
                 // text-align-last: justify works on a single line with two words
-                text-align: justify;
-                text-align-last: justify;
-                text-align: -webkit-justify; // Safari fallback
+                text-align: left;
+                text-align-last: left;
+                text-align: -webkit-left; // Safari fallback
             }
         }
     }
