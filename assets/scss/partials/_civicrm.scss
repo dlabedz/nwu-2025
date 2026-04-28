@@ -321,12 +321,14 @@ afform-your-profile {
 
 // ============================================================
 // Authors Coalition Survey
+// Desktop: 3-col grid — label | E checkbox | P checkbox
+// Mobile:  label stacks, checkboxes side-by-side
 // ============================================================
 
 .crm-profile-name-Authors_Coalition_Survey {
 
     // --------------------------------------------------------
-    // Intro / help text block
+    // Intro help text
     // --------------------------------------------------------
 
     .messages.help {
@@ -342,74 +344,226 @@ afform-your-profile {
 
         p {
             margin: 0 0 1em;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-
-        strong {
-            font-weight: 700;
+            &:last-child { margin-bottom: 0; }
         }
     }
 
     // --------------------------------------------------------
-    // Form sections: stacked label + input
+    // All .crm-section rows share the same grid structure —
+    // both .helprow-pre and .form-item rows
+    // --------------------------------------------------------
+
+    .crm-section {
+        // Mobile: stacked
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+
+        .clear { display: none; }
+
+        // Desktop: 3-column grid
+        @include media(">=tablet") {
+            display: grid;
+            grid-template-columns: 1fr 110px 130px;
+            gap: 0 16px;
+            align-items: center;
+        }
+    }
+
+    // --------------------------------------------------------
+    // helprow-pre rows: "Electronic   Paper Print" column headers
+    // These sit above each checkbox group as visual column labels
+    // --------------------------------------------------------
+
+    .helprow-pre {
+        padding: 24px 0 6px;
+        border-bottom: 1px solid rgba(10, 10, 10, 0.2);
+        margin-bottom: 0 !important;
+
+        .content.description {
+            // Mobile: full-width label, centered
+            width: 100%;
+            font-family: "DM Mono", monospace;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--wp--preset--color--foreground);
+            opacity: 0.65;
+            text-align: center;
+            padding: 0;
+
+            // Hide any <br> or <hr> inside the description (some rows have them)
+            br { display: none; }
+            hr { display: none; }
+
+            @include media(">=tablet") {
+                // Span only the checkbox columns (2 + 3)
+                grid-column: 2 / 4;
+
+                // Spread "Electronic" and "Paper Print" to align with each column
+                // text-align-last: justify works on a single line with two words
+                text-align: justify;
+                text-align-last: justify;
+                text-align: -webkit-justify; // Safari fallback
+            }
+        }
+    }
+
+    // --------------------------------------------------------
+    // Form-item rows (actual fields)
     // --------------------------------------------------------
 
     .crm-section.form-item {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        margin-bottom: 28px;
-        padding: 0;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(10, 10, 10, 0.12);
 
-        .clear {
-            display: none; // float clearfix not needed in flex layout
+        @include media(">=tablet") {
+            padding: 18px 0;
         }
     }
 
-    // Labels
+    // --------------------------------------------------------
+    // Label — col 1
+    // --------------------------------------------------------
+
     .label {
         float: none !important;
         width: auto !important;
         text-align: left !important;
-        display: flex;
-        align-items: baseline;
-        gap: 4px;
+        padding: 0;
+        align-self: center;
 
         label {
             font-family: "DM Sans", sans-serif;
-            font-size: 13px;
-            font-weight: 900;
-            line-height: 18px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            letter-spacing: normal;
+            text-transform: none;
             color: var(--wp--preset--color--foreground);
-            display: inline;
             margin: 0;
+            display: inline;
         }
 
         .crm-marker {
             color: var(--wp--preset--color--red) !important;
-            font-size: 13px;
-            line-height: 18px;
+            font-size: 14px;
             display: inline;
             position: static;
             float: none;
-            margin: 0;
+            margin: 0 0 0 2px;
         }
     }
 
-    // Content column
+    // --------------------------------------------------------
+    // Content wrapper
+    // Default (text inputs, single checkboxes): span both checkbox cols
+    // --------------------------------------------------------
+
     .content.edit-value,
     .edit-value.content {
         float: none !important;
         width: auto !important;
+
+        @include media(">=tablet") {
+            grid-column: 2 / 4;
+        }
+    }
+
+    // When content holds a checkbox pair, dissolve into the grid
+    // so each .crm-option-label-pair lands in its own column
+    .content.edit-value:has(.crm-multiple-checkbox-radio-options),
+    .edit-value.content:has(.crm-multiple-checkbox-radio-options) {
+        display: contents;
     }
 
     // --------------------------------------------------------
-    // Text inputs + date picker input
+    // Checkbox groups — dissolve into parent grid cols
+    // --------------------------------------------------------
+
+    .crm-multiple-checkbox-radio-options {
+        // Mobile: side-by-side flex (display:contents won't flex on mobile)
+        display: flex;
+        gap: 32px;
+        justify-content: flex-start;
+
+        @include media(">=tablet") {
+            display: contents; // children flow into grid cols 2 and 3
+        }
+    }
+
+    .crm-option-label-pair {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        // Numeric code label — keep visible, style as small mono
+        label {
+            font-family: "DM Mono", monospace;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 18px;
+            letter-spacing: 0.5px;
+            color: var(--wp--preset--color--foreground);
+            opacity: 0.65;
+            cursor: pointer;
+            margin: 0;
+        }
+    }
+
+    // --------------------------------------------------------
+    // Checkbox appearance
+    // --------------------------------------------------------
+
+    input.crm-form-checkbox {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 22px !important;
+        height: 22px !important;
+        min-width: 22px;
+        flex-shrink: 0;
+        border: 3px solid var(--wp--preset--color--foreground) !important;
+        border-radius: 0 !important;
+        background: var(--wp--preset--color--background) !important;
+        cursor: pointer;
+        position: relative;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        display: block;
+
+        &:checked {
+            background: var(--wp--preset--color--navy) !important;
+            border-color: var(--wp--preset--color--navy) !important;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 2px;
+                left: 6px;
+                width: 6px;
+                height: 11px;
+                border: 2px solid #fff;
+                border-top: none;
+                border-left: none;
+                transform: rotate(45deg);
+            }
+        }
+
+        &:focus {
+            outline: 2px solid var(--wp--preset--color--blue) !important;
+            outline-offset: 2px !important;
+            box-shadow: none !important;
+        }
+    }
+
+    // --------------------------------------------------------
+    // Text inputs (First Name, Last Name, Email, Print Name, Date)
     // --------------------------------------------------------
 
     input.crm-form-text,
@@ -433,134 +587,64 @@ afform-your-profile {
     }
 
     // --------------------------------------------------------
-    // "Electronic   Paper Print" help rows — column headers
-    // These sit above the two-column checkbox groups
-    // --------------------------------------------------------
-
-    .helprow-pre {
-        margin-bottom: 4px !important;
-
-        .content.description {
-            font-family: "DM Mono", monospace;
-            font-size: 13px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: var(--wp--preset--color--foreground);
-            opacity: 0.6;
-            display: flex;
-            gap: 0;
-            padding: 0;
-
-            // Style the hr separators in description rows
-            hr {
-                border: none;
-                border-top: 1px solid var(--wp--preset--color--foreground);
-                opacity: 0.2;
-                margin: 8px 0 16px;
-                width: 100%;
-            }
-        }
-    }
-
-    // --------------------------------------------------------
-    // Checkbox groups
-    // Two-column layout: col 1 = Electronic, col 2 = Paper Print
-    // --------------------------------------------------------
-
-    .crm-multiple-checkbox-radio-options {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px 24px;
-    }
-
-    .crm-option-label-pair {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    input.crm-form-checkbox {
-        appearance: none;
-        -webkit-appearance: none;
-        width: 20px !important;
-        height: 20px !important;
-        min-width: 20px;
-        border: 3px solid var(--wp--preset--color--foreground) !important;
-        border-radius: 0 !important;
-        background: var(--wp--preset--color--background) !important;
-        cursor: pointer;
-        position: relative;
-        flex-shrink: 0;
-        margin: 0 !important;
-        padding: 0 !important;
-        box-shadow: none !important;
-        vertical-align: middle;
-
-        &:checked {
-            background: var(--wp--preset--color--navy) !important;
-            border-color: var(--wp--preset--color--navy) !important;
-
-            &::after {
-                content: '';
-                position: absolute;
-                top: 2px;
-                left: 5px;
-                width: 6px;
-                height: 10px;
-                border: 2px solid #fff;
-                border-top: none;
-                border-left: none;
-                transform: rotate(45deg);
-            }
-        }
-
-        &:focus {
-            outline: 2px solid var(--wp--preset--color--blue) !important;
-            outline-offset: 2px !important;
-            box-shadow: none !important;
-        }
-    }
-
-    // Labels next to checkboxes — readable body size, not uppercase
-    .crm-option-label-pair label {
-        font-family: "DM Sans", sans-serif;
-        font-size: 16.5px;
-        font-weight: 400;
-        line-height: 24px;
-        letter-spacing: normal;
-        text-transform: none;
-        color: var(--wp--preset--color--foreground);
-        cursor: pointer;
-        margin: 0;
-    }
-
-    // --------------------------------------------------------
-    // Affirmation checkboxes (custom_137) — full-width, not grid
+    // Affirmation section (custom_137) — full-width, stacked
+    // Statement checkboxes, not an E/P column pair
     // --------------------------------------------------------
 
     #editrow-custom_137 {
-        .crm-option-label-pair {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 12px;
+        display: block !important;
+        padding: 20px 0;
+        border-top: 2px solid var(--wp--preset--color--foreground);
+        border-bottom: 1px solid rgba(10, 10, 10, 0.15);
+
+        .label {
+            margin-bottom: 16px;
 
             label {
-                font-size: 18px;
-                line-height: 25px;
+                font-size: 13px;
+                font-weight: 900;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                display: block;
             }
         }
 
-        // Override the two-column grid for this field
         .edit-value.content {
-            display: flex;
+            display: flex !important;
             flex-direction: column;
+            gap: 14px;
+            grid-column: auto !important;
+        }
+
+        .crm-multiple-checkbox-radio-options {
+            display: flex !important;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .crm-option-label-pair {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: flex-start !important;
+            align-items: flex-start;
+            gap: 12px;
+
+            label {
+                font-family: "DM Sans", sans-serif !important;
+                font-size: 16.5px !important;
+                font-weight: 400 !important;
+                line-height: 24px !important;
+                letter-spacing: normal !important;
+                text-transform: none !important;
+                opacity: 1 !important;
+                text-align: left !important;
+                cursor: pointer;
+            }
         }
     }
 
     // --------------------------------------------------------
-    // Hide admin-only wrench edit links from public view
+    // Hide admin wrench links
     // --------------------------------------------------------
 
     .crm-option-edit-link {
@@ -568,7 +652,7 @@ afform-your-profile {
     }
 
     // --------------------------------------------------------
-    // Submit buttons
+    // Submit + Cancel buttons
     // --------------------------------------------------------
 
     .crm-submit-buttons {
@@ -578,7 +662,6 @@ afform-your-profile {
         margin-top: 40px;
         padding: 0;
 
-        // Submit — NWU Default button style
         button.crm-button-type-next {
             display: inline-block;
             border: 4px solid var(--wp--preset--color--foreground) !important;
@@ -595,9 +678,7 @@ afform-your-profile {
             box-shadow: none !important;
             cursor: pointer !important;
 
-            .crm-i {
-                display: none; // hide the fa-check icon
-            }
+            .crm-i { display: none; }
 
             &:hover,
             &:focus {
@@ -607,7 +688,6 @@ afform-your-profile {
             }
         }
 
-        // Cancel — same border style, reduced opacity
         a.button.cancel {
             display: inline-flex;
             align-items: center;
@@ -622,19 +702,10 @@ afform-your-profile {
             text-transform: uppercase !important;
             padding: 12px 24px !important;
             border-radius: 0 !important;
-            box-shadow: none !important;
             text-decoration: none !important;
             opacity: 0.6;
 
-            span {
-                display: flex;
-                align-items: center;
-                gap: 0;
-            }
-
-            .crm-i {
-                display: none; // hide the fa-times icon
-            }
+            .crm-i { display: none; }
 
             &:hover,
             &:focus {

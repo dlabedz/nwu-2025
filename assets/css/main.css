@@ -8818,51 +8818,170 @@ afform-your-profile .af-admin-edit-form-link {
 .crm-profile-name-Authors_Coalition_Survey .messages.help p:last-child {
   margin-bottom: 0;
 }
-.crm-profile-name-Authors_Coalition_Survey .messages.help strong {
-  font-weight: 700;
-}
-.crm-profile-name-Authors_Coalition_Survey .crm-section.form-item {
+.crm-profile-name-Authors_Coalition_Survey .crm-section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 28px;
+  gap: 12px;
+  margin: 0;
   padding: 0;
 }
-.crm-profile-name-Authors_Coalition_Survey .crm-section.form-item .clear {
+.crm-profile-name-Authors_Coalition_Survey .crm-section .clear {
   display: none;
+}
+@media (min-width: 768px) {
+  .crm-profile-name-Authors_Coalition_Survey .crm-section {
+    display: grid;
+    grid-template-columns: 1fr 110px 130px;
+    gap: 0 16px;
+    align-items: center;
+  }
+}
+.crm-profile-name-Authors_Coalition_Survey .helprow-pre {
+  padding: 24px 0 6px;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.2);
+  margin-bottom: 0 !important;
+}
+.crm-profile-name-Authors_Coalition_Survey .helprow-pre .content.description {
+  width: 100%;
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--wp--preset--color--foreground);
+  opacity: 0.65;
+  text-align: center;
+  padding: 0;
+}
+.crm-profile-name-Authors_Coalition_Survey .helprow-pre .content.description br {
+  display: none;
+}
+.crm-profile-name-Authors_Coalition_Survey .helprow-pre .content.description hr {
+  display: none;
+}
+@media (min-width: 768px) {
+  .crm-profile-name-Authors_Coalition_Survey .helprow-pre .content.description {
+    grid-column: 2/4;
+    text-align: justify;
+    text-align-last: justify;
+    text-align: -webkit-justify;
+  }
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-section.form-item {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.12);
+}
+@media (min-width: 768px) {
+  .crm-profile-name-Authors_Coalition_Survey .crm-section.form-item {
+    padding: 18px 0;
+  }
 }
 .crm-profile-name-Authors_Coalition_Survey .label {
   float: none !important;
   width: auto !important;
   text-align: left !important;
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
+  padding: 0;
+  align-self: center;
 }
 .crm-profile-name-Authors_Coalition_Survey .label label {
   font-family: "DM Sans", sans-serif;
-  font-size: 13px;
-  font-weight: 900;
-  line-height: 18px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: normal;
+  text-transform: none;
   color: var(--wp--preset--color--foreground);
-  display: inline;
   margin: 0;
+  display: inline;
 }
 .crm-profile-name-Authors_Coalition_Survey .label .crm-marker {
   color: var(--wp--preset--color--red) !important;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 14px;
   display: inline;
   position: static;
   float: none;
-  margin: 0;
+  margin: 0 0 0 2px;
 }
 .crm-profile-name-Authors_Coalition_Survey .content.edit-value,
 .crm-profile-name-Authors_Coalition_Survey .edit-value.content {
   float: none !important;
   width: auto !important;
+}
+@media (min-width: 768px) {
+  .crm-profile-name-Authors_Coalition_Survey .content.edit-value,
+  .crm-profile-name-Authors_Coalition_Survey .edit-value.content {
+    grid-column: 2/4;
+  }
+}
+.crm-profile-name-Authors_Coalition_Survey .content.edit-value:has(.crm-multiple-checkbox-radio-options),
+.crm-profile-name-Authors_Coalition_Survey .edit-value.content:has(.crm-multiple-checkbox-radio-options) {
+  display: contents;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-multiple-checkbox-radio-options {
+  display: flex;
+  gap: 32px;
+  justify-content: flex-start;
+}
+@media (min-width: 768px) {
+  .crm-profile-name-Authors_Coalition_Survey .crm-multiple-checkbox-radio-options {
+    display: contents;
+  }
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-option-label-pair {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.crm-profile-name-Authors_Coalition_Survey .crm-option-label-pair label {
+  font-family: "DM Mono", monospace;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  color: var(--wp--preset--color--foreground);
+  opacity: 0.65;
+  cursor: pointer;
+  margin: 0;
+}
+.crm-profile-name-Authors_Coalition_Survey input.crm-form-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px;
+  flex-shrink: 0;
+  border: 3px solid var(--wp--preset--color--foreground) !important;
+  border-radius: 0 !important;
+  background: var(--wp--preset--color--background) !important;
+  cursor: pointer;
+  position: relative;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  display: block;
+}
+.crm-profile-name-Authors_Coalition_Survey input.crm-form-checkbox:checked {
+  background: var(--wp--preset--color--navy) !important;
+  border-color: var(--wp--preset--color--navy) !important;
+}
+.crm-profile-name-Authors_Coalition_Survey input.crm-form-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 6px;
+  height: 11px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+.crm-profile-name-Authors_Coalition_Survey input.crm-form-checkbox:focus {
+  outline: 2px solid var(--wp--preset--color--blue) !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
 }
 .crm-profile-name-Authors_Coalition_Survey input.crm-form-text,
 .crm-profile-name-Authors_Coalition_Survey input.crm-form-date {
@@ -8883,100 +9002,50 @@ afform-your-profile .af-admin-edit-form-link {
   outline-offset: 2px !important;
   box-shadow: none !important;
 }
-.crm-profile-name-Authors_Coalition_Survey .helprow-pre {
-  margin-bottom: 4px !important;
+.crm-profile-name-Authors_Coalition_Survey #editrow-custom_137 {
+  display: block !important;
+  padding: 20px 0;
+  border-top: 2px solid var(--wp--preset--color--foreground);
+  border-bottom: 1px solid rgba(10, 10, 10, 0.15);
 }
-.crm-profile-name-Authors_Coalition_Survey .helprow-pre .content.description {
-  font-family: "DM Mono", monospace;
+.crm-profile-name-Authors_Coalition_Survey #editrow-custom_137 .label {
+  margin-bottom: 16px;
+}
+.crm-profile-name-Authors_Coalition_Survey #editrow-custom_137 .label label {
   font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
+  font-weight: 900;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--wp--preset--color--foreground);
-  opacity: 0.6;
-  display: flex;
-  gap: 0;
-  padding: 0;
-}
-.crm-profile-name-Authors_Coalition_Survey .helprow-pre .content.description hr {
-  border: none;
-  border-top: 1px solid var(--wp--preset--color--foreground);
-  opacity: 0.2;
-  margin: 8px 0 16px;
-  width: 100%;
-}
-.crm-profile-name-Authors_Coalition_Survey .crm-multiple-checkbox-radio-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px 24px;
-}
-.crm-profile-name-Authors_Coalition_Survey .crm-option-label-pair {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.crm-profile-name-Authors_Coalition_Survey input.crm-form-checkbox {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 20px !important;
-  height: 20px !important;
-  min-width: 20px;
-  border: 3px solid var(--wp--preset--color--foreground) !important;
-  border-radius: 0 !important;
-  background: var(--wp--preset--color--background) !important;
-  cursor: pointer;
-  position: relative;
-  flex-shrink: 0;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-  vertical-align: middle;
-}
-.crm-profile-name-Authors_Coalition_Survey input.crm-form-checkbox:checked {
-  background: var(--wp--preset--color--navy) !important;
-  border-color: var(--wp--preset--color--navy) !important;
-}
-.crm-profile-name-Authors_Coalition_Survey input.crm-form-checkbox:checked::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 5px;
-  width: 6px;
-  height: 10px;
-  border: 2px solid #fff;
-  border-top: none;
-  border-left: none;
-  transform: rotate(45deg);
-}
-.crm-profile-name-Authors_Coalition_Survey input.crm-form-checkbox:focus {
-  outline: 2px solid var(--wp--preset--color--blue) !important;
-  outline-offset: 2px !important;
-  box-shadow: none !important;
-}
-.crm-profile-name-Authors_Coalition_Survey .crm-option-label-pair label {
-  font-family: "DM Sans", sans-serif;
-  font-size: 16.5px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: normal;
-  text-transform: none;
-  color: var(--wp--preset--color--foreground);
-  cursor: pointer;
-  margin: 0;
-}
-.crm-profile-name-Authors_Coalition_Survey #editrow-custom_137 .crm-option-label-pair {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-.crm-profile-name-Authors_Coalition_Survey #editrow-custom_137 .crm-option-label-pair label {
-  font-size: 18px;
-  line-height: 25px;
+  display: block;
 }
 .crm-profile-name-Authors_Coalition_Survey #editrow-custom_137 .edit-value.content {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
+  gap: 14px;
+  grid-column: auto !important;
+}
+.crm-profile-name-Authors_Coalition_Survey #editrow-custom_137 .crm-multiple-checkbox-radio-options {
+  display: flex !important;
+  flex-direction: column;
+  gap: 14px;
+}
+.crm-profile-name-Authors_Coalition_Survey #editrow-custom_137 .crm-option-label-pair {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  align-items: flex-start;
+  gap: 12px;
+}
+.crm-profile-name-Authors_Coalition_Survey #editrow-custom_137 .crm-option-label-pair label {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 16.5px !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  opacity: 1 !important;
+  text-align: left !important;
+  cursor: pointer;
 }
 .crm-profile-name-Authors_Coalition_Survey .crm-option-edit-link {
   display: none !important;
@@ -9026,14 +9095,8 @@ afform-your-profile .af-admin-edit-form-link {
   text-transform: uppercase !important;
   padding: 12px 24px !important;
   border-radius: 0 !important;
-  box-shadow: none !important;
   text-decoration: none !important;
   opacity: 0.6;
-}
-.crm-profile-name-Authors_Coalition_Survey .crm-submit-buttons a.button.cancel span {
-  display: flex;
-  align-items: center;
-  gap: 0;
 }
 .crm-profile-name-Authors_Coalition_Survey .crm-submit-buttons a.button.cancel .crm-i {
   display: none;
