@@ -1254,7 +1254,7 @@ af-field.ng-isolate-scope.af-field-type-email {
   width: 100% !important;
 }
 
-/* SELECT2 DROPDOWN STYLING - 1px border */
+/* SELECT2 DROPDOWN STYLING - 4px border */
 .select2-container,
 div[id^=s2id_] {
   width: 100% !important;
@@ -1268,7 +1268,7 @@ div[id^=s2id_] .select2-choice {
   height: 50px !important;
   line-height: 48px !important;
   padding: 0 12px !important;
-  border: 1px solid var(--wp--preset--color--black) !important;
+  border: 4px solid var(--wp--preset--color--black) !important;
   border-radius: 0 !important;
   background: white !important;
   background-image: none !important;
@@ -1278,7 +1278,7 @@ div[id^=s2id_] .select2-choice {
 }
 .select2-container .select2-choice .select2-arrow,
 div[id^=s2id_] .select2-choice .select2-arrow {
-  border-left: 1px solid var(--wp--preset--color--black) !important;
+  border-left: 4px solid var(--wp--preset--color--black) !important;
   background: transparent !important;
   width: 40px;
   height: 48px !important;
@@ -1300,7 +1300,7 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
 }
 
 .select2-drop {
-  border: 1px solid var(--wp--preset--color--black) !important;
+  border: 4px solid var(--wp--preset--color--black) !important;
   border-radius: 0 !important;
   margin-top: -1px;
 }
@@ -1404,7 +1404,7 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
 .crm-contribution-page-id-27.crm-block.crm-contribution-main-form-block select.form-control,
 .crm-contribution-page-id-27.crm-block.crm-contribution-main-form-block select.crm-form-select {
   height: 50px !important;
-  border: 1px solid var(--wp--preset--color--black) !important;
+  border: 4px solid var(--wp--preset--color--black) !important;
   border-radius: 0 !important;
   background: white !important;
   font-family: "DM Sans" !important;
@@ -1913,6 +1913,10 @@ div[id^=s2id_] .select2-choice .select2-arrow b {
   margin-bottom: 20px;
   border: 0;
   border-top: 1px solid var(--wp--preset--color--black) !important;
+}
+
+p.form-align-right {
+  text-align: right !important;
 }
 
 /* Site Header
@@ -8559,7 +8563,6 @@ body.page-civicrm .site-inner {
 /* CiviCRM Global - Fix Bootstrap overflow
 --------------------------------------------- */
 #crm-container.crm-container {
-  max-width: 100%;
   box-sizing: border-box;
 }
 #crm-container.crm-container .row {
@@ -9106,6 +9109,24 @@ afform-your-profile .af-admin-edit-form-link {
   color: #fefefe !important;
   opacity: 1;
   text-decoration: none !important;
+}
+
+.form-align-right {
+  text-align: right !important;
+}
+
+.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
+afform-translators-rate-sharing-survey-page3) {
+  background-color: var(--wp--preset--color--newsprint);
+  padding: var(--wp--custom--layout--block-gap-large) var(--site-padding);
+}
+.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
+afform-translators-rate-sharing-survey-page3) #crm-main-content-wrapper,
+.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
+afform-translators-rate-sharing-survey-page3) form#bootstrap-theme {
+  max-width: var(--wp--custom--layout--page);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Width Utilities

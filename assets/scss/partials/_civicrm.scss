@@ -18,7 +18,6 @@ body.page-civicrm {
 --------------------------------------------- */
 
 #crm-container.crm-container {
-	max-width: 100%;
 	box-sizing: border-box;
 
 	// Fix Bootstrap 3 negative margins bleeding outside theme layout
@@ -715,5 +714,34 @@ afform-your-profile {
                 text-decoration: none !important;
             }
         }
+    }
+}
+
+
+    // --------------------------------------------------------
+    // Translators Rate Sharing Survey Styles
+    // --------------------------------------------------------
+
+	.form-align-right {
+    text-align: right !important;
+}
+
+
+// ============================================================
+// Translators Rate Sharing Survey — Pages 2 & 3
+// ============================================================
+
+.entry-content > #crm-container.crm-container.crm-public:has(
+    afform-translators-rate-sharing-survey-copy,
+    afform-translators-rate-sharing-survey-page3
+) {
+    background-color: var(--wp--preset--color--newsprint);
+    padding: var(--wp--custom--layout--block-gap-large) var(--site-padding);
+
+    #crm-main-content-wrapper,
+    form#bootstrap-theme {
+        max-width: var(--wp--custom--layout--page);
+        margin-left: auto;
+        margin-right: auto;
     }
 }

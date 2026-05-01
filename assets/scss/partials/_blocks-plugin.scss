@@ -463,7 +463,7 @@ af-field.ng-isolate-scope {
 	}
 }
 
-/* SELECT2 DROPDOWN STYLING - 1px border */
+/* SELECT2 DROPDOWN STYLING - 4px border */
 .select2-container,
 div[id^="s2id_"] {
 	width: 100% !important;
@@ -476,7 +476,7 @@ div[id^="s2id_"] {
 		height: 50px !important;
 		line-height: 48px !important;
 		padding: 0 12px !important;
-		border: 1px solid var(--wp--preset--color--black) !important;
+		border: 4px solid var(--wp--preset--color--black) !important;
 		border-radius: 0 !important;
 		background: white !important;
 		background-image: none !important;
@@ -485,7 +485,7 @@ div[id^="s2id_"] {
 		color: var(--wp--preset--color--black) !important;
 
 		.select2-arrow {
-			border-left: 1px solid var(--wp--preset--color--black) !important;
+			border-left: 4px solid var(--wp--preset--color--black) !important;
 			background: transparent !important;
 			width: 40px;
 			height: 48px !important;
@@ -509,7 +509,7 @@ div[id^="s2id_"] {
 }
 
 .select2-drop {
-	border: 1px solid var(--wp--preset--color--black) !important;
+	border: 4px solid var(--wp--preset--color--black) !important;
 	border-radius: 0 !important;
 	margin-top: -1px;
 
@@ -620,7 +620,7 @@ div[id^="s2id_"] {
 	select.form-control,
 	select.crm-form-select {
 		height: 50px !important;
-		border: 1px solid var(--wp--preset--color--black) !important;
+		border: 4px solid var(--wp--preset--color--black) !important;
 		border-radius: 0 !important;
 		background: white !important;
 		font-family: "DM Sans" !important;
@@ -1192,4 +1192,9 @@ div[id^="s2id_"] {
 		border: 0;
 		border-top: 1px solid var(--wp--preset--color--black) !important;
 	}
+}
+
+
+p.form-align-right {
+    text-align: right !important;
 }
