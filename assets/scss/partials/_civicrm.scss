@@ -731,12 +731,17 @@ afform-your-profile {
 // Translators Rate Sharing Survey — Pages 2 & 3
 // ============================================================
 
-.entry-content > #crm-container.crm-container.crm-public:has(
+#crm-container.crm-container.crm-public:has(
     afform-translators-rate-sharing-survey-copy,
     afform-translators-rate-sharing-survey-page3
 ) {
     background-color: var(--wp--preset--color--newsprint);
-    padding: var(--wp--custom--layout--block-gap-large) var(--site-padding);
+
+    // Break out to full viewport width
+    width: 100vw;
+    margin-left: calc(-1 * var(--wp--custom--layout--padding));
+    margin-right: calc(-1 * var(--wp--custom--layout--padding));
+    padding: var(--wp--custom--layout--block-gap-large) var(--wp--custom--layout--padding);
 
     #crm-main-content-wrapper,
     form#bootstrap-theme {
