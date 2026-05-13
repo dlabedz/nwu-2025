@@ -157,8 +157,6 @@ afform-your-profile {
 			width: auto;
 			text-align: left;
 			margin-bottom: 6px;
-
-			// Keep label and required asterisk on the same line
 			display: flex;
 			align-items: baseline;
 			gap: 4px;
@@ -174,7 +172,6 @@ afform-your-profile {
 				display: inline;
 			}
 
-			// Required asterisk — inline, no line break
 			.crm-marker {
 				color: var(--wp--preset--color--red);
 				font-size: 13px;
@@ -196,12 +193,10 @@ afform-your-profile {
 		}
 	}
 
-	// Remove crm-marker from default position (it's now handled in .label)
 	.crm-marker {
 		color: var(--wp--preset--color--red) !important;
 	}
 
-	// Text inputs
 	input.crm-form-text {
 		background: var(--wp--preset--color--background) !important;
 		border: 4px solid var(--wp--preset--color--foreground) !important;
@@ -220,7 +215,6 @@ afform-your-profile {
 		}
 	}
 
-	// Select dropdowns (native)
 	select.crm-form-select {
 		background: var(--wp--preset--color--background) !important;
 		border: 4px solid var(--wp--preset--color--foreground) !important;
@@ -235,7 +229,6 @@ afform-your-profile {
 		box-shadow: none !important;
 	}
 
-	// Select2 containers (Country, State)
 	.select2-container {
 		width: 100% !important;
 
@@ -253,7 +246,6 @@ afform-your-profile {
 		}
 	}
 
-	// Submit buttons
 	.crm-submit-buttons {
 		display: flex;
 		gap: 16px;
@@ -276,9 +268,7 @@ afform-your-profile {
 			box-shadow: none !important;
 			cursor: pointer !important;
 
-			.crm-i {
-				display: none;
-			}
+			.crm-i { display: none; }
 
 			&:hover,
 			&:focus {
@@ -304,9 +294,7 @@ afform-your-profile {
 			cursor: pointer !important;
 			opacity: 0.6;
 
-			.crm-i {
-				display: none;
-			}
+			.crm-i { display: none; }
 
 			&:hover,
 			&:focus {
@@ -331,10 +319,6 @@ afform-your-profile {
 
 .crm-profile-name-Authors_Coalition_Survey {
 
-	// --------------------------------------------------------
-	// Intro help text
-	// --------------------------------------------------------
-
 	.messages.help {
 		background: var(--wp--preset--color--newsprint) !important;
 		border: none !important;
@@ -352,13 +336,8 @@ afform-your-profile {
 		}
 	}
 
-	// --------------------------------------------------------
-	// All .crm-section rows share the same grid structure —
-	// both .helprow-pre and .form-item rows
-	// --------------------------------------------------------
-
+	// All .crm-section rows share the same grid structure
 	.crm-section {
-		// Mobile: stacked
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
@@ -367,7 +346,6 @@ afform-your-profile {
 
 		.clear { display: none; }
 
-		// Desktop: 3-column grid
 		@include media(">=tablet") {
 			display: grid;
 			grid-template-columns: 1fr 110px 130px;
@@ -376,13 +354,7 @@ afform-your-profile {
 		}
 	}
 
-	// --------------------------------------------------------
-	// helprow-pre rows: "Electronic   Paper Print" column headers
-	// Sits above each checkbox group as a visual column label.
-	// text-align-last: justify spreads the two words across the
-	// content area to roughly align with the checkbox columns.
-	// --------------------------------------------------------
-
+	// "Electronic   Paper Print" column header rows
 	.helprow-pre {
 		padding: 24px 0 6px;
 		border-bottom: 1px solid rgba(10, 10, 10, 0.2);
@@ -411,10 +383,6 @@ afform-your-profile {
 		}
 	}
 
-	// --------------------------------------------------------
-	// Form-item rows (actual fields)
-	// --------------------------------------------------------
-
 	.crm-section.form-item {
 		padding: 16px 0;
 		border-bottom: 1px solid rgba(10, 10, 10, 0.12);
@@ -423,10 +391,6 @@ afform-your-profile {
 			padding: 18px 0;
 		}
 	}
-
-	// --------------------------------------------------------
-	// Label — col 1
-	// --------------------------------------------------------
 
 	.label {
 		float: none !important;
@@ -457,11 +421,6 @@ afform-your-profile {
 		}
 	}
 
-	// --------------------------------------------------------
-	// Content wrapper
-	// Default (text inputs): span both checkbox cols on desktop
-	// --------------------------------------------------------
-
 	.content.edit-value,
 	.edit-value.content {
 		float: none !important;
@@ -472,25 +431,18 @@ afform-your-profile {
 		}
 	}
 
-	// When content holds a checkbox pair, dissolve into the grid
-	// so each .crm-option-label-pair lands in its own column
 	.content.edit-value:has(.crm-multiple-checkbox-radio-options),
 	.edit-value.content:has(.crm-multiple-checkbox-radio-options) {
 		display: contents;
 	}
 
-	// --------------------------------------------------------
-	// Checkbox groups — dissolve into parent grid cols on desktop
-	// --------------------------------------------------------
-
 	.crm-multiple-checkbox-radio-options {
-		// Mobile: side-by-side flex
 		display: flex;
 		gap: 32px;
 		justify-content: flex-start;
 
 		@include media(">=tablet") {
-			display: contents; // children flow into grid cols 2 and 3
+			display: contents;
 		}
 	}
 
@@ -501,7 +453,6 @@ afform-your-profile {
 		justify-content: center;
 		gap: 8px;
 
-		// Numeric code label — keep visible, style as small mono
 		label {
 			font-family: "DM Mono", monospace;
 			font-size: 13px;
@@ -514,10 +465,6 @@ afform-your-profile {
 			margin: 0;
 		}
 	}
-
-	// --------------------------------------------------------
-	// Checkbox appearance
-	// --------------------------------------------------------
 
 	input.crm-form-checkbox {
 		appearance: none;
@@ -561,10 +508,6 @@ afform-your-profile {
 		}
 	}
 
-	// --------------------------------------------------------
-	// Text inputs (First Name, Last Name, Email, Print Name, Date)
-	// --------------------------------------------------------
-
 	input.crm-form-text,
 	input.crm-form-date {
 		background: var(--wp--preset--color--background) !important;
@@ -585,11 +528,7 @@ afform-your-profile {
 		}
 	}
 
-	// --------------------------------------------------------
-	// Affirmation section (custom_137) — full-width, stacked
-	// Statement checkboxes, not an E/P column pair
-	// --------------------------------------------------------
-
+	// Affirmation section (custom_137) — full-width stacked, not E/P columns
 	#editrow-custom_137 {
 		display: block !important;
 		padding: 20px 0;
@@ -642,17 +581,9 @@ afform-your-profile {
 		}
 	}
 
-	// --------------------------------------------------------
-	// Hide admin wrench links from public view
-	// --------------------------------------------------------
-
 	.crm-option-edit-link {
 		display: none !important;
 	}
-
-	// --------------------------------------------------------
-	// Submit + Cancel buttons
-	// --------------------------------------------------------
 
 	.crm-submit-buttons {
 		display: flex;
@@ -719,34 +650,26 @@ afform-your-profile {
 
 // ============================================================
 // Translators Rate Sharing Survey — Pages 2 & 3
-// Afform (Angular) — fixes af-field stacking, Select2 width,
-// checkbox list layout, radio inline stacking
+// Anchored through form#bootstrap-theme to override Bootstrap
+// which scopes its own styles to that same ID.
+// Root cause of checkbox/radio overlap: CiviCRM sets a
+// max-height on .crm-container ul.crm-checkbox-list which
+// clips the list and causes visual overflow into adjacent sections.
 // ============================================================
 
-.entry-content > #crm-container.crm-container.crm-public:has(
-	afform-translators-rate-sharing-survey-copy,
-	afform-translators-rate-sharing-survey-page3
-) {
-	padding: var(--wp--custom--layout--block-gap-large) var(--site-padding);
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 {
 
-	#crm-main-content-wrapper,
-	form#bootstrap-theme {
-		max-width: var(--wp--custom--layout--page);
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	// af-field is a custom Angular element — browsers treat unknown
-	// elements as display:inline, causing sections to run into each other
+	// af-field is an Angular custom element — display:inline by default
 	af-field {
-		display: block;
+		display: block !important;
 		margin-bottom: 28px;
 		width: 100%;
 	}
 
 	// Field labels
 	label.crm-af-field-label {
-		display: block;
+		display: block !important;
 		font-family: "DM Sans", sans-serif;
 		font-size: 13px;
 		font-weight: 900;
@@ -757,7 +680,7 @@ afform-your-profile {
 		margin-bottom: 8px;
 	}
 
-	// Help text (below label, above input)
+	// Help text
 	p.crm-af-field-help-pre {
 		font-family: "DM Sans", sans-serif;
 		font-size: 15px;
@@ -789,7 +712,7 @@ afform-your-profile {
 		}
 	}
 
-	// Select2 — override the hardcoded inline width: 988px CiviCRM sets
+	// Select2 — overrides the hardcoded inline width: 988px
 	.select2-container {
 		width: 100% !important;
 		display: block;
@@ -808,37 +731,41 @@ afform-your-profile {
 		}
 	}
 
-	// Checkbox list — stack items vertically
+	// Checkbox list — fix overlap caused by CiviCRM's max-height
+	// on .crm-container ul.crm-checkbox-list clipping the list
+	// and causing visual overflow into adjacent sections
 	ul.crm-checkbox-list {
-		list-style: none;
-		margin: 0;
-		padding: 0;
+		list-style: none !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		max-height: none !important;
+		overflow: visible !important;
 
 		li {
-			display: flex;
+			display: flex !important;
 			align-items: flex-start;
 			gap: 10px;
 			padding: 6px 0;
 			margin: 0;
 
 			label {
-				font-family: "DM Sans", sans-serif;
-				font-size: 16.5px;
-				font-weight: 400;
-				line-height: 24px;
-				letter-spacing: normal;
-				text-transform: none;
-				color: var(--wp--preset--color--foreground);
+				font-family: "DM Sans", sans-serif !important;
+				font-size: 16.5px !important;
+				font-weight: 400 !important;
+				line-height: 24px !important;
+				letter-spacing: normal !important;
+				text-transform: none !important;
+				color: var(--wp--preset--color--foreground) !important;
 				cursor: pointer;
-				margin: 0;
+				margin: 0 !important;
 				flex: 1;
 			}
 		}
 	}
 
 	ul.crm-checkbox-list input[type="checkbox"] {
-		appearance: none;
-		-webkit-appearance: none;
+		appearance: none !important;
+		-webkit-appearance: none !important;
 		width: 22px !important;
 		height: 22px !important;
 		min-width: 22px;
@@ -877,28 +804,28 @@ afform-your-profile {
 		}
 	}
 
-	// Radio buttons — Bootstrap's .radio-inline makes these inline-block,
-	// causing overflow and visual overlap with adjacent sections.
-	// Stack them vertically.
-	.crm-af-field label.radio-inline {
-		display: flex;
+	// Radio buttons — Bootstrap .radio-inline forces inline-block,
+	// stacking all options horizontally and overflowing into adjacent sections
+	label.radio-inline {
+		display: flex !important;
+		flex-direction: row;
 		align-items: center;
 		gap: 10px;
-		padding: 6px 0;
-		margin: 0;
+		padding: 6px 0 !important;
+		margin: 0 !important;
 		cursor: pointer;
-		font-family: "DM Sans", sans-serif;
-		font-size: 16.5px;
-		font-weight: 400;
-		line-height: 24px;
-		letter-spacing: normal;
-		text-transform: none;
-		color: var(--wp--preset--color--foreground);
+		font-family: "DM Sans", sans-serif !important;
+		font-size: 16.5px !important;
+		font-weight: 400 !important;
+		line-height: 24px !important;
+		letter-spacing: normal !important;
+		text-transform: none !important;
+		color: var(--wp--preset--color--foreground) !important;
 	}
 
 	input.crm-form-radio {
-		appearance: none;
-		-webkit-appearance: none;
+		appearance: none !important;
+		-webkit-appearance: none !important;
 		width: 22px !important;
 		height: 22px !important;
 		min-width: 22px;
@@ -936,11 +863,11 @@ afform-your-profile {
 		}
 	}
 
-	// Fieldset / legend (Rate Share 1 section header)
+	// Fieldset / legend
 	fieldset.af-container {
-		border: none;
-		padding: 0;
-		margin: 0 0 40px;
+		border: none !important;
+		padding: 0 !important;
+		margin: 0 0 40px !important;
 
 		legend.af-title {
 			font-family: "Oswald", sans-serif;
@@ -958,7 +885,7 @@ afform-your-profile {
 
 	// Submit button
 	button.af-button.btn.btn-primary {
-		display: inline-block;
+		display: inline-block !important;
 		border: 4px solid var(--wp--preset--color--foreground) !important;
 		background: transparent !important;
 		color: var(--wp--preset--color--foreground) !important;
@@ -986,6 +913,6 @@ afform-your-profile {
 
 	// Hide admin gear/configure dropdown from public view
 	.af-admin-edit-form-link {
-		display: none;
+		display: none !important;
 	}
 }

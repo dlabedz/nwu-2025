@@ -9110,27 +9110,15 @@ afform-your-profile .af-admin-edit-form-link {
   text-decoration: none !important;
 }
 
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) {
-  padding: var(--wp--custom--layout--block-gap-large) var(--site-padding);
-}
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) #crm-main-content-wrapper,
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) form#bootstrap-theme {
-  max-width: var(--wp--custom--layout--page);
-  margin-left: auto;
-  margin-right: auto;
-}
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) af-field {
-  display: block;
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy af-field,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 af-field {
+  display: block !important;
   margin-bottom: 28px;
   width: 100%;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) label.crm-af-field-label {
-  display: block;
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy label.crm-af-field-label,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 label.crm-af-field-label {
+  display: block !important;
   font-family: "DM Sans", sans-serif;
   font-size: 13px;
   font-weight: 900;
@@ -9140,8 +9128,8 @@ afform-translators-rate-sharing-survey-page3) label.crm-af-field-label {
   color: var(--wp--preset--color--foreground);
   margin-bottom: 8px;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) p.crm-af-field-help-pre {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy p.crm-af-field-help-pre,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 p.crm-af-field-help-pre {
   font-family: "DM Sans", sans-serif;
   font-size: 15px;
   font-weight: 400;
@@ -9150,8 +9138,8 @@ afform-translators-rate-sharing-survey-page3) p.crm-af-field-help-pre {
   opacity: 0.75;
   margin: 0 0 10px;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) input.form-control {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy input.form-control,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 input.form-control {
   background: var(--wp--preset--color--background) !important;
   border: 4px solid var(--wp--preset--color--foreground) !important;
   border-radius: 0 !important;
@@ -9164,19 +9152,19 @@ afform-translators-rate-sharing-survey-page3) input.form-control {
   box-shadow: none !important;
   height: auto !important;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) input.form-control:focus {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy input.form-control:focus,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 input.form-control:focus {
   outline: 2px solid var(--wp--preset--color--blue) !important;
   outline-offset: 2px !important;
   box-shadow: none !important;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) .select2-container {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy .select2-container,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 .select2-container {
   width: 100% !important;
   display: block;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) .select2-container .select2-choice {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy .select2-container .select2-choice,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 .select2-container .select2-choice {
   background: var(--wp--preset--color--background) !important;
   border: 4px solid var(--wp--preset--color--foreground) !important;
   border-radius: 0 !important;
@@ -9188,37 +9176,39 @@ afform-translators-rate-sharing-survey-page3) .select2-container .select2-choice
   line-height: 25px !important;
   box-shadow: none !important;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) ul.crm-checkbox-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy ul.crm-checkbox-list,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 ul.crm-checkbox-list {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) ul.crm-checkbox-list li {
-  display: flex;
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy ul.crm-checkbox-list li,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 ul.crm-checkbox-list li {
+  display: flex !important;
   align-items: flex-start;
   gap: 10px;
   padding: 6px 0;
   margin: 0;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) ul.crm-checkbox-list li label {
-  font-family: "DM Sans", sans-serif;
-  font-size: 16.5px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: normal;
-  text-transform: none;
-  color: var(--wp--preset--color--foreground);
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy ul.crm-checkbox-list li label,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 ul.crm-checkbox-list li label {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 16.5px !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  color: var(--wp--preset--color--foreground) !important;
   cursor: pointer;
-  margin: 0;
+  margin: 0 !important;
   flex: 1;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) ul.crm-checkbox-list input[type=checkbox] {
-  appearance: none;
-  -webkit-appearance: none;
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy ul.crm-checkbox-list input[type=checkbox],
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 ul.crm-checkbox-list input[type=checkbox] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
   width: 22px !important;
   height: 22px !important;
   min-width: 22px;
@@ -9232,13 +9222,13 @@ afform-translators-rate-sharing-survey-page3) ul.crm-checkbox-list input[type=ch
   padding: 0 !important;
   box-shadow: none !important;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) ul.crm-checkbox-list input[type=checkbox]:checked {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy ul.crm-checkbox-list input[type=checkbox]:checked,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 ul.crm-checkbox-list input[type=checkbox]:checked {
   background: var(--wp--preset--color--navy) !important;
   border-color: var(--wp--preset--color--navy) !important;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) ul.crm-checkbox-list input[type=checkbox]:checked::after {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy ul.crm-checkbox-list input[type=checkbox]:checked::after,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 ul.crm-checkbox-list input[type=checkbox]:checked::after {
   content: "";
   position: absolute;
   top: 2px;
@@ -9250,32 +9240,33 @@ afform-translators-rate-sharing-survey-page3) ul.crm-checkbox-list input[type=ch
   border-left: none;
   transform: rotate(45deg);
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) ul.crm-checkbox-list input[type=checkbox]:focus {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy ul.crm-checkbox-list input[type=checkbox]:focus,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 ul.crm-checkbox-list input[type=checkbox]:focus {
   outline: 2px solid var(--wp--preset--color--blue) !important;
   outline-offset: 2px !important;
   box-shadow: none !important;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) .crm-af-field label.radio-inline {
-  display: flex;
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy label.radio-inline,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 label.radio-inline {
+  display: flex !important;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
-  padding: 6px 0;
-  margin: 0;
+  padding: 6px 0 !important;
+  margin: 0 !important;
   cursor: pointer;
-  font-family: "DM Sans", sans-serif;
-  font-size: 16.5px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: normal;
-  text-transform: none;
-  color: var(--wp--preset--color--foreground);
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 16.5px !important;
+  font-weight: 400 !important;
+  line-height: 24px !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  color: var(--wp--preset--color--foreground) !important;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) input.crm-form-radio {
-  appearance: none;
-  -webkit-appearance: none;
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy input.crm-form-radio,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 input.crm-form-radio {
+  appearance: none !important;
+  -webkit-appearance: none !important;
   width: 22px !important;
   height: 22px !important;
   min-width: 22px;
@@ -9289,13 +9280,13 @@ afform-translators-rate-sharing-survey-page3) input.crm-form-radio {
   padding: 0 !important;
   box-shadow: none !important;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) input.crm-form-radio:checked {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy input.crm-form-radio:checked,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 input.crm-form-radio:checked {
   border-color: var(--wp--preset--color--navy) !important;
   background: var(--wp--preset--color--background) !important;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) input.crm-form-radio:checked::after {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy input.crm-form-radio:checked::after,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 input.crm-form-radio:checked::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -9306,20 +9297,20 @@ afform-translators-rate-sharing-survey-page3) input.crm-form-radio:checked::afte
   border-radius: 50%;
   background: var(--wp--preset--color--navy);
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) input.crm-form-radio:focus {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy input.crm-form-radio:focus,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 input.crm-form-radio:focus {
   outline: 2px solid var(--wp--preset--color--blue) !important;
   outline-offset: 2px !important;
   box-shadow: none !important;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) fieldset.af-container {
-  border: none;
-  padding: 0;
-  margin: 0 0 40px;
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy fieldset.af-container,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 fieldset.af-container {
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 0 40px !important;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) fieldset.af-container legend.af-title {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy fieldset.af-container legend.af-title,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 fieldset.af-container legend.af-title {
   font-family: "Oswald", sans-serif;
   font-size: 24px;
   font-weight: 400;
@@ -9331,9 +9322,9 @@ afform-translators-rate-sharing-survey-page3) fieldset.af-container legend.af-ti
   padding-bottom: 8px;
   margin-bottom: 32px;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) button.af-button.btn.btn-primary {
-  display: inline-block;
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy button.af-button.btn.btn-primary,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 button.af-button.btn.btn-primary {
+  display: inline-block !important;
   border: 4px solid var(--wp--preset--color--foreground) !important;
   background: transparent !important;
   color: var(--wp--preset--color--foreground) !important;
@@ -9349,20 +9340,20 @@ afform-translators-rate-sharing-survey-page3) button.af-button.btn.btn-primary {
   cursor: pointer !important;
   margin-top: 16px;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) button.af-button.btn.btn-primary .crm-i {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy button.af-button.btn.btn-primary .crm-i,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 button.af-button.btn.btn-primary .crm-i {
   display: none;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) button.af-button.btn.btn-primary:hover, .entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) button.af-button.btn.btn-primary:focus {
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy button.af-button.btn.btn-primary:hover, form#bootstrap-theme afform-translators-rate-sharing-survey-copy button.af-button.btn.btn-primary:focus,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 button.af-button.btn.btn-primary:hover,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 button.af-button.btn.btn-primary:focus {
   background: var(--wp--preset--color--foreground) !important;
   color: #fefefe !important;
   outline: none !important;
 }
-.entry-content > #crm-container.crm-container.crm-public:has(afform-translators-rate-sharing-survey-copy,
-afform-translators-rate-sharing-survey-page3) .af-admin-edit-form-link {
-  display: none;
+form#bootstrap-theme afform-translators-rate-sharing-survey-copy .af-admin-edit-form-link,
+form#bootstrap-theme afform-translators-rate-sharing-survey-page3 .af-admin-edit-form-link {
+  display: none !important;
 }
 
 /* Width Utilities
