@@ -71,36 +71,36 @@ afform-your-profile {
 
 // Update Credit Card billing button — styled as pill term (matches .taxonomy-term)
 #bootstrap-theme.crm-container .btn.btn-sm.btn-default {
-    display: inline-block;
-    border: 2px solid var(--wp--preset--color--foreground) !important;
-    border-radius: 999px !important;
-    background: transparent !important;
-    font-family: var(--wp--preset--font-family--dm-mono) !important;
-    font-size: 16px !important;
-    font-weight: 400 !important;
-    line-height: 20px !important;
-    letter-spacing: 0.32px !important;
-    text-transform: capitalize !important;
-    text-decoration: none !important;
-    padding: 10px 20px !important;
-    color: var(--wp--preset--color--foreground) !important;
-    box-shadow: none !important;
+	display: inline-block;
+	border: 2px solid var(--wp--preset--color--foreground) !important;
+	border-radius: 999px !important;
+	background: transparent !important;
+	font-family: var(--wp--preset--font-family--dm-mono) !important;
+	font-size: 16px !important;
+	font-weight: 400 !important;
+	line-height: 20px !important;
+	letter-spacing: 0.32px !important;
+	text-transform: capitalize !important;
+	text-decoration: none !important;
+	padding: 10px 20px !important;
+	color: var(--wp--preset--color--foreground) !important;
+	box-shadow: none !important;
 
-    &:hover,
-    &:focus {
-        background: var(--wp--preset--color--foreground) !important;
-        color: var(--wp--preset--color--white) !important;
-        text-decoration: none !important;
-    }
+	&:hover,
+	&:focus {
+		background: var(--wp--preset--color--foreground) !important;
+		color: var(--wp--preset--color--white) !important;
+		text-decoration: none !important;
+	}
 
-    .crm-i.fa-external-link {
-        display: none;
-    }
+	.crm-i.fa-external-link {
+		display: none;
+	}
 }
 
 // Hide CiviCRM breadcrumb in dashboard container
 #crm-container.crm-container .breadcrumb {
-    display: none !important;
+	display: none !important;
 }
 
 // ============================================================
@@ -109,638 +109,883 @@ afform-your-profile {
 
 .CRM_Contribute_Form_UpdateBilling {
 
-    // Info help box — newsprint background, theme typography
-    .help {
-        background: var(--wp--preset--color--newsprint) !important;
-        border: none !important;
+	// Info help box — newsprint background, theme typography
+	.help {
+		background: var(--wp--preset--color--newsprint) !important;
+		border: none !important;
 		border-radius: 0px !important;
-        padding: 1em !important;
-        margin-bottom: 32px;
-        font-family: "DM Sans", sans-serif;
-        font-size: 15px !important;
-        line-height: 22px;
-        color: var(--wp--preset--color--foreground) !important;
+		padding: 1em !important;
+		margin-bottom: 32px;
+		font-family: "DM Sans", sans-serif;
+		font-size: 15px !important;
+		line-height: 22px;
+		color: var(--wp--preset--color--foreground) !important;
 
-        .crm-i {
-            margin-right: 8px;
-            color: var(--wp--preset--color--navy);
-        }
-    }
+		.crm-i {
+			margin-right: 8px;
+			color: var(--wp--preset--color--navy);
+		}
+	}
 
-    // Fieldsets
-    fieldset {
-        border: none;
-        padding: 0px;
-        margin: 0 0 40px;
-    }
+	// Fieldsets
+	fieldset {
+		border: none;
+		padding: 0px;
+		margin: 0 0 40px;
+	}
 
-    legend {
-        font-family: "DM Sans", sans-serif;
-        font-size: 16.5px;
-        font-weight: 900;
-        line-height: 22.5px;
-        letter-spacing: 2.475px;
-        text-transform: uppercase;
-        color: var(--wp--preset--color--foreground);
-        border-bottom: 2px solid var(--wp--preset--color--foreground);
-        width: 100%;
-        padding-bottom: 8px;
-        margin-bottom: 24px;
-    }
+	legend {
+		font-family: "DM Sans", sans-serif;
+		font-size: 16.5px;
+		font-weight: 900;
+		line-height: 22.5px;
+		letter-spacing: 2.475px;
+		text-transform: uppercase;
+		color: var(--wp--preset--color--foreground);
+		border-bottom: 2px solid var(--wp--preset--color--foreground);
+		width: 100%;
+		padding-bottom: 8px;
+		margin-bottom: 24px;
+	}
 
-    // Convert label/content two-column layout to stacked
-    .crm-section {
-        margin-bottom: 20px;
+	// Convert label/content two-column layout to stacked
+	.crm-section {
+		margin-bottom: 20px;
 
-        .label {
-            float: none;
-            width: auto;
-            text-align: left;
-            margin-bottom: 6px;
+		.label {
+			float: none;
+			width: auto;
+			text-align: left;
+			margin-bottom: 6px;
 
-            // Keep label and required asterisk on the same line
-            display: flex;
-            align-items: baseline;
-            gap: 4px;
+			// Keep label and required asterisk on the same line
+			display: flex;
+			align-items: baseline;
+			gap: 4px;
 
-            label {
-                font-family: "DM Sans", sans-serif;
-                font-size: 13px;
-                font-weight: 900;
-                line-height: 18px;
-                letter-spacing: 2px;
-                text-transform: uppercase;
-                color: var(--wp--preset--color--foreground);
-                display: inline;
-            }
+			label {
+				font-family: "DM Sans", sans-serif;
+				font-size: 13px;
+				font-weight: 900;
+				line-height: 18px;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				color: var(--wp--preset--color--foreground);
+				display: inline;
+			}
 
-            // Required asterisk — inline, no line break
-            .crm-marker {
-                color: var(--wp--preset--color--red);
-                font-size: 13px;
-                line-height: 18px;
-                display: inline;
-                position: static;
-                float: none;
-                margin: 0;
-            }
-        }
+			// Required asterisk — inline, no line break
+			.crm-marker {
+				color: var(--wp--preset--color--red);
+				font-size: 13px;
+				line-height: 18px;
+				display: inline;
+				position: static;
+				float: none;
+				margin: 0;
+			}
+		}
 
-        .content {
-            float: none;
-            width: auto;
-        }
+		.content {
+			float: none;
+			width: auto;
+		}
 
-        .clear {
-            clear: both;
-        }
-    }
+		.clear {
+			clear: both;
+		}
+	}
 
-    // Remove crm-marker from default position (it's now handled in .label)
-    .crm-marker {
-        color: var(--wp--preset--color--red) !important;
-    }
+	// Remove crm-marker from default position (it's now handled in .label)
+	.crm-marker {
+		color: var(--wp--preset--color--red) !important;
+	}
 
-    // Text inputs — slightly smaller than before
-    input.crm-form-text {
-        background: var(--wp--preset--color--background) !important;
-        border: 4px solid var(--wp--preset--color--foreground) !important;
-        border-radius: 0 !important;
-        color: var(--wp--preset--color--foreground) !important;
-        font-family: "DM Sans", sans-serif !important;
-        font-size: 15px !important;
-        line-height: 22px !important;
-        padding: 8px 12px !important;
-        width: 100% !important;
-        box-shadow: none !important;
+	// Text inputs
+	input.crm-form-text {
+		background: var(--wp--preset--color--background) !important;
+		border: 4px solid var(--wp--preset--color--foreground) !important;
+		border-radius: 0 !important;
+		color: var(--wp--preset--color--foreground) !important;
+		font-family: "DM Sans", sans-serif !important;
+		font-size: 15px !important;
+		line-height: 22px !important;
+		padding: 8px 12px !important;
+		width: 100% !important;
+		box-shadow: none !important;
 
-        &:focus {
-            outline: 2px solid var(--wp--preset--color--blue) !important;
-            outline-offset: 2px !important;
-        }
-    }
+		&:focus {
+			outline: 2px solid var(--wp--preset--color--blue) !important;
+			outline-offset: 2px !important;
+		}
+	}
 
-    // Select dropdowns (native) — smaller font so State/Province label fits
-    select.crm-form-select {
-        background: var(--wp--preset--color--background) !important;
-        border: 4px solid var(--wp--preset--color--foreground) !important;
-        border-radius: 0 !important;
-        color: var(--wp--preset--color--foreground) !important;
-        font-family: "DM Sans", sans-serif !important;
-        font-size: 15px !important;
-        height: auto !important;
-        line-height: normal !important;
-        padding: 8px 12px !important;
-        width: 100% !important;
-        box-shadow: none !important;
-    }
+	// Select dropdowns (native)
+	select.crm-form-select {
+		background: var(--wp--preset--color--background) !important;
+		border: 4px solid var(--wp--preset--color--foreground) !important;
+		border-radius: 0 !important;
+		color: var(--wp--preset--color--foreground) !important;
+		font-family: "DM Sans", sans-serif !important;
+		font-size: 15px !important;
+		height: auto !important;
+		line-height: normal !important;
+		padding: 8px 12px !important;
+		width: 100% !important;
+		box-shadow: none !important;
+	}
 
-    // Select2 containers (Country, State)
-    .select2-container {
-        width: 100% !important;
+	// Select2 containers (Country, State)
+	.select2-container {
+		width: 100% !important;
 
-        .select2-choice {
-            background: var(--wp--preset--color--background) !important;
-            border: 4px solid var(--wp--preset--color--foreground) !important;
-            border-radius: 0 !important;
-            color: var(--wp--preset--color--foreground) !important;
-            font-family: "DM Sans", sans-serif !important;
-            font-size: 15px !important;
-            height: auto !important;
-            padding: 8px 12px !important;
-            box-shadow: none !important;
-            line-height: 22px !important;
-        }
-    }
+		.select2-choice {
+			background: var(--wp--preset--color--background) !important;
+			border: 4px solid var(--wp--preset--color--foreground) !important;
+			border-radius: 0 !important;
+			color: var(--wp--preset--color--foreground) !important;
+			font-family: "DM Sans", sans-serif !important;
+			font-size: 15px !important;
+			height: auto !important;
+			padding: 8px 12px !important;
+			box-shadow: none !important;
+			line-height: 22px !important;
+		}
+	}
 
-    // Submit buttons
-    .crm-submit-buttons {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-        margin-top: 40px;
+	// Submit buttons
+	.crm-submit-buttons {
+		display: flex;
+		gap: 16px;
+		flex-wrap: wrap;
+		margin-top: 40px;
 
-        .crm-button-type-submit {
-            display: inline-block;
-            border: 4px solid var(--wp--preset--color--foreground) !important;
-            background: transparent !important;
-            color: var(--wp--preset--color--foreground) !important;
-            font-family: "DM Sans", sans-serif !important;
-            font-size: 16.5px !important;
-            font-weight: 900 !important;
-            line-height: 22.5px !important;
-            letter-spacing: 2.475px !important;
-            text-transform: uppercase !important;
-            padding: 12px 24px !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            cursor: pointer !important;
+		.crm-button-type-submit {
+			display: inline-block;
+			border: 4px solid var(--wp--preset--color--foreground) !important;
+			background: transparent !important;
+			color: var(--wp--preset--color--foreground) !important;
+			font-family: "DM Sans", sans-serif !important;
+			font-size: 16.5px !important;
+			font-weight: 900 !important;
+			line-height: 22.5px !important;
+			letter-spacing: 2.475px !important;
+			text-transform: uppercase !important;
+			padding: 12px 24px !important;
+			border-radius: 0 !important;
+			box-shadow: none !important;
+			cursor: pointer !important;
 
-            .crm-i {
-                display: none;
-            }
+			.crm-i {
+				display: none;
+			}
 
-            &:hover,
-            &:focus {
-                background: var(--wp--preset--color--foreground) !important;
-                color: var(--wp--preset--color--white) !important;
-            }
-        }
+			&:hover,
+			&:focus {
+				background: var(--wp--preset--color--foreground) !important;
+				color: var(--wp--preset--color--white) !important;
+			}
+		}
 
-        .crm-button-type-cancel {
-            display: inline-block;
-            border: 4px solid var(--wp--preset--color--foreground) !important;
-            background: transparent !important;
-            color: var(--wp--preset--color--foreground) !important;
-            font-family: "DM Sans", sans-serif !important;
-            font-size: 16.5px !important;
-            font-weight: 900 !important;
-            line-height: 22.5px !important;
-            letter-spacing: 2.475px !important;
-            text-transform: uppercase !important;
-            padding: 12px 24px !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            cursor: pointer !important;
-            opacity: 0.6;
+		.crm-button-type-cancel {
+			display: inline-block;
+			border: 4px solid var(--wp--preset--color--foreground) !important;
+			background: transparent !important;
+			color: var(--wp--preset--color--foreground) !important;
+			font-family: "DM Sans", sans-serif !important;
+			font-size: 16.5px !important;
+			font-weight: 900 !important;
+			line-height: 22.5px !important;
+			letter-spacing: 2.475px !important;
+			text-transform: uppercase !important;
+			padding: 12px 24px !important;
+			border-radius: 0 !important;
+			box-shadow: none !important;
+			cursor: pointer !important;
+			opacity: 0.6;
 
-            .crm-i {
-                display: none;
-            }
+			.crm-i {
+				display: none;
+			}
 
-            &:hover,
-            &:focus {
-                background: var(--wp--preset--color--foreground) !important;
-                color: var(--wp--preset--color--white) !important;
-                opacity: 1;
-            }
-        }
-    }
+			&:hover,
+			&:focus {
+				background: var(--wp--preset--color--foreground) !important;
+				color: var(--wp--preset--color--white) !important;
+				opacity: 1;
+			}
+		}
+	}
 }
 
 // ============================================================
 // Authors Coalition Survey
-// Desktop: 3-col grid — label | E checkbox | P checkbox
+// Wrapper: .crm-profile-name-Authors_Coalition_Survey
+//          > #crm-profile-block.crm-container.crm-public
+// Desktop: 3-col grid — label | Electronic checkbox | Paper Print checkbox
 // Mobile:  label stacks, checkboxes side-by-side
+// NOTE: #bootstrap-theme and .crm-container are on the SAME element
+// for other forms — no space between them in selectors.
+// This profile form uses #crm-profile-block instead.
 // ============================================================
 
 .crm-profile-name-Authors_Coalition_Survey {
 
-    // --------------------------------------------------------
-    // Intro help text
-    // --------------------------------------------------------
+	// --------------------------------------------------------
+	// Intro help text
+	// --------------------------------------------------------
 
-    .messages.help {
-        background: var(--wp--preset--color--newsprint) !important;
-        border: none !important;
-        border-radius: 0 !important;
-        padding: 1.5em !important;
-        margin-bottom: 40px;
-        font-family: "DM Sans", sans-serif;
-        font-size: 18px !important;
-        line-height: 25px;
-        color: var(--wp--preset--color--foreground) !important;
+	.messages.help {
+		background: var(--wp--preset--color--newsprint) !important;
+		border: none !important;
+		border-radius: 0 !important;
+		padding: 1.5em !important;
+		margin-bottom: 40px;
+		font-family: "DM Sans", sans-serif;
+		font-size: 18px !important;
+		line-height: 25px;
+		color: var(--wp--preset--color--foreground) !important;
 
-        p {
-            margin: 0 0 1em;
-            &:last-child { margin-bottom: 0; }
-        }
-    }
+		p {
+			margin: 0 0 1em;
+			&:last-child { margin-bottom: 0; }
+		}
+	}
 
-    // --------------------------------------------------------
-    // All .crm-section rows share the same grid structure —
-    // both .helprow-pre and .form-item rows
-    // --------------------------------------------------------
+	// --------------------------------------------------------
+	// All .crm-section rows share the same grid structure —
+	// both .helprow-pre and .form-item rows
+	// --------------------------------------------------------
 
-    .crm-section {
-        // Mobile: stacked
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin: 0;
-        padding: 0;
+	.crm-section {
+		// Mobile: stacked
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		margin: 0;
+		padding: 0;
 
-        .clear { display: none; }
+		.clear { display: none; }
 
-        // Desktop: 3-column grid
-        @include media(">=tablet") {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 0 16px;
-            align-items: center;
-        }
-    }
+		// Desktop: 3-column grid
+		@include media(">=tablet") {
+			display: grid;
+			grid-template-columns: 1fr 110px 130px;
+			gap: 0 16px;
+			align-items: center;
+		}
+	}
 
-    // --------------------------------------------------------
-    // helprow-pre rows: "Electronic   Paper Print" column headers
-    // These sit above each checkbox group as visual column labels
-    // --------------------------------------------------------
+	// --------------------------------------------------------
+	// helprow-pre rows: "Electronic   Paper Print" column headers
+	// Sits above each checkbox group as a visual column label.
+	// text-align-last: justify spreads the two words across the
+	// content area to roughly align with the checkbox columns.
+	// --------------------------------------------------------
 
-    .helprow-pre {
-        padding: 24px 0 6px;
-        border-bottom: 1px solid rgba(10, 10, 10, 0.2);
-        margin-bottom: 0 !important;
+	.helprow-pre {
+		padding: 24px 0 6px;
+		border-bottom: 1px solid rgba(10, 10, 10, 0.2);
+		margin-bottom: 0 !important;
 
-        .content.description {
-            // Mobile: full-width label, centered
-            width: 100%;
-            font-family: "DM Mono", monospace;
-            font-size: 11px;
-            font-weight: 400;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--wp--preset--color--foreground);
-            opacity: 0.65;
-            text-align: center;
-            padding: 0;
+		.content.description {
+			width: 100%;
+			font-family: "DM Mono", monospace;
+			font-size: 11px;
+			font-weight: 400;
+			letter-spacing: 1.5px;
+			text-transform: uppercase;
+			color: var(--wp--preset--color--foreground);
+			opacity: 0.65;
+			text-align: center;
+			padding: 0;
 
-            // Hide any <br> or <hr> inside the description (some rows have them)
-            br { display: none; }
-            hr { display: none; }
+			br { display: none; }
+			hr { display: none; }
 
-            @include media(">=tablet") {
-                // Span only the checkbox columns (2 + 3)
-                grid-column: 2 / 4;
+			@include media(">=tablet") {
+				grid-column: 2 / 4;
+				text-align: justify;
+				text-align-last: justify;
+			}
+		}
+	}
 
-                // Spread "Electronic" and "Paper Print" to align with each column
-                // text-align-last: justify works on a single line with two words
-                text-align: left;
-                text-align-last: left;
-                text-align: -webkit-left; // Safari fallback
-            }
-        }
-    }
+	// --------------------------------------------------------
+	// Form-item rows (actual fields)
+	// --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // Form-item rows (actual fields)
-    // --------------------------------------------------------
+	.crm-section.form-item {
+		padding: 16px 0;
+		border-bottom: 1px solid rgba(10, 10, 10, 0.12);
 
-    .crm-section.form-item {
-        padding: 16px 0;
-        border-bottom: 1px solid rgba(10, 10, 10, 0.12);
+		@include media(">=tablet") {
+			padding: 18px 0;
+		}
+	}
 
-        @include media(">=tablet") {
-            padding: 18px 0;
-        }
-    }
+	// --------------------------------------------------------
+	// Label — col 1
+	// --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // Label — col 1
-    // --------------------------------------------------------
+	.label {
+		float: none !important;
+		width: auto !important;
+		text-align: left !important;
+		padding: 0;
+		align-self: center;
 
-    .label {
-        float: none !important;
-        width: auto !important;
-        text-align: left !important;
-        padding: 0;
-        align-self: center;
+		label {
+			font-family: "DM Sans", sans-serif;
+			font-size: 16px;
+			font-weight: 700;
+			line-height: 22px;
+			letter-spacing: normal;
+			text-transform: none;
+			color: var(--wp--preset--color--foreground);
+			margin: 0;
+			display: inline;
+		}
 
-        label {
-            font-family: "DM Sans", sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 22px;
-            letter-spacing: normal;
-            text-transform: none;
-            color: var(--wp--preset--color--foreground);
-            margin: 0;
-            display: inline;
-        }
+		.crm-marker {
+			color: var(--wp--preset--color--red) !important;
+			font-size: 14px;
+			display: inline;
+			position: static;
+			float: none;
+			margin: 0 0 0 2px;
+		}
+	}
 
-        .crm-marker {
-            color: var(--wp--preset--color--red) !important;
-            font-size: 14px;
-            display: inline;
-            position: static;
-            float: none;
-            margin: 0 0 0 2px;
-        }
-    }
+	// --------------------------------------------------------
+	// Content wrapper
+	// Default (text inputs): span both checkbox cols on desktop
+	// --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // Content wrapper
-    // Default (text inputs, single checkboxes): span both checkbox cols
-    // --------------------------------------------------------
+	.content.edit-value,
+	.edit-value.content {
+		float: none !important;
+		width: auto !important;
 
-    .content.edit-value,
-    .edit-value.content {
-        float: none !important;
-        width: auto !important;
+		@include media(">=tablet") {
+			grid-column: 2 / 4;
+		}
+	}
 
-        @include media(">=tablet") {
-            grid-column: 2 / 4;
-        }
-    }
+	// When content holds a checkbox pair, dissolve into the grid
+	// so each .crm-option-label-pair lands in its own column
+	.content.edit-value:has(.crm-multiple-checkbox-radio-options),
+	.edit-value.content:has(.crm-multiple-checkbox-radio-options) {
+		display: contents;
+	}
 
-    // When content holds a checkbox pair, dissolve into the grid
-    // so each .crm-option-label-pair lands in its own column
-    .content.edit-value:has(.crm-multiple-checkbox-radio-options),
-    .edit-value.content:has(.crm-multiple-checkbox-radio-options) {
-        display: contents;
-    }
+	// --------------------------------------------------------
+	// Checkbox groups — dissolve into parent grid cols on desktop
+	// --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // Checkbox groups — dissolve into parent grid cols
-    // --------------------------------------------------------
+	.crm-multiple-checkbox-radio-options {
+		// Mobile: side-by-side flex
+		display: flex;
+		gap: 32px;
+		justify-content: flex-start;
 
-    .crm-multiple-checkbox-radio-options {
-        // Mobile: side-by-side flex (display:contents won't flex on mobile)
-        display: flex;
-        gap: 32px;
-        justify-content: flex-start;
+		@include media(">=tablet") {
+			display: contents; // children flow into grid cols 2 and 3
+		}
+	}
 
-        @include media(">=tablet") {
-            display: contents; // children flow into grid cols 2 and 3
-        }
-    }
+	.crm-option-label-pair {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
 
-    .crm-option-label-pair {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
+		// Numeric code label — keep visible, style as small mono
+		label {
+			font-family: "DM Mono", monospace;
+			font-size: 13px;
+			font-weight: 400;
+			line-height: 18px;
+			letter-spacing: 0.5px;
+			color: var(--wp--preset--color--foreground);
+			opacity: 0.65;
+			cursor: pointer;
+			margin: 0;
+		}
+	}
 
-        // Numeric code label — keep visible, style as small mono
-        label {
-            font-family: "DM Mono", monospace;
-            font-size: 13px;
-            font-weight: 400;
-            line-height: 18px;
-            letter-spacing: 0.5px;
-            color: var(--wp--preset--color--foreground);
-            opacity: 0.65;
-            cursor: pointer;
-            margin: 0;
-        }
-    }
+	// --------------------------------------------------------
+	// Checkbox appearance
+	// --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // Checkbox appearance
-    // --------------------------------------------------------
+	input.crm-form-checkbox {
+		appearance: none;
+		-webkit-appearance: none;
+		width: 22px !important;
+		height: 22px !important;
+		min-width: 22px;
+		flex-shrink: 0;
+		border: 3px solid var(--wp--preset--color--foreground) !important;
+		border-radius: 0 !important;
+		background: var(--wp--preset--color--background) !important;
+		cursor: pointer;
+		position: relative;
+		margin: 0 !important;
+		padding: 0 !important;
+		box-shadow: none !important;
+		display: block;
 
-    input.crm-form-checkbox {
-        appearance: none;
-        -webkit-appearance: none;
-        width: 22px !important;
-        height: 22px !important;
-        min-width: 22px;
-        flex-shrink: 0;
-        border: 3px solid var(--wp--preset--color--foreground) !important;
-        border-radius: 0 !important;
-        background: var(--wp--preset--color--background) !important;
-        cursor: pointer;
-        position: relative;
-        margin: 0 !important;
-        padding: 0 !important;
-        box-shadow: none !important;
-        display: block;
+		&:checked {
+			background: var(--wp--preset--color--navy) !important;
+			border-color: var(--wp--preset--color--navy) !important;
 
-        &:checked {
-            background: var(--wp--preset--color--navy) !important;
-            border-color: var(--wp--preset--color--navy) !important;
+			&::after {
+				content: '';
+				position: absolute;
+				top: 2px;
+				left: 6px;
+				width: 6px;
+				height: 11px;
+				border: 2px solid #fff;
+				border-top: none;
+				border-left: none;
+				transform: rotate(45deg);
+			}
+		}
 
-            &::after {
-                content: '';
-                position: absolute;
-                top: 2px;
-                left: 6px;
-                width: 6px;
-                height: 11px;
-                border: 2px solid #fff;
-                border-top: none;
-                border-left: none;
-                transform: rotate(45deg);
-            }
-        }
+		&:focus {
+			outline: 2px solid var(--wp--preset--color--blue) !important;
+			outline-offset: 2px !important;
+			box-shadow: none !important;
+		}
+	}
 
-        &:focus {
-            outline: 2px solid var(--wp--preset--color--blue) !important;
-            outline-offset: 2px !important;
-            box-shadow: none !important;
-        }
-    }
+	// --------------------------------------------------------
+	// Text inputs (First Name, Last Name, Email, Print Name, Date)
+	// --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // Text inputs (First Name, Last Name, Email, Print Name, Date)
-    // --------------------------------------------------------
+	input.crm-form-text,
+	input.crm-form-date {
+		background: var(--wp--preset--color--background) !important;
+		border: 4px solid var(--wp--preset--color--foreground) !important;
+		border-radius: 0 !important;
+		color: var(--wp--preset--color--foreground) !important;
+		font-family: "DM Sans", sans-serif !important;
+		font-size: 18px !important;
+		line-height: 25px !important;
+		padding: 10px 14px !important;
+		width: 100% !important;
+		box-shadow: none !important;
 
-    input.crm-form-text,
-    input.crm-form-date {
-        background: var(--wp--preset--color--background) !important;
-        border: 4px solid var(--wp--preset--color--foreground) !important;
-        border-radius: 0 !important;
-        color: var(--wp--preset--color--foreground) !important;
-        font-family: "DM Sans", sans-serif !important;
-        font-size: 18px !important;
-        line-height: 25px !important;
-        padding: 10px 14px !important;
-        width: 100% !important;
-        box-shadow: none !important;
+		&:focus {
+			outline: 2px solid var(--wp--preset--color--blue) !important;
+			outline-offset: 2px !important;
+			box-shadow: none !important;
+		}
+	}
 
-        &:focus {
-            outline: 2px solid var(--wp--preset--color--blue) !important;
-            outline-offset: 2px !important;
-            box-shadow: none !important;
-        }
-    }
+	// --------------------------------------------------------
+	// Affirmation section (custom_137) — full-width, stacked
+	// Statement checkboxes, not an E/P column pair
+	// --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // Affirmation section (custom_137) — full-width, stacked
-    // Statement checkboxes, not an E/P column pair
-    // --------------------------------------------------------
+	#editrow-custom_137 {
+		display: block !important;
+		padding: 20px 0;
+		border-top: 2px solid var(--wp--preset--color--foreground);
+		border-bottom: 1px solid rgba(10, 10, 10, 0.15);
 
-    #editrow-custom_137 {
-        display: block !important;
-        padding: 20px 0;
-        border-top: 2px solid var(--wp--preset--color--foreground);
-        border-bottom: 1px solid rgba(10, 10, 10, 0.15);
+		.label {
+			margin-bottom: 16px;
 
-        .label {
-            margin-bottom: 16px;
+			label {
+				font-size: 13px;
+				font-weight: 900;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				display: block;
+			}
+		}
 
-            label {
-                font-size: 13px;
-                font-weight: 900;
-                letter-spacing: 2px;
-                text-transform: uppercase;
-                display: block;
-            }
-        }
+		.edit-value.content {
+			display: flex !important;
+			flex-direction: column;
+			gap: 14px;
+			grid-column: auto !important;
+		}
 
-        .edit-value.content {
-            display: flex !important;
-            flex-direction: column;
-            gap: 14px;
-            grid-column: auto !important;
-        }
+		.crm-multiple-checkbox-radio-options {
+			display: flex !important;
+			flex-direction: column;
+			gap: 14px;
+		}
 
-        .crm-multiple-checkbox-radio-options {
-            display: flex !important;
-            flex-direction: column;
-            gap: 14px;
-        }
+		.crm-option-label-pair {
+			display: flex !important;
+			flex-direction: row !important;
+			justify-content: flex-start !important;
+			align-items: flex-start;
+			gap: 12px;
 
-        .crm-option-label-pair {
-            display: flex !important;
-            flex-direction: row !important;
-            justify-content: flex-start !important;
-            align-items: flex-start;
-            gap: 12px;
+			label {
+				font-family: "DM Sans", sans-serif !important;
+				font-size: 16.5px !important;
+				font-weight: 400 !important;
+				line-height: 24px !important;
+				letter-spacing: normal !important;
+				text-transform: none !important;
+				opacity: 1 !important;
+				text-align: left !important;
+				cursor: pointer;
+			}
+		}
+	}
 
-            label {
-                font-family: "DM Sans", sans-serif !important;
-                font-size: 16.5px !important;
-                font-weight: 400 !important;
-                line-height: 24px !important;
-                letter-spacing: normal !important;
-                text-transform: none !important;
-                opacity: 1 !important;
-                text-align: left !important;
-                cursor: pointer;
-            }
-        }
-    }
+	// --------------------------------------------------------
+	// Hide admin wrench links from public view
+	// --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // Hide admin wrench links
-    // --------------------------------------------------------
+	.crm-option-edit-link {
+		display: none !important;
+	}
 
-    .crm-option-edit-link {
-        display: none !important;
-    }
+	// --------------------------------------------------------
+	// Submit + Cancel buttons
+	// --------------------------------------------------------
 
-    // --------------------------------------------------------
-    // Submit + Cancel buttons
-    // --------------------------------------------------------
+	.crm-submit-buttons {
+		display: flex;
+		gap: 16px;
+		flex-wrap: wrap;
+		margin-top: 40px;
+		padding: 0;
 
-    .crm-submit-buttons {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-        margin-top: 40px;
-        padding: 0;
+		button.crm-button-type-next {
+			display: inline-block;
+			border: 4px solid var(--wp--preset--color--foreground) !important;
+			background: transparent !important;
+			color: var(--wp--preset--color--foreground) !important;
+			font-family: "DM Sans", sans-serif !important;
+			font-size: 16.5px !important;
+			font-weight: 900 !important;
+			line-height: 22.5px !important;
+			letter-spacing: 2.475px !important;
+			text-transform: uppercase !important;
+			padding: 12px 24px !important;
+			border-radius: 0 !important;
+			box-shadow: none !important;
+			cursor: pointer !important;
 
-        button.crm-button-type-next {
-            display: inline-block;
-            border: 4px solid var(--wp--preset--color--foreground) !important;
-            background: transparent !important;
-            color: var(--wp--preset--color--foreground) !important;
-            font-family: "DM Sans", sans-serif !important;
-            font-size: 16.5px !important;
-            font-weight: 900 !important;
-            line-height: 22.5px !important;
-            letter-spacing: 2.475px !important;
-            text-transform: uppercase !important;
-            padding: 12px 24px !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            cursor: pointer !important;
+			.crm-i { display: none; }
 
-            .crm-i { display: none; }
+			&:hover,
+			&:focus {
+				background: var(--wp--preset--color--foreground) !important;
+				color: #fefefe !important;
+				outline: none !important;
+			}
+		}
 
-            &:hover,
-            &:focus {
-                background: var(--wp--preset--color--foreground) !important;
-                color: #fefefe !important;
-                outline: none !important;
-            }
-        }
+		a.button.cancel {
+			display: inline-flex;
+			align-items: center;
+			border: 4px solid var(--wp--preset--color--foreground) !important;
+			background: transparent !important;
+			color: var(--wp--preset--color--foreground) !important;
+			font-family: "DM Sans", sans-serif !important;
+			font-size: 16.5px !important;
+			font-weight: 900 !important;
+			line-height: 22.5px !important;
+			letter-spacing: 2.475px !important;
+			text-transform: uppercase !important;
+			padding: 12px 24px !important;
+			border-radius: 0 !important;
+			text-decoration: none !important;
+			opacity: 0.6;
 
-        a.button.cancel {
-            display: inline-flex;
-            align-items: center;
-            border: 4px solid var(--wp--preset--color--foreground) !important;
-            background: transparent !important;
-            color: var(--wp--preset--color--foreground) !important;
-            font-family: "DM Sans", sans-serif !important;
-            font-size: 16.5px !important;
-            font-weight: 900 !important;
-            line-height: 22.5px !important;
-            letter-spacing: 2.475px !important;
-            text-transform: uppercase !important;
-            padding: 12px 24px !important;
-            border-radius: 0 !important;
-            text-decoration: none !important;
-            opacity: 0.6;
+			.crm-i { display: none; }
 
-            .crm-i { display: none; }
-
-            &:hover,
-            &:focus {
-                background: var(--wp--preset--color--foreground) !important;
-                color: #fefefe !important;
-                opacity: 1;
-                text-decoration: none !important;
-            }
-        }
-    }
+			&:hover,
+			&:focus {
+				background: var(--wp--preset--color--foreground) !important;
+				color: #fefefe !important;
+				opacity: 1;
+				text-decoration: none !important;
+			}
+		}
+	}
 }
-
-
-    // --------------------------------------------------------
-    // Translators Rate Sharing Survey Styles
-    // --------------------------------------------------------
-
-	.form-align-right {
-    text-align: right !important;
-}
-
 
 // ============================================================
 // Translators Rate Sharing Survey — Pages 2 & 3
+// Afform (Angular) — fixes af-field stacking, Select2 width,
+// checkbox list layout, radio inline stacking
 // ============================================================
 
 .entry-content > #crm-container.crm-container.crm-public:has(
-    afform-translators-rate-sharing-survey-copy,
-    afform-translators-rate-sharing-survey-page3
+	afform-translators-rate-sharing-survey-copy,
+	afform-translators-rate-sharing-survey-page3
 ) {
-    padding: var(--wp--custom--layout--block-gap-large) var(--site-padding);
+	padding: var(--wp--custom--layout--block-gap-large) var(--site-padding);
 
-    #crm-main-content-wrapper,
-    form#bootstrap-theme {
-        max-width: var(--wp--custom--layout--page);
-        margin-left: auto;
-        margin-right: auto;
-    }
+	#crm-main-content-wrapper,
+	form#bootstrap-theme {
+		max-width: var(--wp--custom--layout--page);
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	// af-field is a custom Angular element — browsers treat unknown
+	// elements as display:inline, causing sections to run into each other
+	af-field {
+		display: block;
+		margin-bottom: 28px;
+		width: 100%;
+	}
+
+	// Field labels
+	label.crm-af-field-label {
+		display: block;
+		font-family: "DM Sans", sans-serif;
+		font-size: 13px;
+		font-weight: 900;
+		line-height: 18px;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		color: var(--wp--preset--color--foreground);
+		margin-bottom: 8px;
+	}
+
+	// Help text (below label, above input)
+	p.crm-af-field-help-pre {
+		font-family: "DM Sans", sans-serif;
+		font-size: 15px;
+		font-weight: 400;
+		line-height: 22px;
+		color: var(--wp--preset--color--foreground);
+		opacity: 0.75;
+		margin: 0 0 10px;
+	}
+
+	// Text + number inputs
+	input.form-control {
+		background: var(--wp--preset--color--background) !important;
+		border: 4px solid var(--wp--preset--color--foreground) !important;
+		border-radius: 0 !important;
+		color: var(--wp--preset--color--foreground) !important;
+		font-family: "DM Sans", sans-serif !important;
+		font-size: 18px !important;
+		line-height: 25px !important;
+		padding: 10px 14px !important;
+		width: 100% !important;
+		box-shadow: none !important;
+		height: auto !important;
+
+		&:focus {
+			outline: 2px solid var(--wp--preset--color--blue) !important;
+			outline-offset: 2px !important;
+			box-shadow: none !important;
+		}
+	}
+
+	// Select2 — override the hardcoded inline width: 988px CiviCRM sets
+	.select2-container {
+		width: 100% !important;
+		display: block;
+
+		.select2-choice {
+			background: var(--wp--preset--color--background) !important;
+			border: 4px solid var(--wp--preset--color--foreground) !important;
+			border-radius: 0 !important;
+			color: var(--wp--preset--color--foreground) !important;
+			font-family: "DM Sans", sans-serif !important;
+			font-size: 18px !important;
+			height: auto !important;
+			padding: 10px 40px 10px 14px !important;
+			line-height: 25px !important;
+			box-shadow: none !important;
+		}
+	}
+
+	// Checkbox list — stack items vertically
+	ul.crm-checkbox-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		li {
+			display: flex;
+			align-items: flex-start;
+			gap: 10px;
+			padding: 6px 0;
+			margin: 0;
+
+			label {
+				font-family: "DM Sans", sans-serif;
+				font-size: 16.5px;
+				font-weight: 400;
+				line-height: 24px;
+				letter-spacing: normal;
+				text-transform: none;
+				color: var(--wp--preset--color--foreground);
+				cursor: pointer;
+				margin: 0;
+				flex: 1;
+			}
+		}
+	}
+
+	ul.crm-checkbox-list input[type="checkbox"] {
+		appearance: none;
+		-webkit-appearance: none;
+		width: 22px !important;
+		height: 22px !important;
+		min-width: 22px;
+		flex-shrink: 0;
+		border: 3px solid var(--wp--preset--color--foreground) !important;
+		border-radius: 0 !important;
+		background: var(--wp--preset--color--background) !important;
+		cursor: pointer;
+		position: relative;
+		margin: 2px 0 0 0 !important;
+		padding: 0 !important;
+		box-shadow: none !important;
+
+		&:checked {
+			background: var(--wp--preset--color--navy) !important;
+			border-color: var(--wp--preset--color--navy) !important;
+
+			&::after {
+				content: '';
+				position: absolute;
+				top: 2px;
+				left: 6px;
+				width: 6px;
+				height: 11px;
+				border: 2px solid #fff;
+				border-top: none;
+				border-left: none;
+				transform: rotate(45deg);
+			}
+		}
+
+		&:focus {
+			outline: 2px solid var(--wp--preset--color--blue) !important;
+			outline-offset: 2px !important;
+			box-shadow: none !important;
+		}
+	}
+
+	// Radio buttons — Bootstrap's .radio-inline makes these inline-block,
+	// causing overflow and visual overlap with adjacent sections.
+	// Stack them vertically.
+	.crm-af-field label.radio-inline {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 6px 0;
+		margin: 0;
+		cursor: pointer;
+		font-family: "DM Sans", sans-serif;
+		font-size: 16.5px;
+		font-weight: 400;
+		line-height: 24px;
+		letter-spacing: normal;
+		text-transform: none;
+		color: var(--wp--preset--color--foreground);
+	}
+
+	input.crm-form-radio {
+		appearance: none;
+		-webkit-appearance: none;
+		width: 22px !important;
+		height: 22px !important;
+		min-width: 22px;
+		flex-shrink: 0;
+		border: 3px solid var(--wp--preset--color--foreground) !important;
+		border-radius: 50% !important;
+		background: var(--wp--preset--color--background) !important;
+		cursor: pointer;
+		position: relative;
+		margin: 0 !important;
+		padding: 0 !important;
+		box-shadow: none !important;
+
+		&:checked {
+			border-color: var(--wp--preset--color--navy) !important;
+			background: var(--wp--preset--color--background) !important;
+
+			&::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background: var(--wp--preset--color--navy);
+			}
+		}
+
+		&:focus {
+			outline: 2px solid var(--wp--preset--color--blue) !important;
+			outline-offset: 2px !important;
+			box-shadow: none !important;
+		}
+	}
+
+	// Fieldset / legend (Rate Share 1 section header)
+	fieldset.af-container {
+		border: none;
+		padding: 0;
+		margin: 0 0 40px;
+
+		legend.af-title {
+			font-family: "Oswald", sans-serif;
+			font-size: 24px;
+			font-weight: 400;
+			line-height: 30px;
+			letter-spacing: -0.24px;
+			color: var(--wp--preset--color--foreground);
+			border-bottom: 2px solid var(--wp--preset--color--foreground);
+			width: 100%;
+			padding-bottom: 8px;
+			margin-bottom: 32px;
+		}
+	}
+
+	// Submit button
+	button.af-button.btn.btn-primary {
+		display: inline-block;
+		border: 4px solid var(--wp--preset--color--foreground) !important;
+		background: transparent !important;
+		color: var(--wp--preset--color--foreground) !important;
+		font-family: "DM Sans", sans-serif !important;
+		font-size: 16.5px !important;
+		font-weight: 900 !important;
+		line-height: 22.5px !important;
+		letter-spacing: 2.475px !important;
+		text-transform: uppercase !important;
+		padding: 12px 24px !important;
+		border-radius: 0 !important;
+		box-shadow: none !important;
+		cursor: pointer !important;
+		margin-top: 16px;
+
+		.crm-i { display: none; }
+
+		&:hover,
+		&:focus {
+			background: var(--wp--preset--color--foreground) !important;
+			color: #fefefe !important;
+			outline: none !important;
+		}
+	}
+
+	// Hide admin gear/configure dropdown from public view
+	.af-admin-edit-form-link {
+		display: none;
+	}
 }
