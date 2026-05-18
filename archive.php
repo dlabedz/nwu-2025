@@ -201,7 +201,17 @@ if ( is_category() ) {
 						<select name="author_name" id="author_name" class="auto-submit-filter">
 							<option value=""><?php esc_html_e( 'Select', 'nwu-2025' ); ?></option>
 							<?php
-							$authors = get_users( [ 'who' => 'authors', 'orderby' => 'display_name' ] );
+							global $wpdb;
+							$author_ids = $wpdb->get_col(
+								"SELECT DISTINCT post_author
+								FROM {$wpdb->posts}
+								WHERE post_status = 'publish'
+								AND post_type IN ('post', 'event')
+								ORDER BY post_author ASC"
+							);
+							$authors = ! empty( $author_ids )
+								? get_users( [ 'include' => $author_ids, 'orderby' => 'display_name', 'order' => 'ASC' ] )
+								: [];
 							foreach ( $authors as $author_obj ) :
 								?>
 								<option value="<?php echo esc_attr( $author_obj->user_nicename ); ?>" <?php selected( $author, $author_obj->user_nicename ); ?>>
@@ -217,7 +227,6 @@ if ( is_category() ) {
 						<select name="year" id="year" class="auto-submit-filter">
 							<option value=""><?php esc_html_e( 'Select', 'nwu-2025' ); ?></option>
 							<?php
-							global $wpdb;
 							$years = $wpdb->get_col( "SELECT DISTINCT YEAR(post_date) FROM $wpdb->posts WHERE post_status = 'publish' AND post_type IN ('post', 'event') ORDER BY post_date DESC" );
 							foreach ( $years as $year_option ) :
 								?>
