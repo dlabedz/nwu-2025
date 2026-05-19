@@ -372,11 +372,19 @@
 
 				a {
 					padding-left: 0;
-					color: var(--wp--preset--color--navy);
+					color: var(--wp--preset--color--white);
+				}
+
+				&.current-menu-item > a,
+				&.current-menu-ancestor > a {
+					&:before {
+						display: none;
+					}
 				}
 
 				&:hover > a {
 					color: var(--wp--preset--color--white);
+					text-decoration: underline;
 				}
 
 				&:not(:last-child) {
@@ -705,6 +713,11 @@
 				a {
 					padding-left: 0;
 					color: var(--wp--preset--color--navy);
+				}
+
+				&.current-menu-item > a,
+				&.current-menu-ancestor > a {
+					border-top: none;
 				}
 
 				&:hover > a {

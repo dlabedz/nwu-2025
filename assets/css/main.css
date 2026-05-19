@@ -2265,10 +2265,14 @@ p.form-align-right {
   }
   .nav-menu .sub-menu .menu-item a {
     padding-left: 0;
-    color: var(--wp--preset--color--navy);
+    color: var(--wp--preset--color--white);
+  }
+  .nav-menu .sub-menu .menu-item.current-menu-item > a:before, .nav-menu .sub-menu .menu-item.current-menu-ancestor > a:before {
+    display: none;
   }
   .nav-menu .sub-menu .menu-item:hover > a {
     color: var(--wp--preset--color--white);
+    text-decoration: underline;
   }
   .nav-menu .sub-menu .menu-item:not(:last-child) {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
