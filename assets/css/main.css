@@ -2233,7 +2233,8 @@ p.form-align-right {
     justify-content: flex-start;
   }
   .nav-menu .menu-item {
-    padding: 0.5em 1em 0.25em 1em;
+    padding: 0.5em 0.5em 0.25em 0.5em;
+    margin: 0 0.5em;
   }
   .nav-menu .menu-item a {
     padding: 0.25em 0 0.25em 0;
@@ -2546,6 +2547,9 @@ p.form-align-right {
   .nav-menu-members .sub-menu .menu-item a {
     padding-left: 0;
     color: var(--wp--preset--color--navy);
+  }
+  .nav-menu-members .sub-menu .menu-item.current-menu-item > a, .nav-menu-members .sub-menu .menu-item.current-menu-ancestor > a {
+    border-top: none;
   }
   .nav-menu-members .sub-menu .menu-item:hover > a {
     color: var(--wp--preset--color--white);
@@ -4832,7 +4836,7 @@ article > .entry-title,
 @media (min-width: 1200px) {
   .vertical-image-quote__quote {
     font-size: 33px;
-    line-height: 48px;
+    line-height: 38px;
     letter-spacing: -0.42px;
   }
 }
@@ -9412,26 +9416,6 @@ form#bootstrap-theme afform-translators-rate-sharing-survey-page3 .af-admin-edit
 @media (min-width: 768px) {
   .u-width-narrow, .u-content-narrow {
     width: clamp(600px, 70vw, 800px);
-  }
-}
-
-/* Padding Utilities
---------------------------------------------- */
-.u-padding-left-constrained {
-  padding-left: 16px;
-}
-@media (min-width: 768px) {
-  .u-padding-left-constrained {
-    padding-left: max(16px, (100vw - clamp(700px, 85vw, 1152px)) / 2);
-  }
-}
-
-.wp-block-column.u-padding-left-constrained {
-  padding-left: 16px;
-}
-@media (min-width: 768px) {
-  .wp-block-column.u-padding-left-constrained {
-    padding-left: max(16px, (100vw - clamp(700px, 85vw, 1152px)) / 2);
   }
 }
 
