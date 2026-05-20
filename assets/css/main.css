@@ -9391,8 +9391,7 @@ form#bootstrap-theme afform-translators-rate-sharing-survey-page3 .af-admin-edit
   border: none !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  padding: 4px 8px !important;
-  min-height: 48px !important;
+  padding: 2px 8px !important;
   cursor: text;
 }
 .crm-af-field .select2-container-multi .select2-choices .select2-search-field input {
