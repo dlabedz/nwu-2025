@@ -590,6 +590,25 @@
 		line-height: normal;
 		text-transform: uppercase;
 		display: block;
+		position: relative;
+		overflow: hidden;
+
+		&::before {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 8px;
+			background: repeating-linear-gradient(45deg, transparent, transparent 2px, #FEFEFE 2px, #FEFEFE 3px, transparent 3px, transparent 5px);
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+
+		&:hover::before,
+		&:focus::before {
+			opacity: 1;
+		}
 
 		@include media(">1050px") {
 			text-align: center;
@@ -604,11 +623,6 @@
 			padding: 4px;
 			font-size: 12px;
 			line-height: 1.2;
-		}
-
-		&:hover,
-		&:focus {
-			opacity: 0.85;
 		}
 	}
 }
