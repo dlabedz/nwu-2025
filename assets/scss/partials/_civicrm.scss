@@ -916,3 +916,296 @@ form#bootstrap-theme afform-translators-rate-sharing-survey-page3 {
 		display: none !important;
 	}
 }
+
+// ============================================================
+// SearchKit / Afform Search Display — Filter controls
+// ============================================================
+
+.crm-search-display {
+
+	// Select2 multi-select (e.g. "Total Pay" filter)
+	.select2-container-multi {
+		width: 100% !important;
+		display: block;
+
+		.select2-choices {
+			background: var(--wp--preset--color--background) !important;
+			border: 4px solid var(--wp--preset--color--foreground) !important;
+			border-radius: 0 !important;
+			box-shadow: none !important;
+			padding: 4px 8px !important;
+			min-height: 48px !important;
+			cursor: text;
+
+			.select2-search-field {
+				input {
+					font-family: "DM Sans", sans-serif !important;
+					font-size: 18px !important;
+					color: var(--wp--preset--color--foreground) !important;
+					padding: 6px 0 !important;
+					margin: 0 !important;
+					background: transparent !important;
+
+					&::placeholder {
+						color: var(--wp--preset--color--foreground) !important;
+						opacity: 0.5;
+					}
+				}
+			}
+
+			// Selected value chips
+			.select2-search-choice {
+				background: var(--wp--preset--color--navy) !important;
+				border: none !important;
+				border-radius: 0 !important;
+				color: #fff !important;
+				font-family: "DM Sans", sans-serif !important;
+				font-size: 14px !important;
+				font-weight: 600 !important;
+				padding: 4px 22px 4px 8px !important;
+				margin: 4px 4px 4px 0 !important;
+				line-height: 1.4 !important;
+				box-shadow: none !important;
+
+				.select2-search-choice-close {
+					top: 50% !important;
+					transform: translateY(-50%);
+					right: 5px !important;
+					opacity: 0.7;
+
+					&:hover {
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+		&.select2-container-active .select2-choices {
+			outline: 2px solid var(--wp--preset--color--blue) !important;
+			outline-offset: 2px !important;
+			box-shadow: none !important;
+		}
+	}
+
+	// Action button (crm-search-task-menu)
+	button.crm-search-task-menu {
+		display: inline-flex !important;
+		align-items: center !important;
+		gap: 6px !important;
+		border: 4px solid var(--wp--preset--color--foreground) !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		color: var(--wp--preset--color--foreground) !important;
+		font-family: "DM Sans", sans-serif !important;
+		font-size: 16.5px !important;
+		font-weight: 900 !important;
+		letter-spacing: 2px !important;
+		text-transform: uppercase !important;
+		padding: 10px 20px !important;
+		box-shadow: none !important;
+		cursor: pointer !important;
+		line-height: 1 !important;
+
+		.crm-i {
+			display: none !important;
+		}
+
+		.caret {
+			margin-left: 2px !important;
+		}
+
+		&:hover:not([disabled]),
+		&:focus:not([disabled]) {
+			background: var(--wp--preset--color--foreground) !important;
+			color: var(--wp--preset--color--background) !important;
+			outline: none !important;
+		}
+
+		&[disabled] {
+			opacity: 0.4 !important;
+			cursor: not-allowed !important;
+		}
+	}
+
+	// Toolbar row (wraps Action button + any other controls)
+	.form-inline {
+		display: flex !important;
+		align-items: center !important;
+		gap: 12px !important;
+		padding: 12px 0 !important;
+		margin-bottom: 4px !important;
+		border-bottom: 3px solid var(--wp--preset--color--navy) !important;
+	}
+
+	// Main results table
+	table.table {
+		display: block !important;
+		overflow-x: auto !important;
+		-webkit-overflow-scrolling: touch !important;
+		width: 100% !important;
+		border-collapse: collapse !important;
+		margin: 0 !important;
+		background: transparent !important;
+
+		// Strip Bootstrap's striped rows
+		&.table-striped > tbody > tr:nth-of-type(odd) {
+			background: transparent !important;
+		}
+
+		thead {
+			tr {
+				border-bottom: 3px solid var(--wp--preset--color--navy) !important;
+				background: transparent !important;
+			}
+
+			th {
+				padding: 10px 16px !important;
+				text-align: left !important;
+				font-family: "DM Sans", sans-serif !important;
+				font-size: 11px !important;
+				font-weight: 900 !important;
+				letter-spacing: 2px !important;
+				text-transform: uppercase !important;
+				color: var(--wp--preset--color--foreground) !important;
+				background: transparent !important;
+				border: none !important;
+				white-space: nowrap !important;
+				cursor: pointer !important;
+
+				&:hover {
+					background: var(--wp--preset--color--newsprint) !important;
+				}
+
+				// Sort icon
+				.crm-search-table-column-sort-icon {
+					margin-right: 5px !important;
+					font-size: 10px !important;
+					opacity: 0.3 !important;
+
+					&:not(.disabled) {
+						opacity: 1 !important;
+						color: var(--wp--preset--color--blue) !important;
+					}
+				}
+			}
+
+			// Select-all checkbox column
+			th.crm-search-result-select {
+				padding: 8px 12px !important;
+				white-space: nowrap !important;
+
+				.btn-group {
+					display: flex !important;
+					gap: 0 !important;
+				}
+
+				button.btn-secondary-outline {
+					background: transparent !important;
+					border: 2px solid var(--wp--preset--color--foreground) !important;
+					border-radius: 0 !important;
+					box-shadow: none !important;
+					color: var(--wp--preset--color--foreground) !important;
+					padding: 4px 8px !important;
+					line-height: 1 !important;
+					cursor: pointer !important;
+
+					&:not(:first-child) {
+						border-left: none !important;
+					}
+
+					&:hover:not([disabled]) {
+						background: var(--wp--preset--color--foreground) !important;
+						color: var(--wp--preset--color--background) !important;
+					}
+
+					&[disabled] {
+						opacity: 0.35 !important;
+						cursor: not-allowed !important;
+					}
+
+					.crm-i {
+						font-size: 14px !important;
+					}
+				}
+			}
+		}
+
+		tbody {
+			tr {
+				border-bottom: 1px solid var(--wp--preset--color--newsprint) !important;
+				background: transparent !important;
+				transition: background 0.15s ease !important;
+
+				&:hover {
+					background: color-mix(in srgb, var(--wp--preset--color--newsprint) 40%, transparent) !important;
+				}
+
+				// Checkbox cell
+				td.crm-search-result-select {
+					padding: 8px 12px !important;
+					vertical-align: middle !important;
+				}
+			}
+
+			td {
+				padding: 12px 16px !important;
+				font-family: "DM Sans", sans-serif !important;
+				font-size: var(--wp--preset--font-size--small) !important;
+				color: var(--wp--preset--color--foreground) !important;
+				vertical-align: middle !important;
+				border: none !important;
+			}
+
+			// Empty state
+			.alert-info {
+				padding: 16px !important;
+				background: var(--wp--preset--color--newsprint) !important;
+				color: var(--wp--preset--color--foreground) !important;
+				border: none !important;
+				border-radius: 0 !important;
+				font-family: "DM Sans", sans-serif !important;
+				font-size: var(--wp--preset--font-size--small) !important;
+				text-align: center !important;
+				margin: 0 !important;
+				box-shadow: none !important;
+			}
+		}
+	}
+
+	// Pager
+	.crm-search-display-pager,
+	[ng-include*="Pager"] {
+		display: flex !important;
+		align-items: center !important;
+		gap: 8px !important;
+		padding: 16px 0 0 !important;
+		font-family: "DM Sans", sans-serif !important;
+		font-size: var(--wp--preset--font-size--small) !important;
+		color: var(--wp--preset--color--foreground) !important;
+
+		button,
+		.btn {
+			background: transparent !important;
+			border: 2px solid var(--wp--preset--color--foreground) !important;
+			border-radius: 0 !important;
+			box-shadow: none !important;
+			color: var(--wp--preset--color--foreground) !important;
+			font-family: "DM Sans", sans-serif !important;
+			font-size: 13px !important;
+			font-weight: 700 !important;
+			padding: 4px 10px !important;
+			cursor: pointer !important;
+
+			&:hover:not([disabled]) {
+				background: var(--wp--preset--color--foreground) !important;
+				color: var(--wp--preset--color--background) !important;
+			}
+
+			&[disabled],
+			&.disabled {
+				opacity: 0.35 !important;
+				cursor: not-allowed !important;
+			}
+		}
+	}
+}

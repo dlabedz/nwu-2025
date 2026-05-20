@@ -9377,6 +9377,248 @@ form#bootstrap-theme afform-translators-rate-sharing-survey-page3 .af-admin-edit
   display: none !important;
 }
 
+.crm-search-display .select2-container-multi {
+  width: 100% !important;
+  display: block;
+}
+.crm-search-display .select2-container-multi .select2-choices {
+  background: var(--wp--preset--color--background) !important;
+  border: 4px solid var(--wp--preset--color--foreground) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 4px 8px !important;
+  min-height: 48px !important;
+  cursor: text;
+}
+.crm-search-display .select2-container-multi .select2-choices .select2-search-field input {
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 18px !important;
+  color: var(--wp--preset--color--foreground) !important;
+  padding: 6px 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+.crm-search-display .select2-container-multi .select2-choices .select2-search-field input::placeholder {
+  color: var(--wp--preset--color--foreground) !important;
+  opacity: 0.5;
+}
+.crm-search-display .select2-container-multi .select2-choices .select2-search-choice {
+  background: var(--wp--preset--color--navy) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 4px 22px 4px 8px !important;
+  margin: 4px 4px 4px 0 !important;
+  line-height: 1.4 !important;
+  box-shadow: none !important;
+}
+.crm-search-display .select2-container-multi .select2-choices .select2-search-choice .select2-search-choice-close {
+  top: 50% !important;
+  transform: translateY(-50%);
+  right: 5px !important;
+  opacity: 0.7;
+}
+.crm-search-display .select2-container-multi .select2-choices .select2-search-choice .select2-search-choice-close:hover {
+  opacity: 1;
+}
+.crm-search-display .select2-container-multi.select2-container-active .select2-choices {
+  outline: 2px solid var(--wp--preset--color--blue) !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+.crm-search-display button.crm-search-task-menu {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  border: 4px solid var(--wp--preset--color--foreground) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--wp--preset--color--foreground) !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 16.5px !important;
+  font-weight: 900 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  padding: 10px 20px !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  line-height: 1 !important;
+}
+.crm-search-display button.crm-search-task-menu .crm-i {
+  display: none !important;
+}
+.crm-search-display button.crm-search-task-menu .caret {
+  margin-left: 2px !important;
+}
+.crm-search-display button.crm-search-task-menu:hover:not([disabled]), .crm-search-display button.crm-search-task-menu:focus:not([disabled]) {
+  background: var(--wp--preset--color--foreground) !important;
+  color: var(--wp--preset--color--background) !important;
+  outline: none !important;
+}
+.crm-search-display button.crm-search-task-menu[disabled] {
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+}
+.crm-search-display .form-inline {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px 0 !important;
+  margin-bottom: 4px !important;
+  border-bottom: 3px solid var(--wp--preset--color--navy) !important;
+}
+.crm-search-display table.table {
+  display: block !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+.crm-search-display table.table.table-striped > tbody > tr:nth-of-type(odd) {
+  background: transparent !important;
+}
+.crm-search-display table.table thead tr {
+  border-bottom: 3px solid var(--wp--preset--color--navy) !important;
+  background: transparent !important;
+}
+.crm-search-display table.table thead th {
+  padding: 10px 16px !important;
+  text-align: left !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  color: var(--wp--preset--color--foreground) !important;
+  background: transparent !important;
+  border: none !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+.crm-search-display table.table thead th:hover {
+  background: var(--wp--preset--color--newsprint) !important;
+}
+.crm-search-display table.table thead th .crm-search-table-column-sort-icon {
+  margin-right: 5px !important;
+  font-size: 10px !important;
+  opacity: 0.3 !important;
+}
+.crm-search-display table.table thead th .crm-search-table-column-sort-icon:not(.disabled) {
+  opacity: 1 !important;
+  color: var(--wp--preset--color--blue) !important;
+}
+.crm-search-display table.table thead th.crm-search-result-select {
+  padding: 8px 12px !important;
+  white-space: nowrap !important;
+}
+.crm-search-display table.table thead th.crm-search-result-select .btn-group {
+  display: flex !important;
+  gap: 0 !important;
+}
+.crm-search-display table.table thead th.crm-search-result-select button.btn-secondary-outline {
+  background: transparent !important;
+  border: 2px solid var(--wp--preset--color--foreground) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--wp--preset--color--foreground) !important;
+  padding: 4px 8px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+}
+.crm-search-display table.table thead th.crm-search-result-select button.btn-secondary-outline:not(:first-child) {
+  border-left: none !important;
+}
+.crm-search-display table.table thead th.crm-search-result-select button.btn-secondary-outline:hover:not([disabled]) {
+  background: var(--wp--preset--color--foreground) !important;
+  color: var(--wp--preset--color--background) !important;
+}
+.crm-search-display table.table thead th.crm-search-result-select button.btn-secondary-outline[disabled] {
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+}
+.crm-search-display table.table thead th.crm-search-result-select button.btn-secondary-outline .crm-i {
+  font-size: 14px !important;
+}
+.crm-search-display table.table tbody tr {
+  border-bottom: 1px solid var(--wp--preset--color--newsprint) !important;
+  background: transparent !important;
+  transition: background 0.15s ease !important;
+}
+.crm-search-display table.table tbody tr:hover {
+  background: color-mix(in srgb, var(--wp--preset--color--newsprint) 40%, transparent) !important;
+}
+.crm-search-display table.table tbody tr td.crm-search-result-select {
+  padding: 8px 12px !important;
+  vertical-align: middle !important;
+}
+.crm-search-display table.table tbody td {
+  padding: 12px 16px !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: var(--wp--preset--font-size--small) !important;
+  color: var(--wp--preset--color--foreground) !important;
+  vertical-align: middle !important;
+  border: none !important;
+}
+.crm-search-display table.table tbody .alert-info {
+  padding: 16px !important;
+  background: var(--wp--preset--color--newsprint) !important;
+  color: var(--wp--preset--color--foreground) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: var(--wp--preset--font-size--small) !important;
+  text-align: center !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+.crm-search-display .crm-search-display-pager,
+.crm-search-display [ng-include*=Pager] {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 16px 0 0 !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: var(--wp--preset--font-size--small) !important;
+  color: var(--wp--preset--color--foreground) !important;
+}
+.crm-search-display .crm-search-display-pager button,
+.crm-search-display .crm-search-display-pager .btn,
+.crm-search-display [ng-include*=Pager] button,
+.crm-search-display [ng-include*=Pager] .btn {
+  background: transparent !important;
+  border: 2px solid var(--wp--preset--color--foreground) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--wp--preset--color--foreground) !important;
+  font-family: "DM Sans", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  padding: 4px 10px !important;
+  cursor: pointer !important;
+}
+.crm-search-display .crm-search-display-pager button:hover:not([disabled]),
+.crm-search-display .crm-search-display-pager .btn:hover:not([disabled]),
+.crm-search-display [ng-include*=Pager] button:hover:not([disabled]),
+.crm-search-display [ng-include*=Pager] .btn:hover:not([disabled]) {
+  background: var(--wp--preset--color--foreground) !important;
+  color: var(--wp--preset--color--background) !important;
+}
+.crm-search-display .crm-search-display-pager button[disabled], .crm-search-display .crm-search-display-pager button.disabled,
+.crm-search-display .crm-search-display-pager .btn[disabled],
+.crm-search-display .crm-search-display-pager .btn.disabled,
+.crm-search-display [ng-include*=Pager] button[disabled],
+.crm-search-display [ng-include*=Pager] button.disabled,
+.crm-search-display [ng-include*=Pager] .btn[disabled],
+.crm-search-display [ng-include*=Pager] .btn.disabled {
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+}
+
 /* Width Utilities
 --------------------------------------------- */
 .u-width-full {
