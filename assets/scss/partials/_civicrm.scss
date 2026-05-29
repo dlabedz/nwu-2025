@@ -1217,3 +1217,32 @@ form#bootstrap-theme afform-translators-rate-sharing-survey-page3 {
 		}
 	}
 }
+
+/* ACA Survey - Membership Sign-Up Form
+--------------------------------------------- */
+afform-membership-sign-up {
+
+	// Single boolean checkbox fields: show parenthetical help text on same line, italicized
+	af-field.af-field-type-check-box:not(.af-field-type-multiple) {
+		display: flex !important;
+		flex-direction: row !important;
+		align-items: center !important;
+		flex-wrap: wrap;
+		gap: 0.5em;
+
+		> .crm-af-field {
+			width: auto !important;
+			margin-bottom: 0 !important;
+		}
+
+		> p.crm-af-field-help-post {
+			margin: 0 !important;
+			font-style: italic;
+		}
+	}
+
+	// Sub-checkbox groups (conditional questions): indent further than parent checkboxes
+	af-field.af-field-type-check-box.af-field-type-multiple {
+		margin-left: 2em !important;
+	}
+}

@@ -9627,6 +9627,27 @@ form#bootstrap-theme afform-translators-rate-sharing-survey-page3 .af-admin-edit
   cursor: not-allowed !important;
 }
 
+/* ACA Survey - Membership Sign-Up Form
+--------------------------------------------- */
+afform-membership-sign-up af-field.af-field-type-check-box:not(.af-field-type-multiple) {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+afform-membership-sign-up af-field.af-field-type-check-box:not(.af-field-type-multiple) > .crm-af-field {
+  width: auto !important;
+  margin-bottom: 0 !important;
+}
+afform-membership-sign-up af-field.af-field-type-check-box:not(.af-field-type-multiple) > p.crm-af-field-help-post {
+  margin: 0 !important;
+  font-style: italic;
+}
+afform-membership-sign-up af-field.af-field-type-check-box.af-field-type-multiple {
+  margin-left: 2em !important;
+}
+
 /* Width Utilities
 --------------------------------------------- */
 .u-width-full {
