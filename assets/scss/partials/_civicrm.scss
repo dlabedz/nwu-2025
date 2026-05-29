@@ -1243,8 +1243,9 @@ afform-membership-sign-up {
 		}
 	}
 
-	// Conditional sub-sections (revealed by parent checkbox): indent to show hierarchy
-	div[ng-if] {
+	// Sub-items revealed by a parent checkbox live in a nested .af-container —
+	// indent them to visually show the hierarchy
+	.af-container .af-container {
 		margin-left: 2em;
 	}
 }
