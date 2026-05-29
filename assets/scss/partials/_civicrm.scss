@@ -1222,8 +1222,10 @@ form#bootstrap-theme afform-translators-rate-sharing-survey-page3 {
 --------------------------------------------- */
 afform-membership-sign-up {
 
-	// Single boolean checkbox fields: show parenthetical help text on same line, italicized
-	af-field.af-field-type-check-box:not(.af-field-type-multiple) {
+	// Single boolean checkbox fields (no outer label in DOM): show parenthetical help text
+	// on same line as checkbox, italicized. Uses :has() to exclude multi-value checkbox
+	// fields, which DO have a direct label.crm-af-field-label child.
+	af-field.af-field-type-check-box:not(:has(> label.crm-af-field-label)) {
 		display: flex !important;
 		flex-direction: row !important;
 		align-items: center !important;
@@ -1241,8 +1243,8 @@ afform-membership-sign-up {
 		}
 	}
 
-	// Sub-checkbox groups (conditional questions): indent further than parent checkboxes
-	af-field.af-field-type-check-box.af-field-type-multiple {
-		margin-left: 2em !important;
+	// Conditional sub-sections (revealed by parent checkbox): indent to show hierarchy
+	div[ng-if] {
+		margin-left: 2em;
 	}
 }
