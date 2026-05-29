@@ -1243,9 +1243,9 @@ afform-membership-sign-up {
 		}
 	}
 
-	// Sub-items revealed by a parent checkbox live in a nested .af-container —
+	// Sub-items revealed by a parent checkbox live in a third-level .af-container —
 	// indent them to visually show the hierarchy
-	.af-container .af-container {
+	.af-container .af-container .af-container {
 		margin-left: 2em;
 	}
 }

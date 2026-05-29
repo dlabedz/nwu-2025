@@ -9644,7 +9644,7 @@ afform-membership-sign-up af-field.af-field-type-check-box:not(:has(> label.crm-
   margin: 0 !important;
   font-style: italic;
 }
-afform-membership-sign-up .af-container .af-container {
+afform-membership-sign-up .af-container .af-container .af-container {
   margin-left: 2em;
 }
 
