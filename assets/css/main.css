@@ -9648,6 +9648,10 @@ afform-membership-sign-up .af-container .af-container .af-container {
   margin-left: 2em;
 }
 
+.af-form {
+  padding-bottom: 3em;
+}
+
 /* Width Utilities
 --------------------------------------------- */
 .u-width-full {
