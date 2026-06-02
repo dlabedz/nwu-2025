@@ -9630,7 +9630,7 @@ form#bootstrap-theme afform-translators-rate-sharing-survey-page3 .af-admin-edit
 /* ACA Survey - Membership Sign-Up Form
 --------------------------------------------- */
 afform-membership-sign-up button.af-button.btn.btn-primary {
-  margin-bottom: 60px;
+  margin-bottom: 60px !important;
 }
 afform-membership-sign-up af-field.af-field-type-check-box:not(:has(> label.crm-af-field-label)) {
   display: flex !important;

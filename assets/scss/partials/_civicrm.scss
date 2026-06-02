@@ -1222,14 +1222,12 @@ form#bootstrap-theme afform-translators-rate-sharing-survey-page3 {
 --------------------------------------------- */
 afform-membership-sign-up {
 
-	// Continue button — add breathing room below so it doesn't butt up against the footer
+
 	button.af-button.btn.btn-primary {
-		margin-bottom: 60px;
+		margin-bottom: 60px !important;
 	}
 
-	// Single boolean checkbox fields (no outer label in DOM): show parenthetical help text
-	// on same line as checkbox, italicized. Uses :has() to exclude multi-value checkbox
-	// fields, which DO have a direct label.crm-af-field-label child.
+
 	af-field.af-field-type-check-box:not(:has(> label.crm-af-field-label)) {
 		display: flex !important;
 		flex-direction: row !important;
@@ -1248,8 +1246,7 @@ afform-membership-sign-up {
 		}
 	}
 
-	// Sub-items revealed by a parent checkbox live in a third-level .af-container —
-	// indent them to visually show the hierarchy
+
 	.af-container .af-container .af-container {
 		margin-left: 2em;
 	}
