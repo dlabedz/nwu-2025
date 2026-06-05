@@ -73,4 +73,70 @@
 		toggleSubMenu(event);
 	});
 
+	// AJAX archive filtering
+	const archiveFiltersForm = document.getElementById('archive-filters');
+	const archiveListing = document.querySelector('.archive-listing');
+
+	if ( archiveFiltersForm && archiveListing ) {
+
+		const fetchFilteredResults = function() {
+			const params = new URLSearchParams(new FormData(archiveFiltersForm));
+
+			// Strip empty params so WordPress doesn't misinterpret them
+			for (const [key, value] of [...params.entries()]) {
+				if ( !value ) params.delete(key);
+			}
+
+			const url = archiveFiltersForm.action + (params.toString() ? '?' + params.toString() : '');
+
+			archiveListing.setAttribute('aria-busy', 'true');
+			archiveListing.style.opacity = '0.5';
+
+			fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+				.then(function(response) { return response.text(); })
+				.then(function(html) {
+					const parser = new DOMParser();
+					const doc = parser.parseFromString(html, 'text/html');
+					const newListing = doc.querySelector('.archive-listing');
+					if ( newListing ) {
+						archiveListing.innerHTML = newListing.innerHTML;
+					}
+					archiveListing.removeAttribute('aria-busy');
+					archiveListing.style.opacity = '';
+					history.pushState(null, '', url);
+				})
+				.catch(function() {
+					archiveListing.removeAttribute('aria-busy');
+					archiveListing.style.opacity = '';
+				});
+		};
+
+		const clearFiltersBtn = archiveFiltersForm.querySelector('.clear-filters');
+
+		const updateClearButton = function() {
+			if ( !clearFiltersBtn ) return;
+			const hasSelection = [...archiveFiltersForm.querySelectorAll('.auto-submit-filter')]
+				.some(function(select) { return select.value !== ''; });
+			clearFiltersBtn.classList.toggle('clear-filters--hidden', !hasSelection);
+		};
+
+		archiveFiltersForm.addEventListener('change', function(event) {
+			if ( event.target.classList.contains('auto-submit-filter') ) {
+				updateClearButton();
+				fetchFilteredResults();
+			}
+		});
+
+		if ( clearFiltersBtn ) {
+			clearFiltersBtn.addEventListener('click', function(event) {
+				event.preventDefault();
+				archiveFiltersForm.querySelectorAll('.auto-submit-filter').forEach(function(select) {
+					select.value = '';
+				});
+				updateClearButton();
+				fetchFilteredResults();
+			});
+		}
+	}
+
 })();

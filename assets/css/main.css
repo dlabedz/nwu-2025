@@ -2867,6 +2867,9 @@ p.form-align-right {
     text-align: center;
   }
 }
+.archive-filters-form .clear-filters--hidden {
+  display: none;
+}
 
 .archive-listing .archive-results {
   border-top: 1px solid var(--wp--custom--color--neutral-300);

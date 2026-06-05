@@ -13,11 +13,11 @@ add_filter( 'be_page_layout', 'be_return_full_width_content' );
 
 get_header();
 
-// Get filter parameters
-$category = isset( $_GET['category'] ) ? sanitize_text_field( $_GET['category'] ) : '';
-$tag = isset( $_GET['tag'] ) ? sanitize_text_field( $_GET['tag'] ) : '';
-$author = isset( $_GET['author_name'] ) ? sanitize_text_field( $_GET['author_name'] ) : '';
-$year = isset( $_GET['year'] ) ? intval( $_GET['year'] ) : '';
+// Get filter parameters (prefixed to avoid WordPress canonical redirects on reserved query vars)
+$category = isset( $_GET['filter_category'] ) ? sanitize_text_field( $_GET['filter_category'] ) : '';
+$tag      = isset( $_GET['filter_tag'] ) ? sanitize_text_field( $_GET['filter_tag'] ) : '';
+$author   = isset( $_GET['filter_author'] ) ? sanitize_text_field( $_GET['filter_author'] ) : '';
+$year     = isset( $_GET['filter_year'] ) ? intval( $_GET['filter_year'] ) : '';
 
 // Determine post types based on context
 $post_types = [ 'post', 'event' ];
@@ -165,8 +165,8 @@ if ( is_category() ) {
 
 					<!-- Category Filter -->
 					<div class="filter-group">
-						<label for="category"><?php esc_html_e( 'Category', 'nwu-2025' ); ?></label>
-						<select name="category" id="category" class="auto-submit-filter">
+						<label for="filter_category"><?php esc_html_e( 'Category', 'nwu-2025' ); ?></label>
+						<select name="filter_category" id="filter_category" class="auto-submit-filter">
 							<option value=""><?php esc_html_e( 'Select', 'nwu-2025' ); ?></option>
 							<?php
 							$categories = get_categories( [ 'hide_empty' => true ] );
@@ -181,8 +181,8 @@ if ( is_category() ) {
 
 					<!-- Tag Filter -->
 					<div class="filter-group">
-						<label for="tag"><?php esc_html_e( 'Tag', 'nwu-2025' ); ?></label>
-						<select name="tag" id="tag" class="auto-submit-filter">
+						<label for="filter_tag"><?php esc_html_e( 'Tag', 'nwu-2025' ); ?></label>
+						<select name="filter_tag" id="filter_tag" class="auto-submit-filter">
 							<option value=""><?php esc_html_e( 'Select', 'nwu-2025' ); ?></option>
 							<?php
 							$tags = get_tags( [ 'hide_empty' => true ] );
@@ -197,8 +197,8 @@ if ( is_category() ) {
 
 					<!-- Author Filter -->
 					<div class="filter-group">
-						<label for="author_name"><?php esc_html_e( 'Author Name', 'nwu-2025' ); ?></label>
-						<select name="author_name" id="author_name" class="auto-submit-filter">
+						<label for="filter_author"><?php esc_html_e( 'Author Name', 'nwu-2025' ); ?></label>
+						<select name="filter_author" id="filter_author" class="auto-submit-filter">
 							<option value=""><?php esc_html_e( 'Select', 'nwu-2025' ); ?></option>
 							<?php
 							global $wpdb;
@@ -223,8 +223,8 @@ if ( is_category() ) {
 
 					<!-- Year Filter -->
 					<div class="filter-group">
-						<label for="year"><?php esc_html_e( 'Year', 'nwu-2025' ); ?></label>
-						<select name="year" id="year" class="auto-submit-filter">
+						<label for="filter_year"><?php esc_html_e( 'Year', 'nwu-2025' ); ?></label>
+						<select name="filter_year" id="filter_year" class="auto-submit-filter">
 							<option value=""><?php esc_html_e( 'Select', 'nwu-2025' ); ?></option>
 							<?php
 							$years = $wpdb->get_col( "SELECT DISTINCT YEAR(post_date) FROM $wpdb->posts WHERE post_status = 'publish' AND post_type IN ('post', 'event') ORDER BY post_date DESC" );
@@ -251,16 +251,16 @@ if ( is_category() ) {
 						// Build query params for filters (only include non-empty filters)
 						$filter_params = [];
 						if ( ! empty( $category ) ) {
-							$filter_params['category'] = $category;
+							$filter_params['filter_category'] = $category;
 						}
 						if ( ! empty( $tag ) ) {
-							$filter_params['tag'] = $tag;
+							$filter_params['filter_tag'] = $tag;
 						}
 						if ( ! empty( $author ) ) {
-							$filter_params['author_name'] = $author;
+							$filter_params['filter_author'] = $author;
 						}
 						if ( ! empty( $year ) ) {
-							$filter_params['year'] = $year;
+							$filter_params['filter_year'] = $year;
 						}
 
 						// All URL - news-events-archive (no type param = shows both)
@@ -292,14 +292,11 @@ if ( is_category() ) {
 					</div>
 
 					<?php
-					// Show clear button if any filters are active
 					$has_filters = ! empty( $category ) || ! empty( $tag ) || ! empty( $author ) || ! empty( $year ) || ! empty( $current_type );
-					if ( $has_filters ) :
-						?>
-						<a href="<?php echo esc_url( $base_url ); ?>" class="clear-filters wp-element-button">
-							<?php esc_html_e( 'Clear All Filters', 'nwu-2025' ); ?>
-						</a>
-					<?php endif; ?>
+					?>
+					<a href="<?php echo esc_url( $base_url ); ?>" class="clear-filters wp-element-button<?php echo $has_filters ? '' : ' clear-filters--hidden'; ?>">
+						<?php esc_html_e( 'Clear All Filters', 'nwu-2025' ); ?>
+					</a>
 				</div>
 
 			</form>
