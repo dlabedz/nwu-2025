@@ -492,7 +492,13 @@ div[id^="s2id_"] {
 			top: 0 !important;
 
 			b {
-				background-position: 0 8px !important;
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 5l6 6 6-6' stroke='%23000000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") !important;
+				background-size: 16px 16px !important;
+				background-repeat: no-repeat !important;
+				background-position: center !important;
+				width: 100% !important;
+				height: 100% !important;
+				display: block !important;
 			}
 		}
 	}
