@@ -104,6 +104,124 @@ afform-your-profile {
 }
 
 // ============================================================
+// Select2 — Global icon fixes (dropdown arrow + clear + search)
+// Applies to all CiviCRM forms using Select2
+// ============================================================
+
+// Dropdown arrow
+.select2-container .select2-choice .select2-arrow,
+div[id^=s2id_] .select2-choice .select2-arrow {
+	border-left: 2px solid var(--wp--preset--color--foreground) !important;
+	background: transparent !important;
+	width: 36px !important;
+
+	b {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 5l6 6 6-6' stroke='%230A0A0A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") !important;
+		background-repeat: no-repeat !important;
+		background-position: center !important;
+		background-size: 18px 18px !important;
+		display: block !important;
+		width: 100% !important;
+		height: 100% !important;
+	}
+}
+
+// Single-select clear ✕ (abbr element, appears when a value is selected)
+.select2-container .select2-choice abbr {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 2l12 12M14 2L2 14' stroke='%230A0A0A' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+	background-size: 16px 16px !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+	background-color: transparent !important;
+	width: 20px !important;
+	height: 20px !important;
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	right: 40px !important;
+	opacity: 1 !important;
+}
+
+// Search field — container padding
+.select2-drop .select2-search,
+.select2-dropdown-open .select2-search {
+	padding: 6px 8px !important;
+}
+
+// Search field — input with magnifying glass icon
+.select2-drop .select2-search input,
+.select2-dropdown-open .select2-search input {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='6.5' cy='6.5' r='4' stroke='%230A0A0A' stroke-width='2' fill='none'/%3E%3Cline x1='10' y1='10' x2='14' y2='14' stroke='%230A0A0A' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+	background-repeat: no-repeat !important;
+	background-position: right 12px center !important;
+	background-size: 18px 18px !important;
+	padding-right: 40px !important;
+	padding-top: 8px !important;
+	padding-bottom: 8px !important;
+	padding-left: 12px !important;
+	border: 4px solid var(--wp--preset--color--foreground) !important;
+	border-radius: 0 !important;
+	font-family: "DM Sans", sans-serif !important;
+	font-size: 15px !important;
+	height: auto !important;
+	box-shadow: none !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+// Multi-select chip close button
+.select2-container-multi .select2-choices .select2-search-choice-close {
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 2l12 12M14 2L2 14' stroke='%230A0A0A' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+	background-size: 14px 14px !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+	width: 20px !important;
+	height: 20px !important;
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	right: 4px !important;
+	opacity: 1 !important;
+}
+
+// HiDPI — prevent Select2's retina sprite (select2x2.png) from reasserting
+// Select2 swaps in a @2x PNG sprite for high-density displays via its own
+// media query — we re-apply all SVG fixes here so they aren't overridden.
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 2dppx) {
+
+	.select2-search input,
+	.select2-drop .select2-search input,
+	.select2-dropdown-open .select2-search input {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='6.5' cy='6.5' r='4' stroke='%230A0A0A' stroke-width='2' fill='none'/%3E%3Cline x1='10' y1='10' x2='14' y2='14' stroke='%230A0A0A' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+		background-repeat: no-repeat !important;
+		background-position: right 12px center !important;
+		background-size: 18px 18px !important;
+	}
+
+	.select2-search-choice-close,
+	.select2-container-multi .select2-choices .select2-search-choice-close {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 2l12 12M14 2L2 14' stroke='%230A0A0A' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+		background-repeat: no-repeat !important;
+		background-position: center !important;
+		background-size: 14px 14px !important;
+	}
+
+	.select2-container .select2-choice abbr {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 2l12 12M14 2L2 14' stroke='%230A0A0A' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+		background-repeat: no-repeat !important;
+		background-position: center !important;
+		background-size: 14px 14px !important;
+	}
+
+	.select2-container .select2-choice .select2-arrow b,
+	div[id^=s2id_] .select2-choice .select2-arrow b {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 5l6 6 6-6' stroke='%230A0A0A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") !important;
+		background-repeat: no-repeat !important;
+		background-position: center !important;
+		background-size: 18px 18px !important;
+	}
+}
+
+// ============================================================
 // Update Billing Form (CRM_Contribute_Form_UpdateBilling)
 // ============================================================
 
@@ -969,19 +1087,6 @@ form#bootstrap-theme afform-translators-rate-sharing-survey-page3 {
 			margin: 4px 4px 4px 0 !important;
 			line-height: 1.4 !important;
 			box-shadow: none !important;
-
-			.select2-search-choice-close {
-				top: 50% !important;
-				transform: translateY(-50%);
-				right: 6px !important;
-				width: 16px !important;
-				height: 16px !important;
-				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 2l12 12M14 2L2 14' stroke='%23000000' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") !important;
-				background-size: 16px 16px !important;
-				background-repeat: no-repeat !important;
-				background-position: center !important;
-				opacity: 1 !important;
-			}
 		}
 	}
 
@@ -1220,15 +1325,15 @@ form#bootstrap-theme afform-translators-rate-sharing-survey-page3 {
 	}
 }
 
-/* ACA Survey - Membership Sign-Up Form
---------------------------------------------- */
-afform-membership-sign-up {
+// ============================================================
+// Membership Sign-Up Form (ACA Survey / contribution page 27)
+// ============================================================
 
+afform-membership-sign-up {
 
 	button.af-button.btn.btn-primary {
 		margin-bottom: 60px !important;
 	}
-
 
 	af-field.af-field-type-check-box:not(:has(> label.crm-af-field-label)) {
 		display: flex !important;
@@ -1248,10 +1353,34 @@ afform-membership-sign-up {
 		}
 	}
 
-
 	.af-container .af-container .af-container {
 		margin-left: 2em;
 	}
 }
 
+// Submit Payment button — page 3 of membership form
+// Uses crm-button-type-upload, not crm-button-type-submit,
+// so needs its own rule to match the Continue button on page 2.
+#crm-submit-buttons .crm-button-type-upload {
+	display: inline-block !important;
+	border: 4px solid var(--wp--preset--color--foreground) !important;
+	background: transparent !important;
+	color: var(--wp--preset--color--foreground) !important;
+	font-family: "DM Sans", sans-serif !important;
+	font-size: 16.5px !important;
+	font-weight: 900 !important;
+	line-height: 22.5px !important;
+	letter-spacing: 2.475px !important;
+	text-transform: uppercase !important;
+	padding: 12px 24px !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	cursor: pointer !important;
 
+	&:hover,
+	&:focus {
+		background: var(--wp--preset--color--foreground) !important;
+		color: var(--wp--preset--color--white) !important;
+		outline: none !important;
+	}
+}
