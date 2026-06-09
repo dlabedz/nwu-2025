@@ -142,9 +142,11 @@ div[id^=s2id_] .select2-choice .select2-arrow {
 	}
 }
 
-// Single-select clear ✕ (abbr element, appears when a value is selected)
-// font-size: 0 hides the default caret character Select2 renders as text
-.select2-container .select2-choice abbr {
+// All Select2 close/clear buttons — single-select abbr and multi-select chips
+// Both use class="select2-search-choice-close"; font-size:0 suppresses
+// the default caret character Select2 renders as text content
+.select2-search-choice-close,
+.select2-container .select2-choice abbr.select2-search-choice-close {
 	font-size: 0 !important;
 	line-height: 0 !important;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 2l12 12M14 2L2 14' stroke='%230A0A0A' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") !important;
@@ -153,13 +155,20 @@ div[id^=s2id_] .select2-choice .select2-arrow {
 	background-position: center !important;
 	background-color: transparent !important;
 	display: inline-block !important;
+	position: absolute !important;
 	width: 20px !important;
 	height: 20px !important;
 	top: 50% !important;
 	transform: translateY(-50%) !important;
 	right: 40px !important;
-	position: absolute !important;
 	opacity: 1 !important;
+}
+
+// Multi-select chip close — override right positioning since chips
+// are positioned differently from single-select containers
+.select2-container-multi .select2-choices .select2-search-choice .select2-search-choice-close {
+	right: 4px !important;
+	top: 50% !important;
 }
 
 // Search field — container padding
@@ -189,20 +198,6 @@ div[id^=s2id_] .select2-choice .select2-arrow {
 	box-sizing: border-box !important;
 }
 
-// Multi-select chip close button
-.select2-container-multi .select2-choices .select2-search-choice-close {
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 2l12 12M14 2L2 14' stroke='%230A0A0A' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") !important;
-	background-size: 14px 14px !important;
-	background-repeat: no-repeat !important;
-	background-position: center !important;
-	width: 20px !important;
-	height: 20px !important;
-	top: 50% !important;
-	transform: translateY(-50%) !important;
-	right: 4px !important;
-	opacity: 1 !important;
-}
-
 // HiDPI — prevent Select2's retina sprite (select2x2.png) from reasserting
 // Select2 swaps in a @2x PNG sprite for high-density displays via its own
 // media query — we re-apply all SVG fixes here so they aren't overridden.
@@ -218,15 +213,7 @@ div[id^=s2id_] .select2-choice .select2-arrow {
 		background-size: 18px 18px !important;
 	}
 
-	.select2-search-choice-close,
-	.select2-container-multi .select2-choices .select2-search-choice-close {
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 2l12 12M14 2L2 14' stroke='%230A0A0A' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") !important;
-		background-repeat: no-repeat !important;
-		background-position: center !important;
-		background-size: 14px 14px !important;
-	}
-
-	.select2-container .select2-choice abbr {
+	.select2-search-choice-close {
 		font-size: 0 !important;
 		line-height: 0 !important;
 		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 2l12 12M14 2L2 14' stroke='%230A0A0A' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") !important;
@@ -1382,11 +1369,10 @@ afform-membership-sign-up {
 }
 
 // Submit Payment button — page 3 of membership form
-// Uses crm-button-type-upload (not crm-button-type-submit) so needs
-// its own rule. Three selectors for specificity against CiviCRM defaults.
-.crm-contribution-page-id-27 .crm-submit-buttons .crm-button-type-upload,
-#crm-submit-buttons .crm-button-type-upload,
-button.crm-button-type-upload {
+// Uses crm-button-type-upload (not crm-button-type-submit).
+// ID selector used for maximum specificity against CiviCRM defaults.
+#_qf_Main_upload-bottom,
+#crm-submit-buttons button.crm-form-submit.crm-button-type-upload {
 	display: inline-block !important;
 	border: 4px solid var(--wp--preset--color--foreground) !important;
 	background: transparent !important;
