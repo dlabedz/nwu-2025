@@ -1,0 +1,33 @@
+{
+  "key": "group_page_access",
+  "title": "Page Access",
+  "fields": [
+    {
+      "key": "field_members_only",
+      "label": "Members Only",
+      "name": "members_only",
+      "type": "true_false",
+      "instructions": "If checked, only logged-in members will see this page content. Non-members will see a members-only message.",
+      "required": 0,
+      "default_value": 0,
+      "ui": 1,
+      "ui_on_text": "Members Only",
+      "ui_off_text": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "side",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true
+}

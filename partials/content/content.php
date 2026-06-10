@@ -10,17 +10,21 @@
 
 echo '<article class="' . esc_attr( join( ' ', get_post_class() ) ) . '">';
 
-
 echo '<div class="entry-content">';
 tha_entry_content_before();
-the_content();
 
-wp_link_pages(
-	[
-		'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bestarter_textdomain' ),
-		'after'  => '</div>',
-	]
-);
+if ( \NWU2025\nwu_is_members_only_page() && ! \NWU2025\nwu_current_user_is_member() ) {
+	\NWU2025\nwu_render_members_only_message();
+} else {
+	the_content();
+
+	wp_link_pages(
+		[
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bestarter_textdomain' ),
+			'after'  => '</div>',
+		]
+	);
+}
 
 tha_entry_content_after();
 echo '</div>';

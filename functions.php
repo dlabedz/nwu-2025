@@ -31,6 +31,7 @@ require_once get_template_directory() . '/inc/loop.php';
 include_once get_template_directory() . '/inc/login-logo.php';
 require_once get_template_directory() . '/inc/back-to-top.php';
 require_once get_template_directory() . '/inc/user-roles.php';
+require_once get_template_directory() . '/inc/member-access.php';
 
 // Plugin Support.
 require_once get_template_directory() . '/inc/acf.php';
