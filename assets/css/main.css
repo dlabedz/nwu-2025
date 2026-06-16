@@ -474,6 +474,10 @@ h6 {
   margin-block-end: var(--wp--style--block-gap);
 }
 
+.page-title {
+  margin-block-end: 1.5rem;
+}
+
 /* Leadership & Staff Page — Spacing Normalization
 --------------------------------------------- */
 .entry-content h4.has-h-4-font-size,
