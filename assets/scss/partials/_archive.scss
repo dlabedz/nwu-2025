@@ -102,6 +102,13 @@
 
 .archive-news-events {
 	background: var(--wp--preset--color--background);
+
+	// Reset the card grid applied by `.archive .site-main` on category/tag pages
+	.site-main {
+		display: block;
+		max-width: none;
+		margin-inline: unset;
+	}
 }
 
 .archive-filters-form {
