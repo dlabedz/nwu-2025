@@ -72,7 +72,7 @@ $text_color_map = [
 					<?php endif; ?>
 
 					<?php if (!empty($text)) : ?>
-						<p class="two-column-cards__text"><?php echo esc_html($text); ?></p>
+						<div class="two-column-cards__text"><?php echo wp_kses_post($text); ?></div>
 					<?php endif; ?>
 
 					<?php if (!empty($tag_link) && !is_wp_error($tag_link) && !empty($tag_name)) : ?>

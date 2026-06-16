@@ -4566,6 +4566,13 @@ article > .entry-title,
   margin: 0;
   text-align: left;
 }
+.two-column-cards__text a {
+  color: #0A0A0A;
+}
+.two-column-cards__text a:hover {
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
 .two-column-cards__button-wrapper {
   margin-top: auto;
   text-align: center;

@@ -44,6 +44,15 @@
 		line-height: 29px;
 		margin: 0;
 		text-align: left;
+
+		a{
+
+			color: #0A0A0A;
+			&:hover{
+				text-decoration: none;
+				transition: all 0.2s ease;
+			}
+		}
 	}
 
 	&__button-wrapper {
