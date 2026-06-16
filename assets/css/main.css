@@ -2862,8 +2862,6 @@ p.form-align-right {
 }
 .archive-news-events .site-main {
   display: block;
-  max-width: none;
-  margin-inline: unset;
 }
 
 .archive-filters-form {
