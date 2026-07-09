@@ -39,6 +39,22 @@
 		}
 	}
 
+	// CONSTRAIN: Text within native Column blocks - matches .entry-content > p
+	.wp-block-column {
+		> p,
+		> .wp-block-paragraph,
+		> h1, > h2, > h3, > h4, > h5, > h6,
+		> .wp-block-heading,
+		> ul, > ol,
+		> .wp-block-list {
+			max-width: 100%;
+
+			@include media(">=tablet") {
+				max-width: clamp(700px, 85vw, 1132px);
+			}
+		}
+	}
+
 	// CONSTRAIN: Group blocks - width only, NO padding
 	& > .wp-block-group:not(.alignfull) {
 		width: 100%;

@@ -4569,15 +4569,18 @@ article > .entry-title,
 }
 .two-column-cards__text {
   font-size: 24px;
-  line-height: 29px;
+  line-height: 1.4;
   margin: 0;
   text-align: left;
 }
+.two-column-cards__text p {
+  line-height: 1.4;
+}
 .two-column-cards__text a {
-  color: #0A0A0A;
+  color: inherit;
+  text-decoration: underline;
 }
 .two-column-cards__text a:hover {
-  text-decoration: none;
   transition: all 0.2s ease;
 }
 .two-column-cards__button-wrapper {
@@ -5693,7 +5696,7 @@ article > .entry-title,
 }
 @media (min-width: 768px) {
   .block-news-events-hero.has-event .block-news-events-hero__inner {
-    grid-template-columns: 1fr 400px;
+    grid-template-columns: 1fr 325px;
     align-items: start;
   }
 }
@@ -9869,6 +9872,10 @@ afform-membership-sign-up .af-container .af-container .af-container {
   background: var(--wp--preset--color--foreground) !important;
   color: var(--wp--preset--color--white) !important;
   outline: none !important;
+}
+
+.crm-container table {
+  border: none;
 }
 
 /* Width Utilities

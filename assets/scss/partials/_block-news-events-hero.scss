@@ -18,7 +18,7 @@
     // When event is present, create two columns
     &.has-event &__inner {
         @include media(">=tablet") {
-            grid-template-columns: 1fr 400px;
+            grid-template-columns: 1fr 325px;
             align-items: start;
         }
     }

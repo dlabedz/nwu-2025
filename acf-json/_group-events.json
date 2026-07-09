@@ -139,7 +139,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "events"
+                "value": "event"
             }
         ]
     ],
