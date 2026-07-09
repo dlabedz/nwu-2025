@@ -90,8 +90,31 @@
 		}
 	}
 
-	// FULL-WIDTH: Columns and Covers
-	& > .wp-block-columns,
+	// CONSTRAIN: Columns (default alignment) - matches .entry-content > p
+	& > .wp-block-columns:not(.alignwide):not(.alignfull) {
+		width: 100%;
+		max-width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 0;
+		padding-right: 0;
+
+		@include media(">=tablet") {
+			max-width: clamp(700px, 85vw, 1132px);
+		}
+	}
+
+	// WIDE: Columns with alignwide
+	& > .wp-block-columns.alignwide {
+		width: 100%;
+		max-width: 100%;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	// FULL-WIDTH: Covers
 	& > .wp-block-cover {
 		width: 100%;
 		max-width: 100%;
