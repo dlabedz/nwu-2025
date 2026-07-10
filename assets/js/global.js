@@ -139,4 +139,44 @@
 		}
 	}
 
+	// Scroll to a URL hash target once its content has finished rendering.
+	// Needed for anchors that point into async-rendered content (e.g. a
+	// CiviCRM Afform), since the browser's native scroll-to-hash on page
+	// load fires before that content exists or before the page settles
+	// into its final height.
+	if ( window.location.hash ) {
+		const targetId = decodeURIComponent( window.location.hash.slice(1) );
+		const hashTarget = document.getElementById( targetId );
+
+		if ( hashTarget ) {
+			let settleTimer;
+			let attempts = 0;
+			const maxAttempts = 25; // ~5s of settling at 200ms apart
+
+			const scrollToHashTarget = function() {
+				hashTarget.scrollIntoView({ behavior: 'auto', block: 'start' });
+			};
+
+			scrollToHashTarget();
+
+			const observer = new MutationObserver(function() {
+				clearTimeout( settleTimer );
+				settleTimer = setTimeout( function() {
+					scrollToHashTarget();
+					attempts++;
+					if ( attempts >= maxAttempts ) {
+						observer.disconnect();
+					}
+				}, 200 );
+			});
+
+			observer.observe( hashTarget, { childList: true, subtree: true } );
+
+			// Stop watching after 6s regardless, so this can't run forever.
+			setTimeout( function() {
+				observer.disconnect();
+			}, 6000 );
+		}
+	}
+
 })();
