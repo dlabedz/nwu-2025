@@ -306,8 +306,15 @@ function effective_date_orderby( $clauses, $query ) {
 
 	$clauses['join'] .= " LEFT JOIN {$wpdb->postmeta} AS nwu_event_date ON ( {$wpdb->posts}.ID = nwu_event_date.post_id AND nwu_event_date.meta_key = 'event_date' )";
 
+	// Prevent duplicate rows (and the pagination corruption that comes with
+	// them) if any post has more than one 'event_date' meta row.
+	$clauses['groupby'] = $clauses['groupby']
+		? $clauses['groupby'] . ", {$wpdb->posts}.ID"
+		: "{$wpdb->posts}.ID";
+
 	$order = 'ASC' === strtoupper( (string) $query->get( 'order' ) ) ? 'ASC' : 'DESC';
-	$clauses['orderby'] = "COALESCE( STR_TO_DATE( nwu_event_date.meta_value, '%Y-%m-%d' ), {$wpdb->posts}.post_date ) {$order}";
+	// ACF date_picker fields are stored raw as Ymd (e.g. 20260315), not Y-m-d.
+	$clauses['orderby'] = "COALESCE( STR_TO_DATE( nwu_event_date.meta_value, '%Y%m%d' ), {$wpdb->posts}.post_date ) {$order}";
 
 	return $clauses;
 }

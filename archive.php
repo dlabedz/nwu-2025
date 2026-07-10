@@ -48,14 +48,18 @@ if ( isset( $_GET['type'] ) ) {
 // Build query args
 $paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 
+// Events-only view sorts soonest-first (ASC); everything else is newest-first (DESC).
+$order = ( [ 'event' ] === $post_types ) ? 'ASC' : 'DESC';
+
 $args = [
 	'post_type'      => $post_types,
 	'posts_per_page' => 10,
 	'paged'          => $paged,
 	'post_status'    => 'publish',
 	'orderby'        => 'date',
-	'order'          => 'DESC',
+	'order'          => $order,
 	'nwu_effective_date_sort' => true,
+	'ignore_sticky_posts' => true,
 ];
 
 // Apply existing WordPress query vars (category, tag, date, author)
