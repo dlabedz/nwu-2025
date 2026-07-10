@@ -15,7 +15,6 @@ get_header();
 
 // Get filter parameters (prefixed to avoid WordPress canonical redirects on reserved query vars)
 $category = isset( $_GET['filter_category'] ) ? sanitize_text_field( $_GET['filter_category'] ) : '';
-$tag      = isset( $_GET['filter_tag'] ) ? sanitize_text_field( $_GET['filter_tag'] ) : '';
 $author   = isset( $_GET['filter_author'] ) ? sanitize_text_field( $_GET['filter_author'] ) : '';
 $year     = isset( $_GET['filter_year'] ) ? intval( $_GET['filter_year'] ) : '';
 
@@ -75,10 +74,6 @@ if ( is_category() ) {
 // Apply manual filters from dropdowns
 if ( ! empty( $category ) ) {
 	$args['category_name'] = $category;
-}
-
-if ( ! empty( $tag ) ) {
-	$args['tag'] = $tag;
 }
 
 if ( ! empty( $author ) ) {
@@ -180,22 +175,6 @@ if ( is_category() ) {
 						</select>
 					</div>
 
-					<!-- Tag Filter -->
-					<div class="filter-group">
-						<label for="filter_tag"><?php esc_html_e( 'Tag', 'nwu-2025' ); ?></label>
-						<select name="filter_tag" id="filter_tag" class="auto-submit-filter">
-							<option value=""><?php esc_html_e( 'Select', 'nwu-2025' ); ?></option>
-							<?php
-							$tags = get_tags( [ 'hide_empty' => true ] );
-							foreach ( $tags as $post_tag ) :
-								?>
-								<option value="<?php echo esc_attr( $post_tag->slug ); ?>" <?php selected( $tag, $post_tag->slug ); ?>>
-									<?php echo esc_html( $post_tag->name ); ?>
-								</option>
-							<?php endforeach; ?>
-						</select>
-					</div>
-
 					<!-- Author Filter -->
 					<div class="filter-group">
 						<label for="filter_author"><?php esc_html_e( 'Author Name', 'nwu-2025' ); ?></label>
@@ -254,9 +233,6 @@ if ( is_category() ) {
 						if ( ! empty( $category ) ) {
 							$filter_params['filter_category'] = $category;
 						}
-						if ( ! empty( $tag ) ) {
-							$filter_params['filter_tag'] = $tag;
-						}
 						if ( ! empty( $author ) ) {
 							$filter_params['filter_author'] = $author;
 						}
@@ -293,7 +269,7 @@ if ( is_category() ) {
 					</div>
 
 					<?php
-					$has_filters = ! empty( $category ) || ! empty( $tag ) || ! empty( $author ) || ! empty( $year ) || ! empty( $current_type );
+					$has_filters = ! empty( $category ) || ! empty( $author ) || ! empty( $year ) || ! empty( $current_type );
 					?>
 					<a href="<?php echo esc_url( $base_url ); ?>" class="clear-filters wp-element-button<?php echo $has_filters ? '' : ' clear-filters--hidden'; ?>">
 						<?php esc_html_e( 'Clear All Filters', 'nwu-2025' ); ?>

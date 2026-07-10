@@ -66,12 +66,12 @@
                     "delay": 0
                 },
                 {
-                    "key": "field_tcc_card_tag",
-                    "label": "Post Tag",
-                    "name": "card_tag",
+                    "key": "field_tcc_card_category",
+                    "label": "Category",
+                    "name": "card_category",
                     "aria-label": "",
                     "type": "taxonomy",
-                    "instructions": "Select a tag to link to. Button will say 'More on [Tag Name]'",
+                    "instructions": "Select a category to link to. Button will say 'More on [Category Name]'",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -79,7 +79,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "taxonomy": "post_tag",
+                    "taxonomy": "category",
                     "add_term": 0,
                     "save_terms": 0,
                     "load_terms": 0,
@@ -168,5 +168,6 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "show_in_rest": 0
+    "show_in_rest": 0,
+    "modified": 1783742400
 }
