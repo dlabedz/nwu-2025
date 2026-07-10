@@ -262,3 +262,53 @@ function load_chapter_template( $template ) {
 	return $template;
 }
 add_filter( 'template_include', __NAMESPACE__ . '\\load_chapter_template', 99 );
+
+/**
+ * Get the "effective" date for a post: the ACF event_date for Events,
+ * or the native post_date for everything else (e.g. News).
+ * Returns a strtotime()-parseable string.
+ */
+function get_effective_date( $post_id = null ) {
+	$post_id = $post_id ?: get_the_ID();
+
+	if ( 'event' === get_post_type( $post_id ) ) {
+		$event_date = get_field( 'event_date', $post_id );
+		if ( $event_date ) {
+			return $event_date;
+		}
+	}
+
+	return get_post_field( 'post_date', $post_id );
+}
+
+/**
+ * Format the effective date (event_date for Events, post_date otherwise) for display.
+ */
+function format_effective_date( $post_id = null, $format = 'F j, Y' ) {
+	$post_id = $post_id ?: get_the_ID();
+	return date_i18n( $format, strtotime( get_effective_date( $post_id ) ) );
+}
+
+/**
+ * Sort combined News + Events queries by effective date (event_date for
+ * Events, post_date for News) instead of always using post_date. Without
+ * this, Events entered into WordPress long before their event_date get
+ * buried behind more recently published News in a mixed post_type query.
+ *
+ * Opt in per-query via 'nwu_effective_date_sort' => true in WP_Query args.
+ */
+function effective_date_orderby( $clauses, $query ) {
+	if ( ! $query->get( 'nwu_effective_date_sort' ) ) {
+		return $clauses;
+	}
+
+	global $wpdb;
+
+	$clauses['join'] .= " LEFT JOIN {$wpdb->postmeta} AS nwu_event_date ON ( {$wpdb->posts}.ID = nwu_event_date.post_id AND nwu_event_date.meta_key = 'event_date' )";
+
+	$order = 'ASC' === strtoupper( (string) $query->get( 'order' ) ) ? 'ASC' : 'DESC';
+	$clauses['orderby'] = "COALESCE( STR_TO_DATE( nwu_event_date.meta_value, '%Y-%m-%d' ), {$wpdb->posts}.post_date ) {$order}";
+
+	return $clauses;
+}
+add_filter( 'posts_clauses', __NAMESPACE__ . '\\effective_date_orderby', 10, 2 );

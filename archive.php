@@ -56,6 +56,7 @@ $args = [
 	'post_status'    => 'publish',
 	'orderby'        => 'date',
 	'order'          => 'DESC',
+	'nwu_effective_date_sort' => true,
 ];
 
 // Apply existing WordPress query vars (category, tag, date, author)
@@ -314,7 +315,8 @@ if ( is_category() ) {
 
 						// Date and Post Type
 						$post_type = get_post_type();
-						$post_date = get_the_date( 'M j, Y' );
+						$post_date = \NWU2025\Post_Types\format_effective_date( get_the_ID(), 'M j, Y' );
+						$post_date_iso = \NWU2025\Post_Types\format_effective_date( get_the_ID(), 'c' );
 
 						// Get type label
 						if ( 'event' === $post_type ) {
@@ -330,7 +332,7 @@ if ( is_category() ) {
 
 							<div class="archive-item__meta">
 								<div class="archive-item__meta-text">
-									<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
+									<time datetime="<?php echo esc_attr( $post_date_iso ); ?>">
 										<?php echo esc_html( $post_date ); ?>
 									</time>
 									<span class="archive-item__author">
@@ -402,16 +404,16 @@ if ( is_category() ) {
 			<?php wp_reset_postdata(); ?>
 		</main>
 
-		<!-- Explore Topics (Tag Cloud) -->
+		<!-- Explore Topics (Category Cloud) -->
 		<aside class="archive-topics">
 			<div class="u-width-constrained">
 				<h4><?php esc_html_e( 'Explore Topics', 'nwu-2025' ); ?></h4>
 				<?php
-				$topic_tags = get_tags( [ 'number' => 20, 'orderby' => 'count', 'order' => 'DESC' ] );
-				if ( $topic_tags ) :
+				$topic_categories = get_categories( [ 'number' => 20, 'orderby' => 'count', 'order' => 'DESC', 'hide_empty' => true ] );
+				if ( $topic_categories ) :
 					echo '<div class="topic-tags">';
-					foreach ( $topic_tags as $topic_tag ) :
-						echo '<a href="' . esc_url( get_tag_link( $topic_tag ) ) . '" class="topic-tag wp-block-button is-style-pill">' . esc_html( $topic_tag->name ) . '</a>';
+					foreach ( $topic_categories as $topic_category ) :
+						echo '<a href="' . esc_url( get_category_link( $topic_category ) ) . '" class="topic-tag wp-block-button is-style-pill">' . esc_html( $topic_category->name ) . '</a>';
 					endforeach;
 					echo '</div>';
 				endif;

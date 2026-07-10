@@ -28,6 +28,7 @@ $args = array(
 	'order'          => 'DESC',
 	'no_found_rows'  => true,
 	'ignore_sticky_posts' => true,
+	'nwu_effective_date_sort' => true,
 );
 
 $query = new \WP_Query($args);
@@ -60,7 +61,8 @@ if ( ! $query->have_posts() ) {
 
 				// Get post data
 				$post_id = get_the_ID();
-				$post_date = get_the_date('F j, Y');
+				$post_date = \NWU2025\Post_Types\format_effective_date( $post_id, 'F j, Y' );
+				$post_date_iso = \NWU2025\Post_Types\format_effective_date( $post_id, 'c' );
 				$post_author = get_the_author();
 				$post_title = get_the_title();
 				$post_excerpt = get_the_excerpt();
@@ -73,7 +75,7 @@ if ( ! $query->have_posts() ) {
 
 				<article class="news-events-feed__item">
 					<div class="news-events-feed__meta">
-						<time class="news-events-feed__date" datetime="<?php echo esc_attr( get_the_date('c') ); ?>">
+						<time class="news-events-feed__date" datetime="<?php echo esc_attr( $post_date_iso ); ?>">
 							<?php echo esc_html( $post_date ); ?>
 						</time>
 						<p class="news-events-feed__author">

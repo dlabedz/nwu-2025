@@ -45,7 +45,7 @@ $text_color_map = [
 			<?php foreach ($cards as $card) :
 				$title = isset($card['card_title']) ? $card['card_title'] : '';
 				$text = isset($card['card_text']) ? $card['card_text'] : '';
-				$tag = isset($card['card_tag']) ? $card['card_tag'] : null;
+				$category = isset($card['card_category']) ? $card['card_category'] : null;
 				$bg_color = isset($card['background_color']) ? $card['background_color'] : 'cyan';
 				$text_color = isset($card['text_color']) ? $card['text_color'] : 'dark';
 
@@ -56,12 +56,12 @@ $text_color_map = [
 				// Determine button classes based on text color
 				$button_class = ($text_color === 'light') ? 'button-light' : 'button-dark';
 
-				// Get tag link and name if tag is selected
-				$tag_link = '';
-				$tag_name = '';
-				if (!empty($tag) && is_object($tag)) {
-					$tag_link = get_term_link($tag);
-					$tag_name = $tag->name;
+				// Get category link and name if category is selected
+				$category_link = '';
+				$category_name = '';
+				if (!empty($category) && is_object($category)) {
+					$category_link = get_term_link($category);
+					$category_name = $category->name;
 				}
 			?>
 				<div class="two-column-cards__card"
@@ -75,11 +75,11 @@ $text_color_map = [
 						<div class="two-column-cards__text"><?php echo wp_kses_post($text); ?></div>
 					<?php endif; ?>
 
-					<?php if (!empty($tag_link) && !is_wp_error($tag_link) && !empty($tag_name)) : ?>
+					<?php if (!empty($category_link) && !is_wp_error($category_link) && !empty($category_name)) : ?>
 						<div class="two-column-cards__button-wrapper">
-							<a href="<?php echo esc_url($tag_link); ?>"
+							<a href="<?php echo esc_url($category_link); ?>"
 							   class="two-column-cards__button <?php echo esc_attr($button_class); ?>">
-								<?php echo esc_html(sprintf(__('More on %s', 'nwu-2025'), $tag_name)); ?>
+								<?php echo esc_html(sprintf(__('More on %s', 'nwu-2025'), $category_name)); ?>
 							</a>
 						</div>
 					<?php endif; ?>
