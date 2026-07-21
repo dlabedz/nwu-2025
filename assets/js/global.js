@@ -141,8 +141,10 @@
 
 	// Rate share table — toggle a class once the table's horizontal
 	// scroll has reached its end, so the CSS edge-fade (signaling more
-	// content to scroll) can hide itself. See _civicrm.scss for the fade.
-	document.querySelectorAll('.crm-search-display-table').forEach(function(wrapper) {
+	// content to scroll) can hide itself. Scoped to the rate share
+	// Afform's own element so this doesn't run on other CiviCRM
+	// SearchKit tables elsewhere on the site. See _civicrm.scss.
+	document.querySelectorAll('afsearch-rate-share-public-display .crm-search-display-table').forEach(function(wrapper) {
 		const table = wrapper.querySelector('table.table');
 		if ( !table ) return;
 

@@ -1,5 +1,5 @@
 /* CiviCRM Form Styles
-/* Styles added form by form
+ * Styles added form by form
 ---------------------------------------------------------------------------------------------------- */
 
 /* CiviCRM Page Layout
@@ -1401,43 +1401,65 @@ afform-membership-sign-up {
 	border: none !important;
 }
 
-.crm-search-display-table{
+// ============================================================
+// Translators Rate Sharing Database (afsearchRateSharePublicDisplay)
+// Scoped to this Afform's own element so these tweaks don't affect
+// other CiviCRM SearchKit tables elsewhere on the site.
+// ============================================================
 
-	.btn-group.crm-admin-block-context-dropdown.dropup.ng-scope {
-    	display: none !important;
+afsearch-rate-share-public-display {
+
+	.crm-search-display-table{
+
+		.btn-group.crm-admin-block-context-dropdown.dropup.ng-scope {
+	    	display: none !important;
+		}
+
+		// Bleed to the edges of the group's newsprint background, with a
+		// right-edge fade to signal there's more table to scroll.
+		position: relative;
+		width: calc(100% + (2 * var(--wp--custom--layout--padding)));
+		margin-left: calc(var(--wp--custom--layout--padding) * -1);
+		margin-right: calc(var(--wp--custom--layout--padding) * -1);
+		padding-left: var(--wp--custom--layout--padding);
+		padding-right: var(--wp--custom--layout--padding);
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			width: 56px;
+			pointer-events: none;
+			background: linear-gradient(
+				to right,
+				transparent,
+				var(--wp--preset--color--newsprint)
+			);
+			transition: opacity 0.15s ease;
+		}
+
+		&.is-scrolled-end::after {
+			opacity: 0;
+		}
+
 	}
 
-	button.btn.btn-secondary-outline.dropdown-toggle {
+	// Restore the dropdown-toggle's left border on this table only.
+	// The generic, site-wide rule at .crm-search-display table.table
+	// thead th.crm-search-result-select .btn-group
+	// button.btn-secondary-outline:not(:first-child) strips it, and it
+	// has to be beaten on specificity, not just source order — the extra
+	// afsearch-rate-share-public-display tag here is what does that,
+	// without touching the shared/global rule other tables rely on.
+	.crm-search-display table.table thead th.crm-search-result-select .btn-group button.btn-secondary-outline.dropdown-toggle {
 		border-left: 2px solid black !important;
 	}
 
-	// Bleed to the edges of the group's newsprint background, with a
-	// right-edge fade to signal there's more table to scroll.
-	position: relative;
-	width: calc(100% + (2 * var(--wp--custom--layout--padding)));
-	margin-left: calc(var(--wp--custom--layout--padding) * -1);
-	margin-right: calc(var(--wp--custom--layout--padding) * -1);
-	padding-left: var(--wp--custom--layout--padding);
-	padding-right: var(--wp--custom--layout--padding);
-
-	&::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		width: 56px;
-		pointer-events: none;
-		background: linear-gradient(
-			to right,
-			transparent,
-			var(--wp--preset--color--newsprint)
-		);
-		transition: opacity 0.15s ease;
-	}
-
-	&.is-scrolled-end::after {
-		opacity: 0;
+	// Hide this button on the rate share table only.
+	button.btn.dropdown-toggle.btn-sm {
+		display: none !important;
 	}
 
 }
