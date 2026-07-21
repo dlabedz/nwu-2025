@@ -9940,7 +9940,7 @@ afform-membership-sign-up .af-container .af-container .af-container {
 }
 
 .crm-container table {
-  border: none;
+  border: none !important;
 }
 
 /* Width Utilities
