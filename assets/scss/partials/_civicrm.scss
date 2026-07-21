@@ -1407,6 +1407,18 @@ afform-membership-sign-up {
 // other CiviCRM SearchKit tables elsewhere on the site.
 // ============================================================
 
+// Parent group sizing fix, scoped via :has() to this Afform only.
+// Overrides _singular.scss's width:100vw (which overshoots the
+// viewport and gets clipped on the right by html/body's overflow-x:
+// hidden). .has-newsprint-background-color is added purely to reach
+// specificity (0,3,1), beating _singular.scss's (0,3,0) — no !important.
+.wp-block-group.alignfull.has-newsprint-background-color:has(afsearch-rate-share-public-display) {
+	width: auto;
+	max-width: none;
+	margin-left: calc(-1 * var(--site-padding));
+	margin-right: calc(-1 * var(--site-padding));
+}
+
 afsearch-rate-share-public-display {
 
 	.crm-search-display-table{
