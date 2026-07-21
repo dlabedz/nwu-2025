@@ -139,6 +139,23 @@
 		}
 	}
 
+	// Rate share table — toggle a class once the table's horizontal
+	// scroll has reached its end, so the CSS edge-fade (signaling more
+	// content to scroll) can hide itself. See _civicrm.scss for the fade.
+	document.querySelectorAll('.crm-search-display-table').forEach(function(wrapper) {
+		const table = wrapper.querySelector('table.table');
+		if ( !table ) return;
+
+		const checkScrollEnd = function() {
+			const atEnd = table.scrollLeft + table.clientWidth >= table.scrollWidth - 2;
+			wrapper.classList.toggle('is-scrolled-end', atEnd);
+		};
+
+		table.addEventListener('scroll', checkScrollEnd);
+		window.addEventListener('resize', checkScrollEnd);
+		checkScrollEnd();
+	});
+
 	// Scroll to a URL hash target once its content has finished rendering.
 	// Needed for anchors that point into async-rendered content (e.g. a
 	// CiviCRM Afform), since the browser's native scroll-to-hash on page

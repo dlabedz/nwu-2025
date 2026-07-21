@@ -8738,7 +8738,7 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 }
 
 /* CiviCRM Form Styles
- * Styles added form by form
+/* Styles added form by form
 ---------------------------------------------------------------------------------------------------- */
 /* CiviCRM Page Layout
 --------------------------------------------- */
@@ -9941,6 +9941,35 @@ afform-membership-sign-up .af-container .af-container .af-container {
 
 .crm-container table {
   border: none !important;
+}
+
+.crm-search-display-table .btn-group.crm-admin-block-context-dropdown.dropup.ng-scope {
+  display: none !important;
+}
+.crm-search-display-table button.btn.btn-secondary-outline.dropdown-toggle {
+  border-left: 2px solid black !important;
+}
+.crm-search-display-table {
+  position: relative;
+  width: calc(100% + 2 * var(--wp--custom--layout--padding));
+  margin-left: calc(var(--wp--custom--layout--padding) * -1);
+  margin-right: calc(var(--wp--custom--layout--padding) * -1);
+  padding-left: var(--wp--custom--layout--padding);
+  padding-right: var(--wp--custom--layout--padding);
+}
+.crm-search-display-table::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 56px;
+  pointer-events: none;
+  background: linear-gradient(to right, transparent, var(--wp--preset--color--newsprint));
+  transition: opacity 0.15s ease;
+}
+.crm-search-display-table.is-scrolled-end::after {
+  opacity: 0;
 }
 
 /* Width Utilities
