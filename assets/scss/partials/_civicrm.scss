@@ -1470,6 +1470,19 @@ afsearch-rate-share-public-display {
 		}
 	}
 
+	.crm-rate-share-scroll-left {
+		margin-left: 24px;
+	}
+
+	// Forces the toolbar row to actually span the table's full bled
+	// width, so margin-left: auto below has somewhere to push to —
+	// otherwise the row only stretches to fit its own content and
+	// "Scroll →" ends up sitting right next to "← Scroll" instead of
+	// out at the table's true right edge.
+	.crm-search-display-table .form-inline {
+		width: 100% !important;
+	}
+
 	.crm-rate-share-scroll-right {
 		margin-left: auto;
 	}
