@@ -1594,34 +1594,13 @@ afsearch-rate-share-public-display {
 			}
 		}
 
-		// Bleed to the edges of the group's newsprint background, with a
-		// right-edge fade to signal there's more table to scroll.
+		// Bleed to the edges of the group's newsprint background.
 		position: relative;
 		width: calc(100% + (2 * var(--wp--custom--layout--padding)));
 		margin-left: calc(var(--wp--custom--layout--padding) * -1);
 		margin-right: calc(var(--wp--custom--layout--padding) * -1);
 		padding-left: var(--wp--custom--layout--padding);
 		padding-right: var(--wp--custom--layout--padding);
-
-		&::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			width: 56px;
-			pointer-events: none;
-			background: linear-gradient(
-				to right,
-				transparent,
-				var(--wp--preset--color--newsprint)
-			);
-			transition: opacity 0.15s ease;
-		}
-
-		&.is-scrolled-end::after {
-			opacity: 0;
-		}
 
 	}
 

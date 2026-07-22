@@ -188,7 +188,6 @@
 
 		const checkScrollEnd = function() {
 			const atEnd = table.scrollLeft + table.clientWidth >= table.scrollWidth - 2;
-			wrapper.classList.toggle('is-scrolled-end', atEnd);
 			if ( scrollLeftBtn ) scrollLeftBtn.disabled = table.scrollLeft <= 0;
 			if ( scrollRightBtn ) scrollRightBtn.disabled = atEnd;
 		};
