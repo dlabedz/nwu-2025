@@ -1495,6 +1495,17 @@ afsearch-rate-share-public-display {
 			border-bottom: 2px solid var(--wp--preset--color--foreground) !important;
 		}
 
+		// Grab cursor signals the table can be dragged to scroll horizontally
+		// (see the mousedown/mousemove handling in global.js).
+		table.table {
+			cursor: grab;
+
+			&.is-dragging {
+				cursor: grabbing;
+				user-select: none;
+			}
+		}
+
 		// Bleed to the edges of the group's newsprint background, with a
 		// right-edge fade to signal there's more table to scroll.
 		position: relative;

@@ -156,6 +156,45 @@
 		table.addEventListener('scroll', checkScrollEnd);
 		window.addEventListener('resize', checkScrollEnd);
 		checkScrollEnd();
+
+		// The table's native horizontal scrollbar sits at the bottom of its
+		// own box — below every row — so on a long table it's off-screen
+		// and effectively unreachable. Let users click-and-drag anywhere in
+		// the table to pan it horizontally instead.
+		let isDragging = false;
+		let dragged = false;
+		let startX = 0;
+		let startScrollLeft = 0;
+
+		table.addEventListener('mousedown', function(event) {
+			isDragging = true;
+			dragged = false;
+			startX = event.pageX;
+			startScrollLeft = table.scrollLeft;
+			table.classList.add('is-dragging');
+		});
+
+		window.addEventListener('mousemove', function(event) {
+			if ( !isDragging ) return;
+			const delta = event.pageX - startX;
+			if ( Math.abs(delta) > 3 ) dragged = true;
+			table.scrollLeft = startScrollLeft - delta;
+		});
+
+		window.addEventListener('mouseup', function() {
+			if ( !isDragging ) return;
+			isDragging = false;
+			table.classList.remove('is-dragging');
+		});
+
+		// A drag ending on a link/button shouldn't also fire its click.
+		table.addEventListener('click', function(event) {
+			if ( dragged ) {
+				event.preventDefault();
+				event.stopPropagation();
+				dragged = false;
+			}
+		}, true);
 	});
 
 	// Scroll to a URL hash target once its content has finished rendering.
