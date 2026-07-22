@@ -141,12 +141,22 @@
 
 	// Rate share table — toggle a class once the table's horizontal
 	// scroll has reached its end, so the CSS edge-fade (signaling more
-	// content to scroll) can hide itself. Scoped to the rate share
-	// Afform's own element so this doesn't run on other CiviCRM
-	// SearchKit tables elsewhere on the site. See _civicrm.scss.
-	document.querySelectorAll('afsearch-rate-share-public-display .crm-search-display-table').forEach(function(wrapper) {
+	// content to scroll) can hide itself, and wire up click-drag
+	// scrolling. Scoped to the rate share Afform's own element so this
+	// doesn't run on other CiviCRM SearchKit tables elsewhere on the
+	// site. See _civicrm.scss.
+	//
+	// CiviCRM/Angular renders this table asynchronously after an API
+	// call, well after this script runs, so querying for it once at
+	// load time finds nothing. Watch for it instead and initialize as
+	// soon as it actually exists.
+	const initRateShareTable = function(wrapper) {
+		if ( wrapper.dataset.rateShareInit ) return;
+
 		const table = wrapper.querySelector('table.table');
 		if ( !table ) return;
+
+		wrapper.dataset.rateShareInit = 'true';
 
 		const checkScrollEnd = function() {
 			const atEnd = table.scrollLeft + table.clientWidth >= table.scrollWidth - 2;
@@ -204,7 +214,13 @@
 				dragged = false;
 			}
 		}, true);
-	});
+	};
+
+	document.querySelectorAll('afsearch-rate-share-public-display .crm-search-display-table').forEach(initRateShareTable);
+
+	new MutationObserver(function() {
+		document.querySelectorAll('afsearch-rate-share-public-display .crm-search-display-table').forEach(initRateShareTable);
+	}).observe(document.body, { childList: true, subtree: true });
 
 	// Scroll to a URL hash target once its content has finished rendering.
 	// Needed for anchors that point into async-rendered content (e.g. a

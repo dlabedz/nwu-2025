@@ -1434,9 +1434,9 @@ afsearch-rate-share-public-display {
 
 	.af-container.af-layout-cols,
 	.af-container.af-layout-inline {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--crm-flex-gap, 2.5rem);
+		display: flex !important;
+		flex-wrap: wrap !important;
+		gap: var(--crm-flex-gap, 2.5rem) !important;
 	}
 
 	.crm-flex-box.crm-search-display-pager.ng-scope {
@@ -1502,6 +1502,14 @@ afsearch-rate-share-public-display {
 
 		table.table tr {
 			border-bottom: 2px solid var(--wp--preset--color--foreground) !important;
+		}
+
+		> table.table > thead > tr > th i.crm-search-table-column-sort-icon {
+			position: absolute;
+			left: 2px;
+			bottom: 10px;
+			color: var(--wp--preset--color--foreground) !important;
+			opacity: 1 !important;
 		}
 
 		// Grab cursor signals the table can be dragged to scroll horizontally
