@@ -1436,7 +1436,7 @@ afsearch-rate-share-public-display {
 	.af-container.af-layout-inline {
 		display: flex !important;
 		flex-wrap: wrap !important;
-		gap: var(--crm-flex-gap, 2.5rem) !important;
+		gap: 1.5rem !important;
 	}
 
 	.crm-flex-box.crm-search-display-pager.ng-scope {
@@ -1510,6 +1510,14 @@ afsearch-rate-share-public-display {
 			bottom: 10px;
 			color: var(--wp--preset--color--foreground) !important;
 			opacity: 1 !important;
+
+			// FontAwesome draws the actual glyph via ::before; CiviCRM's own
+			// riverlea CSS sets color there directly in some cases, which
+			// wins over color set on the <i> itself regardless of inheritance.
+			&::before {
+				color: var(--wp--preset--color--foreground) !important;
+				opacity: 1 !important;
+			}
 		}
 
 		// Grab cursor signals the table can be dragged to scroll horizontally
