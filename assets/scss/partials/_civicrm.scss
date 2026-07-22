@@ -1432,6 +1432,13 @@ afsearch-rate-share-public-display {
 		margin-top: 0 !important;
 	}
 
+	.af-container.af-layout-cols,
+	.af-container.af-layout-inline {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--crm-flex-gap, 2.5rem);
+	}
+
 	.crm-flex-box.crm-search-display-pager.ng-scope {
 		display: block !important;
 		margin: 0 auto;
@@ -1461,6 +1468,8 @@ afsearch-rate-share-public-display {
 	.pagination > .disabled > span:hover,
 	.pagination > .disabled > span:focus {
 		color: var(--wp--preset--color--foreground) !important;
+		background: transparent !important;
+		border-left: 0 !important;
 	}
 
 	.pagination > .disabled > a:hover,

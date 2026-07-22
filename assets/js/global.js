@@ -167,11 +167,20 @@
 		let startScrollLeft = 0;
 
 		table.addEventListener('mousedown', function(event) {
+			// Leave real controls (checkboxes, links, buttons) alone —
+			// only hijack mousedown on plain cell content.
+			if ( event.target.closest('a, button, input, select, textarea, label') ) return;
+
 			isDragging = true;
 			dragged = false;
 			startX = event.pageX;
 			startScrollLeft = table.scrollLeft;
 			table.classList.add('is-dragging');
+
+			// Without this, the browser starts its own native text-selection
+			// drag, which swallows the mousemove events below before they
+			// ever reach us — the drag never appears to do anything.
+			event.preventDefault();
 		});
 
 		window.addEventListener('mousemove', function(event) {
