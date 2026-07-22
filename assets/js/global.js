@@ -158,9 +158,39 @@
 
 		wrapper.dataset.rateShareInit = 'true';
 
+		// Explicit "Scroll ←" / "Scroll →" controls next to the toolbar's
+		// existing buttons (e.g. "Download Spreadsheet") — the drag/native
+		// scrollbar affordance isn't obvious at a glance, so these both
+		// signal the table scrolls and let users trigger it directly.
+		const toolbar = wrapper.querySelector('.form-inline');
+		let scrollLeftBtn = null;
+		let scrollRightBtn = null;
+
+		if ( toolbar ) {
+			const makeScrollButton = function(direction) {
+				const btn = document.createElement('button');
+				btn.type = 'button';
+				btn.className = 'crm-rate-share-scroll-btn crm-rate-share-scroll-' + (direction < 0 ? 'left' : 'right');
+				btn.innerHTML = direction < 0
+					? '<span aria-hidden="true">←</span> Scroll'
+					: 'Scroll <span aria-hidden="true">→</span>';
+				btn.addEventListener('click', function() {
+					table.scrollBy({ left: direction * Math.round(table.clientWidth * 0.8), behavior: 'smooth' });
+				});
+				return btn;
+			};
+
+			scrollLeftBtn = makeScrollButton(-1);
+			scrollRightBtn = makeScrollButton(1);
+			toolbar.appendChild(scrollLeftBtn);
+			toolbar.appendChild(scrollRightBtn);
+		}
+
 		const checkScrollEnd = function() {
 			const atEnd = table.scrollLeft + table.clientWidth >= table.scrollWidth - 2;
 			wrapper.classList.toggle('is-scrolled-end', atEnd);
+			if ( scrollLeftBtn ) scrollLeftBtn.disabled = table.scrollLeft <= 0;
+			if ( scrollRightBtn ) scrollRightBtn.disabled = atEnd;
 		};
 
 		table.addEventListener('scroll', checkScrollEnd);
