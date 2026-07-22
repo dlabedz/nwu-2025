@@ -103,6 +103,13 @@ afform-your-profile {
 	display: none !important;
 }
 
+// Default buttons — theme black instead of Bootstrap's gray
+#bootstrap-theme .btn-default {
+	color: var(--wp--preset--color--white) !important;
+	background-color: var(--wp--preset--color--foreground) !important;
+	border-color: rgba(0, 0, 0, .1) !important;
+}
+
 // ============================================================
 // Select2 — Global icon fixes (dropdown arrow + clear + search)
 // Applies to all CiviCRM forms using Select2
@@ -1421,10 +1428,18 @@ afform-membership-sign-up {
 
 afsearch-rate-share-public-display {
 
+	af-field.af-field-type-radio {
+		margin-top: 0 !important;
+	}
+
 	.crm-search-display-table{
 
 		.btn-group.crm-admin-block-context-dropdown.dropup.ng-scope {
 	    	display: none !important;
+		}
+
+		table.table tr {
+			border-bottom: 2px solid var(--wp--preset--color--foreground) !important;
 		}
 
 		// Bleed to the edges of the group's newsprint background, with a
