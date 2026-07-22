@@ -1432,6 +1432,23 @@ afsearch-rate-share-public-display {
 		margin-top: 0 !important;
 	}
 
+	.crm-flex-box.crm-search-display-pager.ng-scope {
+		display: block !important;
+		margin: 0 auto;
+	}
+
+	// Active page number — theme black/white, matching button styling elsewhere
+	.pagination > .active > a,
+	.pagination > .active > a:hover,
+	.pagination > .active > a:focus,
+	.pagination > .active > span,
+	.pagination > .active > span:hover,
+	.pagination > .active > span:focus {
+		background-color: var(--wp--preset--color--foreground) !important;
+		border-color: var(--wp--preset--color--foreground) !important;
+		color: var(--wp--preset--color--white) !important;
+	}
+
 	.crm-search-display-table{
 
 		.btn-group.crm-admin-block-context-dropdown.dropup.ng-scope {
