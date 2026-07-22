@@ -1437,6 +1437,26 @@ afsearch-rate-share-public-display {
 		margin: 0 auto;
 	}
 
+	// Idle pagination buttons (prev/next arrows + page numbers)
+	.pagination > li > a,
+	.pagination > li > span {
+		background-color: var(--wp--preset--color--white) !important;
+		border: 2px solid var(--wp--preset--color--foreground) !important;
+		color: var(--wp--preset--color--foreground) !important;
+		border-radius: 0 !important;
+	}
+
+	// Prev/next arrows render as WP emoji <img>, not text — color: black
+	// can't reach them, so force it with a filter instead.
+	.pagination img.emoji {
+		filter: brightness(0);
+	}
+
+	// Hide "previous" once there's nothing before the current page
+	.pagination-prev.disabled {
+		display: none !important;
+	}
+
 	// Active page number — theme black/white, matching button styling elsewhere
 	.pagination > .active > a,
 	.pagination > .active > a:hover,
