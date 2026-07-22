@@ -1452,21 +1452,37 @@ afsearch-rate-share-public-display {
 		filter: brightness(0);
 	}
 
+	// Disabled pagination items — Bootstrap's own grey otherwise wins over
+	// the idle-button rule above (higher specificity), so force it back.
+	.pagination > .disabled > a,
+	.pagination > .disabled > a:hover,
+	.pagination > .disabled > a:focus,
+	.pagination > .disabled > span,
+	.pagination > .disabled > span:hover,
+	.pagination > .disabled > span:focus {
+		color: var(--wp--preset--color--foreground) !important;
+	}
+
+	.pagination > .disabled > a:hover,
+	.pagination > .disabled > span:hover {
+		opacity: .8;
+	}
+
 	// Hide "previous" once there's nothing before the current page
 	.pagination-prev.disabled {
 		display: none !important;
 	}
 
-	// Active page number — theme black/white, matching button styling elsewhere
+	// Active page number — transparent with theme black border/text
 	.pagination > .active > a,
 	.pagination > .active > a:hover,
 	.pagination > .active > a:focus,
 	.pagination > .active > span,
 	.pagination > .active > span:hover,
 	.pagination > .active > span:focus {
-		background-color: var(--wp--preset--color--foreground) !important;
+		background-color: transparent !important;
 		border-color: var(--wp--preset--color--foreground) !important;
-		color: var(--wp--preset--color--white) !important;
+		color: var(--wp--preset--color--foreground) !important;
 	}
 
 	.crm-search-display-table{
