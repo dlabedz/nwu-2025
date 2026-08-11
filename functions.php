@@ -1560,3 +1560,31 @@ add_filter( 'rest_authentication_errors', function( $result ) {
     }
     return $result;
 });
+
+
+/**
+ * Disable Comments
+ *
+ * To re-enable, comment out or remove this block.
+ */
+
+// Close comments on the front-end.
+add_filter( 'comments_open', '__return_false', 20, 2 );
+add_filter( 'pings_open', '__return_false', 20, 2 );
+
+// Hide existing comments.
+add_filter( 'comments_array', '__return_empty_array', 10, 2 );
+
+// Remove comments page in menu.
+function nwu_remove_comments_admin_menu() {
+	remove_menu_page( 'edit-comments.php' );
+}
+add_action( 'admin_menu', 'nwu_remove_comments_admin_menu' );
+
+// Remove comments links from admin bar.
+function nwu_remove_comments_admin_bar() {
+	if ( is_admin_bar_showing() ) {
+		remove_action( 'admin_bar_menu', 'wp_admin_bar_comments_menu', 60 );
+	}
+}
+add_action( 'init', 'nwu_remove_comments_admin_bar' );
