@@ -477,6 +477,7 @@ h6 {
 
 .page-title {
   margin-block-end: 1.5rem;
+  margin-top: 0.5em;
 }
 
 /* Leadership & Staff Page — Spacing Normalization
@@ -10012,12 +10013,16 @@ afsearch-rate-share-public-display .crm-search-display-table .form-inline {
 afsearch-rate-share-public-display .crm-rate-share-scroll-right {
   margin-left: auto;
 }
-afsearch-rate-share-public-display crm-search-tasks-menu {
+afsearch-rate-share-public-display .crm-search-tasks-menu {
   display: inline-flex !important;
   align-items: center !important;
 }
 afsearch-rate-share-public-display .crm-search-task-button {
   margin: 0 !important;
+}
+afsearch-rate-share-public-display #bootstrap-theme .btn-group > .btn:first-child:not(.af-button) {
+  position: absolute;
+  top: -15px;
 }
 afsearch-rate-share-public-display .crm-flex-box.crm-search-display-pager.ng-scope {
   display: block !important;

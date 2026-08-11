@@ -1492,18 +1492,21 @@ afsearch-rate-share-public-display {
 		margin-left: auto;
 	}
 
-	// The "Download Spreadsheet" button renders inside CiviCRM's
-	// <crm-search-tasks-menu> custom element, which is the actual flex
-	// child of .form-inline — the button itself doesn't automatically
-	// center within that wrapper's own box, so it can drift out of line
-	// with the scroll arrows sitting directly in the flex row.
-	crm-search-tasks-menu {
+
+	.crm-search-tasks-menu {
 		display: inline-flex !important;
 		align-items: center !important;
 	}
 
 	.crm-search-task-button {
 		margin: 0 !important;
+	}
+
+	// Pull the Download Spreadsheet button up into line with the
+	// scroll arrows
+	#bootstrap-theme .btn-group > .btn:first-child:not(.af-button) {
+		position: absolute;
+		top: -15px;
 	}
 
 	.crm-flex-box.crm-search-display-pager.ng-scope {
