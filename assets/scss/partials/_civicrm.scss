@@ -1437,6 +1437,10 @@ afsearch-rate-share-public-display {
 		display: flex !important;
 		flex-wrap: wrap !important;
 		gap: 1.5rem !important;
+
+		@include media("<tablet") {
+			display: block !important;
+		}
 	}
 
 	// JS-injected "Scroll ←" / "Scroll →" controls (see global.js) —

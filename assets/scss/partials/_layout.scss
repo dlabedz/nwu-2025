@@ -35,6 +35,7 @@ input[type="search"] {
 
 .site-inner {
 	padding: var(--wp--custom--layout--block-gap-large) var(--site-padding);
+	padding-top: 1em;
 }
 
 // Remove top padding when first block is full-width or has background

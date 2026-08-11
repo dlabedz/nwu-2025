@@ -623,3 +623,10 @@ article > .entry-title,
 	display: flex;
 	justify-content: space-between;
 }
+
+
+.wp-block-column {
+	& > * + * {
+		margin-top: var( --wp--style--block-gap );
+	}
+}

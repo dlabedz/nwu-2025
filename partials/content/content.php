@@ -10,21 +10,20 @@
 
 echo '<article class="' . esc_attr( join( ' ', get_post_class() ) ) . '">';
 
+if ( is_singular( 'post' ) && has_post_thumbnail() ) {
+	echo '<div class="entry-featured-image">' . get_the_post_thumbnail( get_the_ID(), 'large' ) . '</div>';
+}
+
 echo '<div class="entry-content">';
 tha_entry_content_before();
+the_content();
 
-if ( \NWU2025\nwu_is_members_only_page() && ! \NWU2025\nwu_current_user_is_member() ) {
-	\NWU2025\nwu_render_members_only_message();
-} else {
-	the_content();
-
-	wp_link_pages(
-		[
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bestarter_textdomain' ),
-			'after'  => '</div>',
-		]
-	);
-}
+wp_link_pages(
+	[
+		'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'bestarter_textdomain' ),
+		'after'  => '</div>',
+	]
+);
 
 tha_entry_content_after();
 echo '</div>';

@@ -151,6 +151,7 @@
 		font-size: var(--wp--preset--font-size--x-large);
 		line-height: var(--wp--custom--line-height--small);
 		color: var(--wp--preset--color--foreground);
+		margin-top: .5em;
 
 		@include media(">=tablet") {
 			font-size: 48px; // Larger on desktop
@@ -270,6 +271,7 @@
 
 		@include media(">=tablet") {
 			font-size: var(--wp--preset--font-size--x-large);
+			margin-top: 0;
 		}
 	}
 
