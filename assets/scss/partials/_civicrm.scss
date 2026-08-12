@@ -1502,12 +1502,6 @@ afsearch-rate-share-public-display {
 		margin: 0 !important;
 	}
 
-	// Pull the Download Spreadsheet button up into line with the
-	// scroll arrows
-	#bootstrap-theme .btn-group > .btn:first-child:not(.af-button) {
-		position: absolute;
-		top: -15px;
-	}
 
 	.crm-flex-box.crm-search-display-pager.ng-scope {
 		display: block !important;
@@ -1627,4 +1621,11 @@ afsearch-rate-share-public-display {
 		display: none !important;
 	}
 
+}
+
+// Pull the Download Spreadsheet button up into line with the
+	// scroll arrows
+	#bootstrap-theme afsearch-rate-share-public-display .btn-group > .btn:first-child:not(.af-button) {
+	position: absolute;
+	top: -15px;
 }

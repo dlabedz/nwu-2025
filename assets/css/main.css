@@ -10020,10 +10020,6 @@ afsearch-rate-share-public-display .crm-search-tasks-menu {
 afsearch-rate-share-public-display .crm-search-task-button {
   margin: 0 !important;
 }
-afsearch-rate-share-public-display #bootstrap-theme .btn-group > .btn:first-child:not(.af-button) {
-  position: absolute;
-  top: -15px;
-}
 afsearch-rate-share-public-display .crm-flex-box.crm-search-display-pager.ng-scope {
   display: block !important;
   margin: 0 auto;
@@ -10102,6 +10098,11 @@ afsearch-rate-share-public-display .crm-search-display table.table thead th.crm-
 }
 afsearch-rate-share-public-display button.btn.dropdown-toggle.btn-sm {
   display: none !important;
+}
+
+#bootstrap-theme afsearch-rate-share-public-display .btn-group > .btn:first-child:not(.af-button) {
+  position: absolute;
+  top: -15px;
 }
 
 /* Width Utilities
