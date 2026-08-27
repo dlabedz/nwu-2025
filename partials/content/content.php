@@ -11,7 +11,17 @@
 echo '<article class="' . esc_attr( join( ' ', get_post_class() ) ) . '">';
 
 if ( is_singular( 'post' ) && has_post_thumbnail() ) {
-	echo '<div class="entry-featured-image">' . get_the_post_thumbnail( get_the_ID(), 'large' ) . '</div>';
+	$thumbnail_id      = get_post_thumbnail_id();
+	$thumbnail_caption = wp_get_attachment_caption( $thumbnail_id );
+
+	echo '<figure class="entry-featured-image">';
+	echo get_the_post_thumbnail( get_the_ID(), 'large' );
+
+	if ( ! empty( $thumbnail_caption ) ) {
+		echo '<figcaption class="entry-featured-image__caption">' . wp_kses_post( $thumbnail_caption ) . '</figcaption>';
+	}
+
+	echo '</figure>';
 }
 
 echo '<div class="entry-content">';
