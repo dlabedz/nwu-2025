@@ -10105,7 +10105,7 @@ afsearch-rate-share-public-display button.btn.dropdown-toggle.btn-sm {
 
 #bootstrap-theme afsearch-rate-share-public-display .btn-group > .btn:first-child:not(.af-button) {
   position: absolute;
-  top: -35px;
+  top: -15px;
 }
 
 /* Width Utilities
