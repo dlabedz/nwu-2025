@@ -1564,6 +1564,10 @@ afsearch-rate-share-public-display {
 	    	display: none !important;
 		}
 
+		.btn-group button.btn-secondary-outline:not(.dropdown-toggle) {
+			display: none !important;
+		}
+
 		table.table tr {
 			border-bottom: 2px solid var(--wp--preset--color--foreground) !important;
 		}
@@ -1627,5 +1631,5 @@ afsearch-rate-share-public-display {
 	// scroll arrows
 	#bootstrap-theme afsearch-rate-share-public-display .btn-group > .btn:first-child:not(.af-button) {
 	position: absolute;
-	top: -15px;
+	top: -35px;
 }

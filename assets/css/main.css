@@ -10064,6 +10064,9 @@ afsearch-rate-share-public-display .pagination > .active > span:focus {
 afsearch-rate-share-public-display .crm-search-display-table .btn-group.crm-admin-block-context-dropdown.dropup.ng-scope {
   display: none !important;
 }
+afsearch-rate-share-public-display .crm-search-display-table .btn-group button.btn-secondary-outline:not(.dropdown-toggle) {
+  display: none !important;
+}
 afsearch-rate-share-public-display .crm-search-display-table table.table tr {
   border-bottom: 2px solid var(--wp--preset--color--foreground) !important;
 }
@@ -10102,7 +10105,7 @@ afsearch-rate-share-public-display button.btn.dropdown-toggle.btn-sm {
 
 #bootstrap-theme afsearch-rate-share-public-display .btn-group > .btn:first-child:not(.af-button) {
   position: absolute;
-  top: -15px;
+  top: -35px;
 }
 
 /* Width Utilities
