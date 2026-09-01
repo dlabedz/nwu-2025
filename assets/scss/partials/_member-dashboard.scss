@@ -14,7 +14,6 @@
 	}
 
 	table {
-		// !important: CiviCRM's Bootstrap CSS ("#bootstrap-theme .table") is
 		// ID-scoped, which outranks this class selector on any <table class="table ...">
 		width: 100% !important;
 		max-width: 100% !important;
@@ -65,7 +64,6 @@
 			tr {
 				border-bottom: 1px solid var(--wp--preset--color--newsprint);
 				transition: background 0.15s ease;
-				// Kill Bootstrap's ".table-striped" zebra background on odd rows
 				background: transparent !important;
 
 				&:hover {
@@ -334,6 +332,11 @@
 		margin-bottom: var(--wp--custom--layout--block-gap-large);
 
 		&:last-child {
+			margin-bottom: 0;
+		}
+
+		// CiviCRM blocks handle their own spacing between tables — no extra gap
+		&:has(.crm-container) {
 			margin-bottom: 0;
 		}
 	}
