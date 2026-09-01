@@ -14,7 +14,10 @@
 	}
 
 	table {
-		width: 100%;
+		// !important: CiviCRM's Bootstrap CSS ("#bootstrap-theme .table") is
+		// ID-scoped, which outranks this class selector on any <table class="table ...">
+		width: 100% !important;
+		max-width: 100% !important;
 		border-collapse: collapse;
 		margin: 0;
 

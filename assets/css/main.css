@@ -8434,7 +8434,8 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
   color: var(--wp--preset--color--foreground);
 }
 .dashboard-wrapper table {
-  width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
   border-collapse: collapse;
   margin: 0;
 }
