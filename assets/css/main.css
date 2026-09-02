@@ -3766,6 +3766,53 @@ article > .entry-title,
   }
 }
 
+/* Entry Meta - Date & Categories
+--------------------------------------------- */
+.entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin: var(--wp--custom--layout--block-gap) auto;
+}
+.entry-meta__date {
+  display: inline-block;
+  border-top: 3px solid var(--wp--preset--color--foreground);
+  padding-top: 5px;
+  font-family: var(--wp--preset--font-family--dm-mono);
+  font-size: 16.5px;
+  font-weight: 900;
+  line-height: 22.5px;
+  letter-spacing: 2.475px;
+  text-transform: uppercase;
+  color: var(--wp--preset--color--foreground);
+  white-space: nowrap;
+}
+.entry-meta__categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.entry-meta__category {
+  display: inline-block;
+  border-radius: 999px;
+  background: var(--wp--preset--color--black);
+  color: var(--wp--preset--color--white);
+  font-family: var(--wp--preset--font-family--dm-mono);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.32px;
+  text-transform: capitalize;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: all 0.2s ease;
+}
+.entry-meta__category:hover, .entry-meta__category:focus {
+  background: var(--wp--preset--color--foreground);
+  color: var(--wp--preset--color--white);
+}
+
 /* Event Meta
 --------------------------------------------- */
 .event-meta {

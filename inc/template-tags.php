@@ -55,6 +55,33 @@ function be_entry_author() {
 }
 
 /**
+ * Entry Meta (Date & Categories)
+ * Displays published date and category pills on single posts
+ * Appears below breadcrumbs, above the title
+ */
+function be_entry_meta() {
+	if ( ! is_singular( 'post' ) ) {
+		return;
+	}
+
+	$categories = get_the_category();
+
+	echo '<div class="entry-meta u-width-constrained">';
+	echo '<time class="entry-meta__date" datetime="' . esc_attr( get_the_date( 'c' ) ) . '">' . esc_html( get_the_date( 'F j Y' ) ) . '</time>';
+
+	if ( ! empty( $categories ) ) {
+		echo '<div class="entry-meta__categories">';
+		foreach ( $categories as $category ) {
+			echo '<a href="' . esc_url( get_category_link( $category ) ) . '" class="entry-meta__category">' . esc_html( $category->name ) . '</a>';
+		}
+		echo '</div>';
+	}
+
+	echo '</div>';
+}
+add_action( 'tha_content_top', 'be_entry_meta', 12 );
+
+/**
  * Page Title Header
  * Displays H1 page title on all pages except front page
  * Appears below breadcrumbs
