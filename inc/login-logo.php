@@ -54,16 +54,9 @@ function be_login_logo() {
 //add_action( 'login_head', 'be_login_logo' );
 
 /**
- * Force-print the global styles stylesheet on the /login route.
+ * Force-print the global styles stylesheet as a universal fallback.
  */
-function nwu_force_global_styles_on_login() {
-
-	$is_login_route = is_page( 'login' )
-		|| ( function_exists( 'tml_is_login_page' ) && tml_is_login_page() );
-
-	if ( ! $is_login_route ) {
-		return;
-	}
+function nwu_force_global_styles_fallback() {
 
 	global $wp_styles;
 	if ( isset( $wp_styles->registered['global-styles'] ) && in_array( 'global-styles', $wp_styles->done, true ) ) {
@@ -72,4 +65,4 @@ function nwu_force_global_styles_on_login() {
 
 	printf( '<style id="nwu-global-styles-fallback">%s</style>', wp_get_global_stylesheet() );
 }
-add_action( 'wp_head', 'nwu_force_global_styles_on_login', 20 );
+add_action( 'wp_head', 'nwu_force_global_styles_fallback', 20 );
