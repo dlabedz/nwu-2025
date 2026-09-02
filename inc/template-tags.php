@@ -116,3 +116,63 @@ function be_page_title_header() {
 	}
 }
 add_action( 'tha_content_top', 'be_page_title_header', 15 );
+
+/**
+ * Post Footer (Tags & Post Navigation)
+ * Displays post tags and previous/next post links on single posts.
+ * Only renders the pieces that exist.
+ */
+function be_post_footer() {
+	if ( ! is_singular( 'post' ) ) {
+		return;
+	}
+
+	$tags          = get_the_tags();
+	$has_tags      = $tags && ! is_wp_error( $tags );
+	$previous_post = get_previous_post();
+	$next_post     = get_next_post();
+
+	if ( ! $has_tags && ! $previous_post && ! $next_post ) {
+		return;
+	}
+
+	$arrow = '<span class="post-footer__nav-arrow-icon"><img src="' . esc_url( get_template_directory_uri() . '/assets/images/black-arrow.svg' ) . '" alt="" aria-hidden="true"></span>';
+
+	echo '<div class="post-footer u-width-constrained">';
+
+	if ( $has_tags ) {
+		echo '<div class="post-footer__tags">';
+		echo '<h4 class="post-footer__tags-label">' . esc_html__( 'Post Tags', 'nwu-2025' ) . '</h4>';
+		echo '<div class="post-footer__tag-list">';
+		foreach ( $tags as $tag ) {
+			echo '<a href="' . esc_url( get_tag_link( $tag ) ) . '" class="post-footer__tag">' . esc_html( $tag->name ) . '</a>';
+		}
+		echo '</div>';
+		echo '</div>';
+	}
+
+	if ( $previous_post || $next_post ) {
+		echo '<nav class="post-footer__nav" aria-label="' . esc_attr__( 'Post navigation', 'nwu-2025' ) . '">';
+
+		if ( $next_post ) {
+			next_post_link(
+				'<div class="post-footer__nav-item post-footer__nav-item--newer">%link</div>',
+				$arrow . '<span>' . esc_html__( 'Newer Post', 'nwu-2025' ) . '</span>',
+				false
+			);
+		}
+
+		if ( $previous_post ) {
+			previous_post_link(
+				'<div class="post-footer__nav-item post-footer__nav-item--older">%link</div>',
+				'<span>' . esc_html__( 'Older Post', 'nwu-2025' ) . '</span>' . $arrow,
+				false
+			);
+		}
+
+		echo '</nav>';
+	}
+
+	echo '</div>';
+}
+add_action( 'tha_content_while_after', 'be_post_footer', 9 );
