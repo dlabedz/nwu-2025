@@ -8648,6 +8648,11 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 .dashboard-wrapper .crm-btn-loading {
   opacity: 0.6;
 }
+.dashboard-wrapper #bootstrap-theme .btn-group > .btn:first-child:not(.af-button) {
+  margin-left: unset;
+  position: unset;
+  top: unset;
+}
 
 /* Dashboard Page Header - Breadcrumbs + Title
 --------------------------------------------- */

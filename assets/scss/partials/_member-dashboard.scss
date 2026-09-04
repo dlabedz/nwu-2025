@@ -124,6 +124,12 @@
 	.crm-btn-loading {
 		opacity: 0.6;
 	}
+
+	#bootstrap-theme .btn-group > .btn:first-child:not(.af-button) {
+		margin-left: unset;
+		position: unset;
+		top: unset;
+	}
 }
 
 /* Dashboard Page Header - Breadcrumbs + Title
