@@ -370,6 +370,12 @@
 		display: none !important;
 	}
 
+	// Overrides "> *" above (higher specificity: 2 classes vs 1) without
+	// touching that rule, which other blocks further down the page rely on.
+	.crm-container {
+		margin-bottom: 10px;
+	}
+
 	.crm-container table{
 		margin-bottom: 0 !important;
 	}

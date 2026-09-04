@@ -8839,6 +8839,9 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 .dashboard-content-wrapper button.btn.dropdown-toggle.btn-sm {
   display: none !important;
 }
+.dashboard-content-wrapper .crm-container {
+  margin-bottom: 10px;
+}
 .dashboard-content-wrapper .crm-container table {
   margin-bottom: 0 !important;
 }
