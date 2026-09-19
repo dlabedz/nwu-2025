@@ -8212,13 +8212,9 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
   height: 100%;
   display: block;
   filter: brightness(0) invert(1);
-  transition: filter 0.2s ease;
 }
 .social-link:hover {
   transform: translateY(-2px);
-}
-.social-link:hover img {
-  filter: brightness(0.8) invert(1);
 }
 .social-link:active {
   transform: translateY(0);

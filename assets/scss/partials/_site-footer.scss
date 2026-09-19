@@ -482,16 +482,11 @@
 		width: 100%;
 		height: 100%;
 		display: block;
-		filter: brightness(0) invert(1);
-		transition: filter 0.2s ease;
+		filter: brightness(0) invert(1); // white, applied once, never changes
 	}
 
 	&:hover {
 		transform: translateY(-2px);
-
-		img {
-			filter: brightness(0.8) invert(1);
-		}
 	}
 
 	&:active {
