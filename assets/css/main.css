@@ -5690,7 +5690,8 @@ article > .entry-title,
 }
 .block-top-story__excerpt p {
   margin: 0 0 16px;
-  font-size: 33px;
+  font-size: 30px;
+  line-height: 40px;
 }
 @media (max-width: 768px) {
   .block-top-story__excerpt p {
@@ -5710,150 +5711,6 @@ article > .entry-title,
 }
 
 .block-top-story__attribution:before {
-  content: "— ";
-}
-
-.editor-styles-wrapper .block-top-story__title a {
-  pointer-events: none;
-}
-
-.block-top-story__header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 14px;
-}
-
-.block-top-story__icon {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-}
-.block-top-story__icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.block-top-story__label {
-  display: inline-block;
-  border-top: 4px solid var(--wp--preset--color--background);
-  padding-top: 5px;
-}
-
-.block-top-story__title {
-  margin: 0 0 24px;
-}
-.block-top-story__title a {
-  color: var(--wp--preset--color--background);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  transition: opacity 0.2s ease;
-}
-.block-top-story__title a img {
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-.block-top-story__title a:hover {
-  opacity: 0.8;
-}
-.block-top-story__title a:hover img {
-  transform: translateX(4px);
-}
-
-.block-top-story__excerpt {
-  margin: 0 0 24px;
-}
-.block-top-story__excerpt p {
-  margin: 0 0 16px;
-}
-.block-top-story__excerpt p:last-child {
-  margin-bottom: 0;
-}
-
-.block-top-story__attribution {
-  font-size: var(--wp--preset--font-size--small);
-  font-style: italic;
-  opacity: 0.9;
-  margin: 0;
-}
-
-.block-top-story__attribution:before {
-  content: "— ";
-}
-
-.editor-styles-wrapper .block-top-story__title a {
-  pointer-events: none;
-}
-.editor-styles-wrapper .block-top-story__title a__header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 14px;
-}
-.editor-styles-wrapper .block-top-story__title a__icon {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-}
-.editor-styles-wrapper .block-top-story__title a__icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-.editor-styles-wrapper .block-top-story__title a__label {
-  font-family: var(--wp--preset--font-family--oswald);
-  font-size: var(--wp--preset--font-size--large);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.editor-styles-wrapper .block-top-story__title a__title {
-  margin: 0 0 24px;
-  font-family: var(--wp--preset--font-family--oswald);
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 600;
-  line-height: var(--wp--custom--line-height--small);
-}
-.editor-styles-wrapper .block-top-story__title a__title a {
-  color: var(--wp--preset--color--background);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  transition: opacity 0.2s ease;
-}
-.editor-styles-wrapper .block-top-story__title a__title a:hover {
-  opacity: 0.8;
-}
-.editor-styles-wrapper .block-top-story__title a__title a svg {
-  fill: var(--wp--preset--color--background);
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-.editor-styles-wrapper .block-top-story__title a__title a:hover svg {
-  transform: translateX(4px);
-}
-.editor-styles-wrapper .block-top-story__title a__excerpt {
-  margin: 0 0 24px;
-  font-size: var(--wp--preset--font-size--large);
-  line-height: var(--wp--custom--line-height--medium);
-}
-.editor-styles-wrapper .block-top-story__title a__excerpt p {
-  margin: 0 0 16px;
-}
-.editor-styles-wrapper .block-top-story__title a__excerpt p:last-child {
-  margin-bottom: 0;
-}
-.editor-styles-wrapper .block-top-story__title a__attribution {
-  font-size: var(--wp--preset--font-size--small);
-  font-style: italic;
-  opacity: 0.9;
-  margin: 0;
-}
-.editor-styles-wrapper .block-top-story__title a__attribution:before {
   content: "— ";
 }
 
@@ -6207,7 +6064,7 @@ article > .entry-title,
 }
 .featured-news-item__title {
   margin: 0;
-  font-size: 36px;
+  font-size: 32px;
   font-style: normal;
   font-weight: 400;
   line-height: 41px; /* 113.889% */
@@ -6670,10 +6527,10 @@ article > .entry-title,
 @media (min-width: 1200px) {
   .quote-column__text {
     font-family: "DM Mono";
-    font-size: 38px;
+    font-size: 30px;
     font-style: normal;
     font-weight: 400;
-    line-height: 45px; /* 118.421% */
+    line-height: 40px;
   }
 }
 .quote-column__attribution {
