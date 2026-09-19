@@ -20,12 +20,12 @@
             "placeholder": "https:\/\/facebook.com\/"
         },
         {
-            "key": "field_twitter_url",
-            "label": "X (Twitter) URL",
-            "name": "twitter_url",
+            "key": "field_instagram_url",
+            "label": "Instagram URL",
+            "name": "instagram_url",
             "aria-label": "",
             "type": "url",
-            "instructions": "Enter your X\/Twitter profile URL (e.g., https:\/\/x.com\/yourhandle or https:\/\/twitter.com\/yourhandle)",
+            "instructions": "Enter your Instagram profile URL (e.g., https:\/\/instagram.com\/yourhandle)",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -34,7 +34,24 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "https:\/\/x.com\/"
+            "placeholder": "https:\/\/instagram.com\/"
+        },
+        {
+            "key": "field_bluesky_url",
+            "label": "Bluesky URL",
+            "name": "bluesky_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Enter your Bluesky profile URL (e.g., https:\/\/bsky.app\/profile\/yourhandle)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/bsky.app\/profile\/"
         },
         {
             "key": "field_linkedin_url",

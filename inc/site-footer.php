@@ -102,10 +102,11 @@ function be_site_footer_top() {
 
 				// Social Media Links
 				$facebook_url = get_field('facebook_url', 'option');
-				$twitter_url = get_field('twitter_url', 'option');
+				$instagram_url = get_field('instagram_url', 'option');
+				$bluesky_url = get_field('bluesky_url', 'option');
 				$linkedin_url = get_field('linkedin_url', 'option');
 
-				if ($facebook_url || $twitter_url || $linkedin_url) {
+				if ($facebook_url || $instagram_url || $bluesky_url || $linkedin_url) {
 					echo '<div class="footer-social-links" aria-label="Social Media Links">';
 
 						if ($facebook_url) {
@@ -114,9 +115,15 @@ function be_site_footer_top() {
 							echo '</a>';
 						}
 
-						if ($twitter_url) {
-							echo '<a href="' . esc_url($twitter_url) . '" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (formerly Twitter)" class="social-link social-link--twitter">';
-								echo '<img src="' . esc_url(get_template_directory_uri() . '/assets/icons/utility/x.svg') . '" alt="X" width="24" height="24">';
+						if ($instagram_url) {
+							echo '<a href="' . esc_url($instagram_url) . '" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" class="social-link social-link--instagram">';
+								echo '<img src="' . esc_url(get_template_directory_uri() . '/assets/icons/utility/instagram.svg') . '" alt="Instagram" width="24" height="24">';
+							echo '</a>';
+						}
+
+						if ($bluesky_url) {
+							echo '<a href="' . esc_url($bluesky_url) . '" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Bluesky" class="social-link social-link--bluesky">';
+								echo '<img src="' . esc_url(get_template_directory_uri() . '/assets/icons/utility/bluesky.svg') . '" alt="Bluesky" width="24" height="24">';
 							echo '</a>';
 						}
 
