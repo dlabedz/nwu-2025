@@ -7616,6 +7616,57 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
     transform: rotate(360deg);
   }
 }
+.block-dashboard-events-calendar .calendar-day.calendar-day--has-events {
+  position: relative;
+  background: var(--wp--preset--color--red);
+  color: #FEFEFE;
+}
+.block-dashboard-events-calendar .calendar-day.calendar-day--has-events .calendar-day-number {
+  color: #FEFEFE;
+}
+.block-dashboard-events-calendar .calendar-day.calendar-day--has-events:hover, .block-dashboard-events-calendar .calendar-day.calendar-day--has-events:focus-within {
+  background: var(--wp--preset--color--red);
+  border-color: var(--wp--preset--color--foreground);
+}
+.block-dashboard-events-calendar .calendar-day.calendar-day--today.calendar-day--has-events {
+  outline: 3px solid var(--wp--preset--color--yellow);
+  outline-offset: -3px;
+}
+.block-dashboard-events-calendar .calendar-event-dot {
+  display: inline-block;
+  position: relative;
+  width: 10px;
+  height: 10px;
+  margin: 2px;
+  border-radius: 50%;
+  background: #FEFEFE;
+}
+.block-dashboard-events-calendar .calendar-event-dot::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+}
+.block-dashboard-events-calendar .calendar-event-dot:focus-visible {
+  outline: 2px solid #FEFEFE;
+  outline-offset: 2px;
+}
+.block-dashboard-events-calendar .calendar-event-dot:only-of-type {
+  position: static;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+.block-dashboard-events-calendar .calendar-event-dot:only-of-type::after {
+  inset: 0;
+}
+.block-dashboard-events-calendar .calendar-event-dot:only-of-type:focus-visible {
+  outline: none;
+}
+.block-dashboard-events-calendar .calendar-day--has-events:has(.calendar-event-dot:only-of-type:focus-visible) {
+  outline: 3px solid var(--wp--preset--color--foreground);
+  outline-offset: -3px;
+}
+
 .chapter-details-block--editor {
   padding: 20px;
   background: #f0f0f1;

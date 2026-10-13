@@ -262,3 +262,71 @@
 @keyframes spin {
 	to { transform: rotate(360deg); }
 }
+
+// Event days: red background, linked to the event
+.block-dashboard-events-calendar {
+	.calendar-day.calendar-day--has-events {
+		position: relative;
+		background: var(--wp--preset--color--red);
+		color: #FEFEFE;
+
+		.calendar-day-number {
+			color: #FEFEFE;
+		}
+
+		&:hover,
+		&:focus-within {
+			background: var(--wp--preset--color--red);
+			border-color: var(--wp--preset--color--foreground);
+		}
+	}
+
+	// Today and has an event: keep red, mark today with a yellow outline
+	.calendar-day.calendar-day--today.calendar-day--has-events {
+		outline: 3px solid var(--wp--preset--color--yellow);
+		outline-offset: -3px;
+	}
+
+	.calendar-event-dot {
+		display: inline-block;
+		position: relative;
+		width: 10px;
+		height: 10px;
+		margin: 2px;
+		border-radius: 50%;
+		background: #FEFEFE;
+
+		// Enlarge the click target to about 24px
+		&::after {
+			content: "";
+			position: absolute;
+			inset: -7px;
+		}
+
+		&:focus-visible {
+			outline: 2px solid #FEFEFE;
+			outline-offset: 2px;
+		}
+
+		// One event that day: hide the dot, make the whole red square the link
+		&:only-of-type {
+			position: static;
+			width: 0;
+			height: 0;
+			margin: 0;
+
+			&::after {
+				inset: 0;
+			}
+
+			&:focus-visible {
+				outline: none;
+			}
+		}
+	}
+
+	.calendar-day--has-events:has(.calendar-event-dot:only-of-type:focus-visible) {
+		outline: 3px solid var(--wp--preset--color--foreground);
+		outline-offset: -3px;
+	}
+}

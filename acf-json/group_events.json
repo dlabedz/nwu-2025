@@ -125,7 +125,7 @@
                 "id": ""
             },
             "post_type": [
-                "chapters"
+                "chapter"
             ],
             "taxonomy": "",
             "return_format": "id",
@@ -152,5 +152,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1738368000
+    "modified": 1791864041
 }

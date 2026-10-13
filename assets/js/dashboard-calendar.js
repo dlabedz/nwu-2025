@@ -47,6 +47,7 @@
 		formData.append('nonce', nwu_calendar.nonce);
 		formData.append('month', month);
 		formData.append('year', year);
+		formData.append('chapter_events_only', calendarBlock.dataset.chapterEventsOnly || '0');
 
 		fetch(nwu_calendar.ajax_url, {
 			method: 'POST',
