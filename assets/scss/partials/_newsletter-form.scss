@@ -3,6 +3,21 @@
 
 .nwu-newsletter-form {
 
+	.asterisk {
+		color: var(--wp--preset--color--red);
+	}
+
+	h2 {
+		color: var(--wp--preset--color--white);
+	}
+
+	.indicates-required {
+		font-family: var(--wp--preset--font-family--dm-sans);
+		font-size: var(--wp--preset--font-size--small);
+		color: var(--wp--preset--color--white);
+		margin-bottom: 10px;
+	}
+
 	form {
 		display: flex;
 		flex-direction: column;
@@ -20,10 +35,6 @@
 			font-size: var(--wp--preset--font-size--small);
 			font-weight: 400;
 			color: var(--wp--preset--color--white);
-
-			.required {
-				color: var(--wp--preset--color--red);
-			}
 		}
 
 		input[type="email"],

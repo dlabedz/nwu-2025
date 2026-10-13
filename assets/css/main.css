@@ -8332,6 +8332,18 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
 
 /* Newsletter Form
 --------------------------------------------- */
+.nwu-newsletter-form .asterisk {
+  color: var(--wp--preset--color--red);
+}
+.nwu-newsletter-form h2 {
+  color: var(--wp--preset--color--white);
+}
+.nwu-newsletter-form .indicates-required {
+  font-family: var(--wp--preset--font-family--dm-sans);
+  font-size: var(--wp--preset--font-size--small);
+  color: var(--wp--preset--color--white);
+  margin-bottom: 10px;
+}
 .nwu-newsletter-form form {
   display: flex;
   flex-direction: column;
@@ -8348,9 +8360,6 @@ h1[id], h2[id], h3[id], h4[id], h5[id], h6[id] {
   font-size: var(--wp--preset--font-size--small);
   font-weight: 400;
   color: var(--wp--preset--color--white);
-}
-.nwu-newsletter-form .mc-field-group label .required {
-  color: var(--wp--preset--color--red);
 }
 .nwu-newsletter-form .mc-field-group input[type=email],
 .nwu-newsletter-form .mc-field-group input[type=text] {
