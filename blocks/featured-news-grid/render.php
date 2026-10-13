@@ -65,8 +65,7 @@ if ($display_mode === 'manual') {
             $tags = get_the_terms($post_id, 'post_tag');
             $image_id = get_post_thumbnail_id($post_id);
             $excerpt = get_the_excerpt($post_id);
-            $author_id = get_post_field('post_author', $post_id);
-            $author_name = get_the_author_meta('display_name', $author_id);
+            $author_name = nwu_get_byline( $post_id );
             $post_date = get_the_date('F j, Y', $post_id);
         ?>
             <article class="featured-news-item">

@@ -63,7 +63,7 @@ if ( ! $query->have_posts() ) {
 				$post_id = get_the_ID();
 				$post_date = \NWU2025\Post_Types\format_effective_date( $post_id, 'F j, Y' );
 				$post_date_iso = \NWU2025\Post_Types\format_effective_date( $post_id, 'c' );
-				$post_author = get_the_author();
+				$post_author = nwu_get_byline();
 				$post_title = get_the_title();
 				$post_excerpt = get_the_excerpt();
 				$post_url = get_permalink();

@@ -316,7 +316,7 @@ if ( is_category() ) {
 										<?php echo esc_html( $post_date ); ?>
 									</time>
 									<span class="archive-item__author">
-										<?php echo esc_html( get_the_author() ); ?>
+										<?php echo nwu_get_byline(); ?>
 									</span>
 								</div>
 

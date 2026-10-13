@@ -48,8 +48,7 @@ if (!$quote_text && !$featured_post) {
             $post_permalink = get_permalink($post_id);
             $post_excerpt = get_the_excerpt($post_id);
             $post_date = get_the_date('F j, Y', $post_id);
-            $author_id = get_post_field('post_author', $post_id);
-            $author_name = get_the_author_meta('display_name', $author_id);
+           	$author_name = nwu_get_byline( $post_id );
             $categories = get_the_terms($post_id, 'category');
             $tags = get_the_terms($post_id, 'post_tag');
         ?>

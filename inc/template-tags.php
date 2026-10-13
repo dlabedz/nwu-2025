@@ -9,6 +9,36 @@
  **/
 
 /**
+ * Get a post's byline, using Co-Authors Plus when available.
+ * Falls back to the standard post author.
+ *
+ * @param int  $post_id Post ID. Defaults to the current post.
+ * @param bool $linked  Link each name to its author archive.
+ * @return string Escaped byline, e.g. "Jane Doe and NWU".
+ */
+function nwu_get_byline( $post_id = 0, $linked = false ) {
+	$post_id = $post_id ? (int) $post_id : get_the_ID();
+	$authors = function_exists( 'get_coauthors' ) ? get_coauthors( $post_id ) : array();
+
+	if ( empty( $authors ) ) {
+		$user    = get_userdata( (int) get_post_field( 'post_author', $post_id ) );
+		$authors = $user ? array( $user ) : array();
+	}
+
+	$names = array();
+	foreach ( $authors as $author ) {
+		$name = esc_html( $author->display_name );
+		if ( $linked ) {
+			$url  = get_author_posts_url( $author->ID, $author->user_nicename );
+			$name = '<a href="' . esc_url( $url ) . '">' . $name . '</a>';
+		}
+		$names[] = $name;
+	}
+
+	return wp_sprintf_l( '%l', $names );
+}
+
+/**
  * Entry Category
  *
  */
@@ -47,11 +77,14 @@ function be_entry_image_id() {
 
 /**
  * Entry Author
+ * Uses Co-Authors Plus bylines when available, falls back to the post author.
  *
  */
 function be_entry_author() {
-	$id = (int) get_the_author_meta( 'ID' );
-	echo '<p class="entry-author"><a href="' . get_author_posts_url( $id ) . '" aria-hidden="true" tabindex="-1">' . get_avatar( $id, 40 ) . '</a><em>by</em> <a href="' . get_author_posts_url( $id ) . '">' . get_the_author() . '</a></p>';
+	$byline = nwu_get_byline( get_the_ID(), true );
+	if ( $byline ) {
+		echo '<p class="entry-author"><em>by</em> ' . $byline . '</p>';
+	}
 }
 
 /**
