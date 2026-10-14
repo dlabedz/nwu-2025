@@ -209,3 +209,12 @@ function be_post_footer() {
 	echo '</div>';
 }
 add_action( 'tha_content_while_after', 'be_post_footer', 9 );
+
+/**
+ * Look further in the Co-Authors Plus author search, so accounts that can
+ * edit posts aren't crowded out by member accounts with similar names.
+ */
+add_filter( 'coauthors_search_authors_get_terms_args', function ( $args ) {
+	$args['number'] = 100;
+	return $args;
+} );
