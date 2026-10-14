@@ -211,10 +211,66 @@ function be_post_footer() {
 add_action( 'tha_content_while_after', 'be_post_footer', 9 );
 
 /**
- * Look further in the Co-Authors Plus author search, so accounts that can
- * edit posts aren't crowded out by member accounts with similar names.
+ * Limit the Co-Authors Plus author search to real bylines.
+ *
+ * By default the search scans every author record (including thousands of
+ * member accounts with @nwu.org emails), takes the first few alphabetically,
+ * and only then drops accounts that can't edit posts. That crowds out valid
+ * authors like NWU. This limits the search to users who can edit posts and
+ * guest authors, so the right accounts are found.
+ *
+ * @param array $args get_terms() arguments for the author search.
+ * @return array
  */
-add_filter( 'coauthors_search_authors_get_terms_args', function ( $args ) {
-	$args['number'] = 100;
+function nwu_coauthors_limit_search_to_bylines( $args ) {
+	global $coauthors_plus;
+
+	if ( empty( $coauthors_plus ) ) {
+		return $args;
+	}
+
+	$term_ids = array();
+
+	// Users who can write posts.
+	$users = get_users(
+		array(
+			'capability' => array( 'edit_posts' ),
+			'fields'     => 'all',
+		)
+	);
+	foreach ( $users as $user ) {
+		$term = $coauthors_plus->get_author_term( $user );
+		if ( $term ) {
+			$term_ids[] = (int) $term->term_id;
+		}
+	}
+
+	// Guest authors.
+	if ( ! empty( $coauthors_plus->guest_authors ) ) {
+		$guest_ids = get_posts(
+			array(
+				'post_type'      => 'guest-author',
+				'post_status'    => 'any',
+				'posts_per_page' => -1,
+				'fields'         => 'ids',
+			)
+		);
+		foreach ( $guest_ids as $guest_id ) {
+			$guest = $coauthors_plus->guest_authors->get_guest_author_by( 'ID', $guest_id );
+			if ( $guest ) {
+				$term = $coauthors_plus->get_author_term( $guest );
+				if ( $term ) {
+					$term_ids[] = (int) $term->term_id;
+				}
+			}
+		}
+	}
+
+	if ( ! empty( $term_ids ) ) {
+		$args['include'] = array_unique( $term_ids );
+		$args['number']  = 20;
+	}
+
 	return $args;
-} );
+}
+add_filter( 'coauthors_search_authors_get_terms_args', 'nwu_coauthors_limit_search_to_bylines' );
