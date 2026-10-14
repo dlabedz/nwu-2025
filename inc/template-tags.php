@@ -219,6 +219,9 @@ add_action( 'tha_content_while_after', 'be_post_footer', 9 );
  * authors like NWU. This limits the search to users who can edit posts and
  * guest authors, so the right accounts are found.
  *
+ * The list of allowed authors is cached for an hour and refreshed whenever
+ * users or guest authors change, so searches stay fast.
+ *
  * @param array $args get_terms() arguments for the author search.
  * @return array
  */
@@ -229,48 +232,67 @@ function nwu_coauthors_limit_search_to_bylines( $args ) {
 		return $args;
 	}
 
-	$term_ids = array();
+	$term_ids = get_transient( 'nwu_cap_byline_term_ids' );
 
-	// Users who can write posts.
-	$users = get_users(
-		array(
-			'capability' => array( 'edit_posts' ),
-			'fields'     => 'all',
-		)
-	);
-	foreach ( $users as $user ) {
-		$term = $coauthors_plus->get_author_term( $user );
-		if ( $term ) {
-			$term_ids[] = (int) $term->term_id;
-		}
-	}
+	if ( false === $term_ids ) {
+		$term_ids = array();
 
-	// Guest authors.
-	if ( ! empty( $coauthors_plus->guest_authors ) ) {
-		$guest_ids = get_posts(
+		// Users who can write posts.
+		$users = get_users(
 			array(
-				'post_type'      => 'guest-author',
-				'post_status'    => 'any',
-				'posts_per_page' => -1,
-				'fields'         => 'ids',
+				'capability' => array( 'edit_posts' ),
+				'fields'     => 'all',
 			)
 		);
-		foreach ( $guest_ids as $guest_id ) {
-			$guest = $coauthors_plus->guest_authors->get_guest_author_by( 'ID', $guest_id );
-			if ( $guest ) {
-				$term = $coauthors_plus->get_author_term( $guest );
-				if ( $term ) {
-					$term_ids[] = (int) $term->term_id;
+		foreach ( $users as $user ) {
+			$term = $coauthors_plus->get_author_term( $user );
+			if ( $term ) {
+				$term_ids[] = (int) $term->term_id;
+			}
+		}
+
+		// Guest authors.
+		if ( ! empty( $coauthors_plus->guest_authors ) ) {
+			$guest_ids = get_posts(
+				array(
+					'post_type'      => 'guest-author',
+					'post_status'    => 'any',
+					'posts_per_page' => -1,
+					'fields'         => 'ids',
+				)
+			);
+			foreach ( $guest_ids as $guest_id ) {
+				$guest = $coauthors_plus->guest_authors->get_guest_author_by( 'ID', $guest_id );
+				if ( $guest ) {
+					$term = $coauthors_plus->get_author_term( $guest );
+					if ( $term ) {
+						$term_ids[] = (int) $term->term_id;
+					}
 				}
 			}
 		}
+
+		$term_ids = array_values( array_unique( $term_ids ) );
+		set_transient( 'nwu_cap_byline_term_ids', $term_ids, HOUR_IN_SECONDS );
 	}
 
 	if ( ! empty( $term_ids ) ) {
-		$args['include'] = array_unique( $term_ids );
+		$args['include'] = $term_ids;
 		$args['number']  = 20;
 	}
 
 	return $args;
 }
 add_filter( 'coauthors_search_authors_get_terms_args', 'nwu_coauthors_limit_search_to_bylines' );
+
+/**
+ * Refresh the cached byline list when users or guest authors change.
+ */
+function nwu_clear_cap_byline_cache() {
+	delete_transient( 'nwu_cap_byline_term_ids' );
+}
+add_action( 'set_user_role', 'nwu_clear_cap_byline_cache' );
+add_action( 'user_register', 'nwu_clear_cap_byline_cache' );
+add_action( 'deleted_user', 'nwu_clear_cap_byline_cache' );
+add_action( 'save_post_guest-author', 'nwu_clear_cap_byline_cache' );
+add_action( 'deleted_post', 'nwu_clear_cap_byline_cache' );
